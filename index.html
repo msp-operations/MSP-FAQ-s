@@ -46,7 +46,7 @@
   html.dark .masthead{background:linear-gradient(180deg,#17212f,#111a26);border-bottom-color:#26303f}
   .mh{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;padding:16px 0}
   .mh img{display:block;width:auto;transition:filter .2s}
-  .mh img.um{height:32px}.mh img.msp{height:56px}
+  .mh img.um{height:32px}.mh img.msp{height:56px}.mh img.faqlogo{height:84px}
   html.dark .mh img{filter:brightness(0) invert(1)}
   .logolink{display:flex;flex-direction:column;align-items:center;gap:9px;transition:opacity .15s;cursor:pointer}
   .logolink:hover{opacity:.75}
@@ -206,9 +206,8 @@
   <div class="wrap mh">
     <button class="installBtn" id="installBtn" aria-label="Install this app"><span id="instIcon"></span>Install app</button>
     <button class="themeBtn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
-    <a class="logolink" href="#/" aria-label="Back to start">
-      <img class="um" src="assets/um-logo-new.png" alt="Maastricht University">
-      <img class="msp" src="assets/msp-logo.png" alt="Maastricht Science Programme">
+    <a class="logolink" href="#/" aria-label="MSP Student FAQ, home">
+      <img class="faqlogo" src="assets/msp-faq.png" alt="Maastricht Science Programme, Frequently Asked Questions">
     </a>
   </div>
 </div>
@@ -525,7 +524,7 @@ function renderStaffPanel(){if(!state.staff)return;const el=$('#staffPanel');if(
 let deferredPrompt=null;
 function wireExtras(){
   $('#q').addEventListener('focus',()=>{if(!$('#q').value.trim())showPopular();});
-  document.addEventListener('click',e=>{if(!e.target.closest('.search')){const rb=$('#results');if(rb)rb.className='results';}});
+  document.addEventListener('click',e=>{if(!e.target.closest('.search, .chips')){const rb=$('#results');if(rb)rb.className='results';}});
   const tt=$('#toTop');window.addEventListener('scroll',()=>tt.classList.toggle('on',window.scrollY>420),{passive:true});
   tt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
   window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('#installBtn').classList.add('on');});

@@ -3,9 +3,9 @@
 // instantly from cache; content.json refreshes in the background so an edit
 // you push shows up on the student's next visit without any re-download.
 
-const CACHE = 'msp-faq-v14';
+const CACHE = 'msp-faq-v15';
 const CORE = ['./', 'index.html', 'content.json', 'manifest.webmanifest', 'icon.svg',
-  'assets/um-logo-new.png', 'assets/msp-logo.png', 'assets/building.jpg'];
+  'assets/msp-faq.png', 'assets/building.jpg'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
