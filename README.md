@@ -1,33 +1,44 @@
 # MSP Student FAQ
 
-A sleek, search-first FAQ for Maastricht Science Programme students. It runs as a static web app (installable, works offline), pulls all its content from one file, and lets students see a personal status by loading their transcript locally.
+A search-first FAQ for Maastricht Science Programme students. Static, installable (PWA), works offline. Live: **https://beebzoo.github.io/MSP-FAQ-s/**
 
-## How it works
-- **`content.json`** is the single source of truth: every question, answer, topic and office. Edit this, and every student sees the update on their next visit. No re-download.
-- **`index.html`** is the whole app: search (MiniSearch), topic cards, answer view with the owning office + a pre-filled contact email, and the transcript welcome header.
-- **`sw.js`** is the service worker: caches the app for offline use and refreshes `content.json` in the background (stale-while-revalidate).
-- The transcript is parsed **entirely in the browser** (pdf.js). It is never uploaded or stored anywhere off the student's device.
+---
 
-## Editing content
-`content.json` is generated from the master FAQ (`ESD/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md`) by `tools/convert.mjs`. Two ways to update:
-1. Edit the master `.md` and re-run the converter, or
-2. Edit `content.json` directly for small fixes.
+## ✏️ Where the answers live (read this first)
 
-Each entry:
-```json
-{ "id": "...", "q": "question", "a": "answer (markdown)", "topic": "Exams & Grades",
-  "office": "exams", "category": "...", "tags": [...], "note": "internal-only, hidden from students" }
-```
-`note` holds the `[NEEDS MARTIJN: ...]` flags from the master. They never show to students. Add `?staff` to the URL (or `localStorage.faqStaff = '1'`) to see them inline while editing.
+**All the questions and answers live in one file: `content.json`.** That is the single source of truth the app reads. You do not edit the app code to change an answer.
 
-## Gaps students couldn't find
-When a search returns nothing, the query is logged to `localStorage.faqGaps` on that device. (A future version can collect these centrally.)
+`content.json` is generated from the master document
+`ESD/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md`, which is organised by office (Board of Examiners, Exams, BTR, and so on).
 
-## Run locally
-Any static server, e.g. `npx serve` or `python -m http.server`, then open the page. Opening `index.html` as a file works for the basics, but the service worker/offline install needs to be served over http(s).
+### To change or add an answer
+1. Edit the master document (`MSP Student FAQ - MASTER.md`) in the right office section.
+2. Regenerate the app content:  `node tools/convert.mjs`
+3. Commit and push. The live site rebuilds automatically in about a minute (push = deploy).
 
-## Deploy
-Push to GitHub and enable GitHub Pages (Settings → Pages → deploy from `main`). Push = deploy.
+That is the whole loop. For small one-off fixes you *can* edit `content.json` directly instead of the master, but the master is the friendlier place and keeps everything in sync.
 
-## Status
-Scaffold. Content is auto-generated from the master and still carries `[NEEDS MARTIJN]` flags to resolve. Logo, colours and question clean-up are the next pass.
+## 👤 Who owns what (twice-a-year review)
+
+Each office owns its own answers. The ownership list and each owner's review list is generated at
+`ESD/_Inventory/Knowledge Base/_FAQ Maintenance/FAQ Maintenance & Ownership.md`
+(regenerate with `node "build-overview.mjs"` in that folder). That is the document to send each office at review time.
+
+---
+
+## What each file is
+
+| File | What it is | Do you edit it? |
+|---|---|---|
+| **`content.json`** | Every question, answer, topic and office. The source of truth. | Rarely (edit the master instead) |
+| `index.html` | The whole app (search, cards, answer view). Renders `content.json`. | Only for features/design |
+| `sw.js` | Service worker: offline cache. Bump `CACHE` version after changes. | Only when files change |
+| `manifest.webmanifest` · `icon.svg` · `assets/` | PWA manifest, icon, logos and the building photo. | Rarely |
+| `tools/convert.mjs` | Turns the master document into `content.json`. Also holds the office → topic → colour map. | When adding an office/topic |
+| `tools/serve.mjs` | Local preview: `node tools/serve.mjs` → http://localhost:8099 | No |
+
+## Notes
+- **Staff / editor view:** add `?staff` to the URL to see the open `[NEEDS MARTIJN]` review flags inline, plus a "flags remaining" panel.
+- **Search synonyms** (sick → attendance, money → tuition, …) are in the `SYN` map in `index.html`.
+- **Quick-links** (Student Portal, Canvas, Collent…) are the `QUICK` array in `index.html`.
+- Deploy: push to `main` → GitHub Pages rebuilds.
