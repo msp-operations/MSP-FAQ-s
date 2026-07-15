@@ -4442,20 +4442,24 @@
     {
       "id": "course-and-curriculum-forms",
       "q": "Course and curriculum forms",
-      "a": "- Additional assignment: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/additional-assignment\n- Additional module: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/additional-module\n- Course in a humanities or social science topic: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/course-humanities-or-social-science-topic\n- Credit transfer: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/credit-transfer\n- Modules elsewhere (external education): https://intranet.maastrichtuniversity.nl/en/maastricht-science-programme/forms-and-downloads/forms/modules-elsewhere\n- Withdraw/switch: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/withdrawswitch\n- Leave of absence: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence",
-      "topic": "Forms & Links",
-      "office": "forms",
-      "category": "",
-      "tags": []
-    },
-    {
-      "id": "documents-and-graduation",
-      "q": "Documents and graduation",
-      "a": "- Graduation form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/graduation-form\n- Transcript request: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/transcript-request\n- Downloads (diploma collection/shipment, BSA infosheet, English-taught declaration, grading info, proof of diploma, module approval sheet): https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/downloads",
+      "a": "Use these to change your course choices, add an extra module, or get outside credits recognised.\n\n- **Additional assignment**: request a make-up assignment when you have missed too many tutorials (up to 30%). https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/additional-assignment\n- **Additional module**: apply to take a 3rd course or 2nd skill in a period, which needs Board of Examiners approval. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/additional-module\n- **Course in a humanities or social science topic**: get a non-science (LAS) course recognised toward your degree. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/course-humanities-or-social-science-topic\n- **Credit transfer**: have credits you earned at another university counted toward MSP. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/credit-transfer\n- **Modules elsewhere (external education)**: apply to take a course at another UM programme, such as UCM, DKE or UCV. https://intranet.maastrichtuniversity.nl/en/maastricht-science-programme/forms-and-downloads/forms/modules-elsewhere\n- **Withdraw or switch a module**: drop a module, or swap it for another, before the deadline. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/withdrawswitch\n- **Leave of absence**: pause your studies for a longer period. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence",
       "topic": "Forms & Links",
       "office": "forms",
       "category": "",
       "tags": [
+        "exam",
+        "deadline"
+      ]
+    },
+    {
+      "id": "documents-and-graduation",
+      "q": "Documents and graduation",
+      "a": "Request official documents, or start your graduation.\n\n- **Graduation form**: apply to graduate once you meet all requirements. Submit it in the first period of your final semester. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/graduation-form\n- **Transcript request**: get an official transcript of your grades. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/transcript-request\n- **Downloads**: diploma collection and shipment forms, the BSA infosheet, the English-taught declaration, grading info, proof of diploma, and the module approval sheet. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/downloads",
+      "topic": "Forms & Links",
+      "office": "forms",
+      "category": "",
+      "tags": [
+        "grade",
         "transcript",
         "diploma",
         "graduation",
@@ -4465,52 +4469,61 @@
     {
       "id": "going-abroad",
       "q": "Going abroad",
-      "a": "- Semester abroad application: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-application\n- Semester abroad module approval: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-module-approval\n- Semester abroad Erasmus+ grant application: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-erasmus-grant-application\n- Semester abroad emergency contact: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-emergency-contact\n- NL Scholarship application: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/nl-scholarship-application\n- Going abroad for BTR: https://intranet.maastrichtuniversity.nl/en/msp-students/going-abroad-btr\n- Going abroad for Exchange (partner list + conversion table): https://intranet.maastrichtuniversity.nl/en/msp-students/going-abroad-exchange",
+      "a": "Everything you need to arrange a semester or thesis abroad.\n\n- **Semester abroad application**: apply to study a semester at a partner university, in semester 4 or 5. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-application\n- **Semester abroad module approval**: get the courses you plan to take abroad pre-approved. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-module-approval\n- **Erasmus+ grant application**: apply for the Erasmus+ mobility grant for EU destinations. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-erasmus-grant-application\n- **Semester abroad emergency contact**: register your emergency contact before you leave. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-emergency-contact\n- **NL Scholarship application**: apply for the NL Scholarship for non-EEA destinations. https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/nl-scholarship-application\n- **Going abroad for BTR**: the info and steps for doing your thesis abroad. https://intranet.maastrichtuniversity.nl/en/msp-students/going-abroad-btr\n- **Going abroad for Exchange**: the partner-university list and the grade and credit conversion table. https://intranet.maastrichtuniversity.nl/en/msp-students/going-abroad-exchange",
       "topic": "Forms & Links",
       "office": "forms",
       "category": "",
       "tags": [
+        "grade",
         "abroad",
         "exchange",
         "btr",
+        "thesis",
         "scholarship"
       ]
     },
     {
       "id": "rules-and-regulations",
       "q": "Rules and regulations",
-      "a": "- EER + R&R (2025-2026 and 2026-2027): https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/education-and-examination-regulations-eer-rules-and\n- Exam Protocol MSP: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/exam-protocol-msp\n- Binding Study Advice (BSA): https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/binding-study-advice-bsa-1\n- Attendance requirement: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/attendance-requirement\n- Additional assignment (rules): https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/request-additional-assignment\n- Examination results: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/examination-results\n- Sickness and absence: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/sickness-and-absence\n- Transcripts: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/transcripts\n- Waivers: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/waivers\n- Termination of registration and leave of absence: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/procedure-temporary-termination-um-registration-and-leave\n- Board of Examiners: https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/board-examiners-boe",
+      "a": "The official rules that govern your studies. Read these when you want the exact rule.\n\n- **EER and R&R**: the full Education and Examination Regulations and Rules and Regulations. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/education-and-examination-regulations-eer-rules-and\n- **Exam Protocol MSP**: how exams are run and the rules on the day. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/exam-protocol-msp\n- **Binding Study Advice (BSA)**: the first-year progress rule (45 ECTS and 3 of the 4 core courses). https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/binding-study-advice-bsa-1\n- **Attendance requirement**: the 85% tutorial and 100% skills-and-projects rule. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/attendance-requirement\n- **Additional assignment (rules)**: when and how a missed-attendance make-up is allowed. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/request-additional-assignment\n- **Examination results**: how and when your grades are published. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/examination-results\n- **Sickness and absence**: what to do if illness stops you attending or sitting an exam. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/sickness-and-absence\n- **Transcripts**: the official rules on transcripts. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/transcripts\n- **Waivers**: how prerequisite waivers work. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/waivers\n- **Termination of registration and leave of absence**: how to deregister or take leave. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/procedure-temporary-termination-um-registration-and-leave\n- **Board of Examiners**: what the Board does, and how to make a request or an appeal. https://intranet.maastrichtuniversity.nl/en/msp-students/exams-rules-and-regulations/board-examiners-boe",
       "topic": "Forms & Links",
       "office": "forms",
       "category": "",
       "tags": [
         "waiver",
+        "grade",
         "transcript",
         "bsa",
         "exam",
         "registration",
-        "attendance"
+        "attendance",
+        "appeal",
+        "ects"
       ]
     },
     {
       "id": "advice-and-support",
       "q": "Advice and support",
-      "a": "- Academic advising and curriculum planning: https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance/academic-advising-and-curriculum-planning\n- Student support: https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance/student-support\n- Disability support: https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance-0/disability-support\n- Confidential advisor: https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance/confidential-advisor",
+      "a": "Where to get help with your studies or your wellbeing.\n\n- **Academic advising and curriculum planning**: plan your courses with your academic advisor. https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance/academic-advising-and-curriculum-planning\n- **Student support**: an overview of all student support services. https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance/student-support\n- **Disability support**: arrange support and special exam arrangements (SPAR) for a disability or chronic condition. https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance-0/disability-support\n- **Confidential advisor**: confidential help with inappropriate behaviour or a conflict. https://intranet.maastrichtuniversity.nl/en/msp-students/advice-support-and-guidance/confidential-advisor",
       "topic": "Forms & Links",
       "office": "forms",
       "category": "",
-      "tags": []
+      "tags": [
+        "exam"
+      ]
     },
     {
       "id": "other-systems-and-external",
       "q": "Other systems and external",
-      "a": "- BTR dashboard: https://msp-btr.nl and BTR submissions (Collent): https://collent-fsemsp.maastrichtuniversity.nl\n- Digital exams (TestVision): https://library.maastrichtuniversity.nl/study/digital-exams/\n- DUO (diploma legalisation, digital certificate, student finance): https://duo.nl\n- My Maastricht (living, benefits, health insurance): https://mymaastricht.nl\n- GP Medical Post (out of hours): https://www.hapmaastricht.nl",
+      "a": "The key systems you will use and useful outside services.\n\n- **BTR dashboard and submissions**: follow your thesis on https://msp-btr.nl and submit your work through Collent at https://collent-fsemsp.maastrichtuniversity.nl\n- **Digital exams (TestVision)**: info on digital and online exams. https://library.maastrichtuniversity.nl/study/digital-exams/\n- **DUO**: diploma legalisation, the digital diploma certificate, and student finance. https://duo.nl\n- **My Maastricht**: living in Maastricht, including housing, benefits and health insurance. https://mymaastricht.nl\n- **GP Medical Post**: the out-of-hours doctor service (HAP). https://www.hapmaastricht.nl",
       "topic": "Forms & Links",
       "office": "forms",
       "category": "",
       "tags": [
         "diploma",
         "btr",
+        "thesis",
+        "housing",
         "exam",
         "insurance"
       ]
