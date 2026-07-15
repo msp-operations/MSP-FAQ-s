@@ -1,3 +1,10 @@
+// ─────────────────────────────────────────────────────────────────────────
+//  Builds content.json (what the app shows) from the master FAQ document.
+//  Source:  ESD/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md
+//  Run:     node tools/convert.mjs
+//  Edit the OFFICES / topic maps below only when adding a new office or topic.
+//  To change an ANSWER, edit the master document, not this file.
+// ─────────────────────────────────────────────────────────────────────────
 import fs from 'node:fs';
 
 const SRC = 'c:/dev/ESD/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md';
