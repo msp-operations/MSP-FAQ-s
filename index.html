@@ -101,6 +101,10 @@
   .chip:hover{background:rgba(255,255,255,.26);transform:translateY(-1px)}
 
   /* Body */
+  .quicklinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:26px 0 6px}
+  .ql{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0090d3;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:15px 18px;border-radius:6px;transition:background .15s,transform .15s}
+  .ql:hover{background:#0079b3;transform:translateY(-2px)}
+  .ql .qla{font-size:18px;line-height:1;font-weight:700}
   .sectlabel{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin:34px 0 16px;text-align:center}
   .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:52px}
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -233,6 +237,7 @@
 
 <div class="wrap">
   <div class="view on" id="v-home">
+    <div class="quicklinks" id="quicklinks"></div>
     <div id="staffPanel"></div>
     <div id="recent"></div>
     <div class="sectlabel">Browse by topic</div>
@@ -342,7 +347,7 @@ async function load(){
   state.data=data;
   state.mini=new MiniSearch({fields:['q','a','tags','topicName','officeName'],storeFields:['id'],searchOptions:{boost:{q:3,tags:2},fuzzy:0.2,prefix:true}});
   state.mini.addAll(data.faqs.map(f=>({...f,tags:(f.tags||[]).join(' '),topicName:f.topic,officeName:(data.offices[f.office]||{}).name||''})));
-  renderTopics();renderChips();buildPopular();renderRecent();renderStaffPanel();wireExtras();
+  renderTopics();renderChips();renderQuick();buildPopular();renderRecent();renderStaffPanel();wireExtras();
   $('#heroSub').textContent='Search '+data.meta.count+' answers, or browse the topics below.';
   $('#footMeta').textContent='Maintained by the Education Support Department · content updated '+(data.meta.generated||'');
   restoreStudent();router();
@@ -353,6 +358,24 @@ function renderTopics(){
       ${svg(t.name,'wm')}<div class="ticon">${svg(t.name)}</div><div class="tt">${esc(t.name)}</div><div class="tc">${t.count} questions</div></button>`).join('');
 }
 function renderChips(){$('#chips').innerHTML=CHIPS.map(([l,query])=>`<button class="chip" onclick="quick('${query}')">${esc(l)}</button>`).join('');}
+const QUICK=[
+  {l:'Course registration', kw:'how do i register for courses'},
+  {l:'Exams & grades', topic:'Exams & Grades'},
+  {l:'Academic advisor', kw:'what does an academic advisor do'},
+  {l:'All forms', topic:'Forms & Links'},
+  {l:'Who to contact', kw:'who do i contact for what'},
+  {l:'MSP intranet', ext:'https://intranet.maastrichtuniversity.nl/en/msp-students'}
+];
+function renderQuick(){
+  const el=$('#quicklinks');if(!el)return;
+  const href=q=>{
+    if(q.ext)return q.ext;
+    if(q.topic)return '#/topic/'+encodeURIComponent(q.topic);
+    if(q.kw){const f=state.data.faqs.find(x=>x.q.toLowerCase().includes(q.kw));if(f)return '#/topic/'+encodeURIComponent(f.topic)+'?q='+f.id;}
+    return '#/';
+  };
+  el.innerHTML=QUICK.map(q=>`<a class="ql"${q.ext?' target="_blank" rel="noopener"':''} href="${href(q)}"><span>${esc(q.l)}</span><span class="qla">&rarr;</span></a>`).join('');
+}
 function quick(query){const el=$('#q');el.value=query;el.dispatchEvent(new Event('input'));el.focus();window.scrollTo({top:0,behavior:'smooth'});}
 
 /* search */
