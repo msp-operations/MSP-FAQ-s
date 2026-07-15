@@ -108,23 +108,17 @@
   .sectlabel{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin:34px 0 16px;text-align:center}
   .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:52px}
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .tcard{position:relative;background:linear-gradient(165deg,color-mix(in srgb,var(--c) 8%,var(--surface)),var(--surface) 60%);
-    border:1px solid color-mix(in srgb,var(--c) 16%,var(--line));border-radius:18px;padding:22px 18px;flex:0 1 212px;cursor:pointer;text-align:left;
-    font-family:inherit;overflow:hidden;color:var(--ink);animation:up .45s ease both;
+  .tcard{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 18px;flex:0 1 212px;
+    cursor:pointer;text-align:left;font-family:inherit;overflow:hidden;color:var(--ink);animation:up .45s ease both;
     transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
-  .tcard:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--c) 42%,var(--line));
-    box-shadow:0 18px 38px color-mix(in srgb,var(--c) 26%,transparent)}
-  .tcard::after{content:"\2192";position:absolute;right:16px;bottom:13px;z-index:1;font-size:17px;font-weight:700;color:var(--link);opacity:0;transform:translateX(-5px);transition:opacity .16s,transform .16s}
+  .tcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 40%,var(--line));box-shadow:0 12px 26px rgba(16,32,48,.10)}
+  .tcard::after{content:"\2192";position:absolute;right:16px;bottom:14px;font-size:17px;font-weight:700;color:var(--link);opacity:0;transform:translateX(-5px);transition:opacity .16s,transform .16s}
   .tcard:hover::after{opacity:1;transform:none}
-  svg.wm{position:absolute;right:-16px;bottom:-20px;width:108px;height:108px;fill:none;stroke:currentColor;stroke-width:1.4;
-    stroke-linecap:round;stroke-linejoin:round;color:var(--c);opacity:.09;pointer-events:none;transition:opacity .18s,transform .18s}
-  .tcard:hover svg.wm{opacity:.17;transform:scale(1.07) rotate(-5deg)}
-  .ticon{position:relative;z-index:1;width:52px;height:52px;border-radius:15px;color:#fff;display:grid;place-items:center;margin-bottom:16px;
-    background:linear-gradient(140deg,var(--c),color-mix(in srgb,var(--c) 60%,#000));
-    box-shadow:0 8px 18px color-mix(in srgb,var(--c) 42%,transparent)}
-  .ticon svg.i{width:26px;height:26px;stroke-width:1.85}
-  .tcard .tt{position:relative;z-index:1;font-weight:700;font-size:16px;letter-spacing:.1px}
-  .tcard .tc{position:relative;z-index:1;font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
+  .ticon{width:50px;height:50px;border-radius:14px;color:#fff;display:grid;place-items:center;margin-bottom:16px;
+    background:var(--c);box-shadow:0 4px 10px color-mix(in srgb,var(--c) 22%,transparent)}
+  .ticon svg.i{width:25px;height:25px;stroke-width:1.9}
+  .tcard .tt{font-weight:700;font-size:15.5px;letter-spacing:.1px}
+  .tcard .tc{font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
 
   /* Topic / answer view */
   .view{display:none}.view.on{display:block}
@@ -355,7 +349,7 @@ async function load(){
 function renderTopics(){
   $('#topics').innerHTML=state.data.topics.map((t,i)=>
     `<button class="tcard" style="--c:${col(t.name)};animation-delay:${i*40}ms" onclick="go('#/topic/'+encodeURIComponent('${t.name.replace(/'/g,"\\'")}'))">
-      ${svg(t.name,'wm')}<div class="ticon">${svg(t.name)}</div><div class="tt">${esc(t.name)}</div><div class="tc">${t.count} questions</div></button>`).join('');
+      <div class="ticon">${svg(t.name)}</div><div class="tt">${esc(t.name)}</div><div class="tc">${t.count} questions</div></button>`).join('');
 }
 function renderChips(){$('#chips').innerHTML=CHIPS.map(([l,query])=>`<button class="chip" onclick="quick('${query}')">${esc(l)}</button>`).join('');}
 const QUICK=[
