@@ -3267,7 +3267,7 @@
     {
       "id": "i-am-ill-or-cannot-attend-my-exam-what-should-i-do",
       "q": "I am ill or cannot attend my exam. What should I do?",
-      "a": "Let the course coordinator know as soon as possible, and the Exams Office (msp-exams@maastrichtuniversity.nl) if it affects the sitting itself. Whether you keep the right to a resit depends on the reason: if you miss an assessment for a valid reason, which the course coordinator decides, you can take the resit (EER 5.2 / R&R 18). If you do not show up without a valid reason, or you have not completed the required parts of the course, you receive a \"no grade\" (NG), which counts as a fail and does not carry a resit.",
+      "a": "Let the course coordinator know as soon as possible, and the Exams Office (msp-exams@maastrichtuniversity.nl) if it affects the sitting itself. Missing an assessment is recorded as a \"no grade\" (NG) either way, because your work cannot be assessed (R&R 13.3). What the reason changes is your resit: if you miss an assessment for a valid, documented reason, which the course coordinator decides, you keep the resit and normally sit it as a first attempt (EER 5.2 / R&R 18). If you do not show up without a valid reason, or you have not completed the required parts of the course, you have not made a fair attempt, so the NG stands as a fail with no resit.",
       "topic": "Exams & Grades",
       "office": "exams",
       "category": "Special circumstances",
@@ -3366,14 +3366,16 @@
     {
       "id": "what-does-ng-no-grade-mean-on-my-record",
       "q": "What does \"NG\" (No Grade) mean on my record?",
-      "a": "NG stands for \"no grade\". You get an NG if you did not take part sufficiently: a no-show for an assessment without a valid reason (the course coordinator decides what counts as valid), dropping out, being absent during exams, or not handing in required assignments. An NG counts as a fail for the course, and unlike a normal fail it does not come with a resit. If you were absent for a valid reason, you keep the right to a resit instead of getting an NG (EER 5.2 / R&R 18).",
+      "a": "NG stands for \"no grade\". It is the label used when your work simply cannot be assessed: a no-show for an assessment, dropping out, being absent during exams, not handing in required assignments, or a fraud case (R&R 13.3). An NG counts as a fail for the course.\n\nWhether an NG comes with a resit depends on **why** you were absent, not on the NG itself. Resit eligibility is set by R&R 18: you must not have passed, you must have made a fair attempt, and you must have met (or still be able to meet) attendance. If you missed an assessment **without** a valid reason, you did not make a fair attempt, so there is no resit. If you missed it **with** a valid, documented reason that you reported in time (the course coordinator decides what counts), you keep your resit and normally sit it as a first attempt (EER 5.2 / R&R 18).",
       "topic": "Exams & Grades",
       "office": "exams",
       "category": "Grade Inquiries",
       "tags": [
         "resit",
         "grade",
-        "exam"
+        "exam",
+        "attendance",
+        "fraud"
       ]
     },
     {
