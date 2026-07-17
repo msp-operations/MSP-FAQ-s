@@ -7,8 +7,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 import fs from 'node:fs';
 
-const SRC = 'c:/dev/ESD/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md';
-const OUT = 'c:/dev/MSP-FAQ-s/content.json';
+const SRC = 'c:/dev/MSP/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md';
+const OUT = 'c:/dev/Operations/FAQ/Github Repo/content.json';
 
 const raw = fs.readFileSync(SRC, 'utf8');
 const lines = raw.split(/\r?\n/);
