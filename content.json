@@ -2,8 +2,8 @@
   "meta": {
     "title": "MSP Student FAQ",
     "ay": "2025-2026",
-    "generated": "2026-07-15",
-    "count": 363
+    "generated": "2026-07-17",
+    "count": 362
   },
   "topics": [
     {
@@ -24,7 +24,7 @@
     {
       "name": "Exams & Grades",
       "emoji": "📝",
-      "count": 67
+      "count": 66
     },
     {
       "name": "Thesis (BTR)",
@@ -1722,20 +1722,12 @@
     {
       "id": "does-msp-give-some-credit-for-language-courses",
       "q": "Does MSP give some credit for language courses?",
-      "a": "No. MSP only grants credits for science-related topics, so not for language courses. You are still very much encouraged to take courses at the UM Language Centre, but they will not count towards your degree.",
-      "topic": "Exams & Grades",
-      "office": "boe",
-      "category": "Course Registration and Curriculum",
-      "tags": []
-    },
-    {
-      "id": "i-have-completed-a-um-language-course-that-is-worth-1-5-ects",
-      "q": "I have completed a UM language course that is worth 1.5 ECTS. Do these credits count towards my degree?",
-      "a": "Unfortunately not. A language course does not align with the MSP curriculum and so cannot count towards your degree, regardless of the number of credits. You are still encouraged to follow courses at the UM Language Centre for your own development.",
+      "a": "No. The BoE has well-established principles on granting credits and only allows them for science-related topics, so a language course does not count, regardless of the number of credits it carries. It will not be added to your MSP transcript, will not earn you ECTS credits and will not count towards your degree. You are still very much encouraged to take courses at the UM Language Centre if you are interested, but for your own development rather than for credit.",
       "topic": "Exams & Grades",
       "office": "boe",
       "category": "Course Registration and Curriculum",
       "tags": [
+        "transcript",
         "ects"
       ]
     },
@@ -1946,11 +1938,12 @@
     {
       "id": "i-have-a-form-from-the-government-dutch-or-otherwise-for-tax",
       "q": "I have a form from the government (Dutch or otherwise) for taxes, grants, loans, DUO, etc. that needs to be signed by the university. Who can sign this form?",
-      "a": "Any government form that needs to be completed and stamped by the university can be arranged by the Board of Examiners. Email msp-boe@maastrichtuniversity.nl, state when you need the form returned, and include any additional information that has to be taken into account.",
+      "a": "This is handled by the Education Support Department (ESD), not the Board of Examiners. Fill in your own section first, then email the form to msp-educationsupport@maastrichtuniversity.nl, stating when you need it back and anything else that has to be taken into account. ESD completes, signs and stamps the enrolment and academic-attestation part; anything about your tuition amount, fees or study costs comes from the Student Service Centre (study@maastrichtuniversity.nl). See \"Can ESD sign and stamp my foreign financial-aid or attestation form\" under Education Support Department for the full procedure and turnaround.",
       "topic": "Exams & Grades",
       "office": "boe",
       "category": "Administrative Procedures",
       "tags": [
+        "tuition",
         "exam"
       ]
     },
@@ -1966,7 +1959,7 @@
     {
       "id": "can-i-request-a-leave-of-absence",
       "q": "Can I request a leave of absence?",
-      "a": "Yes. Under article 7.9 of the EER you can request a Leave of Absence (LoA) using the intranet form (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence). You must inform both the Board of Examiners and the Office of Academic Advising. When you return from a leave of absence you are reinstated to your pre-leave status. Before applying, note:\n- A LoA is meant for long-term absences.\n- A LoA of a few days or weeks can mean a fail for the modules you are taking at that time; a LoA does not remove the assessment, attendance and other conditions of MSP modules.\n- For short absences during a module, it is best to contact the course coordinator directly.",
+      "a": "Yes. Under article 7.8 of the EER you can request a Leave of Absence (LoA) using the intranet form (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence). You must inform both the Board of Examiners and the Office of Academic Advising. When you return from a leave of absence you are reinstated to your pre-leave status. Before applying, note:\n- A LoA is meant for long-term absences.\n- A LoA of a few days or weeks can mean a fail for the modules you are taking at that time; a LoA does not remove the assessment, attendance and other conditions of MSP modules.\n- For short absences during a module, it is best to contact the course coordinator directly.",
       "topic": "Exams & Grades",
       "office": "boe",
       "category": "Administrative Procedures",
@@ -2972,7 +2965,7 @@
     {
       "id": "what-is-leave-of-absence-and-can-i-request-one",
       "q": "What is leave of absence, and can I request one?",
-      "a": "Yes, you can request a Leave of Absence (LoA) using this form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence\n\nAs specified in article 7.9 of the Education and Examination Regulations (EER), you must inform the Board of Examiners and the Office of Academic Advising of your LoA by filling out the form. A student coming back from a leave of absence is reinstated to pre-leave status.\n\nBefore filling out the form, please note:\n\n- A LoA is meant for long-term absences.\n- A LoA of a few days or weeks can mean a fail for the modules being taken at that time. A LoA does not mean that the assessment, attendance, and other conditions of MSP modules no longer have to be met.\n- For short-term absences during modules, it is best to contact the course coordinator to discuss this.",
+      "a": "Yes, you can request a Leave of Absence (LoA) using this form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence\n\nAs specified in article 7.8 of the Education and Examination Regulations (EER), you must inform the Board of Examiners and the Office of Academic Advising of your LoA by filling out the form. A student coming back from a leave of absence is reinstated to pre-leave status.\n\nBefore filling out the form, please note:\n\n- A LoA is meant for long-term absences.\n- A LoA of a few days or weeks can mean a fail for the modules being taken at that time. A LoA does not mean that the assessment, attendance, and other conditions of MSP modules no longer have to be met.\n- For short-term absences during modules, it is best to contact the course coordinator to discuss this.",
       "topic": "Wellbeing & Support",
       "office": "counsellor",
       "category": "Study Support and Advising",
@@ -3974,7 +3967,7 @@
     {
       "id": "i-would-like-to-take-a-leave-of-absence-how-can-i-go-about-o",
       "q": "I would like to take a Leave of Absence, how can I go about organizing this?",
-      "a": "You are welcome to request a Leave of Absence, whatever your reason. Fill out the Leave of Absence form on the intranet (Forms and downloads, under MSP students). The request must be submitted at least 20 working days before you wish to leave. For the full rules, see the Education and Examination Regulations, Article 7.9. A Leave of Absence is arranged through Academic Advising together with the office.",
+      "a": "You are welcome to request a Leave of Absence, whatever your reason. Fill out the Leave of Absence form on the intranet (Forms and downloads, under MSP students). The request must be submitted at least 20 working days before you wish to leave. For the full rules, see the Education and Examination Regulations, Article 7.8. A Leave of Absence is arranged through Academic Advising together with the office.",
       "topic": "Courses & Registration",
       "office": "aa",
       "category": "Academic Advisor Roles",
