@@ -2,7 +2,7 @@
   "meta": {
     "title": "MSP Student FAQ",
     "ay": "2025-2026",
-    "generated": "2026-07-17",
+    "generated": "2026-07-21",
     "count": 362
   },
   "topics": [
@@ -24,7 +24,7 @@
     {
       "name": "Exams & Grades",
       "emoji": "📝",
-      "count": 66
+      "count": 67
     },
     {
       "name": "Thesis (BTR)",
@@ -39,7 +39,7 @@
     {
       "name": "Graduation & Diploma",
       "emoji": "🎉",
-      "count": 14
+      "count": 13
     },
     {
       "name": "Wellbeing & Support",
@@ -931,13 +931,15 @@
       ]
     },
     {
-      "id": "can-you-please-send-me-an-english-proficiency-certificate",
-      "q": "Can you please send me an English proficiency certificate?",
-      "a": "Download the form from the UM intranet (MSP students, Forms and downloads, Downloads). Note that ESD certifies that the study programme is taught in English; it does not certify your personal English level.",
+      "id": "i-need-an-english-language-certificate-for-an-application-ca",
+      "q": "I need an English-language certificate for an application. Can ESD provide one?",
+      "a": "Yes. ESD issues a declaration that the study programme is taught in English (the medium of instruction), signed and stamped. Note that this certifies the language of the programme, not your personal English level. You can download the form yourself from the UM intranet (MSP students, Forms and downloads, then Downloads), or ask ESD to issue it signed. It is commonly used for master's, scholarship or job applications.",
       "topic": "Graduation & Diploma",
       "office": "esd",
       "category": "Documentation & Certificates",
-      "tags": []
+      "tags": [
+        "scholarship"
+      ]
     },
     {
       "id": "i-have-received-my-official-graduation-decision-from-the-boa",
@@ -962,15 +964,6 @@
       "tags": [
         "registration"
       ]
-    },
-    {
-      "id": "i-require-an-english-proficiency-certificate-who-should-i-co",
-      "q": "I require an English Proficiency Certificate, who should I contact to arrange this?",
-      "a": "You can download the form from the UM intranet (MSP students, Forms and downloads, Downloads). This is used to show your English is at a sufficient level for applications.",
-      "topic": "Graduation & Diploma",
-      "office": "esd",
-      "category": "Documentation & Certificates",
-      "tags": []
     },
     {
       "id": "i-would-like-a-copy-of-my-transcript-in-order-to-apply-for-a",
@@ -1751,9 +1744,9 @@
       ]
     },
     {
-      "id": "i-would-like-to-take-a-course-or-skill-alongside-my-thesis-h",
-      "q": "I would like to take a course or skill alongside my thesis. How can I arrange this?",
-      "a": "If you are a few credits short when starting your thesis, you may complete one module (and only one) during your BTR (EER 3.10). You need approval from both the BoE and your thesis supervisor. Apply for BoE approval with the Additional module form on the intranet (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/additional-module). The form requires a motivation of at least 250 words explaining why you wish to follow the course, how it fits your curriculum and why it is necessary. You also need to upload proof that your research supervisor approves you taking time away from the thesis for the course. Note that the request is rejected unless you genuinely need to complete the module during your thesis.",
+      "id": "i-would-like-to-take-a-module-i-e-course-skill-project-along",
+      "q": "I would like to take a module (i.e. course/skill/project) alongside my thesis. How can I arrange this?",
+      "a": "If you are a few credits short when starting your thesis, you may complete one module (and only one) during your BTR (EER 3.10.8, R&R 10.2). You need approval from both the BoE and your thesis supervisor. Apply for BoE approval with the Additional module form on the intranet (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/additional-module). The form requires a motivation of at least 250 words explaining why you wish to follow the course, how it fits your curriculum and why it is necessary. You also need to upload proof that your research supervisor approves you taking time away from the thesis for the course. Note that the request is rejected unless you genuinely need to complete the module during your thesis.",
       "topic": "Exams & Grades",
       "office": "boe",
       "category": "Course Registration and Curriculum",
@@ -1948,9 +1941,9 @@
       ]
     },
     {
-      "id": "i-need-an-english-language-proficiency-form-how-do-i-obtain-",
-      "q": "I need an English language proficiency form, how do I obtain this?",
-      "a": "Use the standard MSP form here: https://intranet.maastrichtuniversity.nl/system/files/proof_of_english_proficiency_mslas_-_msp.pdf",
+      "id": "i-need-to-prove-my-level-of-english-how-can-i-do-this",
+      "q": "I need to prove my level of English. How can I do this?",
+      "a": "There is a Declaration that the study programme is in English, which you can download from the intranet (MSP students, Forms and Downloads, then Downloads). It states the admission criteria for MSLAS/MSP students, so it serves as proof of your level of English (EER 2.2).",
       "topic": "Exams & Grades",
       "office": "boe",
       "category": "Administrative Procedures",
@@ -1966,6 +1959,18 @@
       "tags": [
         "exam",
         "attendance"
+      ]
+    },
+    {
+      "id": "after-a-leave-of-absence-how-and-when-can-i-return-to-my-stu",
+      "q": "After a Leave of Absence, how and when can I return to my studies?",
+      "a": "Yes, you can return. Take these three steps in time:\n- Re-register through DUO (Studielink) for the semester in which you want to resume.\n- Inform the Office of Academic Advising (msp-academicadvising@maastrichtuniversity.nl).\n- Meet the course registration deadline: November for a return in the Spring semester, and May for a return in the Fall semester.",
+      "topic": "Exams & Grades",
+      "office": "boe",
+      "category": "Administrative Procedures",
+      "tags": [
+        "registration",
+        "deadline"
       ]
     },
     {
