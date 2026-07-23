@@ -1,6 +1,6 @@
 # MSP Student FAQ
 
-A search-first FAQ for Maastricht Science Programme students. Static, installable (PWA), works offline. Live: **https://beebzoo.github.io/MSP-FAQ-s/**
+A search-first FAQ for Maastricht Science Programme students. Static, installable (PWA), works offline. Live: **https://msp-operations.github.io/MSP-FAQ-s/** (the old `beebzoo.github.io` URL redirects here)
 
 ---
 
@@ -9,7 +9,7 @@ A search-first FAQ for Maastricht Science Programme students. Static, installabl
 **All the questions and answers live in one file: `content.json`.** That is the single source of truth the app reads. You do not edit the app code to change an answer.
 
 `content.json` is generated from the master document
-`ESD/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md`, which is organised by office (Board of Examiners, Exams, BTR, and so on).
+`MSP/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md`, which is organised by office (Board of Examiners, Exams, BTR, and so on).
 
 ### To change or add an answer
 1. Edit the master document (`MSP Student FAQ - MASTER.md`) in the right office section.
@@ -21,7 +21,7 @@ That is the whole loop. For small one-off fixes you *can* edit `content.json` di
 ## 👤 Who owns what (twice-a-year review)
 
 Each office owns its own answers. The ownership list and each owner's review list is generated at
-`ESD/_Inventory/Knowledge Base/_FAQ Maintenance/FAQ Maintenance & Ownership.md`
+`MSP/_Inventory/Knowledge Base/_FAQ Maintenance/FAQ Maintenance & Ownership.md`
 (regenerate with `node "build-overview.mjs"` in that folder). That is the document to send each office at review time.
 
 ---
