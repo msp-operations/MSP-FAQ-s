@@ -21,9 +21,11 @@ That is the whole loop. For small one-off fixes you *can* edit `content.json` di
 
 ## 👤 Who owns what (twice-a-year review)
 
-Each office owns its own answers. The ownership list and each owner's review list is generated at
-`MSP/_Inventory/Knowledge Base/_FAQ Maintenance/FAQ Maintenance & Ownership.md`
-(regenerate with `node "build-overview.mjs"` in that folder). That is the document to send each office at review time.
+Each office owns its own answers. The review packs (one Word doc per office, with their questions,
+answers, and open "please confirm" flags) plus the ownership overview live in
+`MSP/_Inventory/Knowledge Base/_FAQ Maintenance/`. Regenerate fresh before each review round:
+`node build-review-docs.mjs` in that folder, then `powershell -File convert-to-docx.ps1` (needs a
+normal desktop session for Word). Returned docs feed edits into the MASTER, never into the app directly.
 
 ---
 
