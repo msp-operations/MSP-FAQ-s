@@ -14,7 +14,8 @@ A search-first FAQ for Maastricht Science Programme students. Static, installabl
 ### To change or add an answer
 1. Edit the master document (`MSP Student FAQ - MASTER.md`) in the right office section.
 2. Regenerate the app content:  `node tools/convert.mjs`
-3. Commit and push. The live site rebuilds automatically in about a minute (push = deploy).
+3. Rebuild the single-file offline copy:  `node tools/build-offline.mjs`
+4. Commit and push. The live site rebuilds automatically in about a minute (push = deploy).
 
 That is the whole loop. For small one-off fixes you *can* edit `content.json` directly instead of the master, but the master is the friendlier place and keeps everything in sync.
 
@@ -35,6 +36,7 @@ Each office owns its own answers. The ownership list and each owner's review lis
 | `sw.js` | Service worker: offline cache. Bump `CACHE` version after changes. | Only when files change |
 | `manifest.webmanifest` · `icon.svg` · `assets/` | PWA manifest, icon, logos and the building photo. | Rarely |
 | `tools/convert.mjs` | Turns the master document into `content.json`. Also holds the office → topic → colour map. | When adding an office/topic |
+| `MSP-FAQ-offline.html` | The whole app in one self-contained file (for Canvas/USB/email). Opens offline from a double-click; when online it fetches the newest answers from the live site by itself. No transcript feature. | Never by hand (regenerate with `tools/build-offline.mjs`) |
 | `tools/serve.mjs` | Local preview: `node tools/serve.mjs` → http://localhost:8099 | No |
 
 ## Notes
