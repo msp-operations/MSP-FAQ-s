@@ -36,7 +36,9 @@
   /* Masthead */
   .utilbar{background:#0b2540;color:#fff;font-size:12px}
   .ub{display:flex;align-items:center;justify-content:space-between;padding:7px 0;gap:12px}
-  .ub .ubl{opacity:.82;letter-spacing:.3px;font-weight:500}
+  .ub .ubl{display:inline-flex;align-items:center;gap:11px;opacity:.92;letter-spacing:.4px;font-weight:500}
+  .ub .ublogo{height:15px;width:auto;display:block;filter:brightness(0) invert(1)}
+  .ub .ubdiv{width:1px;height:13px;background:rgba(255,255,255,.38)}
   .ub a{color:#fff;text-decoration:none;opacity:.9;font-weight:600}
   .ub a:hover{opacity:1;text-decoration:underline}
   .masthead{background:linear-gradient(180deg,#ffffff,#f3f6fb);border-bottom:1px solid #e7ebf1}
@@ -206,7 +208,7 @@
 <body>
 <div class="sr-only" aria-live="polite" id="live"></div>
 
-<div class="utilbar"><div class="wrap ub"><span class="ubl">Maastricht Science Programme</span><a href="https://intranet.maastrichtuniversity.nl/en/msp-students" target="_blank" rel="noopener">MSP intranet &rarr;</a></div></div>
+<div class="utilbar"><div class="wrap ub"><span class="ubl"><img class="ublogo" src="assets/um-logo.png" alt="Maastricht University"><span class="ubdiv" aria-hidden="true"></span>Maastricht Science Programme</span><a href="https://intranet.maastrichtuniversity.nl/en/msp-students" target="_blank" rel="noopener">MSP intranet &rarr;</a></div></div>
 <div class="offline" id="offline">You are offline, showing saved answers.</div>
 <div class="masthead">
   <div class="wrap mh">
