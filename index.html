@@ -74,6 +74,15 @@
   .wcard .hi{font-family:var(--serif);font-size:17px;font-weight:600}
   .wcard .stat{font-size:12.5px;opacity:.92}.wcard .stat b{font-size:16px;font-weight:700}
   .wcard .clear{margin-left:auto;font-size:11px;opacity:.75;background:none;border:none;color:#fff;cursor:pointer;text-decoration:underline;font-family:inherit}
+  .dcheck{margin-top:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:var(--rm);padding:10px 18px;backdrop-filter:blur(6px);font-size:13px}
+  .dcheck summary{cursor:pointer;font-weight:600;font-size:13.5px;padding:4px 0}
+  .dcheck .drow{display:flex;gap:14px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)}
+  .dcheck .dlab{flex:0 0 210px;opacity:.85}
+  .dcheck .dval b{font-size:15px}
+  .dcheck .dok{color:#a5e8b0}.dcheck .dmiss{color:#ffb3b3}.dcheck .dmaybe{color:#ffe08a}
+  .dcheck .dfoot{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.12);font-size:11.5px;opacity:.8}
+  .dcheck .dfoot a{color:#fff}
+  @media(max-width:560px){.dcheck .drow{flex-direction:column;gap:2px}.dcheck .dlab{flex:none}}
 
   /* Search */
   .search{position:relative;max-width:660px;margin:0 auto}
@@ -474,10 +483,9 @@ function ensurePdf(){return pdfReady||(pdfReady=new Promise((res,rej)=>{const s=
   document.head.appendChild(s);}));}
 $('#transcriptBtn').onclick=()=>$('#pdff').click();
 $('#pdff').onchange=async e=>{const file=e.target.files[0];if(!file)return;
-  try{await ensurePdf();const t=await parseTranscriptPDF(file);
-    const total=t.semesters.flatMap(s=>s.modules).reduce((a,m)=>a+(m.ectsEarned||0),0);
-    const done=t.semesters.flatMap(s=>s.modules).filter(m=>m.passed).length;
-    state.student={name:t.student.name||'',studentNumber:t.student.studentNumber||'',total,done};
+  try{await ensurePdf();const cat=await ensureDegreeData();const t=await parseTranscriptPDF(file);
+    const card=checkDegree(t,cat);
+    state.student={name:t.student.name||'',studentNumber:t.student.studentNumber||'',total:card.totalEcts,done:card.modulesDone,card};
     localStorage.setItem('faqStudent',JSON.stringify(state.student));renderWelcome();announce('Transcript loaded');
   }catch(err){alert(err.message==='NOT_MSP'?'This does not look like an MSP transcript.':err.message==='SCAN'?'This PDF has no readable text (is it a scan?).':'Could not read this file.');}
 };
@@ -486,9 +494,10 @@ function renderWelcome(){const s=state.student;if(!s){$('#welcome').className='w
   const first=(s.name||'there').split(' ')[0];
   const n=forYou(s);
   const fy=n.length?'<div class="fory"><span class="fyl">For you</span>'+n.map(x=>`<a href="${x.href}">${esc(x.label)}</a>`).join('')+'</div>':'';
+  const card=s.card?renderDegreeCard(s.card):'';
   $('#welcome').innerHTML=`<div class="wcard"><div class="hi">Welcome, ${esc(first)}</div>
     <div class="stat"><b>${s.total}</b> / 180 ECTS earned</div><div class="stat"><b>${s.done}</b> modules completed</div>
-    <button class="clear" onclick="clearStudent()">clear</button></div>`+fy;
+    <button class="clear" onclick="clearStudent()">clear</button></div>`+card+fy;
   $('#welcome').className='welcome on';}
 function forYou(s){const out=[];const t=s.total||0;
   const link=(kw,label)=>{const f=state.data.faqs.find(x=>x.q.toLowerCase().includes(kw));if(f)out.push({label,href:'#/topic/'+encodeURIComponent(f.topic)+'?q='+f.id});};
@@ -506,32 +515,128 @@ async function parseTranscriptPDF(file){
   if(!fullText.includes('Maastricht Science Programme')&&!fullText.includes('Liberal Arts and Sciences'))throw new Error('NOT_MSP');
   return parseTranscriptText(fullText);
 }
-function parseTranscriptText(text){
-  const result={student:{},semesters:[]};
+/* Extended 27 Jul 2026: transfer credits, exemptions, Semester Abroad, EXT
+   classification and resit dedup. The reference copy of this logic lives in
+   c:\dev\Operations\Degree-Checker\engine\engine.mjs, where it is validated
+   against the Feb-2026 cohort (146 transcripts, exact match with SAP's printed
+   PR counter). Keep the two in sync. */
+function parseTranscriptText(raw){
+  const text=String(raw).replace(/\s+/g,' ');
+  const result={student:{},modules:[],transferEcts:0,exemptions:[]};
   const snMatch=text.match(/Student\s*number\s*\/\s*Studentnummer\s*:\s*(\d+)/i);if(snMatch)result.student.studentNumber=snMatch[1];
-  const nameMatch=text.match(/Name\s*\/\s*Naam\s*:\s*([^\n]+?)(?=\s*Date\s*of\s*birth)/i);if(nameMatch)result.student.name=nameMatch[1].trim();
-  const semPattern=/Semester\s+(\d+)\s+(\d+\s+\w+\s+\d{4}\s*-\s*\d+\s+\w+\s+\d{4})/gi;const semMatches=[...text.matchAll(semPattern)];
+  const nameMatch=text.match(/Name\s*\/\s*Naam\s*:\s*(.+?)(?=\s*Date\s*of\s*birth)/i);if(nameMatch)result.student.name=nameMatch[1].trim();
+  const tc=text.match(/Transfer\s*Credits\s*([\d]+[.,]?\d*)\s*ECTS/i);if(tc)result.transferEcts=parseFloat(tc[1].replace(',','.'));
+  const semMatches=[...text.matchAll(/Semester\s+\d+\s+\d+\s+\w+\s+\d{4}\s*-\s*\d+\s+\w+\s+\d{4}/gi)];
   for(let si=0;si<semMatches.length;si++){
     const startIdx=semMatches[si].index+semMatches[si][0].length;const endIdx=si+1<semMatches.length?semMatches[si+1].index:text.length;
-    const block=text.substring(startIdx,endIdx);const semester={modules:[]};
+    const block=text.substring(startIdx,endIdx);
     const codePattern=/([A-Z]{2,4}\d{4})\s+/g;let match;const codePositions=[];
     while((match=codePattern.exec(block))!==null)codePositions.push({code:match[1],index:match.index,fullMatch:match[0]});
     for(let ci=0;ci<codePositions.length;ci++){
       const cp=codePositions[ci];const nextStart=ci+1<codePositions.length?codePositions[ci+1].index:block.length;
       const segment=block.substring(cp.index+cp.fullMatch.length,nextStart).trim();
-      const numbers=[];const titleParts=[];let foundFirstNum=false;
+      const exmIdx=segment.search(/(^|\s)Exemption(\s|$)/i);
+      if(exmIdx!==-1&&!/\d+,\d{2}/.test(segment.slice(0,exmIdx))){
+        result.exemptions.push({code:cp.code,title:segment.slice(0,exmIdx).trim()});continue;}
+      const titleParts=[],ectsCells=[];let grade=null,sawNum=false,failText=false;
       for(const tok of segment.split(/\s+/)){
-        if(!foundFirstNum&&!/^\d/.test(tok)&&tok!=='NG'&&tok!=='NVD'){titleParts.push(tok);}
-        else{foundFirstNum=true;if(tok==='NG'||tok==='NVD'){numbers.push(0);}else{const n=parseFloat(tok.replace(',','.'));if(!isNaN(n))numbers.push(n);}}
+        if(/^\d+,\d{2}$/.test(tok)){sawNum=true;ectsCells.push(parseFloat(tok.replace(',','.')));}
+        else if(/^\d{1,2},\d$/.test(tok)){sawNum=true;grade=parseFloat(tok.replace(',','.'));}
+        else if(/^(Fail|NG|NVD)$/i.test(tok)){sawNum=true;failText=true;}
+        else if(/^\d+$/.test(tok)){sawNum=true;}
+        else if(!sawNum)titleParts.push(tok);
       }
-      if(numbers.length<2)continue;const title=titleParts.join(' ').replace(/\s+/g,' ').trim();if(!title||title.length<3)continue;
-      const ectsEarned=numbers.length>1?numbers[1]:0;const grade=numbers.length>2?numbers[2]:0;
-      semester.modules.push({code:cp.code,title,ectsEarned,grade,passed:ectsEarned>0&&(grade>=5.5||grade===0)});
+      if(ectsCells.length<2)continue;
+      const title=titleParts.join(' ').replace(/\s+/g,' ').trim();if(!title||title.length<3)continue;
+      result.modules.push({code:cp.code,title,ectsEarned:ectsCells[1],grade:grade==null?0:grade,passed:ectsCells[1]>0&&!failText});
     }
-    result.semesters.push(semester);
   }
+  const byCode=new Map();
+  for(const mod of result.modules){
+    const prev=byCode.get(mod.code);
+    if(!prev){byCode.set(mod.code,mod);continue;}
+    const better=(mod.passed&&!prev.passed)||(mod.passed===prev.passed&&(mod.grade>prev.grade||(mod.grade===prev.grade&&mod.ectsEarned>prev.ectsEarned)));
+    if(better)byCode.set(mod.code,mod);
+  }
+  result.modules=[...byCode.values()];
   return result;
 }
+
+/* degree check: rules from EER 3.6/3.7/3.10 + R&R (see Degree-Checker README) */
+const DEGREE_RULES={TOTAL:180,BTR_ENTRY:145,
+  CORE:['BIO1101','CHE1101','PHY1101','INT1101','PRA1101','PRA1102','PRO1101'],
+  GE_LAS_KNOWN:['INT2007','INT3001','HUM2051'],
+  LEGACY:{BIO1001:'BIO1101',CHE1001:'CHE1101',PHY1001:'PHY1101',INT1001:'INT1101',PRA1001:'PRA1101',PRA1002:'PRA1102',PRO1001:'PRO1101'}};
+let degreeData=null;
+async function ensureDegreeData(){if(degreeData)return degreeData;
+  const byCode=new Map(),byTitle=new Map();
+  try{const d=await(await fetch('degree-data.json')).json();
+    for(const[code,name,type,ml]of d.x){const e={code,name,type,ml};byCode.set(code,e);if(name)byTitle.set(normT(name),e);}
+  }catch(e){}
+  degreeData={byCode,byTitle};return degreeData;}
+function normT(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();}
+function matchT(title,cat){const n=normT(title);if(n.length<6)return null;
+  const ex=cat.byTitle.get(n);if(ex)return ex;if(n.length<12)return null;
+  const hits=[];for(const[k,c]of cat.byTitle.entries())if(k.length>=12&&(k.includes(n)||n.includes(k)))hits.push(c);
+  return hits.length===1?hits[0]:null;}
+function classifyMod(mod,cat){
+  if(/^SA[BCIP]9\d{3}$/.test(mod.code))return{k:'sa'};
+  if(/^BTR\d{4}$/.test(mod.code))return{k:'btr'};
+  if(/^EXT\d{4}$/.test(mod.code)){const e=matchT(mod.title,cat);
+    if(e&&e.type&&e.type!=='x')return{k:'ext',t:e.type,ml:e.ml};return{k:'u'};}
+  const hit=cat.byCode.get(mod.code);
+  if(hit&&hit.type&&hit.type!=='x')return{k:'ext',t:hit.type,ml:hit.ml};
+  const m=mod.code.match(/^([A-Z]{2,4})(\d)\d{3}$/);
+  if(m)return{k:'int',t:m[1]==='PRA'?'s':m[1]==='PRO'?'p':'c',ml:null};
+  return{k:'u'};}
+function checkDegree(parsed,cat){
+  const passed=parsed.modules.filter(m=>m.passed);
+  const exemptCodes=new Set(parsed.exemptions.map(e=>e.code));
+  const coreEquiv=new Set(exemptCodes);let legacyCodes=false;
+  for(const m of passed)if(DEGREE_RULES.LEGACY[m.code]){coreEquiv.add(DEGREE_RULES.LEGACY[m.code]);legacyCodes=true;}
+  const has=code=>passed.some(m=>m.code===code)||coreEquiv.has(code);
+  let totalEcts=Math.round(passed.reduce((a,m)=>a+m.ectsEarned,0)*100)/100;
+  const coreMissing=DEGREE_RULES.CORE.filter(c=>!has(c));
+  const slots={c:0,s:0,p:0};let geMat=null,geLas=null,btrModule=null,saEcts=0;const unclassified=[];
+  for(const mod of passed){
+    const c=classifyMod(mod,cat);
+    if(c.k==='btr'){btrModule=mod;continue;}
+    if(c.k==='sa'){saEcts+=mod.ectsEarned;continue;}
+    if(c.k==='u'){unclassified.push(mod);continue;}
+    if(c.t)slots[c.t]++;
+    if(!geMat&&(c.ml==='M'||(c.k==='int'&&/^MAT\d{4}$/.test(mod.code)&&c.t==='c')))geMat=mod;
+    if(!geLas&&(c.ml==='L'||DEGREE_RULES.GE_LAS_KNOWN.indexOf(mod.code)>-1))geLas=mod;
+  }
+  for(const code of exemptCodes){const m=code.match(/^([A-Z]{2,4})\d{4}$/);
+    if(m)slots[m[1]==='PRA'?'s':m[1]==='PRO'?'p':'c']++;}
+  const maybe=unclassified.length>0||parsed.transferEcts>0||saEcts>0;
+  return{totalEcts,transferEcts:parsed.transferEcts,saEcts,modulesDone:passed.length,
+    core:{done:DEGREE_RULES.CORE.length-coreMissing.length,of:DEGREE_RULES.CORE.length,missing:coreMissing},
+    geMat:geMat?{met:true,via:geMat.code}:{met:false,maybe},
+    geLas:geLas?{met:true,via:geLas.code}:{met:false,maybe},
+    slots:{c:slots.c,s:slots.s,p:slots.p},
+    btr:btrModule?{status:'done',grade:btrModule.grade}:totalEcts>=DEGREE_RULES.BTR_ENTRY?{status:'eligible'}:{status:'not-eligible',ectsShort:Math.round((DEGREE_RULES.BTR_ENTRY-totalEcts)*100)/100},
+    exemptions:parsed.exemptions,unclassified:unclassified.map(m=>m.code),legacyCodes};}
+function renderDegreeCard(c){
+  const row=(lab,val,cls)=>`<div class="drow"><span class="dlab">${lab}</span><span class="dval ${cls}">${val}</span></div>`;
+  const ge=g=>g.met?[`done (${esc(g.via)})`,'dok']:g.maybe?['confirm with your advisor','dmaybe']:['missing','dmiss'];
+  const rows=[];
+  rows.push(row('Credits',`<b>${c.totalEcts}</b> / ${DEGREE_RULES.TOTAL} ECTS`+(c.transferEcts?` + ${c.transferEcts} transfer`:''),c.totalEcts>=DEGREE_RULES.TOTAL?'dok':''));
+  rows.push(row('Core',c.core.missing.length?`${c.core.done} of ${c.core.of}, missing ${c.core.missing.join(', ')}`:'all done','dok dmiss'.split(' ')[c.core.missing.length?1:0]));
+  const gm=ge(c.geMat);
+  rows.push(row('GE mathematics',gm[0],gm[1]));
+  /* individually approved LAS courses are not all on any list (BoE), so this
+     row never claims a hard "missing" */
+  rows.push(row('GE humanities / social science',c.geLas.met?`done (${esc(c.geLas.via)})`:'not found, check the approved list with your advisor','dok dmaybe'.split(' ')[c.geLas.met?0:1]));
+  rows.push(row('Modules',`${c.slots.c} of 20 courses, ${c.slots.s} of 10 skills, ${c.slots.p} of 5 projects`,''));
+  rows.push(row('BTR',c.btr.status==='done'?`done (${c.btr.grade})`:c.btr.status==='eligible'?'you meet the 145 ECTS start requirement':`${c.btr.ectsShort} ECTS to go before you can start (145 needed)`,c.btr.status==='done'?'dok':c.btr.status==='eligible'?'dok':'dmaybe'));
+  if(c.transferEcts)rows.push(row('Transfer credits',`${c.transferEcts} ECTS, how these count is set in your BoE decision`,'dmaybe'));
+  if(c.saEcts)rows.push(row('Semester abroad',`${c.saEcts} ECTS, counted per your BoE decision letter`,'dmaybe'));
+  if(c.unclassified.length)rows.push(row('Not classified',`${c.unclassified.join(', ')}, check these with your advisor`,'dmaybe'));
+  if(c.legacyCodes)rows.push(row('Note','your record uses pre-2021 course codes, some checks may be off','dmaybe'));
+  const met=[c.totalEcts>=DEGREE_RULES.TOTAL,!c.core.missing.length,c.geMat.met,c.geLas.met,c.btr.status==='done'].filter(Boolean).length;
+  return `<details class="dcheck"><summary>Your degree check, ${met} of 5 requirements complete</summary>${rows.join('')}
+    <div class="dfoot">Automatic reading of your transcript against the standard EER rules. Advisory only, not a Board of Examiners decision. Something looks wrong? Contact <a href="mailto:msp-educationsupport@maastrichtuniversity.nl">ESD</a>.</div></details>`;}
 
 /* extras: skeleton, popular, recently viewed, install, offline, back-to-top */
 function renderSkeleton(){$('#topics').innerHTML=Array(8).fill('<div class="skel"></div>').join('');}
