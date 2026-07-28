@@ -3,7 +3,7 @@
 // instantly from cache; content.json refreshes in the background so an edit
 // you push shows up on the student's next visit without any re-download.
 
-const CACHE = 'msp-faq-v26';
+const CACHE = 'msp-faq-v27';
 const CORE = ['./', 'index.html', 'content.json', 'degree-data.json', 'manifest.webmanifest', 'icon.svg',
   'assets/msp-faq.png', 'assets/um-logo.png', 'assets/building.jpg',
   // vendored (no CDNs): fonts, search, and the on-demand PDF reader

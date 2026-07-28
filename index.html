@@ -35,7 +35,7 @@
 
   /* Masthead */
   .utilbar{background:#0b2540;color:#fff;font-size:12px}
-  .ub{display:flex;align-items:center;justify-content:space-between;padding:7px 0;gap:12px}
+  .ub{display:flex;align-items:center;justify-content:center;padding:7px 0;gap:12px}
   .ub .ublogo{height:22px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.95}
   .ub a{color:#fff;text-decoration:none;opacity:.9;font-weight:600}
   .ub a:hover{opacity:1;text-decoration:underline}
@@ -114,9 +114,10 @@
   .sectlabel{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin:34px 0 16px;text-align:center}
   .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:52px}
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .tcard{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 18px;flex:0 1 212px;
+  .tcard{position:relative;background:var(--surface);border:1px solid #1a1a1a;border-radius:16px;padding:22px 18px;flex:0 1 212px;
     cursor:pointer;text-align:left;font-family:inherit;overflow:hidden;color:var(--ink);animation:up .45s ease both;
     transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+  html.dark .tcard{border-color:#4a5a6e}
   .tcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 40%,var(--line));box-shadow:0 12px 26px rgba(16,32,48,.10)}
   .tcard::after{content:"\2192";position:absolute;right:16px;bottom:14px;font-size:17px;font-weight:700;color:var(--link);opacity:0;transform:translateX(-5px);transition:opacity .16s,transform .16s}
   .tcard:hover::after{opacity:1;transform:none}
@@ -256,8 +257,7 @@
 
 <footer class="wrap">
   This tool runs on your device. Your transcript is read locally and never uploaded.<br>
-  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.<br>
-  <span id="footMeta"></span>
+  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.
 </footer>
 
 <script>
@@ -359,7 +359,6 @@ async function load(){
   state.mini.addAll(data.faqs.map(f=>({...f,tags:(f.tags||[]).join(' '),topicName:f.topic,officeName:(data.offices[f.office]||{}).name||''})));
   renderTopics();renderChips();renderQuick();buildPopular();renderRecent();renderStaffPanel();wireExtras();
   $('#heroSub').textContent='Search '+data.meta.count+' answers, or browse the topics below.';
-  $('#footMeta').textContent='Maintained by the Education Support Department · content updated '+(data.meta.generated||'');
   restoreStudent();router();
 }
 function renderTopics(){
