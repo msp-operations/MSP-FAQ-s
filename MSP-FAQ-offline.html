@@ -170,8 +170,8 @@
 
   /* Masthead */
   .utilbar{background:#0b2540;color:#fff;font-size:12px}
-  .ub{display:flex;align-items:center;justify-content:space-between;padding:7px 0;gap:12px}
-  .ub .ubl{opacity:.82;letter-spacing:.3px;font-weight:500}
+  .ub{display:flex;align-items:center;justify-content:center;padding:7px 0;gap:12px}
+  .ub .ublogo{height:22px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.95}
   .ub a{color:#fff;text-decoration:none;opacity:.9;font-weight:600}
   .ub a:hover{opacity:1;text-decoration:underline}
   .masthead{background:linear-gradient(180deg,#ffffff,#f3f6fb);border-bottom:1px solid #e7ebf1}
@@ -209,6 +209,15 @@
   .wcard .hi{font-family:var(--serif);font-size:17px;font-weight:600}
   .wcard .stat{font-size:12.5px;opacity:.92}.wcard .stat b{font-size:16px;font-weight:700}
   .wcard .clear{margin-left:auto;font-size:11px;opacity:.75;background:none;border:none;color:#fff;cursor:pointer;text-decoration:underline;font-family:inherit}
+  .dcheck{margin-top:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:var(--rm);padding:10px 18px;backdrop-filter:blur(6px);font-size:13px}
+  .dcheck summary{cursor:pointer;font-weight:600;font-size:13.5px;padding:4px 0}
+  .dcheck .drow{display:flex;gap:14px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)}
+  .dcheck .dlab{flex:0 0 210px;opacity:.85}
+  .dcheck .dval b{font-size:15px}
+  .dcheck .dok{color:#a5e8b0}.dcheck .dmiss{color:#ffb3b3}.dcheck .dmaybe{color:#ffe08a}
+  .dcheck .dfoot{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.12);font-size:11.5px;opacity:.8}
+  .dcheck .dfoot a{color:#fff}
+  @media(max-width:560px){.dcheck .drow{flex-direction:column;gap:2px}.dcheck .dlab{flex:none}}
 
   /* Search */
   .search{position:relative;max-width:660px;margin:0 auto}
@@ -240,9 +249,10 @@
   .sectlabel{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin:34px 0 16px;text-align:center}
   .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:52px}
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .tcard{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 18px;flex:0 1 212px;
+  .tcard{position:relative;background:var(--surface);border:1px solid #1a1a1a;border-radius:16px;padding:22px 18px;flex:0 1 212px;
     cursor:pointer;text-align:left;font-family:inherit;overflow:hidden;color:var(--ink);animation:up .45s ease both;
     transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+  html.dark .tcard{border-color:#4a5a6e}
   .tcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 40%,var(--line));box-shadow:0 12px 26px rgba(16,32,48,.10)}
   .tcard::after{content:"\2192";position:absolute;right:16px;bottom:14px;font-size:17px;font-weight:700;color:var(--link);opacity:0;transform:translateX(-5px);transition:opacity .16s,transform .16s}
   .tcard:hover::after{opacity:1;transform:none}
@@ -333,7 +343,7 @@
 <body>
 <div class="sr-only" aria-live="polite" id="live"></div>
 
-<div class="utilbar"><div class="wrap ub"><span class="ubl">Maastricht Science Programme</span><a href="https://intranet.maastrichtuniversity.nl/en/msp-students" target="_blank" rel="noopener">MSP intranet &rarr;</a></div></div>
+<div class="utilbar"><div class="wrap ub"><img class="ublogo" src="data:image/png;base64,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" alt="Maastricht University"></div></div>
 <div class="offline" id="offline">You are offline, showing saved answers.</div>
 <div class="masthead">
   <div class="wrap mh">
@@ -384,7 +394,6 @@
 <footer class="wrap">
   This is the offline copy of the MSP Student FAQ. It works without internet and picks up updated answers whenever you are online.<br>
   Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.<br>
-  <span id="footMeta"></span><br>
   <button class="copy" id="refreshBtn" style="margin-top:8px">Check for new answers</button>
 </footer>
 
@@ -4983,7 +4992,6 @@ async function load(){
   state.mini.addAll(data.faqs.map(f=>({...f,tags:(f.tags||[]).join(' '),topicName:f.topic,officeName:(data.offices[f.office]||{}).name||''})));
   renderTopics();renderChips();renderQuick();buildPopular();renderRecent();renderStaffPanel();wireExtras();
   $('#heroSub').textContent='Search '+data.meta.count+' answers, or browse the topics below.';
-  $('#footMeta').textContent='Maintained by the Education Support Department · content updated '+(data.meta.generated||'');
   restoreStudent();router();
 }
 function renderTopics(){
@@ -5107,10 +5115,9 @@ function ensurePdf(){return pdfReady||(pdfReady=new Promise((res,rej)=>{const s=
   document.head.appendChild(s);}));}
 $('#transcriptBtn').onclick=()=>$('#pdff').click();
 $('#pdff').onchange=async e=>{const file=e.target.files[0];if(!file)return;
-  try{await ensurePdf();const t=await parseTranscriptPDF(file);
-    const total=t.semesters.flatMap(s=>s.modules).reduce((a,m)=>a+(m.ectsEarned||0),0);
-    const done=t.semesters.flatMap(s=>s.modules).filter(m=>m.passed).length;
-    state.student={name:t.student.name||'',studentNumber:t.student.studentNumber||'',total,done};
+  try{await ensurePdf();const cat=await ensureDegreeData();const t=await parseTranscriptPDF(file);
+    const card=checkDegree(t,cat);
+    state.student={name:t.student.name||'',studentNumber:t.student.studentNumber||'',total:card.totalEcts,done:card.modulesDone,card};
     localStorage.setItem('faqStudent',JSON.stringify(state.student));renderWelcome();announce('Transcript loaded');
   }catch(err){alert(err.message==='NOT_MSP'?'This does not look like an MSP transcript.':err.message==='SCAN'?'This PDF has no readable text (is it a scan?).':'Could not read this file.');}
 };
@@ -5119,9 +5126,10 @@ function renderWelcome(){const s=state.student;if(!s){$('#welcome').className='w
   const first=(s.name||'there').split(' ')[0];
   const n=forYou(s);
   const fy=n.length?'<div class="fory"><span class="fyl">For you</span>'+n.map(x=>`<a href="${x.href}">${esc(x.label)}</a>`).join('')+'</div>':'';
+  const card=s.card?renderDegreeCard(s.card):'';
   $('#welcome').innerHTML=`<div class="wcard"><div class="hi">Welcome, ${esc(first)}</div>
     <div class="stat"><b>${s.total}</b> / 180 ECTS earned</div><div class="stat"><b>${s.done}</b> modules completed</div>
-    <button class="clear" onclick="clearStudent()">clear</button></div>`+fy;
+    <button class="clear" onclick="clearStudent()">clear</button></div>`+card+fy;
   $('#welcome').className='welcome on';}
 function forYou(s){const out=[];const t=s.total||0;
   const link=(kw,label)=>{const f=state.data.faqs.find(x=>x.q.toLowerCase().includes(kw));if(f)out.push({label,href:'#/topic/'+encodeURIComponent(f.topic)+'?q='+f.id});};
@@ -5139,32 +5147,128 @@ async function parseTranscriptPDF(file){
   if(!fullText.includes('Maastricht Science Programme')&&!fullText.includes('Liberal Arts and Sciences'))throw new Error('NOT_MSP');
   return parseTranscriptText(fullText);
 }
-function parseTranscriptText(text){
-  const result={student:{},semesters:[]};
+/* Extended 27 Jul 2026: transfer credits, exemptions, Semester Abroad, EXT
+   classification and resit dedup. The reference copy of this logic lives in
+   c:\dev\Operations\Degree-Checker\engine\engine.mjs, where it is validated
+   against the Feb-2026 cohort (146 transcripts, exact match with SAP's printed
+   PR counter). Keep the two in sync. */
+function parseTranscriptText(raw){
+  const text=String(raw).replace(/\s+/g,' ');
+  const result={student:{},modules:[],transferEcts:0,exemptions:[]};
   const snMatch=text.match(/Student\s*number\s*\/\s*Studentnummer\s*:\s*(\d+)/i);if(snMatch)result.student.studentNumber=snMatch[1];
-  const nameMatch=text.match(/Name\s*\/\s*Naam\s*:\s*([^\n]+?)(?=\s*Date\s*of\s*birth)/i);if(nameMatch)result.student.name=nameMatch[1].trim();
-  const semPattern=/Semester\s+(\d+)\s+(\d+\s+\w+\s+\d{4}\s*-\s*\d+\s+\w+\s+\d{4})/gi;const semMatches=[...text.matchAll(semPattern)];
+  const nameMatch=text.match(/Name\s*\/\s*Naam\s*:\s*(.+?)(?=\s*Date\s*of\s*birth)/i);if(nameMatch)result.student.name=nameMatch[1].trim();
+  const tc=text.match(/Transfer\s*Credits\s*([\d]+[.,]?\d*)\s*ECTS/i);if(tc)result.transferEcts=parseFloat(tc[1].replace(',','.'));
+  const semMatches=[...text.matchAll(/Semester\s+\d+\s+\d+\s+\w+\s+\d{4}\s*-\s*\d+\s+\w+\s+\d{4}/gi)];
   for(let si=0;si<semMatches.length;si++){
     const startIdx=semMatches[si].index+semMatches[si][0].length;const endIdx=si+1<semMatches.length?semMatches[si+1].index:text.length;
-    const block=text.substring(startIdx,endIdx);const semester={modules:[]};
+    const block=text.substring(startIdx,endIdx);
     const codePattern=/([A-Z]{2,4}\d{4})\s+/g;let match;const codePositions=[];
     while((match=codePattern.exec(block))!==null)codePositions.push({code:match[1],index:match.index,fullMatch:match[0]});
     for(let ci=0;ci<codePositions.length;ci++){
       const cp=codePositions[ci];const nextStart=ci+1<codePositions.length?codePositions[ci+1].index:block.length;
       const segment=block.substring(cp.index+cp.fullMatch.length,nextStart).trim();
-      const numbers=[];const titleParts=[];let foundFirstNum=false;
+      const exmIdx=segment.search(/(^|\s)Exemption(\s|$)/i);
+      if(exmIdx!==-1&&!/\d+,\d{2}/.test(segment.slice(0,exmIdx))){
+        result.exemptions.push({code:cp.code,title:segment.slice(0,exmIdx).trim()});continue;}
+      const titleParts=[],ectsCells=[];let grade=null,sawNum=false,failText=false;
       for(const tok of segment.split(/\s+/)){
-        if(!foundFirstNum&&!/^\d/.test(tok)&&tok!=='NG'&&tok!=='NVD'){titleParts.push(tok);}
-        else{foundFirstNum=true;if(tok==='NG'||tok==='NVD'){numbers.push(0);}else{const n=parseFloat(tok.replace(',','.'));if(!isNaN(n))numbers.push(n);}}
+        if(/^\d+,\d{2}$/.test(tok)){sawNum=true;ectsCells.push(parseFloat(tok.replace(',','.')));}
+        else if(/^\d{1,2},\d$/.test(tok)){sawNum=true;grade=parseFloat(tok.replace(',','.'));}
+        else if(/^(Fail|NG|NVD)$/i.test(tok)){sawNum=true;failText=true;}
+        else if(/^\d+$/.test(tok)){sawNum=true;}
+        else if(!sawNum)titleParts.push(tok);
       }
-      if(numbers.length<2)continue;const title=titleParts.join(' ').replace(/\s+/g,' ').trim();if(!title||title.length<3)continue;
-      const ectsEarned=numbers.length>1?numbers[1]:0;const grade=numbers.length>2?numbers[2]:0;
-      semester.modules.push({code:cp.code,title,ectsEarned,grade,passed:ectsEarned>0&&(grade>=5.5||grade===0)});
+      if(ectsCells.length<2)continue;
+      const title=titleParts.join(' ').replace(/\s+/g,' ').trim();if(!title||title.length<3)continue;
+      result.modules.push({code:cp.code,title,ectsEarned:ectsCells[1],grade:grade==null?0:grade,passed:ectsCells[1]>0&&!failText});
     }
-    result.semesters.push(semester);
   }
+  const byCode=new Map();
+  for(const mod of result.modules){
+    const prev=byCode.get(mod.code);
+    if(!prev){byCode.set(mod.code,mod);continue;}
+    const better=(mod.passed&&!prev.passed)||(mod.passed===prev.passed&&(mod.grade>prev.grade||(mod.grade===prev.grade&&mod.ectsEarned>prev.ectsEarned)));
+    if(better)byCode.set(mod.code,mod);
+  }
+  result.modules=[...byCode.values()];
   return result;
 }
+
+/* degree check: rules from EER 3.6/3.7/3.10 + R&R (see Degree-Checker README) */
+const DEGREE_RULES={TOTAL:180,BTR_ENTRY:145,
+  CORE:['BIO1101','CHE1101','PHY1101','INT1101','PRA1101','PRA1102','PRO1101'],
+  GE_LAS_KNOWN:['INT2007','INT3001','HUM2051'],
+  LEGACY:{BIO1001:'BIO1101',CHE1001:'CHE1101',PHY1001:'PHY1101',INT1001:'INT1101',PRA1001:'PRA1101',PRA1002:'PRA1102',PRO1001:'PRO1101'}};
+let degreeData=null;
+async function ensureDegreeData(){if(degreeData)return degreeData;
+  const byCode=new Map(),byTitle=new Map();
+  try{const d=await(await fetch('degree-data.json')).json();
+    for(const[code,name,type,ml]of d.x){const e={code,name,type,ml};byCode.set(code,e);if(name)byTitle.set(normT(name),e);}
+  }catch(e){}
+  degreeData={byCode,byTitle};return degreeData;}
+function normT(s){return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();}
+function matchT(title,cat){const n=normT(title);if(n.length<6)return null;
+  const ex=cat.byTitle.get(n);if(ex)return ex;if(n.length<12)return null;
+  const hits=[];for(const[k,c]of cat.byTitle.entries())if(k.length>=12&&(k.includes(n)||n.includes(k)))hits.push(c);
+  return hits.length===1?hits[0]:null;}
+function classifyMod(mod,cat){
+  if(/^SA[BCIP]9\d{3}$/.test(mod.code))return{k:'sa'};
+  if(/^BTR\d{4}$/.test(mod.code))return{k:'btr'};
+  if(/^EXT\d{4}$/.test(mod.code)){const e=matchT(mod.title,cat);
+    if(e&&e.type&&e.type!=='x')return{k:'ext',t:e.type,ml:e.ml};return{k:'u'};}
+  const hit=cat.byCode.get(mod.code);
+  if(hit&&hit.type&&hit.type!=='x')return{k:'ext',t:hit.type,ml:hit.ml};
+  const m=mod.code.match(/^([A-Z]{2,4})(\d)\d{3}$/);
+  if(m)return{k:'int',t:m[1]==='PRA'?'s':m[1]==='PRO'?'p':'c',ml:null};
+  return{k:'u'};}
+function checkDegree(parsed,cat){
+  const passed=parsed.modules.filter(m=>m.passed);
+  const exemptCodes=new Set(parsed.exemptions.map(e=>e.code));
+  const coreEquiv=new Set(exemptCodes);let legacyCodes=false;
+  for(const m of passed)if(DEGREE_RULES.LEGACY[m.code]){coreEquiv.add(DEGREE_RULES.LEGACY[m.code]);legacyCodes=true;}
+  const has=code=>passed.some(m=>m.code===code)||coreEquiv.has(code);
+  let totalEcts=Math.round(passed.reduce((a,m)=>a+m.ectsEarned,0)*100)/100;
+  const coreMissing=DEGREE_RULES.CORE.filter(c=>!has(c));
+  const slots={c:0,s:0,p:0};let geMat=null,geLas=null,btrModule=null,saEcts=0;const unclassified=[];
+  for(const mod of passed){
+    const c=classifyMod(mod,cat);
+    if(c.k==='btr'){btrModule=mod;continue;}
+    if(c.k==='sa'){saEcts+=mod.ectsEarned;continue;}
+    if(c.k==='u'){unclassified.push(mod);continue;}
+    if(c.t)slots[c.t]++;
+    if(!geMat&&(c.ml==='M'||(c.k==='int'&&/^MAT\d{4}$/.test(mod.code)&&c.t==='c')))geMat=mod;
+    if(!geLas&&(c.ml==='L'||DEGREE_RULES.GE_LAS_KNOWN.indexOf(mod.code)>-1))geLas=mod;
+  }
+  for(const code of exemptCodes){const m=code.match(/^([A-Z]{2,4})\d{4}$/);
+    if(m)slots[m[1]==='PRA'?'s':m[1]==='PRO'?'p':'c']++;}
+  const maybe=unclassified.length>0||parsed.transferEcts>0||saEcts>0;
+  return{totalEcts,transferEcts:parsed.transferEcts,saEcts,modulesDone:passed.length,
+    core:{done:DEGREE_RULES.CORE.length-coreMissing.length,of:DEGREE_RULES.CORE.length,missing:coreMissing},
+    geMat:geMat?{met:true,via:geMat.code}:{met:false,maybe},
+    geLas:geLas?{met:true,via:geLas.code}:{met:false,maybe},
+    slots:{c:slots.c,s:slots.s,p:slots.p},
+    btr:btrModule?{status:'done',grade:btrModule.grade}:totalEcts>=DEGREE_RULES.BTR_ENTRY?{status:'eligible'}:{status:'not-eligible',ectsShort:Math.round((DEGREE_RULES.BTR_ENTRY-totalEcts)*100)/100},
+    exemptions:parsed.exemptions,unclassified:unclassified.map(m=>m.code),legacyCodes};}
+function renderDegreeCard(c){
+  const row=(lab,val,cls)=>`<div class="drow"><span class="dlab">${lab}</span><span class="dval ${cls}">${val}</span></div>`;
+  const ge=g=>g.met?[`done (${esc(g.via)})`,'dok']:g.maybe?['confirm with your advisor','dmaybe']:['missing','dmiss'];
+  const rows=[];
+  rows.push(row('Credits',`<b>${c.totalEcts}</b> / ${DEGREE_RULES.TOTAL} ECTS`+(c.transferEcts?` + ${c.transferEcts} transfer`:''),c.totalEcts>=DEGREE_RULES.TOTAL?'dok':''));
+  rows.push(row('Core',c.core.missing.length?`${c.core.done} of ${c.core.of}, missing ${c.core.missing.join(', ')}`:'all done','dok dmiss'.split(' ')[c.core.missing.length?1:0]));
+  const gm=ge(c.geMat);
+  rows.push(row('GE mathematics',gm[0],gm[1]));
+  /* individually approved LAS courses are not all on any list (BoE), so this
+     row never claims a hard "missing" */
+  rows.push(row('GE humanities / social science',c.geLas.met?`done (${esc(c.geLas.via)})`:'not found, check the approved list with your advisor','dok dmaybe'.split(' ')[c.geLas.met?0:1]));
+  rows.push(row('Modules',`${c.slots.c} of 20 courses, ${c.slots.s} of 10 skills, ${c.slots.p} of 5 projects`,''));
+  rows.push(row('BTR',c.btr.status==='done'?`done (${c.btr.grade})`:c.btr.status==='eligible'?'you meet the 145 ECTS start requirement':`${c.btr.ectsShort} ECTS to go before you can start (145 needed)`,c.btr.status==='done'?'dok':c.btr.status==='eligible'?'dok':'dmaybe'));
+  if(c.transferEcts)rows.push(row('Transfer credits',`${c.transferEcts} ECTS, how these count is set in your BoE decision`,'dmaybe'));
+  if(c.saEcts)rows.push(row('Semester abroad',`${c.saEcts} ECTS, counted per your BoE decision letter`,'dmaybe'));
+  if(c.unclassified.length)rows.push(row('Not classified',`${c.unclassified.join(', ')}, check these with your advisor`,'dmaybe'));
+  if(c.legacyCodes)rows.push(row('Note','your record uses pre-2021 course codes, some checks may be off','dmaybe'));
+  const met=[c.totalEcts>=DEGREE_RULES.TOTAL,!c.core.missing.length,c.geMat.met,c.geLas.met,c.btr.status==='done'].filter(Boolean).length;
+  return `<details class="dcheck"><summary>Your degree check, ${met} of 5 requirements complete</summary>${rows.join('')}
+    <div class="dfoot">Automatic reading of your transcript against the standard EER rules. Advisory only, not a Board of Examiners decision. Something looks wrong? Contact <a href="mailto:msp-educationsupport@maastrichtuniversity.nl">ESD</a>.</div></details>`;}
 
 /* extras: skeleton, popular, recently viewed, install, offline, back-to-top */
 function renderSkeleton(){$('#topics').innerHTML=Array(8).fill('<div class="skel"></div>').join('');}
@@ -5197,7 +5301,7 @@ function wireExtras(){
 
 
 load();
-const LIVE='https://msp-operations.github.io/MSP-FAQ-s/';
+const LIVE='https://msp-faqs.nl/';
 async function refreshAnswers(manual){
   try{
     const r=await fetch(LIVE+'content.json',{cache:'no-cache'});

@@ -45,6 +45,7 @@ swap(`<script src="assets/vendor/minisearch.min.js"></script>`,
 // 4. Images inlined (hero photo + logo).
 swap(`url('assets/building.jpg')`, `url('${b64('assets/building.jpg', 'image/jpeg')}')`, 'building.jpg');
 swap(`src="assets/msp-faq.png"`, `src="${b64('assets/msp-faq.png', 'image/png')}"`, 'logo');
+swap(`src="assets/um-logo.png"`, `src="${b64('assets/um-logo.png', 'image/png')}"`, 'um logo');
 
 // 5. No transcript feature in the offline file: pdf.js cannot load its worker
 //    from file:// and inlining it costs 1.4 MB. Hide the button; handlers stay unreachable.
@@ -64,8 +65,8 @@ swap(`  let data;
 // 7. Footer: say what this copy is, add the refresh button.
 swap(`  This tool runs on your device. Your transcript is read locally and never uploaded.<br>`,
   `  This is the offline copy of the MSP Student FAQ. It works without internet and picks up updated answers whenever you are online.<br>`, 'footer line');
-swap(`  <span id="footMeta"></span>\n</footer>`,
-  `  <span id="footMeta"></span><br>
+swap(`  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.\n</footer>`,
+  `  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.<br>
   <button class="copy" id="refreshBtn" style="margin-top:8px">Check for new answers</button>
 </footer>`, 'refresh button');
 
@@ -73,7 +74,7 @@ swap(`  <span id="footMeta"></span>\n</footer>`,
 //    Only reloads when the live content is strictly newer, so no reload loops.
 swap(`load();\n</script>`,
   `load();
-const LIVE='https://msp-operations.github.io/MSP-FAQ-s/';
+const LIVE='https://msp-faqs.nl/';
 async function refreshAnswers(manual){
   try{
     const r=await fetch(LIVE+'content.json',{cache:'no-cache'});
