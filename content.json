@@ -2,7 +2,7 @@
   "meta": {
     "title": "MSP Student FAQ",
     "ay": "2025-2026",
-    "generated": "2026-07-27",
+    "generated": "2026-08-13",
     "count": 361
   },
   "topics": [
@@ -386,14 +386,13 @@
     {
       "id": "can-you-recommend-websites-to-find-housing-other-than-maastr",
       "q": "Can you recommend websites to find housing (other than Maastricht Housing)?",
-      "a": "Yes. Below is a list of sites students use to search for rooms and apartments. If you find something on Facebook (or any listing you cannot visit through an agency), always view the room or apartment in person before you sign a contract or pay a deposit. This is the single best way to avoid scams.\n\n- BorderEstate: borderestate.com\n- Maasland Relocations: maaslandrelocation.nl\n- Pararius: pararius.com\n- Nido Randwyck: nidoliving.com\n- The Social Hub: thesocialhub.co\n- Plaza Housing: plaza.newnewnew.space\n- Pro Housing: pro-housing.nl\n- Xior: xior.be\n\nIf you feel you are overpaying your landlord, or you run into problems with your housing contract, contact the Huur (rent) team and book an appointment with them. They can check whether your rent and contract are fair.",
+      "a": "Yes. Below is a list of sites students use to search for rooms and apartments. If you find something on Facebook (or any listing you cannot visit through an agency), always view the room or apartment in person before you sign a contract or pay a deposit. This is the single best way to avoid scams.\n\n- BorderEstate: borderestate.com\n- Maasland Relocations: maaslandrelocation.nl\n- Pararius: pararius.com\n- Nido Randwyck: nidoliving.com\n- The Social Hub: thesocialhub.co\n- Plaza Housing: plaza.newnewnew.space\n- Pro Housing: pro-housing.nl\n- Xior: xior.be\n\nIf you feel you are overpaying your landlord, or you run into problems with your housing contract, contact Huurteam Zuid-Limburg (https://huurteam-zuidlimburg.nl). They check rental contracts and rental prices for students, and they also help with disputes about a deposit, overdue maintenance, or paying too much for gas, water and electricity. You can book a 20-minute online appointment at https://huurteam-zuidlimburg.nl/planner, or find them at the Student Services Centre. Contact: info@huurteam-zuidlimburg.nl.\n\nA contract check is free. The formal rent-price check (huurprijscheck) runs through the Huurcommissie at https://www.huurcommissie.nl/support/huurprijscheck and costs 25 euros, but if you have been overpaying, the money you get back can be far more than that.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Housing",
       "tags": [
         "housing"
-      ],
-      "note": "verify current Huur team contact link"
+      ]
     },
     {
       "id": "what-is-the-most-common-way-for-students-to-find-accommodati",
@@ -430,33 +429,33 @@
     {
       "id": "how-do-i-register-at-the-municipality",
       "q": "How do I register at the municipality?",
-      "a": "Every resident staying in the Netherlands for a longer period needs to register with the municipality (gemeente). Follow the official instructions on the Gemeente Maastricht website and bring the documents listed below.\n\nFor European students, bring:\n\n- Your passport or ID card\n- A multilingual birth certificate. As an EU citizen you can request a multilingual birth certificate from your home municipality. See the EU documents FAQ for details.\n- Your housing contract. They do not always ask for it, but it is good to have with you just in case.",
+      "a": "Anyone staying in the Netherlands for more than four months has to register with the municipality (gemeente), and you are expected to do it within five working days of arriving. Start on the Gemeente Maastricht international student registration page: https://www.gemeentemaastricht.nl/en/moving-and-housing/international-student-registration. Maastricht University also explains the document set at https://www.maastrichtuniversity.nl/register-municipality.\n\nYou register by filling in the online form first. You then get a confirmation of receipt, and within about five weeks an email telling you how to book your appointment, which has to take place within two months. You cannot simply walk in. Appointments are booked by phone on 14 043 (press 1 for English).\n\nBring the following to your appointment:\n\n- Your valid passport\n- Proof of where you live: a rental agreement signed by both you and your landlord\n- A legalised or apostilled copy of your birth certificate, no older than six months. If it is not in English, Dutch or German, you also need an official translation.\n- Your certificate of enrolment, or a copy of the conditionally approved email from Admissions\n\n**If you have a non-EU nationality**, you need one extra document: a copy of your residence permit, front and back. If your permit has not arrived yet, bring a copy of the email from the Maastricht University Visa Office titled \"confirmation receipt of decision\", which states your assigned V-number. Note that you must apply for a residence permit through the IND first, because the municipality cannot register you without it. Students with EU, EEA or Swiss citizenship do not need a residence permit.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Municipality Registration",
       "tags": [
         "housing",
+        "visa",
+        "registration",
         "municipality"
-      ],
-      "note": "add current Gemeente Maastricht registration link"
+      ]
     },
     {
       "id": "where-do-i-go-to-register-with-the-municipality",
       "q": "Where do I go to register with the municipality?",
-      "a": "Municipality registration takes place at Mosae Forum in the centre of Maastricht.",
+      "a": "Municipality registration takes place at Mosae Forum in the centre of Maastricht. Remember that you need an appointment, so do not go there without one. Opening hours and contact details are at https://www.gemeentemaastricht.nl/en/contact-and-opening-hours.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Municipality Registration",
       "tags": [
         "registration",
         "municipality"
-      ],
-      "note": "a location map (Mosae Forum) existed in the original as an image; consider re-adding, and confirm whether non-EU students need additional documents beyond the EU list above"
+      ]
     },
     {
       "id": "what-type-of-health-insurance-do-i-need-if-i-am-not-from-the",
       "q": "What type of health insurance do I need if I am not from the Netherlands?",
-      "a": "Everyone living in the Netherlands needs some form of basic health insurance. What applies to you depends on where you are from and your situation:\n\n- **EU/EEA students:** Your home country insurance usually counts as basic cover, as long as you carry a valid EHIC card. In that case you generally do not need Dutch insurance.\n- **When Dutch insurance becomes required:** You must take out Dutch health insurance if any of the following apply: you do not have an EHIC card, you are over the age of 30, or you work in the Netherlands (any paid employment here triggers this requirement).\n- **Non-EU/EEA students:** International insurance such as AON (for example the AON Complete+ plan) is compulsory.\n\nThe mymaastricht.nl website has a helpful flowchart that walks you through exactly what you need.",
+      "a": "Everyone living in the Netherlands needs some form of basic health insurance. What applies to you depends on where you are from and your situation:\n\n- **EU/EEA students:** Your home country insurance usually counts as basic cover, as long as you carry a valid EHIC card. In that case you generally do not need Dutch insurance.\n- **When Dutch insurance becomes required:** You must take out Dutch health insurance if any of the following apply: you do not have an EHIC card, you are over the age of 30, or you work in the Netherlands (any paid employment here triggers this requirement).\n- **Non-EU/EEA students:** International insurance such as AON (for example the AON Complete+ plan) is compulsory.\n\nThe mymaastricht.nl health insurance page walks you through exactly what you need, including a decision tree made by the International Student Helpdesk that covers the common cases: https://mymaastricht.nl/health/health-insurance/. For a side-by-side view of the different types of cover, see https://mymaastricht.nl/health/health-insurance/health-insurance-options/.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Health Insurance",
@@ -464,7 +463,7 @@
         "exam",
         "insurance"
       ],
-      "note": "add current AON plan link and confirm the plan name is still Complete+ | add direct link to the mymaastricht.nl health insurance flowchart"
+      "note": "add current AON plan link and confirm the plan name is still Complete+"
     },
     {
       "id": "is-there-a-study-association-and-what-does-it-offer",
@@ -1606,29 +1605,33 @@
     {
       "id": "how-do-i-pay-my-tuition-fees-and-what-are-my-payment-options",
       "q": "How do I pay my tuition fees, and what are my payment options?",
-      "a": "You arrange how you pay your tuition when you complete your (re)registration in Studielink, and you confirm your chosen payment method there. For any questions about your tuition or fees, contact the Student Service Centre at study@maastrichtuniversity.nl. For a question about a payment specifically, for example a payment that has not gone through, you can also contact the tuition fee payment team at tuitionfeepayment@maastrichtuniversity.nl or +31 (0)43 388 4752, open Monday to Friday from 8:00 to 12:00.",
+      "a": "You arrange how you pay your tuition when you complete your (re)registration in Studielink, and you confirm your chosen payment method there. There are two routes:\n\n- **Digital (direct debit) authorisation.** You authorise UM to collect the fee from your account, which is only possible with a SEPA IBAN account. You can then pay in eight instalments if your programme starts on 1 September, in four instalments if it starts on 1 February, or as a single lump sum. Paying in instalments adds a one-off 24 euro administration cost to the first instalment, and any bank charges UM incurs are passed on to you.\n- **Other method of payment.** This means a bank transfer, and it has to be the full amount in one go. Instalments are not possible this way.\n\nSince 29 July 2025 a digital authorisation carries over automatically for as long as you stay enrolled, so you no longer have to enter your payment details every academic year. You can change those details in Studielink at any point in the year.\n\n**Important if you need a visa or residence permit to study here.** You cannot use digital authorisation or pay in instalments. You have to pay the full tuition fee for the whole year in one lump sum by bank transfer before UM can submit your visa application to the Dutch Immigration and Naturalisation Service (IND). When you re-enrol the following year, you can switch to one of the other options.\n\nUM advises paying by 1 August (or 1 January for programmes starting in February) so that your timetable and UMcard are ready before teaching starts.\n\nFor any questions about your tuition or fees, contact the Student Service Centre at study@maastrichtuniversity.nl. For a question about a payment specifically, for example a payment that has not gone through, you can also contact the tuition fee payment team at tuitionfeepayment@maastrichtuniversity.nl or +31 (0)43 388 4752, open Monday to Friday from 8:00 to 12:00.\n\nThe full rules are in the UM Enrolment Provisions: https://www.maastrichtuniversity.nl/file/um-enrolment-provisions-2026-2027pdf",
+      "topic": "Money & Practical",
+      "office": "ssc",
+      "category": "Additional questions",
+      "tags": [
+        "visa",
+        "tuition",
+        "exam",
+        "timetable",
+        "registration"
+      ]
+    },
+    {
+      "id": "what-happens-if-i-do-not-pay-my-tuition-fees-on-time",
+      "q": "What happens if I do not pay my tuition fees on time?",
+      "a": "Late payment triggers a fixed procedure, and it escalates quickly, so deal with it as soon as you notice it.\n\n1. **First reminder.** You get 14 calendar days to pay, and 19,50 euros in administration fees is added. Watch for this one: the reminder goes to your **personal email address, not your UM student account**, which is exactly why students miss it.\n2. **Financial hold.** If you miss that deadline, your UMcard and your access to Canvas, the Student Portal and all other UM digital facilities are blocked. In practice this means you can no longer register for courses or sit digital exams. A second reminder confirms the hold and gives you another 14 calendar days.\n3. **Deregistration.** If it is still unpaid after that, UM starts the deregistration procedure. Your enrolment can be terminated from the second month following the last warning notice. The Student Service Centre sends you a deregistration decision that explains how to appeal it. After that, you can only re-enrol from the following academic year, and only once you have paid everything you owe UM.\n\nOne thing worth knowing if you pay in instalments: if you have a direct debit reversed at your own request, UM applies the financial hold straight away, without any prior warning.\n\nTo sort out a hold or a missed payment, contact the Student Service Centre at study@maastrichtuniversity.nl, or the tuition fee payment team at tuitionfeepayment@maastrichtuniversity.nl (+31 (0)43 388 4752, Monday to Friday 8:00 to 12:00). The procedure is set out in Articles 31 and 34 of the UM Enrolment Provisions: https://www.maastrichtuniversity.nl/file/um-enrolment-provisions-2026-2027pdf",
       "topic": "Money & Practical",
       "office": "ssc",
       "category": "Additional questions",
       "tags": [
         "tuition",
         "exam",
-        "registration"
-      ],
-      "note": "confirm the current payment options in Studielink (single payment vs authorised instalments / direct debit) so we can state them."
-    },
-    {
-      "id": "what-happens-if-i-do-not-pay-my-tuition-fees-on-time",
-      "q": "What happens if I do not pay my tuition fees on time?",
-      "a": "If your tuition is not paid on time, it can lead to a block on your registration. A block can stop your course registration or your access to your student account, so resolve it as soon as you can. Contact the Student Service Centre at study@maastrichtuniversity.nl, or the tuition fee payment team at tuitionfeepayment@maastrichtuniversity.nl (+31 (0)43 388 4752, Monday to Friday 8:00 to 12:00).",
-      "topic": "Money & Practical",
-      "office": "ssc",
-      "category": "Additional questions",
-      "tags": [
-        "tuition",
-        "registration"
-      ],
-      "note": "confirm exactly what a tuition block affects (course registration, exam access, reregistration) and when in the cycle it is applied."
+        "registration",
+        "canvas",
+        "appeal",
+        "deadline"
+      ]
     },
     {
       "id": "can-i-get-a-refund-of-my-tuition-if-i-deregister-part-way-th",
@@ -1685,7 +1688,7 @@
     {
       "id": "i-have-met-all-my-graduation-requirements-but-my-diploma-can",
       "q": "I have met all my graduation requirements but my diploma cannot be issued. What could be blocking it?",
-      "a": "If you have met all your requirements but your diploma still cannot be issued, one common cause is that your place of birth is registered as \"unknown\" (onbekend) in the university system, which blocks the diploma order. Fix it at the source: if you live abroad, contact the Student Service Centre at study@maastrichtuniversity.nl; if you live in the Netherlands, contact your municipality, because a change made only at the SSC is temporary and gets overwritten by the municipal data. If your enrolment is blocked for a financial reason, contact the SSC or the tuition fee payment team to resolve it.",
+      "a": "If you have met all your requirements but your diploma still cannot be issued, one common cause is that your place of birth is registered as \"unknown\" (onbekend) in the university system, which blocks the diploma order. Fix it at the source: if you live abroad, contact the Student Service Centre at study@maastrichtuniversity.nl; if you live in the Netherlands, contact your municipality, because a change made only at the SSC is temporary and gets overwritten by the municipal data. The other common cause is money. Unpaid tuition does hold your diploma: if your fee has not been paid in full after the last scheduled instalment, no degree certificate is awarded when you graduate (UM Enrolment Provisions, Article 30). Clearing the outstanding amount is what releases it, so contact the SSC at study@maastrichtuniversity.nl or the tuition fee payment team at tuitionfeepayment@maastrichtuniversity.nl to settle it.",
       "topic": "Money & Practical",
       "office": "ssc",
       "category": "Additional questions",
@@ -1695,8 +1698,7 @@
         "abroad",
         "tuition",
         "municipality"
-      ],
-      "note": "confirm whether unpaid tuition can itself hold a diploma, and how such a hold is cleared."
+      ]
     },
     {
       "id": "my-name-is-wrong-on-my-um-record-or-card-who-corrects-it",
@@ -4249,14 +4251,13 @@
     {
       "id": "how-do-i-log-into-my-um-email-account",
       "q": "How do I log into my UM email account?",
-      "a": "Maastricht University gives every student a personal e-mail account. Most student e-mail addresses follow the same pattern:\n\ninitials.lastname@student.maastrichtuniversity.nl\n\nYour access details (username and password) were sent to your private e-mail address by ICT Services when your account was created. Use the UM student webmail link to log in, and follow the ICTS Self-service Desk manuals if you want to add the account to your own devices.\n\nNote: during your studies at the Maastricht Science Programme you are expected to use only your UM student e-mail address for correspondence with the University and staff.",
+      "a": "Maastricht University gives every student a personal e-mail account. Most student e-mail addresses follow the same pattern:\n\ninitials.lastname@student.maastrichtuniversity.nl\n\nYour access details (username and password) were sent to your private e-mail address by ICT Services when your account was created. Log in to your UM webmail at https://mail.maastrichtuniversity.nl. You will be asked for Multi-Factor Authentication as part of the login. If you want to add the account to your phone or laptop, the setup manuals are on the ICTS Self-Service Portal at https://servicedesk.icts.maastrichtuniversity.nl/tas/public/index.jsp (you need to be logged in to see them).\n\nNote: during your studies at the Maastricht Science Programme you are expected to use only your UM student e-mail address for correspondence with the University and staff.",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Account Access & Login Issues",
       "tags": [
         "password"
-      ],
-      "note": "confirm the current UM student webmail login URL"
+      ]
     },
     {
       "id": "i-cannot-log-in-to-my-um-email-account",
@@ -4281,25 +4282,24 @@
     {
       "id": "my-name-is-not-correct-on-my-um-email-student-portal-canvas--2",
       "q": "My name is not correct on my UM email/Student Portal/Canvas. Who should I contact to correct it?",
-      "a": "Your name in UM systems (your UM email, the Student Portal, and Canvas) is drawn from your central UM registration record. If it is shown incorrectly, contact the ICTS Servicedesk so it can be corrected at the source, after which it will update across the connected systems.",
+      "a": "Your name in UM systems (your UM email, the Student Portal, and Canvas) is drawn from your central UM registration record, so it cannot be fixed in those systems themselves. The record is held by the Student Service Centre, so that is where to go: study@maastrichtuniversity.nl or +31 (0)43 388 5388. Once it is corrected at the source it updates across the connected systems. The ICTS Servicedesk cannot change it for you.\n\nIf you are registered with a Dutch municipality, your details come from the municipal records database (BRP), so a lasting change has to be made at the municipality. A change made only at the SSC gets overwritten at the next sync. If you are not registered with a Dutch municipality, the SSC works from your passport or ID.",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Account Access & Login Issues",
       "tags": [
         "registration",
-        "canvas"
-      ],
-      "note": "confirm whether name corrections go through ICTS Servicedesk or the Student Service Centre / Registration, and the current contact route"
+        "canvas",
+        "municipality"
+      ]
     },
     {
       "id": "i-am-facing-ict-and-or-multi-factor-authentication-problems--2",
       "q": "I am facing ICT and/or Multi-Factor Authentication problems. Who can I contact?",
-      "a": "For any ICT problem, including Multi-Factor Authentication (MFA) issues such as a lost or changed phone, a new device, or authentication codes that are not working, contact the ICTS Servicedesk. They can help you reset or re-register your MFA method and restore access to your account.",
+      "a": "For any ICT problem, including Multi-Factor Authentication (MFA) issues such as a lost or changed phone, a new device, or authentication codes that are not working, contact the ICTS Servicedesk. They can help you reset or re-register your MFA method and restore access to your account.\n\n- Phone: +31 43 388 5555, Monday to Friday 08:00 to 17:00. They close at 16:00 on every second and fourth Thursday of the month.\n- ICTS Self-Service Portal: https://servicedesk.icts.maastrichtuniversity.nl/tas/public/index.jsp\n- General MFA information: https://www.maastrichtuniversity.nl/mfa\n- In person: the ICTS front offices in the UM Library at Grote Looiersstraat 17 and Universiteitssingel 50, Monday to Friday 10:30 to 17:00.\n\nIf you are locked out and cannot reach the portal, use the phone number or walk up to a front office.",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Account Access & Login Issues",
-      "tags": [],
-      "note": "confirm the current ICTS Servicedesk contact details and the MFA reset/self-service link"
+      "tags": []
     },
     {
       "id": "how-can-i-connect-to-the-um-wifi",
@@ -4327,14 +4327,13 @@
     {
       "id": "if-i-need-support-with-logging-in-to-the-student-portal-maki-2",
       "q": "If I need support with logging in to the Student Portal, making copies, printing, logging into the WiFi, or any other tech related issue, who do I check with?",
-      "a": "For all technical questions, including logging into the Student Portal, copying and printing, connecting to the WiFi, and any other IT issue, contact the ICTS Servicedesk. Many of these topics are also covered by self-service manuals on the ICTS Self-service Desk, which is a good first place to look.\n\n---\n\n---",
+      "a": "For all technical questions, including logging into the Student Portal, copying and printing, connecting to the WiFi, and any other IT issue, contact the ICTS Servicedesk on +31 43 388 5555 (Monday to Friday 08:00 to 17:00, closing at 16:00 every second and fourth Thursday of the month). You can also walk up to an ICTS front office in the UM Library at Grote Looiersstraat 17 or Universiteitssingel 50, Monday to Friday 10:30 to 17:00.\n\nMany of these topics are already covered by the manuals on the ICTS Self-Service Portal at https://servicedesk.icts.maastrichtuniversity.nl/tas/public/index.jsp, which is a good first place to look. You need to log in to view them.\n\n---\n\n---",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Technical Services & Resources",
       "tags": [
         "wifi"
-      ],
-      "note": "confirm the current ICTS Servicedesk and Self-service Desk links"
+      ]
     },
     {
       "id": "where-are-the-msp-buildings",

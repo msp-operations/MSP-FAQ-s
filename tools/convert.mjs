@@ -6,9 +6,15 @@
 //  To change an ANSWER, edit the master document, not this file.
 // ─────────────────────────────────────────────────────────────────────────
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Resolve the output next to the repo root (tools/..), not an absolute path.
+// The project moved into Operations\Projects\ and a hardcoded OUT broke silently.
+const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const SRC = 'c:/dev/MSP/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md';
-const OUT = 'c:/dev/Operations/FAQ/Github Repo/content.json';
+const OUT = path.join(REPO, 'content.json');
 
 const raw = fs.readFileSync(SRC, 'utf8');
 const lines = raw.split(/\r?\n/);
