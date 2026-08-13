@@ -1429,7 +1429,7 @@
     {
       "id": "who-handles-internship-agreements-and-proof-that-i-am-allowe",
       "q": "Who handles internship agreements and proof that I am allowed to intern?",
-      "a": "ESD does not arrange internships and does not sign learning agreements. MSP does not offer internships for ECTS, so an internship is extracurricular. For a learning agreement or study abroad, contact the International Relations Office (msp-iro@maastrichtuniversity.nl). For proof of enrolment, contact the SSC (study@maastrichtuniversity.nl). For lab safety or qualification proof, contact the lab coordinator. If your internship is part of your BTR, the BTR Office (msp-btr@maastrichtuniversity.nl) uses its own agreement.",
+      "a": "ESD does not arrange internships and does not sign learning agreements. MSP does not offer internships for ECTS, so an internship is extracurricular. For a learning agreement or study abroad, contact the International Relations Office (fse-iro@maastrichtuniversity.nl). For proof of enrolment, contact the SSC (study@maastrichtuniversity.nl). For lab safety or qualification proof, contact the lab coordinator. If your internship is part of your BTR, the BTR Office (msp-btr@maastrichtuniversity.nl) uses its own agreement.",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Additional questions",
@@ -2624,7 +2624,7 @@
     {
       "id": "how-do-erasmus-grants-and-scholarships-work-and-who-decides",
       "q": "How do Erasmus+ grants and scholarships work, and who decides?",
-      "a": "Only after the BTR Office approves your BTR do you contact the International Relations Office (IRO) with a copy of your approval. All grant and funding decisions are made by the IRO, not the BTR Office, on a case-by-case basis. Erasmus+ is for partner universities in the EU and UK (not your home country); for non-EU destinations an NL Scholarship may be available. The IRO confirms what you qualify for and handles the deadlines. Contact msp-iro@maastrichtuniversity.nl.",
+      "a": "Only after the BTR Office approves your BTR do you contact the International Relations Office (IRO) with a copy of your approval. All grant and funding decisions are made by the IRO, not the BTR Office, on a case-by-case basis. Erasmus+ is for partner universities in the EU and UK (not your home country); for non-EU destinations an NL Scholarship may be available. The IRO confirms what you qualify for and handles the deadlines. Contact fse-iro@maastrichtuniversity.nl.",
       "topic": "Thesis (BTR)",
       "office": "btr",
       "category": "Going abroad for the BTR",
@@ -2713,7 +2713,7 @@
     {
       "id": "who-do-i-contact-for-what-2",
       "q": "Who do I contact for what?",
-      "a": "- General BTR questions, extensions, problems, documents and deadlines: msp-btr@maastrichtuniversity.nl\n- Grants while abroad (Erasmus+ or scholarships): msp-iro@maastrichtuniversity.nl\n- Thesis or proposal content: your Research Supervisor or Internal Advisor\n- Graduation decision, diploma, additional-module approval: Board of Examiners and ESD\n\nYour written thesis and its assessment are kept for seven years (EER 5.11).\n\n---",
+      "a": "- General BTR questions, extensions, problems, documents and deadlines: msp-btr@maastrichtuniversity.nl\n- Grants while abroad (Erasmus+ or scholarships): fse-iro@maastrichtuniversity.nl\n- Thesis or proposal content: your Research Supervisor or Internal Advisor\n- Graduation decision, diploma, additional-module approval: Board of Examiners and ESD\n\nYour written thesis and its assessment are kept for seven years (EER 5.11).\n\n---",
       "topic": "Thesis (BTR)",
       "office": "btr",
       "category": "Extensions, problems and contact",
@@ -3460,7 +3460,7 @@
     {
       "id": "who-do-i-contact-about-a-semester-abroad",
       "q": "Who do I contact about a semester abroad?",
-      "a": "The MSP International Relations Office is your first point of contact for the semester abroad and exchanges. General queries and correspondence go through the MSP IRO mailbox at msp-iro@maastrichtuniversity.nl. Since 2025 the learning agreements for exchanges to European partners are handled through the Erasmus Office.",
+      "a": "The MSP International Relations Office is your first point of contact for the semester abroad and exchanges. General queries and correspondence go through the MSP IRO mailbox at fse-iro@maastrichtuniversity.nl. Since 2025 the learning agreements for exchanges to European partners are handled through the Erasmus Office.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Who to Contact and When",
@@ -3534,15 +3534,14 @@
     {
       "id": "what-are-the-eligibility-requirements-for-going-abroad",
       "q": "What are the eligibility requirements for going abroad?",
-      "a": "To be eligible, you must:\n\n- Be registered as a full-time student at MSP.\n- Have a GPA of 7.0 or higher (see the GPA note below).\n- Have completed at least 85 ECTS credits by the 4th semester or 115 ECTS credits by the 5th semester.\n- Be proficient in the language of instruction at the host institution at the B2 level.",
+      "a": "To be eligible, you must:\n\n- Be registered as a full-time student at MSP.\n- Have a GPA of 7.0 or higher (see the GPA note below).\n- Have completed at least 85 ECTS credits by the 4th semester or 115 ECTS credits by the 5th semester.\n- Be proficient in the language of instruction at the host institution at the B2 level.\n\nCheck the exact eligibility thresholds with the IRO before you count on them. Different figures for the GPA cutoff have been in circulation, and the language requirement can also depend on what your host institution asks for. The IRO is now run centrally at FSE and is the authority on the current rules: fse-iro@maastrichtuniversity.nl.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Eligibility and Requirements",
       "tags": [
         "abroad",
         "ects"
-      ],
-      "note": "GPA-cutoff discrepancy. The Board of Examiners approval tool used to screen semester-abroad applications applies a GPA gate of at least 6.5, while the published eligibility list above states 7.0. Confirm which figure is the correct published cutoff for students. Also confirm whether the B2 language requirement is fixed or set per host institution."
+      ]
     },
     {
       "id": "what-should-i-consider-when-choosing-my-destination",
@@ -3556,19 +3555,16 @@
     {
       "id": "how-is-my-eligibility-checked-and-what-exactly-are-the-thres",
       "q": "How is my eligibility checked, and what exactly are the thresholds?",
-      "a": "Eligibility is actively enforced: applications have been cancelled in the past for insufficient GPA or too few credits. The Board of Examiners approval tool used for the semester abroad applies gates of a GPA of at least 6.5 and at least 85 of 90 credits for a 4th-semester start, or at least 115 of 120 credits for a 5th-semester start. See the GPA note above for the discrepancy between the tool cutoff (6.5) and the published eligibility list (7.0).",
+      "a": "Eligibility is actively enforced: applications have been cancelled in the past for insufficient GPA or too few credits. Credit requirements have been at least 85 of 90 credits for a 4th-semester start, or at least 115 of 120 credits for a 5th-semester start. Confirm the current thresholds with the IRO at fse-iro@maastrichtuniversity.nl, since the office is now run centrally at FSE and the figures that circulated within MSP are not necessarily the ones applied now.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Eligibility and Requirements",
-      "tags": [
-        "abroad",
-        "exam"
-      ]
+      "tags": []
     },
     {
       "id": "what-is-the-application-process-for-the-semester-abroad",
       "q": "What is the application process for the semester abroad?",
-      "a": "You apply through the Semester Abroad Application form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-application. It is used to apply to one of MSP's partner universities for the 4th or 5th semester of your studies. The form runs in five steps (start, study, university choice, upload information, completed), you rank your host preferences and provide a motivation letter and transcript, and the IRO reviews your request and tells you the outcome by email. Before you submit, read the Semester Abroad Guide and check you meet the academic requirements.\n\nIf the university you have in mind is **not** on the partner list, contact the International Relations Office to look at applying as a free mover instead.\n\nConfirmed deadlines: the Erasmus+ grant application is due at least 6 weeks before your semester abroad starts (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-erasmus-grant-application, and late or incomplete applications are not considered), the NL Scholarship for non-EEA destinations is due 1 July, and the module-approval sheet is due at least 8 weeks before you leave.",
+      "a": "You apply through the Semester Abroad Application form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-application. It is used to apply to one of MSP's partner universities for the 4th or 5th semester of your studies. The form runs in five steps (start, study, university choice, upload information, completed), you rank your host preferences and provide a motivation letter and transcript, and the IRO reviews your request and tells you the outcome by email. Before you submit, read the Semester Abroad Guide and check you meet the academic requirements.\n\nIf the university you have in mind is **not** on the partner list, contact the International Relations Office to look at applying as a free mover instead.\n\nDeadlines stated on the forms themselves: the Erasmus+ grant application is due at least 6 weeks before your semester abroad starts (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-erasmus-grant-application, and late or incomplete applications are not considered), the NL Scholarship for non-EEA destinations is due 1 July, and the module-approval sheet is due at least 8 weeks before you leave.\n\nThe application form itself does not state a deadline, and the documents you have to upload are not listed until you are in the form. Confirm both with the IRO at fse-iro@maastrichtuniversity.nl before you plan around them.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Application Process",
@@ -3577,8 +3573,7 @@
         "abroad",
         "deadline",
         "scholarship"
-      ],
-      "note": "confirm the deadline for the Semester Abroad Application form itself (our text says 1 December for Fall and 1 July for Spring, but the form does not state one) and the exact document set required at the upload step. IRO."
+      ]
     },
     {
       "id": "how-many-host-universities-do-i-list-on-the-application-form",
@@ -3603,7 +3598,7 @@
     {
       "id": "which-universities-can-i-go-to",
       "q": "Which universities can I go to?",
-      "a": "MSP has roughly two dozen destinations across about thirteen countries. The list is confirmed each exchange cycle, so check with the IRO for this year's partners and available places. Recent destinations include:\n\n| Country | Destinations |\n| --- | --- |\n| United Kingdom | Bath, Glasgow, York |\n| Switzerland | EPFL |\n| France | Sorbonne, Bordeaux |\n| Spain | Pompeu Fabra, Navarra |\n| Italy | Trento, Bicocca (Milan) |\n| Australia | UNSW, UTS, QUT, Monash, UQ, UWA (Perth) |\n| New Zealand | Waikato |\n| Canada | McGill, Montreal |\n| United States | UC, UVA |\n| Japan | Kyoto |\n| Hong Kong | CUHK, City University |\n| South Korea | SKKU |\n| Turkey | Boğaziçi |\n| Mexico | Tec de Monterrey |\n| Ecuador | USFQ (Galápagos) |\n| South Africa | Stellenbosch (free-mover) |\n\nNew partners added for the 2026 intake include McGill, Deakin, UiT Arctic and Navarra.\n\nSee the current partner list and the MSP grade and credits conversion table on the Going abroad for Exchange page: https://intranet.maastrichtuniversity.nl/en/msp-students/going-abroad-exchange.",
+      "a": "MSP has roughly two dozen destinations across about thirteen countries. The list is confirmed each exchange cycle, so check with the IRO for this year's partners and available places. Recent destinations include:\n\n| Country | Destinations |\n| --- | --- |\n| United Kingdom | Bath, Glasgow, York |\n| Switzerland | EPFL |\n| France | Sorbonne, Bordeaux |\n| Spain | Pompeu Fabra, Navarra |\n| Italy | Trento, Bicocca (Milan) |\n| Australia | UNSW, UTS, QUT, Monash, UQ, UWA (Perth) |\n| New Zealand | Waikato |\n| Canada | McGill, Montreal |\n| United States | UC, UVA |\n| Japan | Kyoto |\n| Hong Kong | CUHK, City University |\n| South Korea | SKKU |\n| Turkey | Boğaziçi |\n| Mexico | Tec de Monterrey |\n| Ecuador | USFQ (Galápagos) |\n| South Africa | Stellenbosch (free-mover) |\n\nNew partners added for the 2026 intake include McGill, Deakin, UiT Arctic and Navarra.\n\nSee the current partner list and the MSP grade and credits conversion table on the Going abroad for Exchange page: https://intranet.maastrichtuniversity.nl/en/msp-students/going-abroad-exchange.\n\nWhich destinations are formal exchange partners, which run as one-off free-mover placements, and how many places exist this year all change from year to year. Ask the IRO at fse-iro@maastrichtuniversity.nl for the current position rather than relying on last year's list.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Partner Universities and Destinations",
@@ -3611,8 +3606,7 @@
         "grade",
         "abroad",
         "exchange"
-      ],
-      "note": "which destinations are tuition-waiver exchange partners vs one-off free-mover placements, and this year's places."
+      ]
     },
     {
       "id": "what-documents-do-i-need-before-going-abroad",
@@ -3708,15 +3702,15 @@
     {
       "id": "what-if-i-earn-fewer-than-30-credits-abroad",
       "q": "What if I earn fewer than 30 credits abroad?",
-      "a": "A semester abroad is meant to replace a full 30-credit MSP semester, so you plan for 30 ECTS. If you return with fewer, you would have a gap to make up in the rest of your programme.",
+      "a": "A semester abroad is meant to replace a full 30-credit MSP semester, so you plan for 30 ECTS. If you return with fewer, you would have a gap to make up in the rest of your programme.\n\nIf it looks like you will come back short, raise it early rather than on your return. How a shortfall is resolved depends on the case, and it is the IRO who works it through with you and the Board of Examiners: fse-iro@maastrichtuniversity.nl.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Credit Recognition and Transfer",
       "tags": [
         "abroad",
+        "exam",
         "ects"
-      ],
-      "note": "the sources do not document the exact handling of a semester abroad that comes back under 30 ECTS. Confirm how the office resolves a shortfall, for example partial booking, additional modules on return, or a repair route."
+      ]
     },
     {
       "id": "is-there-a-limit-on-how-many-credits-i-can-earn-outside-msp",
@@ -3733,7 +3727,7 @@
     {
       "id": "what-should-i-do-if-i-face-an-emergency-while-abroad",
       "q": "What should I do if I face an emergency while abroad?",
-      "a": "In case of an emergency, contact the MSP International Relations Office by email at msp-iro@maastrichtuniversity.nl. For urgent situations, you can also reach the Maastricht University emergency phone number: +31 43 388 4444. [Confirm the current IRO mailbox and emergency number are still in use for AY 2025-2026.]",
+      "a": "In case of an emergency, contact the MSP International Relations Office by email at fse-iro@maastrichtuniversity.nl. For urgent situations, you can also reach the Maastricht University emergency phone number: +31 43 388 4444. [Confirm the current IRO mailbox and emergency number are still in use for AY 2025-2026.]",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "During and After Your Semester Abroad",
@@ -3990,7 +3984,7 @@
     {
       "id": "who-do-i-contact-for-what-3",
       "q": "Who do I contact for what?",
-      "a": "Academic Advising handles course planning and curriculum choices. For everything else, use the right contact below so your request reaches the people who can act on it. Pick one mailbox and wait for the reply rather than emailing several at once.\n\n- General questions, front desk and forms: Education Support Department (ESD), msp-educationsupport@maastrichtuniversity.nl (PHS B0.005). Reply within 2 working days.\n- Course planning and curriculum choices: your Academic Advisor, or Academic Advising (Chris Pawley), msp-academicadvising@maastrichtuniversity.nl\n- Exams, exam registration and results issues: Exams Office, msp-exams@maastrichtuniversity.nl\n- Requests and decisions on the rules (additional module, external study, credit transfer, exemptions, appeals): Board of Examiners, msp-boe@maastrichtuniversity.nl\n- Bachelor Thesis Research (BTR): msp-btr@maastrichtuniversity.nl\n- Personal circumstances, wellbeing, study doubts and planning: Student Counsellor, msp-counsellors@maastrichtuniversity.nl\n- Semester abroad and exchange: International Relations Office (IRO), contact person Luc Giezenaar\n- Graduation and certificates: Secretariat, msp-secretariat@maastrichtuniversity.nl\n- Admissions questions: msp-admissions@maastrichtuniversity.nl",
+      "a": "Academic Advising handles course planning and curriculum choices. For everything else, use the right contact below so your request reaches the people who can act on it. Pick one mailbox and wait for the reply rather than emailing several at once.\n\n- General questions, front desk and forms: Education Support Department (ESD), msp-educationsupport@maastrichtuniversity.nl (PHS B0.005). Reply within 2 working days.\n- Course planning and curriculum choices: your Academic Advisor, or Academic Advising (Chris Pawley), msp-academicadvising@maastrichtuniversity.nl\n- Exams, exam registration and results issues: Exams Office, msp-exams@maastrichtuniversity.nl\n- Requests and decisions on the rules (additional module, external study, credit transfer, exemptions, appeals): Board of Examiners, msp-boe@maastrichtuniversity.nl\n- Bachelor Thesis Research (BTR): msp-btr@maastrichtuniversity.nl\n- Personal circumstances, wellbeing, study doubts and planning: Student Counsellor, msp-counsellors@maastrichtuniversity.nl\n- Semester abroad and exchange: International Relations Office (IRO), now run centrally at FSE, fse-iro@maastrichtuniversity.nl\n- Graduation and certificates: Secretariat, msp-secretariat@maastrichtuniversity.nl\n- Admissions questions: msp-admissions@maastrichtuniversity.nl",
       "topic": "Courses & Registration",
       "office": "aa",
       "category": "General Information",
@@ -4203,7 +4197,7 @@
     {
       "id": "what-is-the-btr-and-when-can-i-start-it",
       "q": "What is the BTR, and when can I start it?",
-      "a": "The Bachelor Thesis Research (BTR) is the 30-credit project that concludes your MSP degree, done in your final semester. To start it you need at least 145 credits, of which at most 12.5 credits and one project may still be under grading, and you may take at most one other module alongside the BTR. A few more things to plan around:\n\n- Meet your Academic Advisor to confirm your credits before you apply.\n- The Request-to-Start approval takes at least 3 weeks, so apply in good time.\n- A BTR Q&A session runs twice a year, in November and February.\n- The BTR cannot be exempted and does not count toward the 120-credit own-catalogue minimum.\n- It is assessed by at least two assessors, at least one from your own programme (EER 5.7).\n- If you do your BTR abroad, contact msp-iro@maastrichtuniversity.nl after approval, complete the mandatory Emergency Contact form before you leave, and note the Erasmus grant is EU-only.\n\nFor questions specific to the thesis, use msp-btr@maastrichtuniversity.nl.\n\nFor how you choose your topic, discipline and supervisor, and what the proof of correspondence must contain, see the Bachelor Thesis Research section of this FAQ and the dashboard at msp-btr.nl.",
+      "a": "The Bachelor Thesis Research (BTR) is the 30-credit project that concludes your MSP degree, done in your final semester. To start it you need at least 145 credits, of which at most 12.5 credits and one project may still be under grading, and you may take at most one other module alongside the BTR. A few more things to plan around:\n\n- Meet your Academic Advisor to confirm your credits before you apply.\n- The Request-to-Start approval takes at least 3 weeks, so apply in good time.\n- A BTR Q&A session runs twice a year, in November and February.\n- The BTR cannot be exempted and does not count toward the 120-credit own-catalogue minimum.\n- It is assessed by at least two assessors, at least one from your own programme (EER 5.7).\n- If you do your BTR abroad, contact fse-iro@maastrichtuniversity.nl after approval, complete the mandatory Emergency Contact form before you leave, and note the Erasmus grant is EU-only.\n\nFor questions specific to the thesis, use msp-btr@maastrichtuniversity.nl.\n\nFor how you choose your topic, discipline and supervisor, and what the proof of correspondence must contain, see the Bachelor Thesis Research section of this FAQ and the dashboard at msp-btr.nl.",
       "topic": "Courses & Registration",
       "office": "aa",
       "category": "Additional questions",
