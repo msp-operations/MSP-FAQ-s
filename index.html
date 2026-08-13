@@ -446,7 +446,6 @@
 <button class="toTop" id="toTop" aria-label="Back to top"><span id="topIcon"></span></button>
 
 <footer class="wrap">
-  This tool runs on your device. Your transcript is read locally and never uploaded.<br>
   Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.
   <details class="privacy">
     <summary>Privacy</summary>
@@ -792,10 +791,11 @@ function qHtml(f){
     <button class="qq" aria-expanded="false" aria-controls="qa-${f.id}" onclick="toggleQ(this)">${esc(f.q)}<span class="chev">${svg('_chev')}</span></button>
     <div class="qa" id="qa-${f.id}" role="region">${mdToHtml(f.a)}
       <div class="abadge"><span class="pill">${esc(off.name||f.office)}</span>${contact}${copy}</div>${note}${related}
-      <div class="helpful">Was this helpful?
-        <button onclick="event.stopPropagation();announce('Thanks')">Yes</button>
-        <button onclick="event.stopPropagation();logGap('(unhelpful) '+'${f.id}')">No</button></div>
     </div></div>`;
+    /* The "Was this helpful? Yes / No" row used to sit here. It was removed on
+       13 Aug 2026 because it told students "Thanks, that helps us" while only
+       writing to their own browser, so nobody ever received a single vote.
+       Bring it back only once the answers go somewhere we can actually read. */
 }
 /* The whole open/close mechanism: one class on the .qitem. The CSS does the
    rest, including hiding the collapsed answer from the tab order. */

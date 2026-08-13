@@ -63,12 +63,15 @@ swap(`  let data;
     if(cached&&cached.meta&&cached.meta.generated>EMBEDDED.meta.generated)data=cached;}catch(e){}`, 'content load');
 
 // 7. Footer: say what this copy is, add the refresh button.
-swap(`  This tool runs on your device. Your transcript is read locally and never uploaded.<br>`,
-  `  This is the offline copy of the MSP Student FAQ. It works without internet and picks up updated answers whenever you are online.<br>`, 'footer line');
+// One swap rather than two. The online footer used to open with a line about
+// the transcript being read locally; that line was removed from index.html on
+// 13 Aug 2026, so the offline notice is now prepended to the "Answers are a
+// guide" line instead of replacing a line of its own.
 swap(`  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.\n  <details class="privacy">`,
-  `  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.<br>
+  `  This is the offline copy of the MSP Student FAQ. It works without internet and picks up updated answers whenever you are online.<br>
+  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.<br>
   <button class="copy" id="refreshBtn" style="margin-top:8px">Check for new answers</button>
-  <details class="privacy">`, 'refresh button');
+  <details class="privacy">`, 'footer line and refresh button');
 
 // 7b. This copy checks msp-faqs.nl for fresher answers when it is opened online,
 //     which sends the reader's IP to the host. Say so, in this copy only.
