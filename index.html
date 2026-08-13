@@ -838,11 +838,29 @@ function ensurePdf(){return pdfReady||(pdfReady=new Promise((res,rej)=>{const s=
   s.onload=()=>{pdfjsLib.GlobalWorkerOptions.workerSrc='assets/vendor/pdf.worker.min.js';res();};
   s.onerror=()=>{pdfReady=null;rej(new Error('PDF_LOAD'));};
   document.head.appendChild(s);}));}
+/* ── TRANSCRIPT CHECK ON/OFF ──────────────────────────────────────────────
+   Set to true to bring the degree check back. When false, the "Load my
+   transcript" button is hidden and any previously saved card is not shown, so
+   students see a plain FAQ with no transcript feature at all.
+
+   Nothing is deleted when this is off: the parser, the consent dialog, the
+   rules engine and the welcome card are all still here and untested code does
+   not rot. Flipping this one value is the whole switch.
+
+   Turned OFF 13 Aug 2026 so the FAQ could be shared with students in a live
+   Q&A before the degree check was introduced to them.
+
+   Note this does NOT erase anything already stored on a student's own device
+   from earlier use. That is theirs to clear, and it reappears if this is
+   turned back on.                                                            */
+const TRANSCRIPT_ENABLED = false;
+
 /* The consent dialog sits between the button and the file picker: the student is
    told what happens to their data before any file is read, which is what GDPR
    Art.13 asks for. Closing it without choosing a file processes nothing. */
 const tcOpen=()=>{const m=$('#tconsent');m.setAttribute('open','');$('#tcGo').focus()};
 const tcClose=()=>{$('#tconsent').removeAttribute('open');$('#transcriptBtn').focus()};
+if(!TRANSCRIPT_ENABLED){$('#transcriptBtn').hidden=true;$('#transcriptBtn').setAttribute('aria-hidden','true');}
 $('#transcriptBtn').onclick=tcOpen;
 $('#tcCancel').onclick=tcClose;
 $('#tcGo').onclick=()=>{$('#tconsent').removeAttribute('open');$('#pdff').click()};
@@ -855,7 +873,7 @@ $('#pdff').onchange=async e=>{const file=e.target.files[0];if(!file)return;
     localStorage.setItem('faqStudent',JSON.stringify(state.student));renderWelcome();announce('Transcript loaded');
   }catch(err){alert(err.message==='NOT_MSP'?'This does not look like an MSP transcript.':err.message==='SCAN'?'This PDF has no readable text (is it a scan?).':'Could not read this file.');}
 };
-function restoreStudent(){const s=localStorage.getItem('faqStudent');if(s){state.student=JSON.parse(s);renderWelcome();}}
+function restoreStudent(){if(!TRANSCRIPT_ENABLED)return;const s=localStorage.getItem('faqStudent');if(s){state.student=JSON.parse(s);renderWelcome();}}
 function renderWelcome(){const s=state.student;if(!s){$('#welcome').className='welcome';return;}
   const first=(s.name||'there').split(' ')[0];
   const n=forYou(s);
