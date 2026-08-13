@@ -361,7 +361,7 @@
     {
       "id": "what-are-the-introduction-days-and-when-do-they-take-place",
       "q": "What are the Introduction Days and when do they take place?",
-      "a": "The Introduction Days are the compulsory welcome and onboarding programme for new MSP students. For the September 2026 intake they run over three days, **Monday 24 August to Wednesday 26 August 2026**, immediately before the start of the academic year, and they get you set up with the practical and academic essentials before teaching begins.\n\nAcross the three days you can expect buddy introduction sessions, a welcome speech and the MSP Fair, a speech from the Dean, tours of the PHS and Randwyck buildings, your first taste of PBL (problem-based learning) tutorials, and sessions on safety, on how MSP is organised and on studying effectively. Attendance is compulsory, so plan your arrival in Maastricht around it.\n\nYou are asked to complete a mandatory response form confirming your attendance and arrival details.\n\nIf a question comes up during onboarding, route it to the right place: admissions and payment matters to the admissions team, course and registration questions to Academic Advising and ESD, and housing to the Student Service Centre.",
+      "a": "The Introduction Days are the compulsory welcome and onboarding programme for new MSP students. For the September 2026 intake they run over three days, **Monday 24 August to Wednesday 26 August 2026**, immediately before the start of the academic year, and they get you set up with the practical and academic essentials before teaching begins.\n\nAcross the three days you can expect buddy introduction sessions, a welcome speech and the MSP Fair, a speech from the Dean, tours of the PHS and Randwyck buildings, your first taste of PBL (problem-based learning) tutorials, and sessions on safety, on how MSP is organised and on studying effectively. Attendance is compulsory, so plan your arrival in Maastricht around it.\n\nYou are asked to complete a mandatory response form confirming your attendance and arrival details. ESD sends this out by email ahead of the programme, so watch your inbox, and check your spam folder if you have not seen it.\n\nIf a question comes up during onboarding, route it to the right place: admissions and payment matters to the admissions team, course and registration questions to Academic Advising and ESD, and housing to the Student Service Centre.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "The Introduction Days",
@@ -369,8 +369,7 @@
         "housing",
         "registration",
         "attendance"
-      ],
-      "note": "add the current response-form link for the coming intake (Heather/ESD)."
+      ]
     },
     {
       "id": "what-is-the-buddy-or-peer-mentor-programme-and-how-do-i-join",
@@ -1062,8 +1061,7 @@
       "tags": [
         "exam",
         "attendance"
-      ],
-      "note": "route and form confirmed 13 Aug 2026. Still pending: LoA is moving from the BoE to ESD (Katja, Jul 2026; Eva reworking the process), so revisit the wording once that lands, and reconcile the separate LoA answers under Study Advising and Academic Advising. Separately, the intranet LoA form cites EER 7.9, which does not exist in the 25-26 EER body (numbering error in the EER's own table of contents); we state 7.8. Raise with Management/Eva."
+      ]
     },
     {
       "id": "after-a-leave-of-absence-how-and-when-can-i-return-to-my-stu",
@@ -1750,8 +1748,7 @@
         "graduation",
         "exam",
         "ects"
-      ],
-      "note": "Katja's replacement text ends \"follow the correct procedure, as described here\", but the link behind \"here\" did not survive the plain-text email. Ask her for the target page and add it."
+      ]
     },
     {
       "id": "i-would-like-to-take-a-module-i-e-course-skill-project-along",
