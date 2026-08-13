@@ -30,7 +30,7 @@ const OFFICES = [
   { m: 'Bachelor Thesis Research',         key: 'btr',        name: 'BTR Office',                    mailbox: 'msp-btr@maastrichtuniversity.nl' },
   { m: 'Study Advising and Student Counsellor', key: 'counsellor', name: 'Student Counsellor',        mailbox: 'msp-counsellors@maastrichtuniversity.nl' },
   { m: 'Exams Office',                      key: 'exams',      name: 'Exams Office',                  mailbox: 'msp-exams@maastrichtuniversity.nl' },
-  { m: 'International Relations Office',    key: 'iro',        name: 'International Relations Office', mailbox: 'msp-educationsupport@maastrichtuniversity.nl' },
+  { m: 'International Relations Office',    key: 'iro',        name: 'International Relations Office', mailbox: 'fse-iro@maastrichtuniversity.nl' },
   { m: 'Academic Advising',                key: 'aa',         name: 'Academic Advising',             mailbox: 'msp-academicadvising@maastrichtuniversity.nl' },
   { m: 'ICTS',                             key: 'icts',       name: 'ICTS Servicedesk',              mailbox: '' },
   { m: 'Other MSP topics',                 key: 'msp',        name: 'MSP',                           mailbox: 'msp-educationsupport@maastrichtuniversity.nl' },
