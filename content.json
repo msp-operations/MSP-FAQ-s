@@ -228,15 +228,15 @@
     {
       "id": "which-international-diplomas-count-as-equivalent-to-vwo",
       "q": "Which international diplomas count as equivalent to VWO?",
-      "a": "An international diploma is accepted if it is equivalent to the Dutch VWO and shows the required science and mathematics background. Diplomas MSP recognises include the International Baccalaureate (IB), the European Baccalaureate (EB) and the German Abitur. Grades from foreign diplomas are converted to the Dutch system as part of the assessment. Because the exact requirements differ per country and diploma, the Student Services Centre confirms whether your specific qualification qualifies.",
+      "a": "An international diploma is accepted if it is equivalent to the Dutch VWO and shows the required science and mathematics background. Diplomas MSP recognises include the International Baccalaureate (IB), the European Baccalaureate (EB) and the German Abitur. Grades from foreign diplomas are converted to the Dutch system as part of the assessment. Because the exact requirements differ per country and diploma, the Student Services Centre confirms whether your specific qualification qualifies.\n\nThe full admission requirements, including which diplomas give access and the subjects you need, are on the MSP admission page: https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements. For a decision on your own diploma and country, contact msp-admissions@maastrichtuniversity.nl.",
       "topic": "Getting In",
       "office": "admissions",
       "category": "Entry requirements",
       "tags": [
         "grade",
-        "diploma"
-      ],
-      "note": "whether a public list of accepted diplomas and required subjects per country should be linked here."
+        "diploma",
+        "ects"
+      ]
     },
     {
       "id": "i-do-not-have-a-vwo-diploma-or-the-required-subjects-can-i-s",
@@ -299,12 +299,11 @@
     {
       "id": "is-there-a-limit-on-the-number-of-students-admitted",
       "q": "Is there a limit on the number of students admitted?",
-      "a": "Yes. MSP is a selective programme and the Faculty Board sets a cap on the number of places each year, so meeting the entry requirements does not by itself guarantee a place. This is one reason applications are reviewed on a rolling basis and why you should apply and complete your interview early. The cap is roughly 275 places.",
+      "a": "Yes. MSP has a limited intake and runs a selection procedure, because it is a small-scale, intensive programme built around an international classroom. Taking part in that selection procedure successfully is a condition of admission, so meeting the entry requirements does not by itself guarantee you a place. This is one reason applications are reviewed on a rolling basis and why you should apply and complete your interview early.\n\nThe number of places changes from year to year. Admissions can tell you where things stand for your intake: msp-admissions@maastrichtuniversity.nl.",
       "topic": "Getting In",
       "office": "admissions",
       "category": "Selection procedure",
-      "tags": [],
-      "note": "confirm the exact cap for the coming year; internal notes mention roughly 275 as a building and safety limit, but this figure changes per year and should be verified before publishing."
+      "tags": []
     },
     {
       "id": "who-decides-whether-i-am-admitted",
@@ -406,7 +405,7 @@
     {
       "id": "how-much-money-does-an-average-student-need-per-month-not-co",
       "q": "How much money does an average student need per month, not counting rent?",
-      "a": "This depends a lot on your habits. Some students spend as little as possible, cook every meal at home and rarely eat out. Others splurge, eat out a few times a week and order in. The breakdown below gives you a rough idea of monthly costs, but expect real numbers to vary from person to person.\n\n- **Groceries: around 300 euros.** It depends on where you shop. Lidl and Aldi are cheap for produce; Jan Linders, Jumbo and Albert Heijn are other common options. Most stores have a loyalty or reward card worth signing up for. Albert Heijn's \"bonuskaart\" is needed to get the discounts; Jumbo has reward cards but you still get the deals without one. You can also buy cheaper fruit and veg at the weekly market in front of the town hall, or at Turkish and Asian grocery stores.\n- **Study books and supplies: around 60 euros.** Depends on whether you buy physical textbooks, borrow from the library, or use PDFs. You can often buy cheaper second-hand textbooks through the study association Aperture or via Facebook. For cheap notebooks and pens, try Hema and Action. For nicer quality, there is the StudyStore on the Tongersestraat and the study stores in UNS40 and UNS50.\n- **Transport: around 50 euros.** This varies with how you get around. Biking is cheaper and usually the fastest way across Maastricht. Renting a bike (for example Swapfiets) costs more than buying a decent second-hand one. Most students bike to save money and spend almost nothing on transport unless they leave the city.\n- **Relaxation, going out and sports: around 180 euros.** Very personal. Some cafes are pricier than others and it adds up. Watch for student offers at restaurants and keep your university ID card handy for student discounts. For sports, UM Sports is the university-affiliated gym; Basic Fit and Anytime Fitness are options too but a bit more expensive.\n- **Clothes and shoes: around 70 euros.** Some months this is zero, but when something wears out or the season changes you will want to spend a little.\n- **Health insurance: around 130 to 140 euros.** This is the rough monthly price if you take out Dutch health insurance. Add-ons for glasses, dental or physiotherapy push it higher. If you have a low income (as most students do) you may qualify for a government healthcare allowance that covers most or nearly all of the cost. Note that you must have Dutch health insurance if you work here. See the Health Insurance section below for details. More info: My Maastricht, health insurance benefit page.",
+      "a": "This depends a lot on your habits. Some students spend as little as possible, cook every meal at home and rarely eat out. Others splurge, eat out a few times a week and order in. The breakdown below gives you a rough idea of monthly costs, but expect real numbers to vary from person to person.\n\n- **Groceries: around 300 euros.** It depends on where you shop. Lidl and Aldi are cheap for produce; Jan Linders, Jumbo and Albert Heijn are other common options. Most stores have a loyalty or reward card worth signing up for. Albert Heijn's \"bonuskaart\" is needed to get the discounts; Jumbo has reward cards but you still get the deals without one. You can also buy cheaper fruit and veg at the weekly market in front of the town hall, or at Turkish and Asian grocery stores.\n- **Study books and supplies: around 60 euros.** Depends on whether you buy physical textbooks, borrow from the library, or use PDFs. You can often buy cheaper second-hand textbooks through the study association Aperture or via Facebook. For cheap notebooks and pens, try Hema and Action. For nicer quality, there is the StudyStore on the Tongersestraat and the study stores in UNS40 and UNS50.\n- **Transport: around 50 euros.** This varies with how you get around. Biking is cheaper and usually the fastest way across Maastricht. Renting a bike (for example Swapfiets) costs more than buying a decent second-hand one. Most students bike to save money and spend almost nothing on transport unless they leave the city.\n- **Relaxation, going out and sports: around 180 euros.** Very personal. Some cafes are pricier than others and it adds up. Watch for student offers at restaurants and keep your university ID card handy for student discounts. For sports, UM Sports is the university-affiliated gym; Basic Fit and Anytime Fitness are options too but a bit more expensive.\n- **Clothes and shoes: around 70 euros.** Some months this is zero, but when something wears out or the season changes you will want to spend a little.\n- **Health insurance: around 155 to 165 euros a month in 2026.** This is the rough monthly price if you take out Dutch basic health insurance. Add-ons for glasses, dental or physiotherapy push it higher. If you have a low income (as most students do) you may qualify for the government healthcare allowance (zorgtoeslag), worth up to 129 euros a month in 2026, which covers most of the premium. Note that you must have Dutch health insurance if you work here. See the Health Insurance section below for details, and check current prices and providers at https://mymaastricht.nl/health/health-insurance/. The allowance is explained at https://mymaastricht.nl/finances/benefits/zorgtoeslag/.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Cost of Living",
@@ -414,17 +413,16 @@
         "exam",
         "insurance"
       ],
-      "note": "verify current figures, these date from an earlier intake (around 2021-2024) and prices have risen since | verify current monthly premium and My Maastricht link"
+      "note": "verify current figures, these date from an earlier intake (around 2021-2024) and prices have risen since"
     },
     {
       "id": "how-does-public-transport-work-in-the-netherlands",
       "q": "How does public transport work in the Netherlands?",
-      "a": "NS (NS Reizigers B.V.) is the national railway company. To use any public transport in the Netherlands you have three main options:\n\n- **Pay with your bank card.** You can tap your contactless bank card to pay on buses. For trains you can buy tickets from ticket machines or the NS app.\n- **Anonymous OV card.** A rechargeable card you top up at any OV-chipkaart point. It works on both buses and trains.\n- **Personalised OV-chipkaart.** With this card you can buy subscription tickets and load the student travel product if you receive Dutch student finance. Only European students are eligible for the student travel product.\n\nUseful apps: 9292 and NS both show bus and train times. Google Maps is also reliably accurate for general bus schedules. NS subscription options can be viewed on the NS website.",
+      "a": "NS (NS Reizigers B.V.) is the national railway company. To use public transport in the Netherlands you have three main options:\n\n- **Pay with your contactless bank card or phone (OVpay).** Tap in when you board and tap out when you get off, on buses and on trains. This is the simplest way to travel and needs no separate card. See https://www.ovpay.nl/en.\n- **Anonymous OV-chipkaart.** A rechargeable card you top up at an OV-chipkaart point. It works on both buses and trains.\n- **Personalised OV-chipkaart.** You need this one for season tickets and to load the student travel product, which is only available if you receive Dutch student finance. Only European students are eligible for the student travel product.\n\nUseful apps: 9292 and NS both show bus and train times (https://9292.nl and the NS app). Google Maps is also reliably accurate for general bus schedules. NS season tickets and travel subscriptions are listed at https://www.ns.nl/en/season-tickets.\n\nOne practical tip: most students in Maastricht cycle. The city is small enough that a bike is usually faster than the bus, and it is by far the cheapest way to get around.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Public Transport",
-      "tags": [],
-      "note": "add current OV-chipkaart and NS travel subscription links; note the OV-chipkaart is being phased out in favour of OVpay, confirm current situation"
+      "tags": []
     },
     {
       "id": "how-do-i-register-at-the-municipality",
@@ -455,15 +453,13 @@
     {
       "id": "what-type-of-health-insurance-do-i-need-if-i-am-not-from-the",
       "q": "What type of health insurance do I need if I am not from the Netherlands?",
-      "a": "Everyone living in the Netherlands needs some form of basic health insurance. What applies to you depends on where you are from and your situation:\n\n- **EU/EEA students:** Your home country insurance usually counts as basic cover, as long as you carry a valid EHIC card. In that case you generally do not need Dutch insurance.\n- **When Dutch insurance becomes required:** You must take out Dutch health insurance if any of the following apply: you do not have an EHIC card, you are over the age of 30, or you work in the Netherlands (any paid employment here triggers this requirement).\n- **Non-EU/EEA students:** International insurance such as AON (for example the AON Complete+ plan) is compulsory.\n\nThe mymaastricht.nl health insurance page walks you through exactly what you need, including a decision tree made by the International Student Helpdesk that covers the common cases: https://mymaastricht.nl/health/health-insurance/. For a side-by-side view of the different types of cover, see https://mymaastricht.nl/health/health-insurance/health-insurance-options/.",
+      "a": "Everyone living in the Netherlands needs some form of basic health insurance. What applies to you depends on where you are from and your situation:\n\n- **EU/EEA students:** Your home country insurance usually counts as basic cover, as long as you carry a valid EHIC card. In that case you generally do not need Dutch insurance.\n- **When Dutch insurance becomes required:** You must take out Dutch health insurance if any of the following apply: you do not have an EHIC card, you are over the age of 30, or you work in the Netherlands (any paid employment here triggers this requirement).\n- **Non-EU/EEA students:** You need private international health insurance that meets UM's minimum requirements. Aon Student Insurance is the provider UM points students to. See UM's page at https://www.maastrichtuniversity.nl/aon-student-insurance-non-dutch-students-0, and check the current plans and prices directly at https://www.aonstudentinsurance.com/en/country/the-netherlands. Note that if you take paid work here, or an internship paid at or above the legal minimum wage, you must switch to Dutch basic health insurance instead.\n\nThe mymaastricht.nl health insurance page walks you through exactly what you need, including a decision tree made by the International Student Helpdesk that covers the common cases: https://mymaastricht.nl/health/health-insurance/. For a side-by-side view of the different types of cover, see https://mymaastricht.nl/health/health-insurance/health-insurance-options/.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Health Insurance",
       "tags": [
-        "exam",
         "insurance"
-      ],
-      "note": "add current AON plan link and confirm the plan name is still Complete+"
+      ]
     },
     {
       "id": "is-there-a-study-association-and-what-does-it-offer",
@@ -1703,14 +1699,14 @@
     {
       "id": "my-name-is-wrong-on-my-um-record-or-card-who-corrects-it",
       "q": "My name is wrong on my UM record or card. Who corrects it?",
-      "a": "Your name and personal details in the university record are held by the Student Service Centre. If your name is spelled wrong or needs updating on your UM record or UMcard, contact the SSC at study@maastrichtuniversity.nl.\n\n---",
+      "a": "Your name and personal details in the university record are held by the Student Service Centre. If your name is spelled wrong or needs updating on your UM record or UMcard, contact the SSC at study@maastrichtuniversity.nl or +31 (0)43 388 5388.\n\nWhere the change has to be made depends on where you are registered. If you are registered with a Dutch municipality, your details are drawn from the municipal records database (BRP), so a lasting change has to be made at the municipality. A change made only at the SSC is temporary and gets overwritten at the next sync. If you are not registered with a Dutch municipality, the SSC works from your passport or ID card.\n\n---",
       "topic": "Money & Practical",
       "office": "ssc",
       "category": "Additional questions",
       "tags": [
-        "ects"
-      ],
-      "note": "confirm whether a formal name change also needs supporting documents (e.g. passport) via the SSC."
+        "ects",
+        "municipality"
+      ]
     },
     {
       "id": "what-is-meant-by-the-graduation-requirement-1-course-in-a-hu",
@@ -3859,8 +3855,7 @@
         "abroad",
         "exam",
         "ects"
-      ],
-      "note": "an older \"bijvakker\" procedure covered taking individual courses at another Dutch institution. Confirm whether \"bijvakker\" registration is still a separate route or is now folded into this external-module process."
+      ]
     },
     {
       "id": "what-is-credit-transfer-and-how-is-it-different-from-a-semes",
@@ -4239,14 +4234,13 @@
     {
       "id": "how-do-i-change-my-um-password",
       "q": "How do I change my UM password?",
-      "a": "You can change your UM password yourself through the 'My Account' portal. Log in with your UM credentials and follow the steps to set a new password. Choosing a password you can remember makes day-to-day login much easier. If you cannot reach the portal or the change does not work, contact the ICTS Servicedesk.",
+      "a": "You can change your UM password yourself through the My Account portal at https://myaccount.maastrichtuniversity.nl. Log in with your UM credentials and follow the steps to set a new password. Choosing a password you can remember makes day-to-day login much easier.\n\nIf you have forgotten your password and cannot log in at all, use the reset page directly at https://myaccount.maastrichtuniversity.nl/WebForms/ForgottenPassword.aspx. It does not need you to be logged in. If you registered an alternative email address in My Account, you can have the reset link sent there.\n\nYou can also manage your account from the ICTS Self-Service Portal once you are logged in. If none of this works, contact the ICTS Servicedesk on +31 43 388 5555, or visit an ICTS front office in the UM Library.",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Account Access & Login Issues",
       "tags": [
         "password"
-      ],
-      "note": "confirm the current 'My Account' portal URL"
+      ]
     },
     {
       "id": "how-do-i-log-into-my-um-email-account",
@@ -4304,25 +4298,24 @@
     {
       "id": "how-can-i-connect-to-the-um-wifi",
       "q": "How can I connect to the UM WiFi?",
-      "a": "The University offers free WiFi to all students in every UM building. There are two networks you can connect to: eduroam and UMnet. You can connect to both using your UM credentials (your Student ID and password). For step-by-step help setting this up on your devices, ICTS has manuals available through the ICTS Self-service Desk.",
+      "a": "The University offers free WiFi to all students in every UM building. Once you have a UM account you can get online in a few steps:\n\n1. Connect to the WiFi network **UMnet**.\n2. Log in as `i<student number>@unimaas.nl`, so the letter i followed by your student number. Use your UM password.\n3. Accept the certificate when you are asked to.\n4. You are online.\n\n**No UMnet visible?** Use the **eduroam** network instead. Everything else stays the same. Eduroam also gets you online at other universities worldwide with the same credentials, which is worth remembering if you go on exchange.\n\n**Visiting UM rather than studying here?** Ask your host for eduroam visitor access, known as eVA. If your own institution uses eduroam, your own account works.\n\nThe official instructions are at https://www.maastrichtuniversity.nl/quick-start-wifium. Device-specific manuals are on the ICTS Self-Service Portal, which needs a login, so set up WiFi first. If you cannot get online at all, call the ICTS Servicedesk on +31 43 388 5555 or drop by an ICTS front office in the UM Library (Grote Looiersstraat 17 or Universiteitssingel 50, Monday to Friday 10:30 to 17:00).",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Technical Services & Resources",
       "tags": [
+        "exchange",
         "wifi",
         "password"
-      ],
-      "note": "confirm the current ICTS Self-service Desk WiFi manual link"
+      ]
     },
     {
       "id": "how-can-i-use-the-um-printers",
       "q": "How can I use the UM printers?",
-      "a": "As a student you have access to the UM printers. The process is:\n\n1. Print via the UM Print Portal, or install the correct internet printer on your device.\n2. Buy print credit. Print costs are charged to your UMcard credit, so make sure your UMcard is topped up.\n3. Submit a print job from the application you are working in, or through the UM Print Portal.\n4. Collect your print at any Canon printer. Log in at the printer with your UMcard and select the document you want to print.",
+      "a": "As a student you have access to the UM printers. Printing runs through the MyCampusPrint portal at https://um.mycampusprint.nl. The process is:\n\n1. Log in to MyCampusPrint at https://um.mycampusprint.nl, or install the correct internet printer on your device.\n2. Buy print credit. Print costs are charged to your UMcard credit, so make sure your UMcard is topped up. You can top up online at https://uploadumcard.maastrichtuniversity.nl, which only works while you are connected to the UM network, or at a top-up machine in a UM building.\n3. Submit a print job from the application you are working in, or through the MyCampusPrint portal.\n4. Collect your print at any UM printer. Log in at the printer with your UMcard and select the document you want to print.\n\nFor manuals and troubleshooting, see the printing help centre at https://ummycampusprint.zendesk.com/hc/en-gb or the UM printing manuals at https://www.maastrichtuniversity.nl/manuals-printingum. If you get stuck, the ICTS Servicedesk can help.",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Technical Services & Resources",
-      "tags": [],
-      "note": "confirm the current UM Print Portal link, the UMcard top-up page, and the printing help page"
+      "tags": []
     },
     {
       "id": "if-i-need-support-with-logging-in-to-the-student-portal-maki-2",
