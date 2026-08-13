@@ -356,6 +356,10 @@
   .privacy summary{cursor:pointer;font-weight:600;color:var(--ink);padding:6px 0}
   .privacy div{font-size:13px;line-height:1.6}
   .privacy p{margin:.7em 0}
+  /* Anything that only makes sense while the transcript check is switched on.
+     The script adds .no-transcript to <html> when TRANSCRIPT_ENABLED is false,
+     so the privacy text describes only what the site actually does. */
+  html.no-transcript .tonly{display:none}
   /* The transcript file picker is opened by the hero button, never shown. */
   input[type=file]{display:none}
   @media(max-width:560px){.heroTitle{font-size:27px}.mh img.faqlogo{height:54px}}
@@ -453,12 +457,14 @@
     <summary>Privacy</summary>
     <div>
       <p>This FAQ is published by the Maastricht Science Programme, Faculty of Science and Engineering, Maastricht University.</p>
-      <p><b>The transcript check.</b> When you load your transcript, the PDF is read inside your own browser. It is not sent to us, to the university, or to anyone else, and no copy is made outside your device. We do not receive your transcript and cannot see the result of your check.</p>
-      <p>Once the check has run, your name, student number, credit totals and the outcome of each requirement are saved in this browser so the card is still there on your next visit. That data stays on the device you used. Choose "clear" on the welcome card to delete it, or clear your browser's site data for this site. If you are on a shared or public computer, clear it before you leave.</p>
+      <div class="tonly">
+        <p><b>The transcript check.</b> When you load your transcript, the PDF is read inside your own browser. It is not sent to us, to the university, or to anyone else, and no copy is made outside your device. We do not receive your transcript and cannot see the result of your check.</p>
+        <p>Once the check has run, your name, student number, credit totals and the outcome of each requirement are saved in this browser so the card is still there on your next visit. That data stays on the device you used. Choose "clear" on the welcome card to delete it, or clear your browser's site data for this site. If you are on a shared or public computer, clear it before you leave.</p>
+      </div>
       <p><b>What else is stored on your device.</b> The questions you opened recently, your light or dark preference, a copy of the answers so the app works offline, and anything you type into "tell us what you were looking for". All of it is local to your browser and all of it disappears when you clear site data for this site.</p>
       <p><b>The site itself.</b> This site is hosted on GitHub Pages. Like any web host, GitHub records the IP address and technical details of each request in its server logs. We do not use analytics, tracking pixels, advertising or cookies, and no part of this site loads anything from another company's servers.</p>
-      <p><b>Emailing an office.</b> The "email this office" buttons open your own mail program with a message prepared. Nothing is sent until you send it. If you have loaded your transcript, your name and student number are filled in so the office can find your file. You can delete them before sending.</p>
-      <p><b>Your rights.</b> Because your transcript data never reaches us, there is nothing on our side to access, correct or delete. You control it entirely from your own browser. For questions about how the university handles your study data more generally, or to exercise your rights under the GDPR, contact the UM Data Protection Officer.</p>
+      <p><b>Emailing an office.</b> The "email this office" buttons open your own mail program with a message prepared. Nothing is sent until you send it.<span class="tonly"> If you have loaded your transcript, your name and student number are filled in so the office can find your file. You can delete them before sending.</span></p>
+      <p><b>Your rights.</b><span class="tonly"> Because your transcript data never reaches us, there is nothing on our side to access, correct or delete. You control it entirely from your own browser.</span> For questions about how the university handles your study data, or to exercise your rights under the GDPR, contact the UM Data Protection Officer.</p>
       <p>Questions about this tool: <a href="mailto:msp-educationsupport@maastrichtuniversity.nl">msp-educationsupport@maastrichtuniversity.nl</a></p>
     </div>
   </details>
@@ -863,7 +869,10 @@ const TRANSCRIPT_ENABLED = false;
 const tcOpen=()=>{const m=$('#tconsent');m.setAttribute('open','');$('#tcGo').focus()};
 const tcClose=()=>{$('#tconsent').removeAttribute('open');$('#transcriptBtn').focus()};
 // The button is `hidden` in the markup, so it never flashes before this runs.
+// The root class hides the .tonly passages in the privacy notice, so it does
+// not describe a transcript feature students cannot see.
 if(TRANSCRIPT_ENABLED)$('#transcriptBtn').hidden=false;
+else document.documentElement.classList.add('no-transcript');
 $('#transcriptBtn').onclick=tcOpen;
 $('#tcCancel').onclick=tcClose;
 $('#tcGo').onclick=()=>{$('#tconsent').removeAttribute('open');$('#pdff').click()};
