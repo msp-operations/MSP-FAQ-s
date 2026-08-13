@@ -22,7 +22,14 @@
   html.dark{
     --ink:#e6ebf2; --muted:#93a1b5; --line:#26303f; --bg:#0f1620;
     --card:#182231; --surface:#182231; --link:#ff7a7a; --um:#e4001b; --markbg:#4a3d12;
+    /* On dark cards the bright topic hue is the readable one, so the darkened
+       AA variant used on white is not wanted here. */
+    --ct:var(--c);
   }
+  html.dark .tcard{border-color:rgba(230,235,242,.16)}
+  html.dark .note{color:#fbbf24}
+  html.dark .staffgrp a b{color:#fca5a5}
+  html.dark .helpful button:hover{border-color:#3c4a5a}
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.62;font-size:15.5px;-webkit-font-smoothing:antialiased}
@@ -31,7 +38,12 @@
   .wrap{max-width:960px;margin:0 auto;padding:0 22px}
   svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2.5px solid #22b8cf;outline-offset:2px;border-radius:7px}
+  /* No border-radius here: it would override each control's own shape, squaring
+     off pills and the round back-to-top button on focus. Outlines follow the
+     element's radius automatically. Navy is 14.6:1 on white; the old cyan was 2.4:1. */
+  a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+  html.dark a:focus-visible,html.dark button:focus-visible,html.dark input:focus-visible,html.dark [tabindex]:focus-visible{outline-color:#8ec7ff}
+  .hero a:focus-visible,.hero button:focus-visible,.hero input:focus-visible{outline-color:#fff}
 
   /* Masthead */
   .utilbar{background:#0b2540;color:#fff;font-size:12px}
@@ -89,8 +101,14 @@
   .search input{width:100%;padding:17px 44px 17px 52px;font-size:16px;font-family:inherit;border:none;border-radius:14px;background:#fff;box-shadow:0 8px 26px rgba(0,0,0,.22);outline:none;color:#1b2733}
   .search input:focus{box-shadow:0 0 0 4px rgba(255,255,255,.3),0 8px 26px rgba(0,0,0,.22)}
   .search .ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#e4001b}
-  .kbd{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;color:#9aa7b4;border:1px solid #dfe4ea;border-radius:6px;padding:1px 7px;font-family:inherit;pointer-events:none}
-  .results{position:absolute;left:0;right:0;margin-top:9px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.2);overflow:hidden;display:none;z-index:20}
+  .kbd{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;color:#66717f;border:1px solid #dfe4ea;border-radius:6px;padding:1px 7px;font-family:inherit;pointer-events:none}
+  /* GDPR Art.13 notice shown before the file picker is ever opened */
+  .tnote{max-width:62ch;margin:10px auto 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.82);text-align:center}
+  .privacy{margin-top:14px;text-align:left;max-width:70ch;margin-left:auto;margin-right:auto}
+  .privacy summary{cursor:pointer;font-weight:600;color:var(--ink);padding:6px 0}
+  .privacy div{font-size:13px;line-height:1.6}
+  .privacy p{margin:.7em 0}
+  .results{position:absolute;left:0;right:0;margin-top:9px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.2);overflow:hidden;display:none;z-index:20;max-height:min(58vh,420px);overflow-y:auto;overscroll-behavior:contain}
   .results.on{display:block}
   .ritem{display:block;text-decoration:none;padding:13px 18px;border-bottom:1px solid var(--line);cursor:pointer;color:inherit}
   .ritem:last-child{border-bottom:none}
@@ -108,13 +126,13 @@
 
   /* Body */
   .quicklinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:26px 0 6px}
-  .ql{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0090d3;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:15px 18px;border-radius:6px;transition:background .15s,transform .15s}
-  .ql:hover{background:#0079b3;transform:translateY(-2px)}
+  .ql{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:15px 18px;border-radius:var(--rs);transition:background .15s ease,transform .15s ease}
+  .ql:hover{background:#123a5f;transform:translateY(-2px)}
   .ql .qla{font-size:18px;line-height:1;font-weight:700}
   .sectlabel{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin:34px 0 16px;text-align:center}
   .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:52px}
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .tcard{position:relative;background:var(--surface);border:1px solid #1a1a1a;border-radius:16px;padding:22px 18px;flex:0 1 212px;
+  .tcard{position:relative;background:var(--surface);border:1px solid rgba(11,37,64,.20);border-radius:16px;padding:22px 18px;flex:0 1 212px;
     cursor:pointer;text-align:left;font-family:inherit;overflow:hidden;color:var(--ink);animation:up .45s ease both;
     transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
   html.dark .tcard{border-color:#4a5a6e}
@@ -137,22 +155,25 @@
   .vicon svg.i{width:25px;height:25px}
   .vtitle{font-family:var(--serif);font-size:27px;font-weight:600;letter-spacing:.2px}
   .catgroup{margin-bottom:22px}
-  .catname{font-size:11.5px;text-transform:uppercase;letter-spacing:.9px;color:var(--c);font-weight:700;margin:16px 0 8px}
+  .catname{font-size:11.5px;text-transform:uppercase;letter-spacing:.9px;color:var(--ct,var(--c));font-weight:700;margin:16px 0 8px}
   .qitem{background:var(--card);border:1px solid var(--line);border-radius:var(--rs);margin-bottom:8px;overflow:hidden;transition:border-color .15s,box-shadow .15s}
   .qitem:hover{border-color:color-mix(in srgb,var(--c) 35%,var(--line))}
   .qitem.open{border-color:color-mix(in srgb,var(--c) 45%,var(--line));box-shadow:0 8px 22px color-mix(in srgb,var(--c) 12%,transparent)}
   .qq{width:100%;text-align:left;background:none;border:none;font-family:inherit;color:inherit;padding:15px 17px;font-weight:600;font-size:14.5px;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center}
   .qq .chev{color:var(--c);flex:none;transition:transform .16s ease}
   .qq .chev svg.i{width:18px;height:18px;stroke-width:2}
-  .qitem.open .qq{color:var(--c)}.qitem.open .qq .chev{transform:rotate(90deg)}
-  .qa{padding:0 17px;max-height:0;overflow:hidden}
-  .qitem.open .qa{max-height:none;padding:0 17px 18px}
+  .qitem.open .qq{color:var(--ct,var(--c))}.qitem.open .qq .chev{transform:rotate(90deg)}
+  /* visibility:hidden keeps collapsed answers out of the tab order and the
+     accessibility tree. Without it, a keyboard user tabs through every link
+     and button inside all 87 closed answers on a busy topic. */
+  .qa{padding:0 17px;max-height:0;overflow:hidden;visibility:hidden;overflow-wrap:anywhere}
+  .qitem.open .qa{max-height:none;padding:0 17px 18px;visibility:visible}
   .qa p,.qa ul{font-family:var(--serif);font-size:16px;line-height:1.72;max-width:64ch}
   .qa p{margin:.6em 0}.qa ul{margin:.6em 0;padding-left:22px}.qa li{margin:.34em 0}
   .qa a{text-decoration:underline;text-underline-offset:2px}
   .abadge{display:flex;align-items:center;gap:9px;margin-top:14px;flex-wrap:wrap}
-  .pill{font-size:11.5px;background:color-mix(in srgb,var(--c) 13%,var(--surface));color:var(--c);border:1px solid color-mix(in srgb,var(--c) 30%,var(--surface));border-radius:100px;padding:4px 11px;font-weight:600}
-  .contact{font-size:12.5px;font-weight:600;background:var(--c);color:#fff;border:none;border-radius:var(--rs);padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;font-family:inherit;transition:filter .15s}
+  .pill{font-size:11.5px;background:color-mix(in srgb,var(--c) 13%,var(--surface));color:var(--ct,var(--c));border:1px solid color-mix(in srgb,var(--c) 30%,var(--surface));border-radius:100px;padding:4px 11px;font-weight:600}
+  .contact{font-size:12.5px;font-weight:600;background:var(--ct,var(--c));color:#fff;border:none;border-radius:var(--rs);padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;font-family:inherit;transition:filter .15s}
   .contact:hover{filter:brightness(.92)}.contact svg.i{width:15px;height:15px}
   .copy{font-size:12.5px;font-weight:600;background:var(--surface);color:var(--link);border:1px solid var(--line);border-radius:var(--rs);padding:8px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;font-family:inherit}
   .copy:hover{border-color:var(--link)}.copy svg.i{width:15px;height:15px}
@@ -200,7 +221,7 @@
   .staffgrp a:hover{text-decoration:underline}
   footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.7}
   input[type=file]{display:none}
-  @media(max-width:560px){.heroTitle{font-size:27px}.mh img.msp{height:34px}}
+  @media(max-width:560px){.heroTitle{font-size:27px}.mh img.faqlogo{height:54px}}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -224,6 +245,7 @@
     <div class="heroTop">
       <button class="tbtn" id="transcriptBtn"><span id="tbIcon"></span>Load my transcript</button>
       <input type="file" id="pdff" accept="application/pdf">
+      <p class="tnote">Your transcript is read on your own device. The file is not uploaded and we never see it. Your name, student number and the result are saved in this browser so the card is here next time. Use "clear" to remove them, and do clear them before you leave a shared or public computer.</p>
     </div>
     <div class="welcome" id="welcome"></div>
     <h1 class="heroTitle">How can we <span>help?</span></h1>
@@ -258,6 +280,19 @@
 <footer class="wrap">
   This tool runs on your device. Your transcript is read locally and never uploaded.<br>
   Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.
+  <details class="privacy">
+    <summary>Privacy</summary>
+    <div>
+      <p>This FAQ is published by the Maastricht Science Programme, Faculty of Science and Engineering, Maastricht University.</p>
+      <p><b>The transcript check.</b> When you load your transcript, the PDF is read inside your own browser. It is not sent to us, to the university, or to anyone else, and no copy is made outside your device. We do not receive your transcript and cannot see the result of your check.</p>
+      <p>Once the check has run, your name, student number, credit totals and the outcome of each requirement are saved in this browser so the card is still there on your next visit. That data stays on the device you used. Choose "clear" on the welcome card to delete it, or clear your browser's site data for this site. If you are on a shared or public computer, clear it before you leave.</p>
+      <p><b>What else is stored on your device.</b> The questions you opened recently, your light or dark preference, a copy of the answers so the app works offline, and anything you type into "tell us what you were looking for". All of it is local to your browser and all of it disappears when you clear site data for this site.</p>
+      <p><b>The site itself.</b> This site is hosted on GitHub Pages. Like any web host, GitHub records the IP address and technical details of each request in its server logs. We do not use analytics, tracking pixels, advertising or cookies, and no part of this site loads anything from another company's servers.</p>
+      <p><b>Emailing an office.</b> The "email this office" buttons open your own mail program with a message prepared. Nothing is sent until you send it. If you have loaded your transcript, your name and student number are filled in so the office can find your file. You can delete them before sending.</p>
+      <p><b>Your rights.</b> Because your transcript data never reaches us, there is nothing on our side to access, correct or delete. You control it entirely from your own browser. For questions about how the university handles your study data more generally, or to exercise your rights under the GDPR, contact the UM Data Protection Officer.</p>
+      <p>Questions about this tool: <a href="mailto:msp-educationsupport@maastrichtuniversity.nl">msp-educationsupport@maastrichtuniversity.nl</a></p>
+    </div>
+  </details>
 </footer>
 
 <script>
@@ -285,6 +320,14 @@ matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{if(!loc
 const C={'Getting In':'#6366f1','Getting Started':'#14b8a6','Courses & Registration':'#3b82f6',
 'Exams & Grades':'#8b5cf6','Thesis (BTR)':'#10b981','Going Abroad':'#f97316','Graduation & Diploma':'#ec4899',
 'Wellbeing & Support':'#06b6d4','Money & Practical':'#f59e0b','IT & Accounts':'#0284c7','Forms & Links':'#0d9488','General':'#64748b'};
+/* Darkened counterparts of C, used wherever the topic colour is a FOREGROUND
+   (text, or a button background carrying white text). The bright C values are
+   1.9:1 to 4.5:1 on white and fail WCAG AA; every value below clears 4.5:1.
+   C stays in use for borders and tints, where contrast rules do not apply.
+   In dark mode the bright hue is the readable one, so --ct falls back to --c. */
+const CT={'Getting In':'#4338ca','Getting Started':'#0f766e','Courses & Registration':'#1d4ed8',
+'Exams & Grades':'#6d28d9','Thesis (BTR)':'#047857','Going Abroad':'#c2410c','Graduation & Diploma':'#be185d',
+'Wellbeing & Support':'#0e7490','Money & Practical':'#a16207','IT & Accounts':'#0369a1','Forms & Links':'#115e59','General':'#475569'};
 const col=t=>C[t]||'#3b82f6';
 
 /* icons */
@@ -436,7 +479,7 @@ function router(){const rb=$('#results');if(rb)rb.className='results';
   $('#v-topic').className='view';$('#v-home').className='view on';window.scrollTo(0,0);}
 function showTopic(name,openId){
   const faqs=state.data.faqs.filter(f=>f.topic===name);const c=col(name);
-  $('#v-topic').style.setProperty('--c',c);$('#topicIcon').innerHTML=svg(name);$('#topicHead').textContent=name;
+  $('#v-topic').style.setProperty('--c',c);$('#v-topic').style.setProperty('--ct',CT[name]||c);$('#topicIcon').innerHTML=svg(name);$('#topicHead').textContent=name;
   const cats=[...new Set(faqs.map(f=>f.category||'Questions'))];
   $('#topicBody').innerHTML=cats.map(cat=>{const items=faqs.filter(f=>(f.category||'Questions')===cat);
     return `<div class="catgroup"><div class="catname">${esc(cat)}</div>`+items.map(qHtml).join('')+`</div>`;}).join('');

@@ -65,10 +65,16 @@ swap(`  let data;
 // 7. Footer: say what this copy is, add the refresh button.
 swap(`  This tool runs on your device. Your transcript is read locally and never uploaded.<br>`,
   `  This is the offline copy of the MSP Student FAQ. It works without internet and picks up updated answers whenever you are online.<br>`, 'footer line');
-swap(`  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.\n</footer>`,
+swap(`  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.\n  <details class="privacy">`,
   `  Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.<br>
   <button class="copy" id="refreshBtn" style="margin-top:8px">Check for new answers</button>
-</footer>`, 'refresh button');
+  <details class="privacy">`, 'refresh button');
+
+// 7b. This copy checks msp-faqs.nl for fresher answers when it is opened online,
+//     which sends the reader's IP to the host. Say so, in this copy only.
+swap(`<p><b>The site itself.</b> This site is hosted on GitHub Pages.`,
+  `<p><b>This offline copy.</b> When you open this file while connected to the internet, it checks msp-faqs.nl once for newer answers. That request tells the host your IP address, in the same way visiting any website does. Everything else in this file works with no connection at all.</p>
+      <p><b>The site itself.</b> The online version is hosted on GitHub Pages.`, 'offline privacy line');
 
 // 8. Refresh logic: manual button + a silent check on open when online.
 //    Only reloads when the live content is strictly newer, so no reload loops.

@@ -3,7 +3,7 @@
     "title": "MSP Student FAQ",
     "ay": "2025-2026",
     "generated": "2026-08-13",
-    "count": 364
+    "count": 363
   },
   "topics": [
     {
@@ -24,7 +24,7 @@
     {
       "name": "Exams & Grades",
       "emoji": "📝",
-      "count": 65
+      "count": 64
     },
     {
       "name": "Thesis (BTR)",
@@ -594,7 +594,7 @@
     {
       "id": "how-can-i-switch-course-last-minute",
       "q": "How can I switch course last minute?",
-      "a": "It is possible provided the desired course is not full. Contact Academic Advising and ESD for this. To switch or withdraw from a module, complete a withdrawal/switch form and have it approved by your academic advisor (the Academic Advising Coordinator). Switches and late enrolments require support from your academic advisor and must be submitted to ESD by the Monday before the period begins. Withdrawals can be done until the end of the first week. Withdrawing before the deadline ensures the module does not appear on your transcript. Note that switching to an external module is not allowed. See the \"withdrawal and/or switch modules\" page on the UM intranet for details.",
+      "a": "It is possible provided the desired course is not full. Contact Academic Advising and ESD for this. To switch or withdraw from a module, complete a withdrawal/switch form and have it approved by your academic advisor (the Academic Advising Coordinator). Switches and late enrolments require support from your academic advisor and must reach ESD by the published switch deadline for that period, which is listed in the next answer. Do not work from memory on this, since the deadlines differ per period. Withdrawals can be done until the end of the first week. Withdrawing before the deadline ensures the module does not appear on your transcript. Note that switching to an external module is not allowed. See the \"withdrawal and/or switch modules\" page on the UM intranet for details.",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Course (De-)Registration",
@@ -618,7 +618,7 @@
     {
       "id": "what-are-the-switch-and-withdrawal-deadlines-for-the-current",
       "q": "What are the Switch and Withdrawal Deadlines for the current Academic Year?",
-      "a": "Switch deadlines fall on the Friday before the period starts, and withdrawal deadlines fall at the end of the first week of the period, both at 17:00. The current (AY 2026-2027) switch and withdrawal deadlines are: P1 31 Jul and 4 Sep; P2 29 Sep and 30 Oct; P4 8 Jan and 29 Jan; P5 5 Mar and 2 Apr.  Always check the current dates on the withdraw/switch form on the intranet or on Canvas 3711.",
+      "a": "Switch deadlines normally fall on the Friday before the period starts, and withdrawal deadlines at the end of the first week of the period, both at 17:00. The current (AY 2026-2027) switch and withdrawal deadlines are: P1 31 Jul and 4 Sep; P2 29 Sep and 30 Oct; P4 8 Jan and 29 Jan; P5 5 Mar and 2 Apr. These are hard deadlines, so always check the current dates on the withdraw/switch form on the intranet or on Canvas 3711 rather than working from this list.",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Course (De-)Registration",
@@ -752,7 +752,7 @@
     {
       "id": "i-would-like-to-register-for-an-external-module-how-do-i-pro",
       "q": "I would like to register for an External Module, how do I proceed?",
-      "a": "Submit two things: the \"Following modules at other UM departments (external education)\" form on the intranet, and the Special course request tool in the Student Portal, which goes to the Board of Examiners. See the \"Following modules at other UM departments\" page on the intranet for the procedure and regulations. External-education requests have their own per-period deadline, separate from MSP course registration and from the switch/withdraw dates, and a late request is rejected. The current (AY 2026-2027) external-education deadlines are: P1 19 Jul, P2 13 Sep, P3 8 Nov, P4 6 Dec, P5 21 Feb, P6 18 Apr.",
+      "a": "Submit two things: the \"Following modules at other UM departments (external education)\" form on the intranet, and the Special course request tool in the Student Portal, which goes to the Board of Examiners. See the \"Following modules at other UM departments\" page on the intranet for the procedure and regulations. External-education requests have their own per-period deadline, separate from MSP course registration and from the switch/withdraw dates, and a late request is rejected. The current (AY 2026-2027) external-education deadlines are: P1 19 Jul, P2 13 Sep, P3 8 Nov, P4 6 Dec, P5 21 Feb, P6 18 Apr. Treat these as the end of the deadline week and submit before the weekend, and check the current date on the intranet form rather than relying on this list.",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "External/Additional Courses",
@@ -1239,11 +1239,12 @@
     {
       "id": "can-i-take-an-additional-module-during-my-btr",
       "q": "Can I take an additional module during my BTR?",
-      "a": "Yes, but only one module, a course or a practical, alongside your BTR, in any period, and only if you are doing your BTR in the Netherlands. Use the same intranet \"Additional module\" form (there is no separate BTR form) and select the \"during BTR / additional module and BTR\" option. You need approval from both your BTR/thesis supervisor and the Board of Examiners; the supervisor's approval can be an email or a screenshot you upload to the form. To hold a spot, also mark the module as a back-up or additional module on your course-registration form. ESD registers you only after the Board of Examiners approval arrives, so confirm your spot on the Student Portal, in the timetable and in ESD's email. Spots are capped by lab or group size (about 25).",
+      "a": "Yes, but only one module, a course or a practical, alongside your BTR, in any period, to a maximum of 5 non-BTR credits, and only if you are doing your BTR in or near Maastricht rather than abroad. Use the same intranet \"Additional module\" form (there is no separate BTR form) and select the \"during BTR / additional module and BTR\" option. You need approval from both your BTR/thesis supervisor and the Board of Examiners; the supervisor's approval can be an email or a screenshot you upload to the form. To hold a spot, also mark the module as a back-up or additional module on your course-registration form. ESD registers you only after the Board of Examiners approval arrives, so confirm your spot on the Student Portal, in the timetable and in ESD's email. Spots are capped by lab or group size (about 25).",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Additional questions",
       "tags": [
+        "abroad",
         "btr",
         "thesis",
         "exam",
@@ -1294,7 +1295,7 @@
     {
       "id": "there-is-a-mistake-on-my-transcript-or-in-my-records-how-do-",
       "q": "There is a mistake on my transcript or in my records. How do I get it fixed?",
-      "a": "It depends on the type of error:\n\n- A wrong project title, project-period name, module code or external \"EXT\" code: ESD fixes this directly in SAP and it shows on the portal within about 24 hours. SAP cannot store special characters (they show as ##), so ESD may instead give you a plain-text stamped statement of the correct title.\n- A wrongly-booked course that needs removing or re-booking: this needs the IT/SAP key-user, so it can take longer if they are away.\n- A wrong or missing grade, including a passed course still showing \"fail\": this is not ESD's to change. First contact the course coordinator; once they confirm the error, the Exams Office (msp-exams@maastrichtuniversity.nl) changes the grade.\n- A wrong BTR or thesis title: contact the BTR Office (msp-btr@maastrichtuniversity.nl).\n- After you have graduated, the final transcript is already printed into the diploma, so ESD cannot change it. Contact the Board of Examiners (msp-boe@maastrichtuniversity.nl).",
+      "a": "It depends on the type of error:\n\n- A wrong project title, project-period name, module code or external \"EXT\" code: ESD fixes this directly in SAP and it shows on the portal within about 24 hours. SAP cannot store special characters (they show as ##), so ESD may instead give you a plain-text stamped statement of the correct title.\n- A wrongly-booked course that needs removing or re-booking: this needs the IT/SAP key-user, so it can take longer if they are away.\n- A wrong or missing grade, including a passed course still showing \"fail\": always start with the course coordinator, because they are the only person who can change a grade. Once they have confirmed the correction, it is processed into the system for you. If your grade is on Canvas but missing from the Student Portal, that is a processing step rather than a grading question, so contact ESD at msp-educationsupport@maastrichtuniversity.nl.\n- A wrong BTR or thesis title: contact the BTR Office (msp-btr@maastrichtuniversity.nl).\n- After you have graduated, the final transcript is already printed into the diploma, so ESD cannot change it. Contact the Board of Examiners (msp-boe@maastrichtuniversity.nl).",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Additional questions",
@@ -1304,7 +1305,8 @@
         "diploma",
         "btr",
         "thesis",
-        "exam"
+        "exam",
+        "canvas"
       ]
     },
     {
@@ -1416,7 +1418,7 @@
     {
       "id": "how-do-resits-work-do-i-need-to-register-and-where-are-the-d",
       "q": "How do resits work, do I need to register, and where are the dates?",
-      "a": "Resits are handled by the Exams Office (msp-exams@maastrichtuniversity.nl), not by ESD. You do not register for a resit yourself: if you are eligible, the office registers you automatically and the resit appears in your timetable (EER 5.4 / R&R 7). Resits follow the academic calendar rather than coming straight after the exam, and the specific resit schedule is published after the grades are on the Student Portal. For deregistering from a resit, contact the Exams Office as early as possible.",
+      "a": "You do not register for a resit yourself. When you register for a course you are enrolled for both the first sit and the resit, so if you are eligible the resit is arranged for you and appears in your timetable (EER 5.4 / R&R 7). Practical questions about resit scheduling go to the Exams Office (msp-exams@maastrichtuniversity.nl). Resits follow the academic calendar rather than coming straight after the exam, and the specific resit schedule is published after the grades are on the Student Portal. For deregistering from a resit, contact the Exams Office as early as possible.",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Additional questions",
@@ -1797,23 +1799,6 @@
       "office": "boe",
       "category": "Course Registration and Curriculum",
       "tags": []
-    },
-    {
-      "id": "what-are-the-graduation-requirements-at-msp",
-      "q": "What are the graduation requirements at MSP?",
-      "a": "You need a minimum of 180 ECTS, structured as follows (EER 3.6, 3.7, 3.8, 3.10):\n- Core (30 ECTS): the 4 compulsory core courses (BIO1101, CHE1101, PHY1101, INT1101, 20 ECTS), 2 compulsory skills (PRA1101, PRA1102) and 1 compulsory project (PRO1101).\n- General education (10 ECTS): 2 courses, one mathematics course and one humanities or social-science (reflective) course.\n- Elective (120 ECTS): 14 courses (70 ECTS, with at least 4 advanced courses and at least 3 courses or 20 ECTS at 3000 level), 8 skills (20 ECTS) and 4 projects (20 ECTS).\n- Bachelor Thesis Research (30 ECTS) in the final semester.\n\nYou also need at least 90 ECTS from the MSP course catalogue excluding its appendix, and at least 120 ECTS (115 for students following the Educational Minor) from the catalogue including its appendix; the BTR does not count towards this minimum (EER 3.7.1, 3.7.2).\n\nWhen you have met the requirements, submit the Graduation form on the intranet in the first period of your final semester, and meet all financial obligations (including tuition) so the diploma can be issued. Graduation is automatic once every component is passed or exempted and you were registered while sitting your exams: your official graduation date is the last day of the month in which you satisfied all obligations (EER 6.1). Postponing graduation is only possible on defined grounds, by request at least one month before the final examination is handed in. The MSP degree is always a BSc (EER 6.2), and the certificate comes with a European-format diploma supplement stating your GPA and any distinction (EER 6.3 / R&R 20). The graduation ceremony is a single event held once a year, in late November at the MECC, and you are invited to it after your graduation. Full procedure: https://intranet.maastrichtuniversity.nl/en/msp-students/graduation/graduation-procedure",
-      "topic": "Exams & Grades",
-      "office": "boe",
-      "category": "Course Registration and Curriculum",
-      "tags": [
-        "diploma",
-        "graduation",
-        "btr",
-        "thesis",
-        "tuition",
-        "exam",
-        "ects"
-      ]
     },
     {
       "id": "i-do-not-agree-with-my-grade-from-my-course-coordinator-whom",
@@ -2224,7 +2209,7 @@
     {
       "id": "can-i-take-an-additional-course-or-module-during-my-btr",
       "q": "Can I take an additional course or module during my BTR?",
-      "a": "One module only, to a maximum of 5 non-BTR credits, and only if you are working in or near Maastricht (not abroad). It needs approval from both your Research Supervisor and the Board of Examiners (R&R 10.2). Note that failing the module and needing a resit can delay your graduation. Apply with the Additional Module form on the intranet (select \"During thesis\") by the course-registration deadline, and note it on your RTS. Register a backup course before the deadline and withdraw from it once your BTR is approved, otherwise it shows as a fail on your transcript.",
+      "a": "One module only, to a maximum of 5 non-BTR credits, and only if you are working in or near Maastricht (not abroad). It needs approval from both your Research Supervisor and the Board of Examiners (R&R 10.2). Note that failing the module and needing a resit can delay your graduation. Apply with the Additional Module form on the intranet (select \"During thesis\") by the Request-to-Start (RTS) deadline, and note it on your RTS. Register a backup course before the deadline and withdraw from it once your BTR is approved, otherwise it shows as a fail on your transcript.",
       "topic": "Thesis (BTR)",
       "office": "btr",
       "category": "Before you start",
@@ -2236,7 +2221,6 @@
         "btr",
         "thesis",
         "exam",
-        "registration",
         "deadline"
       ]
     },
@@ -3048,7 +3032,7 @@
     {
       "id": "i-have-failed-a-module-what-should-i-do",
       "q": "I have failed a module. What should I do?",
-      "a": "If you have just received your final grade and it is below a 5.5, you have failed the module. If you put sufficient effort into the course before the final exam, you will be invited to resit the exam. When the course coordinator grants you a resit, the Exam coordinator schedules it, so you do not need to register yourself. If you do not qualify for a resit, the course coordinator will inform you.\n\nIf you fail the resit or do not qualify for one, you will need to retake the course to earn the credits. If you take the course again and again fail the resit or do not qualify for it, you will not be permitted to take the course a further time.\n\nBe aware that a failed course appears on your transcript as a fail. Even if you later pass the resit, the fail stays on your transcript alongside the pass.",
+      "a": "If you have just received your final grade and it is below a 5.5, you have failed the module. If you put sufficient effort into the course before the final exam, you will be invited to resit the exam. When the course coordinator grants you a resit, the Exam coordinator schedules it, so you do not need to register yourself. If you do not qualify for a resit, the course coordinator will inform you.\n\nIf you fail the resit or do not qualify for one, you will need to retake the course in a later academic year to earn the credits. There is no fixed lifetime cap on retakes in the regulations, but repeatedly retaking the same course eats into your study time and your Binding Study Advice, so talk to your Academic Advisor rather than simply signing up again.\n\nBe aware that a failed course appears on your transcript as a fail. Even if you later pass the resit, the fail stays on your transcript alongside the pass.",
       "topic": "Exams & Grades",
       "office": "exams",
       "category": "Current FAQ's",
@@ -3396,7 +3380,7 @@
     {
       "id": "i-need-a-transcript-certificate-or-statement-for-a-master-s-",
       "q": "I need a transcript, certificate or statement (for a master's application, scholarship, job, etc). Who do I ask?",
-      "a": "Transcripts, enrolment certificates and similar documents are issued by the Education Support Department (ESD) at msp-educationsupport@maastrichtuniversity.nl, not the Exams Office. The Exams Office handles the grades themselves, so if a grade is missing or wrong on the Student Portal or transcript, that correction sits with ESD; if a grade is missing on Canvas, that is the course coordinator.",
+      "a": "Transcripts, enrolment certificates and similar documents are issued by the Education Support Department (ESD) at msp-educationsupport@maastrichtuniversity.nl, not the Exams Office. For grades, the rule of thumb is where the problem shows: if a grade is missing on Canvas, that is the course coordinator, who is the only person who can change a grade. If it is on Canvas but missing or wrong on the Student Portal or your transcript, that is a processing step and ESD handles it.",
       "topic": "Exams & Grades",
       "office": "exams",
       "category": "Grade Inquiries",
