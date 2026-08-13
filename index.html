@@ -76,6 +76,11 @@
   /* Visually hidden but still read by screen readers. Used for #live, the
      aria-live region that announces search results and copy confirmations. */
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  /* The `hidden` attribute only sets display:none at the UA level, so ANY rule
+     with an explicit display beats it. .tbtn (display:inline-flex) did exactly
+     that and kept the hidden transcript button on screen. This makes `hidden`
+     mean hidden everywhere, which is what anyone reading the markup expects. */
+  [hidden]{display:none!important}
   /* Keyboard focus ring. Accessibility work, do not water it down.
      No border-radius here: it would override each control's own shape, squaring
      off pills and the round back-to-top button on focus. Outlines follow the
