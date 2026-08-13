@@ -273,7 +273,18 @@
   .tbtn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;padding:9px 15px;border-radius:var(--rs);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;display:inline-flex;align-items:center;gap:7px;backdrop-filter:blur(4px);transition:background .15s}
   .tbtn:hover{background:rgba(255,255,255,.2)}.tbtn svg.i{width:16px;height:16px}
   /* GDPR Art.13 notice shown before the file picker is ever opened */
-  .tnote{max-width:62ch;margin:10px auto 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.82);text-align:center}
+  /* Transcript consent step. GDPR Art.13 says the student must be told what
+     happens to their data BEFORE it is processed, so this sits between the
+     "Load my transcript" button and the file picker rather than in the hero,
+     where it was just wall-of-text nobody read. */
+  .tmodal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,16,28,.55)}
+  .tmodal[open]{display:flex}
+  .tmodalCard{background:var(--card);color:var(--ink);border-radius:var(--rm);max-width:52ch;width:100%;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.32)}
+  .tmodalCard h2{font-family:var(--serif);font-size:20px;margin:0 0 10px}
+  .tmodalCard p{font-size:14px;line-height:1.6;margin:.6em 0}
+  .tmodalActions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+  .tmodalActions button{font-family:inherit;font-size:14px;font-weight:600;border-radius:var(--rs);padding:10px 16px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+  .tmodalActions .primary{background:var(--navy);border-color:var(--navy);color:#fff}
   .heroTitle{font-family:var(--serif);font-size:38px;font-weight:600;margin:20px 0 6px;letter-spacing:.2px;line-height:1.14;text-align:center}
   .heroTitle span{color:#ff5a5f}
   .heroSub{opacity:.82;font-size:14.5px;margin:0 0 20px;text-align:center}
@@ -525,7 +536,6 @@
     <div class="heroTop">
       <button class="tbtn" id="transcriptBtn"><span id="tbIcon"></span>Load my transcript</button>
       <input type="file" id="pdff" accept="application/pdf">
-      <p class="tnote">Your transcript is read on your own device. The file is not uploaded and we never see it. Your name, student number and the result are saved in this browser so the card is here next time. Use "clear" to remove them, and do clear them before you leave a shared or public computer.</p>
     </div>
     <div class="welcome" id="welcome"></div>
     <h1 class="heroTitle">How can we <span>help?</span></h1>
@@ -553,6 +563,19 @@
     <button class="back" onclick="go('#/')"><span id="backIcon"></span> All topics</button>
     <div class="vhead"><span class="vicon" id="topicIcon" aria-hidden="true"></span><h2 class="vtitle" id="topicHead"></h2></div>
     <div id="topicBody"></div>
+  </div>
+</div>
+
+<!-- Consent step shown before the file picker opens. See #transcriptBtn wiring. -->
+<div class="tmodal" id="tconsent" role="dialog" aria-modal="true" aria-labelledby="tcTitle">
+  <div class="tmodalCard">
+    <h2 id="tcTitle">Before you load your transcript</h2>
+    <p>Your transcript is read on your own device. The file is not uploaded, we never see it, and no copy is made anywhere else.</p>
+    <p>Your name, student number and the result of the check are saved in this browser so the card is still here next time. Use "clear" on the card to remove them. On a shared or public computer, clear them before you leave.</p>
+    <div class="tmodalActions">
+      <button type="button" id="tcCancel">Cancel</button>
+      <button type="button" class="primary" id="tcGo">Choose file</button>
+    </div>
   </div>
 </div>
 
@@ -5443,7 +5466,16 @@ function ensurePdf(){return pdfReady||(pdfReady=new Promise((res,rej)=>{const s=
   s.onload=()=>{pdfjsLib.GlobalWorkerOptions.workerSrc='assets/vendor/pdf.worker.min.js';res();};
   s.onerror=()=>{pdfReady=null;rej(new Error('PDF_LOAD'));};
   document.head.appendChild(s);}));}
-$('#transcriptBtn').onclick=()=>$('#pdff').click();
+/* The consent dialog sits between the button and the file picker: the student is
+   told what happens to their data before any file is read, which is what GDPR
+   Art.13 asks for. Closing it without choosing a file processes nothing. */
+const tcOpen=()=>{const m=$('#tconsent');m.setAttribute('open','');$('#tcGo').focus()};
+const tcClose=()=>{$('#tconsent').removeAttribute('open');$('#transcriptBtn').focus()};
+$('#transcriptBtn').onclick=tcOpen;
+$('#tcCancel').onclick=tcClose;
+$('#tcGo').onclick=()=>{$('#tconsent').removeAttribute('open');$('#pdff').click()};
+$('#tconsent').onclick=e=>{if(e.target===$('#tconsent'))tcClose()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#tconsent').hasAttribute('open'))tcClose()});
 $('#pdff').onchange=async e=>{const file=e.target.files[0];if(!file)return;
   try{await ensurePdf();const cat=await ensureDegreeData();const t=await parseTranscriptPDF(file);
     const card=checkDegree(t,cat);
