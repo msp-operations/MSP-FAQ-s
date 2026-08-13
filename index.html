@@ -12,13 +12,46 @@
 <link rel="stylesheet" href="assets/vendor/fonts.css">
 <script src="assets/vendor/minisearch.min.js"></script>
 <style>
+/* ===========================================================================
+   MSP Student FAQ, stylesheet
+   Regions, in order:
+     1  Design tokens (light + dark)     6  Home page (quick links, topic grid)
+     2  Base, reset, focus rings         7  Topic and answer view
+     3  Masthead (logos, theme, install) 8  Chrome (skeleton, recent, to-top)
+     4  Hero (photo, welcome, degree)    9  Staff panel, footer, media queries
+     5  Search box and results dropdown
+   Anything with a colour, radius or font goes through a token in region 1,
+   except where a rule sits on a fixed background and must not follow the
+   theme. Those exceptions are commented where they occur.
+   =========================================================================== */
+
+/* ===========================================================================
+   1. DESIGN TOKENS
+   Change a colour, a corner radius or a font here and it changes everywhere.
+   --link is the accent used for links, arrows and outline buttons. It is UM
+   red on white and lightens in dark mode so it stays readable; --um is the
+   same red but fixed in both themes, for places that sit on a background
+   which never changes (the hero, the red magnifier icon).
+   =========================================================================== */
   :root{
-    --navy:#0b2540; --ink:#1b2733; --muted:#5b6b7b; --line:#e7ebf1; --bg:#f5f7fb;
-    --card:#fff; --surface:#fff; --link:#e4001b; --um:#e4001b; --markbg:#fef1c2;
+    --navy:#0b2540;    /* masthead bar, quick-link tiles, focus ring, to-top button */
+    --ink:#1b2733;     /* body text */
+    --muted:#5b6b7b;   /* secondary text, small labels */
+    --line:#e7ebf1;    /* hairline borders and dividers */
+    --bg:#f5f7fb;      /* page background */
+    --card:#fff;       /* answer rows, results dropdown */
+    --surface:#fff;    /* topic cards, pills, outline buttons */
+    --link:#e4001b;    /* accent: links, arrows, outline-button text (theme-aware) */
+    --um:#e4001b;      /* UM red, fixed in both themes */
+    --markbg:#fef1c2;  /* search-term highlight */
     --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
     --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
-    --rs:10px; --rm:16px; --sh:0 1px 2px rgba(16,32,48,.06),0 12px 32px rgba(16,32,48,.06);
+    --rs:10px;         /* small radius: buttons and pills */
+    --rm:16px;         /* medium radius: cards */
   }
+  /* Dark mode is a class on <html>, set by applyTheme() in the script below.
+     Only the tokens that must change are re-declared; everything else is
+     inherited from :root. */
   html.dark{
     --ink:#e6ebf2; --muted:#93a1b5; --line:#26303f; --bg:#0f1620;
     --card:#182231; --surface:#182231; --link:#ff7a7a; --um:#e4001b; --markbg:#4a3d12;
@@ -26,66 +59,104 @@
        AA variant used on white is not wanted here. */
     --ct:var(--c);
   }
-  html.dark .tcard{border-color:rgba(230,235,242,.16)}
-  html.dark .note{color:#fbbf24}
-  html.dark .staffgrp a b{color:#fca5a5}
-  html.dark .helpful button:hover{border-color:#3c4a5a}
+
+/* ===========================================================================
+   2. BASE, RESET AND FOCUS RINGS
+   =========================================================================== */
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.62;font-size:15.5px;-webkit-font-smoothing:antialiased}
   a{color:var(--link)}
   mark{background:var(--markbg);color:inherit;border-radius:3px;padding:0 1px}
+  /* .wrap is the one page-width container. Change the site width here. */
   .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  /* Every icon on the page is an inline <svg class="i"> drawn from the P map in
+     the script below. Stroke colour follows the text colour of its parent. */
   svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+  /* Visually hidden but still read by screen readers. Used for #live, the
+     aria-live region that announces search results and copy confirmations. */
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  /* No border-radius here: it would override each control's own shape, squaring
+  /* Keyboard focus ring. Accessibility work, do not water it down.
+     No border-radius here: it would override each control's own shape, squaring
      off pills and the round back-to-top button on focus. Outlines follow the
-     element's radius automatically. Navy is 14.6:1 on white; the old cyan was 2.4:1. */
+     element's radius automatically. Navy is 14.6:1 on white; the old cyan was 2.4:1.
+     The two rules under it swap the ring colour where navy would disappear:
+     light blue on the dark theme, white on the dark blue hero. */
   a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
   html.dark a:focus-visible,html.dark button:focus-visible,html.dark input:focus-visible,html.dark [tabindex]:focus-visible{outline-color:#8ec7ff}
   .hero a:focus-visible,.hero button:focus-visible,.hero input:focus-visible{outline-color:#fff}
 
-  /* Masthead */
-  .utilbar{background:#0b2540;color:#fff;font-size:12px}
+/* ===========================================================================
+   3. MASTHEAD
+   The UM bar, the FAQ logo, and the two floating buttons that sit on top of it
+   (install app on the left, dark-mode toggle on the right).
+   To change a logo, swap the file in assets/ and keep the same filename: the
+   offline build inlines these by exact filename (tools/build-offline.mjs).
+   =========================================================================== */
+  .utilbar{background:var(--navy);color:#fff;font-size:12px}
   .ub{display:flex;align-items:center;justify-content:center;padding:7px 0;gap:12px}
   .ub .ublogo{height:22px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.95}
-  .ub a{color:#fff;text-decoration:none;opacity:.9;font-weight:600}
-  .ub a:hover{opacity:1;text-decoration:underline}
-  .masthead{background:linear-gradient(180deg,#ffffff,#f3f6fb);border-bottom:1px solid #e7ebf1}
-  html.dark .masthead{background:linear-gradient(180deg,#17212f,#111a26);border-bottom-color:#26303f}
+  .masthead{background:linear-gradient(180deg,#ffffff,#f3f6fb);border-bottom:1px solid var(--line)}
+  html.dark .masthead{background:linear-gradient(180deg,#17212f,#111a26)}
   .mh{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;padding:16px 0}
+  /* The logo is a dark PNG, so in dark mode it is inverted to white rather than
+     swapped for a second file. Its height is set in one place (and again in the
+     mobile media query at the end of this stylesheet). */
   .mh img{display:block;width:auto;transition:filter .2s}
-  .mh img.um{height:32px}.mh img.msp{height:56px}.mh img.faqlogo{height:84px}
+  .mh img.faqlogo{height:84px}
   html.dark .mh img{filter:brightness(0) invert(1)}
   .logolink{display:flex;flex-direction:column;align-items:center;gap:9px;transition:opacity .15s;cursor:pointer}
   .logolink:hover{opacity:.75}
-  .themeBtn{position:absolute;right:0;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:10px;border:1px solid #d9dee6;background:#fff;color:#5b6b7b;cursor:pointer;display:grid;place-items:center;transition:.15s}
+  /* Theme toggle and install button both float over the masthead, one pinned
+     left and one right. Their colours are literals, not tokens: they sit on the
+     masthead gradient, which is also literal, and each has its own dark rule. */
+  .themeBtn{position:absolute;right:0;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:var(--rs);border:1px solid #d9dee6;background:#fff;color:#5b6b7b;cursor:pointer;display:grid;place-items:center;transition:background .15s,border-color .15s,color .15s}
   .themeBtn:hover{background:#f1f4f8}.themeBtn svg.i{width:18px;height:18px}
   html.dark .themeBtn{background:#1c2735;border-color:#33414f;color:#cdd6e0}
   html.dark .themeBtn:hover{background:#243040}
+  /* Hidden until the browser fires beforeinstallprompt (wireExtras() adds .on),
+     so it only appears where the PWA can actually be installed. */
+  .installBtn{position:absolute;left:0;top:50%;transform:translateY(-50%);border:1px solid #cdd7e0;background:#fff;color:#12525f;font-weight:600;font-size:12.5px;border-radius:var(--rs);padding:8px 13px;cursor:pointer;font-family:inherit;display:none;align-items:center;gap:6px}
+  html.dark .installBtn{background:#1c2735;border-color:#33414f;color:#cdd6e0}
+  .installBtn.on{display:inline-flex}.installBtn svg.i{width:16px;height:16px}
 
-  /* Hero */
+/* ===========================================================================
+   4. HERO
+   The dark blue panel: background photo, transcript button, welcome card,
+   degree-check card, title, search box and chips.
+   To change the hero photo, replace assets/building.jpg (keep the filename,
+   the offline build inlines it by name). The blue wash over it is the
+   linear-gradient in .hero; drop the gradient and the photo goes bright.
+   =========================================================================== */
   .hero{position:relative;color:#fff;width:min(1000px,calc(100% - 36px));margin:16px auto 6px;
     border-radius:24px;border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 46px rgba(11,37,64,.28);
     background:linear-gradient(115deg,rgba(11,37,64,.94) 0%,rgba(18,58,107,.82) 46%,rgba(14,107,138,.55) 100%),url('assets/building.jpg') center 36%/cover no-repeat}
-  .heroFx{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none;z-index:0}
-  .heroFx::before,.heroFx::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.5}
-  .heroFx::before{width:360px;height:360px;background:#7c3aed;top:-140px;right:-60px}
-  .heroFx::after{width:320px;height:320px;background:#06d6a0;bottom:-160px;left:-40px}
-  .orbits{position:absolute;top:-40px;right:-30px;width:340px;opacity:.16}
   .heroInner{position:relative;z-index:1;padding:22px 22px 34px}
   .heroTop{display:flex;align-items:center;justify-content:flex-end;gap:14px;min-height:38px}
-  .eyebrow{font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;opacity:.8;font-weight:600}
-  .tbtn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;padding:9px 15px;border-radius:var(--rs);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;display:inline-flex;align-items:center;gap:7px;backdrop-filter:blur(4px);transition:.15s}
+  /* .tbtn is the glassy "Load my transcript" button. Everything inside the hero
+     is white on blue, so its colours are literals rather than tokens. */
+  .tbtn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;padding:9px 15px;border-radius:var(--rs);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;display:inline-flex;align-items:center;gap:7px;backdrop-filter:blur(4px);transition:background .15s}
   .tbtn:hover{background:rgba(255,255,255,.2)}.tbtn svg.i{width:16px;height:16px}
+  /* GDPR Art.13 notice shown before the file picker is ever opened */
+  .tnote{max-width:62ch;margin:10px auto 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.82);text-align:center}
   .heroTitle{font-family:var(--serif);font-size:38px;font-weight:600;margin:20px 0 6px;letter-spacing:.2px;line-height:1.14;text-align:center}
   .heroTitle span{color:#ff5a5f}
   .heroSub{opacity:.82;font-size:14.5px;margin:0 0 20px;text-align:center}
+  /* Welcome + degree check. Both are empty and hidden until a transcript has
+     been read; renderWelcome() fills #welcome and adds .on. */
   .welcome{margin:16px 0 4px;display:none}.welcome.on{display:block}
   .wcard{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:var(--rm);padding:14px 18px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;backdrop-filter:blur(6px)}
   .wcard .hi{font-family:var(--serif);font-size:17px;font-weight:600}
   .wcard .stat{font-size:12.5px;opacity:.92}.wcard .stat b{font-size:16px;font-weight:700}
   .wcard .clear{margin-left:auto;font-size:11px;opacity:.75;background:none;border:none;color:#fff;cursor:pointer;text-decoration:underline;font-family:inherit}
+  /* "For you" nudges under the welcome card, chosen by forYou() from the
+     student's credit total. */
+  .fory{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .fory .fyl{font-size:11px;text-transform:uppercase;letter-spacing:.6px;opacity:.85;font-weight:700}
+  .fory a{text-decoration:none;font-size:12.5px;font-weight:600;color:#fff;background:var(--um);border-radius:100px;padding:6px 13px;transition:filter .15s}
+  .fory a:hover{filter:brightness(1.08)}
+  /* Degree-check card, built by renderDegreeCard(). One .drow per requirement,
+     colour-coded green / red / amber by .dok, .dmiss and .dmaybe. */
   .dcheck{margin-top:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:var(--rm);padding:10px 18px;backdrop-filter:blur(6px);font-size:13px}
   .dcheck summary{cursor:pointer;font-weight:600;font-size:13.5px;padding:4px 0}
   .dcheck .drow{display:flex;gap:14px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)}
@@ -96,19 +167,24 @@
   .dcheck .dfoot a{color:#fff}
   @media(max-width:560px){.dcheck .drow{flex-direction:column;gap:2px}.dcheck .dlab{flex:none}}
 
-  /* Search */
+/* ===========================================================================
+   5. SEARCH
+   The input sits inside the hero; the results dropdown floats under it and is
+   shown by adding .on. Rows are .ritem; the empty state is .noresult with
+   .bchip suggestion buttons. The grey chips under the box are .chip and come
+   from the CHIPS array in the script.
+   =========================================================================== */
   .search{position:relative;max-width:660px;margin:0 auto}
+  /* The field is white in both themes (it sits on the blue hero), so its
+     background and text colour are literals on purpose. Do not swap them for
+     --card / --ink or the text turns pale-on-white in dark mode. */
   .search input{width:100%;padding:17px 44px 17px 52px;font-size:16px;font-family:inherit;border:none;border-radius:14px;background:#fff;box-shadow:0 8px 26px rgba(0,0,0,.22);outline:none;color:#1b2733}
   .search input:focus{box-shadow:0 0 0 4px rgba(255,255,255,.3),0 8px 26px rgba(0,0,0,.22)}
-  .search .ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#e4001b}
+  .search .ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--um)}
+  /* The "/" hint on the right. The shortcut itself is wired at the bottom of
+     the keyboard section in the script. */
   .kbd{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;color:#66717f;border:1px solid #dfe4ea;border-radius:6px;padding:1px 7px;font-family:inherit;pointer-events:none}
-  /* GDPR Art.13 notice shown before the file picker is ever opened */
-  .tnote{max-width:62ch;margin:10px auto 0;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.82);text-align:center}
-  .privacy{margin-top:14px;text-align:left;max-width:70ch;margin-left:auto;margin-right:auto}
-  .privacy summary{cursor:pointer;font-weight:600;color:var(--ink);padding:6px 0}
-  .privacy div{font-size:13px;line-height:1.6}
-  .privacy p{margin:.7em 0}
-  .results{position:absolute;left:0;right:0;margin-top:9px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.2);overflow:hidden;display:none;z-index:20;max-height:min(58vh,420px);overflow-y:auto;overscroll-behavior:contain}
+  .results{position:absolute;left:0;right:0;margin-top:9px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.2);display:none;z-index:20;max-height:min(58vh,420px);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
   .results.on{display:block}
   .ritem{display:block;text-decoration:none;padding:13px 18px;border-bottom:1px solid var(--line);cursor:pointer;color:inherit}
   .ritem:last-child{border-bottom:none}
@@ -121,18 +197,27 @@
   .bchip{font-size:12px;font-weight:600;background:var(--surface);color:var(--link);border:1px solid var(--line);border-radius:100px;padding:5px 12px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
   .bchip:hover{border-color:var(--link)}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
-  .chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:500;cursor:pointer;font-family:inherit;backdrop-filter:blur(4px);transition:.15s}
+  .chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:500;cursor:pointer;font-family:inherit;backdrop-filter:blur(4px);transition:background .15s,transform .15s}
   .chip:hover{background:rgba(255,255,255,.26);transform:translateY(-1px)}
 
-  /* Body */
+/* ===========================================================================
+   6. HOME PAGE
+   Quick-link tiles, the "Browse by topic" label, and the topic-card grid.
+   To add or remove a quick-link tile, edit the QUICK array in the script.
+   Topic cards are generated from content.json, one per topic; each gets its
+   colour through the inline --c variable set by renderTopics().
+   =========================================================================== */
   .quicklinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:26px 0 6px}
   .ql{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:15px 18px;border-radius:var(--rs);transition:background .15s ease,transform .15s ease}
   .ql:hover{background:#123a5f;transform:translateY(-2px)}
   .ql .qla{font-size:18px;line-height:1;font-weight:700}
   .sectlabel{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin:34px 0 16px;text-align:center}
   .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:52px}
+  /* Cards fade up as they appear; renderTopics() staggers them with an inline
+     animation-delay. The reduced-motion rule at the end of this stylesheet
+     switches the whole thing off for anyone who asks for that. */
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .tcard{position:relative;background:var(--surface);border:1px solid rgba(11,37,64,.20);border-radius:16px;padding:22px 18px;flex:0 1 212px;
+  .tcard{position:relative;background:var(--surface);border:1px solid rgba(11,37,64,.20);border-radius:var(--rm);padding:22px 18px;flex:0 1 212px;
     cursor:pointer;text-align:left;font-family:inherit;overflow:hidden;color:var(--ink);animation:up .45s ease both;
     transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
   html.dark .tcard{border-color:#4a5a6e}
@@ -145,8 +230,29 @@
   .tcard .tt{font-weight:700;font-size:15.5px;letter-spacing:.1px}
   .tcard .tc{font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
 
-  /* Topic / answer view */
+/* ===========================================================================
+   7. TOPIC AND ANSWER VIEW
+   Home and topic are two <div class="view"> panels in the same page; the
+   router shows one by adding .on. There is no page navigation.
+
+   THE TOPIC COLOUR PAIR (--c and --ct). showTopic() sets both on #v-topic
+   from the C and CT maps in the script:
+     --c   the bright topic hue. Borders, tints and the chevron, where
+           contrast rules do not apply.
+     --ct  a darkened version of the same hue that clears WCAG AA on white.
+           Used wherever the colour is text (.catname, the open question) or
+           a solid button carrying white text (.contact).
+   Keep both. Using --c for text fails contrast; using --ct for tints looks
+   muddy. In dark mode --ct is redefined as --c in region 1, because on a dark
+   card the bright hue is the readable one.
+
+   THE COLLAPSE MECHANISM: every answer is in the page from the start. .qa is
+   clipped to max-height:0 and hidden; toggleQ() adds .open to the .qitem,
+   which releases the height and flips aria-expanded on the button.
+   =========================================================================== */
   .view{display:none}.view.on{display:block}
+  /* Fallback topic colour, in case a topic reaches this view before
+     showTopic() has set --c and --ct on the element. */
   #v-topic{--c:#3b82f6}
   .back{background:none;border:none;color:var(--link);font-size:13px;font-weight:600;cursor:pointer;padding:16px 0 6px;display:inline-flex;gap:7px;align-items:center;font-family:inherit}
   .back svg.i{width:16px;height:16px}
@@ -171,6 +277,9 @@
   .qa p,.qa ul{font-family:var(--serif);font-size:16px;line-height:1.72;max-width:64ch}
   .qa p{margin:.6em 0}.qa ul{margin:.6em 0;padding-left:22px}.qa li{margin:.34em 0}
   .qa a{text-decoration:underline;text-underline-offset:2px}
+  /* Footer strip of every answer: office pill, "email this office" button and
+     copy-link button. The office name and mailbox come from content.json, which
+     gets them from the OFFICES table in tools/convert.mjs. */
   .abadge{display:flex;align-items:center;gap:9px;margin-top:14px;flex-wrap:wrap}
   .pill{font-size:11.5px;background:color-mix(in srgb,var(--c) 13%,var(--surface));color:var(--ct,var(--c));border:1px solid color-mix(in srgb,var(--c) 30%,var(--surface));border-radius:100px;padding:4px 11px;font-weight:600}
   .contact{font-size:12.5px;font-weight:600;background:var(--ct,var(--c));color:#fff;border:none;border-radius:var(--rs);padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;font-family:inherit;transition:filter .15s}
@@ -184,10 +293,18 @@
   .helpful{margin-top:14px;font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center}
   .helpful button{font-size:12px;border:1px solid var(--line);background:var(--surface);border-radius:var(--rs);padding:5px 11px;cursor:pointer;font-family:inherit;color:var(--ink)}
   .helpful button:hover{border-color:#c9d3dd}
+  html.dark .helpful button:hover{border-color:#3c4a5a}
+  /* Amber [NEEDS MARTIJN] flag. Only rendered in staff view (?staff), and only
+     from content.staff.json, which is gitignored and never deployed. */
   .note{margin-top:12px;font-size:12.5px;background:color-mix(in srgb,#f59e0b 12%,var(--surface));border:1px solid color-mix(in srgb,#f59e0b 35%,var(--surface));border-radius:var(--rs);padding:9px 12px;color:#b45309}
   .note b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
+  html.dark .note{color:#fbbf24}
 
-  /* skeleton loaders */
+/* ===========================================================================
+   8. PAGE CHROME
+   Loading skeleton, recently viewed, offline banner and back-to-top button.
+   =========================================================================== */
+  /* Grey shimmering placeholders shown while content.json is loading. */
   @keyframes shimmer{0%{background-position:-420px 0}100%{background-position:420px 0}}
   .skel{height:134px;border-radius:18px;border:1px solid var(--line);flex:0 1 212px;
     background:linear-gradient(90deg,color-mix(in srgb,var(--muted) 8%,var(--card)) 25%,color-mix(in srgb,var(--muted) 17%,var(--card)) 37%,color-mix(in srgb,var(--muted) 8%,var(--card)) 63%);
@@ -196,40 +313,65 @@
   .recentRow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
   .recentRow a{text-decoration:none;font-size:12.5px;font-weight:500;color:var(--link);background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:6px 14px;max-width:290px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:border-color .15s}
   .recentRow a:hover{border-color:var(--link)}
+  /* Section heading inside the results dropdown ("Popular questions"). */
   .rhead{padding:11px 18px 4px;font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);font-weight:700}
-  /* install / offline / back-to-top */
-  .installBtn{position:absolute;left:0;top:50%;transform:translateY(-50%);border:1px solid #cdd7e0;background:#fff;color:#12525f;font-weight:600;font-size:12.5px;border-radius:10px;padding:8px 13px;cursor:pointer;font-family:inherit;display:none;align-items:center;gap:6px}
-  html.dark .installBtn{background:#1c2735;border-color:#33414f;color:#cdd6e0}
-  .installBtn.on{display:inline-flex}.installBtn svg.i{width:16px;height:16px}
+  /* Brown strip under the masthead, shown by wireExtras() when the browser
+     reports it is offline. The answers still work, they come from the cache. */
   .offline{display:none;background:#8a3d12;color:#fff;text-align:center;font-size:12.5px;padding:7px 10px;font-weight:500}
   .offline.on{display:block}
   .toTop{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
     background:var(--navy);color:#fff;display:none;place-items:center;box-shadow:0 8px 22px rgba(11,37,64,.35);z-index:40;transition:transform .15s}
   .toTop:hover{transform:translateY(-2px)}.toTop.on{display:grid}.toTop svg.i{width:22px;height:22px}
-  /* for-you nudges */
-  .fory{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-  .fory .fyl{font-size:11px;text-transform:uppercase;letter-spacing:.6px;opacity:.85;font-weight:700}
-  .fory a{text-decoration:none;font-size:12.5px;font-weight:600;color:#fff;background:var(--um);border-radius:100px;padding:6px 13px;transition:filter .15s}
-  .fory a:hover{filter:brightness(1.08)}
-  /* staff flags dashboard */
+
+/* ===========================================================================
+   9. STAFF PANEL, FOOTER AND MEDIA QUERIES
+   The staff panel is editor-only: it lists the open [NEEDS MARTIJN] flags and
+   appears only with ?staff on the URL and only when content.staff.json is
+   present, which on the live site it never is.
+   =========================================================================== */
   #staffPanel{display:none;margin:24px 0 6px;border:1px solid color-mix(in srgb,#f59e0b 40%,var(--card));border-radius:14px;overflow:hidden;text-align:left}
   .staffbar{background:#f59e0b;color:#3a1d00;font-weight:700;font-size:13px;padding:11px 16px}
   .staffgrp{padding:6px 16px 10px;border-top:1px solid color-mix(in srgb,#f59e0b 22%,var(--card));background:color-mix(in srgb,#f59e0b 6%,var(--card))}
   .staffgt{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:700;margin:6px 0 3px}
   .staffgrp a{display:block;text-decoration:none;color:var(--ink);font-size:12.5px;padding:4px 0;line-height:1.45}
   .staffgrp a b{color:#9a3412}
+  html.dark .staffgrp a b{color:#fca5a5}
   .staffgrp a:hover{text-decoration:underline}
   footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.7}
+  /* The privacy statement in the footer. The offline build inserts an extra
+     paragraph here, so leave the wording of the first paragraphs alone unless
+     you also update tools/build-offline.mjs. */
+  .privacy{margin-top:14px;margin-left:auto;margin-right:auto;text-align:left;max-width:70ch}
+  .privacy summary{cursor:pointer;font-weight:600;color:var(--ink);padding:6px 0}
+  .privacy div{font-size:13px;line-height:1.6}
+  .privacy p{margin:.7em 0}
+  /* The transcript file picker is opened by the hero button, never shown. */
   input[type=file]{display:none}
   @media(max-width:560px){.heroTitle{font-size:27px}.mh img.faqlogo{height:54px}}
+  /* Accessibility: honour the operating-system "reduce motion" setting. Keep. */
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<!-- ===========================================================================
+     PAGE STRUCTURE
+     Nearly everything below is an empty container that the script fills at
+     runtime from content.json. The elements that carry an id are the ones the
+     script reaches for, so renaming an id means changing it in both places.
+       #live       invisible, announces changes to screen readers
+       #welcome    the transcript welcome card and degree check
+       #q #results the search box and its dropdown
+       #chips      the shortcut chips (from the CHIPS array)
+       #quicklinks the blue tiles (from the QUICK array)
+       #recent     recently viewed questions
+       #topics     the topic-card grid
+       #v-home #v-topic  the two panels the router switches between
+     ======================================================================== -->
 <div class="sr-only" aria-live="polite" id="live"></div>
 
 <div class="utilbar"><div class="wrap ub"><img class="ublogo" src="assets/um-logo.png" alt="Maastricht University"></div></div>
 <div class="offline" id="offline">You are offline, showing saved answers.</div>
+<!-- Masthead: logo plus the install and dark-mode buttons floating over it. -->
 <div class="masthead">
   <div class="wrap mh">
     <button class="installBtn" id="installBtn" aria-label="Install this app"><span id="instIcon"></span>Install app</button>
@@ -240,6 +382,8 @@
   </div>
 </div>
 
+<!-- Hero: the blue panel with the building photo behind it. Holds the
+     transcript button, the welcome card, the title and the search box. -->
 <section class="hero">
   <div class="wrap heroInner">
     <div class="heroTop">
@@ -260,6 +404,7 @@
   </div>
 </section>
 
+<!-- The two views. Both stay in the page; router() moves the .on class. -->
 <div class="wrap">
   <div class="view on" id="v-home">
     <div class="quicklinks" id="quicklinks"></div>
@@ -297,26 +442,72 @@
 
 <script>
 /* ===========================================================================
-   MSP Student FAQ — app shell (rendering only).
-   The ANSWERS are NOT in this file: they live in content.json, generated from
-   the master document by tools/convert.mjs. To change an answer, edit the
-   master and run `node tools/convert.mjs` — do not edit this file.
-   Sections below, in order: theme · topic colours · icons · quick-links ·
-   search + synonyms · routing · answer rendering · transcript · extras.
+   MSP Student FAQ, app shell (rendering only).
+
+   THE ANSWERS ARE NOT IN THIS FILE. They live in content.json, generated from
+   the master document by tools/convert.mjs. To change an answer, edit
+   MSP/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md and run
+   `node tools/convert.mjs`, then `node tools/build-offline.mjs`. Do not edit
+   this file for content, and do not hand-edit content.json.
+
+   HOW THE PAGE WORKS, in one paragraph. load() fetches content.json, hands it
+   to MiniSearch for the search index, draws the topic cards, and then calls
+   router(). The whole app is two panels in one page (#v-home and #v-topic);
+   the URL hash decides which is visible. Opening a topic renders every one of
+   its questions at once, each collapsed; clicking a question just adds a class.
+
+   Sections below, in order:
+     1  State and small helpers        7  Routing
+     2  Theme                          8  Answer rendering
+     3  Topic colours                  9  Transcript reading
+     4  Icons                         10  Degree check
+     5  Quick links and chips         11  Extras (skeleton, recent, install)
+     6  Search and synonyms           12  Start-up
+
+   CAREFUL: tools/build-offline.mjs rebuilds MSP-FAQ-offline.html by finding
+   exact snippets of this file and swapping them out. If you change the fetch
+   block in load(), the footer wording, or the last two lines of this script,
+   run `node tools/build-offline.mjs` afterwards. It fails loudly rather than
+   producing a broken file, and the fix is to update the anchor over there.
    =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. STATE AND HELPERS
+   state.data    the parsed content.json
+   state.mini    the MiniSearch index
+   state.student the transcript result, mirrored in localStorage 'faqStudent'
+   state.staff   editor mode. Turned on by ?staff on the URL. The localStorage
+                 flag is a manual escape hatch: nothing in the app sets it, so
+                 set faqStaff to "1" in devtools if you want it to stick.
+   --------------------------------------------------------------------------- */
 const state={data:null,mini:null,student:null,staff:/[?&]staff/.test(location.search)||localStorage.getItem('faqStaff')==='1'};
 const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+/* Speaks a message to screen readers through the #live region. The blank-then-
+   set dance is what makes the same message announce twice in a row. */
 const announce=m=>{$('#live').textContent='';setTimeout(()=>$('#live').textContent=m,30);};
 
-/* theme */
+/* ---------------------------------------------------------------------------
+   2. THEME
+   Dark mode is a class on <html>. A stored choice wins; with no stored choice
+   the app follows the operating system and keeps following it live.
+   --------------------------------------------------------------------------- */
 function applyTheme(){const stored=localStorage.getItem('faqTheme');
   const dark=stored?stored==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
   document.documentElement.classList.toggle('dark',dark);
   const b=$('#themeBtn');if(b)b.innerHTML=svg(dark?'_sun':'_moon');}
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{if(!localStorage.getItem('faqTheme'))applyTheme();});
 
-/* topic colours */
+/* ---------------------------------------------------------------------------
+   3. TOPIC COLOURS
+   Two maps, keyed by the exact topic name used in content.json (which comes
+   from the TOPICS list in tools/convert.mjs). C is the bright hue, CT is its
+   accessible counterpart. See the "topic colour pair" note in region 7 of the
+   stylesheet for which one goes where.
+   ADDING A TOPIC: add the name to TOPICS in tools/convert.mjs, then add the
+   same name here in C, in CT, and in the icon map P below. Miss one and the
+   card falls back to blue with a question-mark icon.
+   --------------------------------------------------------------------------- */
 const C={'Getting In':'#6366f1','Getting Started':'#14b8a6','Courses & Registration':'#3b82f6',
 'Exams & Grades':'#8b5cf6','Thesis (BTR)':'#10b981','Going Abroad':'#f97316','Graduation & Diploma':'#ec4899',
 'Wellbeing & Support':'#06b6d4','Money & Practical':'#f59e0b','IT & Accounts':'#0284c7','Forms & Links':'#0d9488','General':'#64748b'};
@@ -330,7 +521,14 @@ const CT={'Getting In':'#4338ca','Getting Started':'#0f766e','Courses & Registra
 'Wellbeing & Support':'#0e7490','Money & Practical':'#a16207','IT & Accounts':'#0369a1','Forms & Links':'#115e59','General':'#475569'};
 const col=t=>C[t]||'#3b82f6';
 
-/* icons */
+/* ---------------------------------------------------------------------------
+   4. ICONS
+   Every icon on the page is drawn from this map: the SVG path data only, with
+   svg() wrapping it in a 24x24 <svg class="i">. Topic names are keys, so a
+   topic card gets its icon for free; the keys starting with an underscore are
+   the interface icons. Colour and size come from CSS (svg.i), not from here.
+   Unknown key falls back to the 'General' question mark.
+   --------------------------------------------------------------------------- */
 const P={
   'Getting In':'<path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5"/><path d="M22 10v6"/>',
   'Getting Started':'<circle cx="12" cy="12" r="9.5"/><polygon points="16.2 7.8 13.8 13.8 7.8 16.2 10.2 10.2"/>',
@@ -353,9 +551,22 @@ const P={
   '_up':'<path d="m6 15 6-6 6 6"/>',
   '_install':'<path d="M12 3v11"/><path d="m7.5 10.5 4.5 4 4.5-4"/><path d="M5 20h14"/>'
 };
-const svg=(k,cls='i')=>`<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${P[k]||P.General}</svg>`;
+const svg=k=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${P[k]||P.General}</svg>`;
+
+/* ---------------------------------------------------------------------------
+   5. CHIPS AND SEARCH SYNONYMS
+   CHIPS are the shortcut buttons under the search box: [visible label, the
+   search query it runs]. They double as the "popular questions" list, because
+   buildPopular() takes the top hit for each one. Seven fit on one row on a
+   phone; add more and they wrap.
+   --------------------------------------------------------------------------- */
 const CHIPS=[['Resits','resit'],['Waivers','waiver'],['Timetable','timetable'],['Graduation','graduation'],['Going abroad','abroad'],['Additional module','additional module'],['Attendance','attendance']];
-/* everyday-word synonyms -> FAQ vocabulary (query expansion, boosts recall) */
+/* Everyday words on the left, FAQ vocabulary on the right. When a student
+   types a word on the left, expandQuery() bolts the right-hand words onto the
+   query before it reaches MiniSearch, so "I am sick" still finds the
+   attendance answers. Purely additive: it can only widen a search, never
+   narrow one, so adding a line here cannot break an existing search.
+   Keys are matched as whole words, case-insensitively. */
 const SYN={sick:'attendance illness ill',ill:'attendance illness',illness:'attendance',absent:'attendance absence',
 money:'tuition fees finance costs',fees:'tuition',fee:'tuition',cost:'tuition costs',costs:'tuition',
 gpa:'grade grades average',mark:'grade grades',marks:'grades',
@@ -378,7 +589,14 @@ scholarship:'grant funding',grant:'scholarship funding',
 clash:'overlap schedule',prerequisite:'waiver'};
 function expandQuery(q){let extra=[];for(const k in SYN){if(new RegExp('\\b'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i').test(q))extra.push(SYN[k]);}return extra.length?q+' '+extra.join(' '):q;}
 
-/* markdown + highlight */
+/* ---------------------------------------------------------------------------
+   MARKDOWN AND HIGHLIGHTING
+   Answers are stored as plain text with a little markdown. This is the whole
+   renderer: blank line = new paragraph, lines starting with - or * = a list,
+   **bold**, and bare emails and URLs turned into links. Everything is escaped
+   first, so answer text can never inject HTML. hl() wraps search terms in
+   <mark> for the results dropdown.
+   --------------------------------------------------------------------------- */
 function mdToHtml(t){return t.split(/\n\n+/).map(b=>b.trim()).filter(Boolean).map(b=>{const lines=b.split(/\n/);
   if(lines.every(l=>/^[-*]\s+/.test(l)))return '<ul>'+lines.map(l=>'<li>'+inline(l.replace(/^[-*]\s+/,''))+'</li>').join('')+'</ul>';
   return '<p>'+lines.map(inline).join('<br>')+'</p>';}).join('');}
@@ -388,7 +606,15 @@ function inline(s){s=esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
 function hl(text,terms){let out=esc(text);(terms||[]).forEach(t=>{if(!t||t.length<2)return;
   const re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');out=out.replace(re,'<mark>$1</mark>');});return out;}
 
-/* load */
+/* ---------------------------------------------------------------------------
+   6. LOAD AND SEARCH
+   load() is the boot sequence and runs once: theme, icons, skeleton, fetch
+   content.json (falling back to the copy in localStorage when offline), build
+   the search index, draw everything, then hand over to the router.
+   The fetch block below is one of the snippets tools/build-offline.mjs swaps
+   out (the offline copy has its answers embedded instead), so if you change
+   those three lines you must update the 'content load' anchor over there.
+   --------------------------------------------------------------------------- */
 async function load(){
   applyTheme();
   $('#searchIcon').innerHTML=svg('_search');$('#backIcon').innerHTML=svg('_back');$('#tbIcon').innerHTML=svg('_doc');
@@ -408,12 +634,21 @@ async function load(){
   $('#heroSub').textContent='Search '+data.meta.count+' answers, or browse the topics below.';
   restoreStudent();router();
 }
+/* One card per topic, in the order content.json lists them (set by TOPICS in
+   tools/convert.mjs). The card carries its topic colour as an inline --c and
+   its stagger as an inline animation-delay; everything else is in .tcard. */
 function renderTopics(){
   $('#topics').innerHTML=state.data.topics.map((t,i)=>
     `<button class="tcard" style="--c:${col(t.name)};animation-delay:${i*40}ms" onclick="go('#/topic/'+encodeURIComponent('${t.name.replace(/'/g,"\\'")}'))">
       <div class="ticon">${svg(t.name)}</div><div class="tt">${esc(t.name)}</div><div class="tc">${t.count} questions</div></button>`).join('');
 }
 function renderChips(){$('#chips').innerHTML=CHIPS.map(([l,query])=>`<button class="chip" onclick="quick('${query}')">${esc(l)}</button>`).join('');}
+/* The dark blue tiles on the home page. Add, remove or reorder freely: each
+   entry is {l: the label} plus a destination, which is one of
+     ext:   an external URL, opens in a new tab
+     topic: a topic name, opens that topic in this app
+     kw:    a lowercase fragment of a question, opens that answer
+   ext is the only kind in use today, the other two still work. */
 const QUICK=[
   {l:'Student Portal', ext:'https://login.maastrichtuniversity.nl/adfs/ls/'},
   {l:'Canvas', ext:'https://canvas.maastrichtuniversity.nl/'},
@@ -433,7 +668,10 @@ function renderQuick(){
 }
 function quick(query){const el=$('#q');el.value=query;el.dispatchEvent(new Event('input'));el.focus();window.scrollTo({top:0,behavior:'smooth'});}
 
-/* search */
+/* Search as you type. MiniSearch does the matching; the tuning lives in the
+   options passed in load() (question text weighted 3x, tags 2x, fuzzy 0.2,
+   prefix matching on). With no hits it broadens token by token for a "did you
+   mean", then offers topics to browse and a gap-report button. */
 function resultRow(f,terms){const off=(state.data.offices[f.office]||{}).name||'';
   return `<a class="ritem" role="option" href="#/topic/${encodeURIComponent(f.topic)}?q=${f.id}">
     <div class="rq">${hl(f.q,terms)}</div><div class="rmeta">${esc(f.topic)} &middot; ${esc(off)}</div></a>`;}
@@ -456,9 +694,14 @@ $('#q').addEventListener('input',e=>{
     <div class="browsehint" style="margin-top:12px"><button class="bchip" onclick="logGap('${esc(query).replace(/'/g,'')}')">Tell us what you were looking for</button></div></div>`;
   announce('No exact match. Suggestions shown.');
 });
+/* Records a search that found nothing, and an unhelpful vote, in localStorage
+   under 'faqGaps'. Nothing is sent anywhere: the list stays in the student's
+   own browser, so it is only readable if you sit at their machine. */
 function logGap(query){const g=JSON.parse(localStorage.getItem('faqGaps')||'[]');g.push({q:query,t:new Date().toISOString()});localStorage.setItem('faqGaps',JSON.stringify(g));$('#results').innerHTML='<div class="noresult"><div class="nt">Thanks. That helps us fill the gap.</div></div>';announce('Thanks, logged.');}
 
-/* keyboard: results arrow-nav + '/' shortcut */
+/* Keyboard: up and down walk the results, Escape closes them, and "/" from
+   anywhere on the page jumps to the search box (unless you are already typing
+   in a field). Accessibility work, keep it. */
 $('.search').addEventListener('keydown',e=>{
   const items=[...document.querySelectorAll('#results .ritem')];
   if(e.key==='Escape'){$('#results').className='results';$('#q').focus();return;}
@@ -470,13 +713,25 @@ document.addEventListener('keydown',e=>{
   if(e.key==='/'&&!/^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement||{}).tagName)){e.preventDefault();$('#q').focus();window.scrollTo({top:0,behavior:'smooth'});}
 });
 
-/* routing */
+/* ---------------------------------------------------------------------------
+   7. ROUTING
+   Two URLs, both in the hash so GitHub Pages never has to know about them:
+     #/                                the home page
+     #/topic/Exams%20%26%20Grades      a topic, all questions collapsed
+     #/topic/Exams%20%26%20Grades?q=ID that topic with one answer open
+   The ?q= form is what "Copy link" produces, so links shared with a student
+   land on the exact answer. Both panels stay in the page; the router only
+   swaps which one carries the .on class.
+   --------------------------------------------------------------------------- */
 function go(hash){location.hash=hash;}
 window.addEventListener('hashchange',router);
 function router(){const rb=$('#results');if(rb)rb.className='results';
   const h=decodeURIComponent(location.hash||'#/');const m=h.match(/^#\/topic\/([^?]+)(?:\?q=(.+))?$/);
   if(m){showTopic(m[1],m[2]);return;}
   $('#v-topic').className='view';$('#v-home').className='view on';window.scrollTo(0,0);}
+/* Draws a whole topic: every question of that topic, grouped by the category
+   heading it had in the master document, each one collapsed. Also sets the
+   topic colour pair on the panel, which the CSS then uses everywhere inside. */
 function showTopic(name,openId){
   const faqs=state.data.faqs.filter(f=>f.topic===name);const c=col(name);
   $('#v-topic').style.setProperty('--c',c);$('#v-topic').style.setProperty('--ct',CT[name]||c);$('#topicIcon').innerHTML=svg(name);$('#topicHead').textContent=name;
@@ -486,6 +741,20 @@ function showTopic(name,openId){
   $('#v-home').className='view';$('#v-topic').className='view on';window.scrollTo(0,0);
   if(openId)openQ(openId,true);
 }
+/* ---------------------------------------------------------------------------
+   8. ANSWER RENDERING
+   qHtml() builds one question row. The answer markup is always present in the
+   page, just clipped by CSS, which is what makes in-page linking and browser
+   find-in-page work. toggleQ() flips the .open class and the aria-expanded
+   attribute together, so the visual state and the screen-reader state can
+   never drift apart.
+   The office pill, the "email this office" button and its mailbox all come
+   from content.json. ADDING AN OFFICE: add it to the OFFICES table in
+   tools/convert.mjs with its mailbox, and re-run convert. Nothing here needs
+   to change; an office with an empty mailbox simply gets no email button.
+   --------------------------------------------------------------------------- */
+/* Up to three more questions from the same category, topped up from the rest
+   of the topic when the category is thin. */
 function relatedFor(f){let rel=state.data.faqs.filter(x=>x.id!==f.id&&x.topic===f.topic&&x.category===f.category);
   if(rel.length<3)state.data.faqs.filter(x=>x.id!==f.id&&x.topic===f.topic&&!rel.includes(x)).forEach(x=>{if(rel.length<3)rel.push(x);});
   return rel.slice(0,3);}
@@ -505,22 +774,41 @@ function qHtml(f){
         <button onclick="event.stopPropagation();logGap('(unhelpful) '+'${f.id}')">No</button></div>
     </div></div>`;
 }
+/* The whole open/close mechanism: one class on the .qitem. The CSS does the
+   rest, including hiding the collapsed answer from the tab order. */
 function toggleQ(btn){const item=btn.closest('.qitem');const open=item.classList.toggle('open');btn.setAttribute('aria-expanded',open);if(open)recordRecent(item.id.replace('q-',''));}
+/* Opens a specific answer and scrolls to it. silent=true skips the smooth
+   scroll, used when arriving from a shared ?q= link so the page does not
+   visibly slide on load. */
 function openQ(id,silent){const item=document.getElementById('q-'+id);if(!item)return;
   if(!item.classList.contains('open')){item.classList.add('open');const b=item.querySelector('.qq');if(b)b.setAttribute('aria-expanded','true');}
   recordRecent(id);
   if(!silent)item.scrollIntoView({behavior:'smooth',block:'center'});else item.scrollIntoView({block:'center'});}
 function copyLink(topic,id,btn){const url=location.origin+location.pathname+'#/topic/'+encodeURIComponent(topic)+'?q='+id;
   navigator.clipboard.writeText(url).then(()=>{const o=btn.innerHTML;btn.innerHTML=svg('_link')+' Copied!';announce('Link copied');setTimeout(()=>btn.innerHTML=o,1400);}).catch(()=>announce('Copy failed'));}
+/* Opens the student's own mail program with the subject and a skeleton body.
+   Nothing is sent from here. If a transcript has been read, the sign-off is
+   pre-filled with their name and student number so the office can find the
+   file; the student can still delete it before sending. */
 function mailto(box,q){const s=state.student;const subj=encodeURIComponent('MSP question: '+q);
   let body='Dear team,\n\n[your question]\n\n';if(s&&s.name)body+='Kind regards,\n'+s.name+(s.studentNumber?' ('+s.studentNumber+')':'');
   return `mailto:${box}?subject=${subj}&body=${encodeURIComponent(body)}`;}
 
-/* theme toggle */
+/* Theme toggle. Clicking it stores an explicit choice, which from then on
+   overrides the operating-system setting. */
 $('#themeBtn').onclick=()=>{const dark=document.documentElement.classList.contains('dark');localStorage.setItem('faqTheme',dark?'light':'dark');applyTheme();};
 
-/* transcript (client-side only). pdf.js is vendored but loaded on demand,
-   so nobody pays its 1.4 MB unless they actually open a transcript. */
+/* ---------------------------------------------------------------------------
+   9. TRANSCRIPT
+   Reads the student's SAP transcript PDF and shows the welcome and degree-check
+   cards. It happens entirely in the browser: the file is never uploaded, and
+   that is the reason this feature is allowed to exist at all, so keep it that
+   way. The result is kept in localStorage 'faqStudent' so the card survives a
+   reload; "clear" on the card deletes it.
+   pdf.js is vendored (no CDN) but loaded on demand, so nobody pays its 1.4 MB
+   unless they actually open a transcript. The offline copy hides the button
+   entirely, because pdf.js cannot load its worker from a file:// page.
+   --------------------------------------------------------------------------- */
 let pdfReady=null;
 function ensurePdf(){return pdfReady||(pdfReady=new Promise((res,rej)=>{const s=document.createElement('script');
   s.src='assets/vendor/pdf.min.js';
@@ -545,6 +833,10 @@ function renderWelcome(){const s=state.student;if(!s){$('#welcome').className='w
     <div class="stat"><b>${s.total}</b> / 180 ECTS earned</div><div class="stat"><b>${s.done}</b> modules completed</div>
     <button class="clear" onclick="clearStudent()">clear</button></div>`+card+fy;
   $('#welcome').className='welcome on';}
+/* Up to two nudges under the welcome card, chosen by credit total. Each links
+   to a real FAQ answer found by a fragment of its question text, so if that
+   question is ever reworded in the master the nudge quietly disappears rather
+   than breaking. Change the thresholds or the wording here. */
 function forYou(s){const out=[];const t=s.total||0;
   const link=(kw,label)=>{const f=state.data.faqs.find(x=>x.q.toLowerCase().includes(kw));if(f)out.push({label,href:'#/topic/'+encodeURIComponent(f.topic)+'?q='+f.id});};
   if(t<60)link('binding study advice','First-year BSA rules');
@@ -553,7 +845,8 @@ function forYou(s){const out=[];const t=s.total||0;
   return out.slice(0,2);}
 function clearStudent(){state.student=null;localStorage.removeItem('faqStudent');$('#welcome').className='welcome';}
 
-/* transcript parser (ported from MSP-Course-Planner-2, extraction only) */
+/* Pulls the plain text out of the PDF and refuses anything that is not an MSP
+   transcript. Ported from MSP-Course-Planner-2, extraction only. */
 async function parseTranscriptPDF(file){
   const arrayBuffer=await file.arrayBuffer();const pdf=await pdfjsLib.getDocument({data:arrayBuffer}).promise;let fullText='';
   for(let i=1;i<=pdf.numPages;i++){const page=await pdf.getPage(i);const content=await page.getTextContent();fullText+=content.items.map(it=>it.str).join(' ')+'\n';}
@@ -561,11 +854,16 @@ async function parseTranscriptPDF(file){
   if(!fullText.includes('Maastricht Science Programme')&&!fullText.includes('Liberal Arts and Sciences'))throw new Error('NOT_MSP');
   return parseTranscriptText(fullText);
 }
-/* Extended 27 Jul 2026: transfer credits, exemptions, Semester Abroad, EXT
-   classification and resit dedup. The reference copy of this logic lives in
-   c:\dev\Operations\Degree-Checker\engine\engine.mjs, where it is validated
-   against the Feb-2026 cohort (146 transcripts, exact match with SAP's printed
-   PR counter). Keep the two in sync. */
+/* ===== MIRRORED CODE, DO NOT EDIT CASUALLY =====================
+   parseTranscriptText() below, and classifyMod() / checkDegree() further down,
+   are a copy of the validated degree engine. The reference copy lives in
+   c:\dev\Operations\Projects\Degree-Checker\engine\engine.mjs, where it is
+   validated against the Feb-2026 cohort (146 transcripts, exact match with
+   SAP's printed PR counter). Read that project's README before changing any
+   of it, change it there first, and keep the two copies in step. Everything
+   here has been kept byte-for-byte deliberately, including the formatting.
+   Extended 27 Jul 2026: transfer credits, exemptions, Semester Abroad, EXT
+   classification and resit dedup. */
 function parseTranscriptText(raw){
   const text=String(raw).replace(/\s+/g,' ');
   const result={student:{},modules:[],transferEcts:0,exemptions:[]};
@@ -608,7 +906,16 @@ function parseTranscriptText(raw){
   return result;
 }
 
-/* degree check: rules from EER 3.6/3.7/3.10 + R&R (see Degree-Checker README) */
+/* ---------------------------------------------------------------------------
+   10. DEGREE CHECK
+   Turns a parsed transcript into the "am I on track" card. The rules come from
+   EER 3.6/3.7/3.10 and the R&R (see the Degree-Checker README). Still mirrored
+   code: change it in the Degree-Checker project first, then copy it here.
+   degree-data.json is the course catalogue used to classify modules; it is
+   generated by that project too, so do not hand-edit it either.
+   The card is advisory. It never says a student has failed a requirement it
+   cannot prove, which is why several rows read "check with your advisor".
+   --------------------------------------------------------------------------- */
 const DEGREE_RULES={TOTAL:180,BTR_ENTRY:145,
   CORE:['BIO1101','CHE1101','PHY1101','INT1101','PRA1101','PRA1102','PRO1101'],
   GE_LAS_KNOWN:['INT2007','INT3001','HUM2051'],
@@ -663,17 +970,21 @@ function checkDegree(parsed,cat){
     slots:{c:slots.c,s:slots.s,p:slots.p},
     btr:btrModule?{status:'done',grade:btrModule.grade}:totalEcts>=DEGREE_RULES.BTR_ENTRY?{status:'eligible'}:{status:'not-eligible',ectsShort:Math.round((DEGREE_RULES.BTR_ENTRY-totalEcts)*100)/100},
     exemptions:parsed.exemptions,unclassified:unclassified.map(m=>m.code),legacyCodes};}
+/* Draws the card. One row per requirement; the third argument of row() is the
+   colour class, dok (green), dmiss (red) or dmaybe (amber). This is display
+   only, it is not part of the mirrored engine, so wording and row order can be
+   changed here freely. */
 function renderDegreeCard(c){
   const row=(lab,val,cls)=>`<div class="drow"><span class="dlab">${lab}</span><span class="dval ${cls}">${val}</span></div>`;
   const ge=g=>g.met?[`done (${esc(g.via)})`,'dok']:g.maybe?['confirm with your advisor','dmaybe']:['missing','dmiss'];
   const rows=[];
   rows.push(row('Credits',`<b>${c.totalEcts}</b> / ${DEGREE_RULES.TOTAL} ECTS`+(c.transferEcts?` + ${c.transferEcts} transfer`:''),c.totalEcts>=DEGREE_RULES.TOTAL?'dok':''));
-  rows.push(row('Core',c.core.missing.length?`${c.core.done} of ${c.core.of}, missing ${c.core.missing.join(', ')}`:'all done','dok dmiss'.split(' ')[c.core.missing.length?1:0]));
+  rows.push(row('Core',c.core.missing.length?`${c.core.done} of ${c.core.of}, missing ${c.core.missing.join(', ')}`:'all done',c.core.missing.length?'dmiss':'dok'));
   const gm=ge(c.geMat);
   rows.push(row('GE mathematics',gm[0],gm[1]));
   /* individually approved LAS courses are not all on any list (BoE), so this
      row never claims a hard "missing" */
-  rows.push(row('GE humanities / social science',c.geLas.met?`done (${esc(c.geLas.via)})`:'not found, check the approved list with your advisor','dok dmaybe'.split(' ')[c.geLas.met?0:1]));
+  rows.push(row('GE humanities / social science',c.geLas.met?`done (${esc(c.geLas.via)})`:'not found, check the approved list with your advisor',c.geLas.met?'dok':'dmaybe'));
   rows.push(row('Modules',`${c.slots.c} of 20 courses, ${c.slots.s} of 10 skills, ${c.slots.p} of 5 projects`,''));
   rows.push(row('BTR',c.btr.status==='done'?`done (${c.btr.grade})`:c.btr.status==='eligible'?'you meet the 145 ECTS start requirement':`${c.btr.ectsShort} ECTS to go before you can start (145 needed)`,c.btr.status==='done'?'dok':c.btr.status==='eligible'?'dok':'dmaybe'));
   if(c.transferEcts)rows.push(row('Transfer credits',`${c.transferEcts} ECTS, how these count is set in your BoE decision`,'dmaybe'));
@@ -684,7 +995,13 @@ function renderDegreeCard(c){
   return `<details class="dcheck"><summary>Your degree check, ${met} of 5 requirements complete</summary>${rows.join('')}
     <div class="dfoot">Automatic reading of your transcript against the standard EER rules. Advisory only, not a Board of Examiners decision. Something looks wrong? Contact <a href="mailto:msp-educationsupport@maastrichtuniversity.nl">ESD</a>.</div></details>`;}
 
-/* extras: skeleton, popular, recently viewed, install, offline, back-to-top */
+/* ---------------------------------------------------------------------------
+   11. EXTRAS
+   Loading skeleton, popular questions, recently viewed, the staff flag panel,
+   and wireExtras() which hooks up the small interface behaviours: showing
+   popular questions on focus, closing the dropdown on an outside click, the
+   back-to-top button, the install prompt and the offline banner.
+   --------------------------------------------------------------------------- */
 function renderSkeleton(){$('#topics').innerHTML=Array(8).fill('<div class="skel"></div>').join('');}
 function buildPopular(){const seen=new Set();state.popular=[];CHIPS.forEach(([l,query])=>{const h=state.mini.search(query)[0];if(h&&!seen.has(h.id)){seen.add(h.id);const f=state.data.faqs.find(x=>x.id===h.id);if(f)state.popular.push(f);}});}
 function showPopular(){const box=$('#results');if(!state.popular||!state.popular.length){box.className='results';box.innerHTML='';return;}
@@ -701,6 +1018,9 @@ function renderStaffPanel(){if(!state.staff)return;const el=$('#staffPanel');if(
   let h=`<div class="staffbar">Editor mode &mdash; ${flagged.length} flags remaining</div>`;
   h+=Object.keys(by).map(t=>`<div class="staffgrp"><div class="staffgt">${esc(t)} (${by[t].length})</div>`+by[t].map(f=>`<a href="#/topic/${encodeURIComponent(f.topic)}?q=${f.id}"><b>${esc(f.q)}</b> &mdash; ${esc(f.note)}</a>`).join('')+`</div>`).join('');
   el.innerHTML=h;el.style.display='block';}
+/* Held from the browser's beforeinstallprompt event so the "Install app"
+   button can trigger it later. Null means the browser is not offering an
+   install, and the button stays hidden. */
 let deferredPrompt=null;
 function wireExtras(){
   $('#q').addEventListener('focus',()=>{if(!$('#q').value.trim())showPopular();});
@@ -713,6 +1033,17 @@ function wireExtras(){
   const off=()=>$('#offline').classList.toggle('on',!navigator.onLine);window.addEventListener('online',off);window.addEventListener('offline',off);off();
 }
 
+/* ---------------------------------------------------------------------------
+   12. START-UP
+   The service worker (sw.js) is what makes the app work offline and installable.
+   It caches the shell and refreshes content.json in the background, so a
+   pushed edit reaches students on their next visit without a re-download.
+   The two lines below are both anchors for tools/build-offline.mjs: the
+   registration is stripped from the offline copy (a file:// page has no
+   service worker) and the load() call is where the offline copy appends its
+   "check for new answers" logic. Leave them exactly as they are, or update
+   the 'sw registration' and 'refresh logic' anchors in that script.
+   --------------------------------------------------------------------------- */
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 load();
 </script>

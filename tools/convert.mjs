@@ -1,9 +1,19 @@
 // ─────────────────────────────────────────────────────────────────────────
 //  Builds content.json (what the app shows) from the master FAQ document.
-//  Source:  ESD/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md
-//  Run:     node tools/convert.mjs
+//  Source:  c:/dev/MSP/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md
+//  Run:     node tools/convert.mjs   (then node tools/build-offline.mjs)
 //  Edit the OFFICES / topic maps below only when adding a new office or topic.
 //  To change an ANSWER, edit the master document, not this file.
+//
+//  HOW IT READS THE MASTER
+//    ## heading   an office section. Matched against the `m` strings in OFFICES
+//                 by substring, so the heading may say more than the key phrase.
+//    ### heading  a category, used to group questions inside a topic and
+//                 sometimes to override which topic a question lands in.
+//    **line**     a question. Everything after it, up to the next question or
+//                 heading, is its answer.
+//  Anything before the first recognised office heading is ignored, which is how
+//  the table of contents stays out of the output.
 // ─────────────────────────────────────────────────────────────────────────
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,6 +31,11 @@ const raw = fs.readFileSync(SRC, 'utf8');
 const lines = raw.split(/\r?\n/);
 
 // Office (## header substring) -> {key, name, mailbox}
+// ADDING AN OFFICE: add a row here. `m` is the text to look for in the ## line
+// of the master, `key` is the short id stored in content.json, `name` is what
+// students see on the pill, and `mailbox` is the address the "email this
+// office" button opens. Leave the mailbox empty and the button is not shown.
+// Then give the new key a default topic in OFFICE_TOPIC below.
 const OFFICES = [
   { m: 'Admissions',                        key: 'admissions', name: 'Admissions',                    mailbox: 'msp-admissions@maastrichtuniversity.nl' },
   { m: 'Introduction Days and Life',        key: 'intro',      name: 'MSP (Introduction)',            mailbox: 'msp-educationsupport@maastrichtuniversity.nl' },
@@ -111,7 +126,12 @@ flush();
 const officesOut = {};
 for (const o of OFFICES) officesOut[o.key] = { name: o.name, mailbox: o.mailbox };
 
-// topic ordering + emoji
+// Topic ordering + emoji. This list is the order the cards appear in on the
+// home page; a topic with no questions is dropped automatically.
+// ADDING A TOPIC: add it here, then add the same name to the C, CT and P maps
+// in index.html so it gets a colour pair and an icon. The emoji is not used by
+// index.html today (the cards use the SVG icons from the P map), but it does
+// ship in content.json, so leave it in place for anything else reading that.
 const TOPICS = [
   ['Getting In','🎓'],['Getting Started','🧭'],['Courses & Registration','📚'],
   ['Exams & Grades','📝'],['Thesis (BTR)','🔬'],['Going Abroad','✈️'],
@@ -123,7 +143,11 @@ const topics = TOPICS.filter(([t]) => present.has(t)).map(([name, emoji]) => ({
   name, emoji, count: entries.filter(e => e.topic === name).length,
 }));
 
-const meta = { title: 'MSP Student FAQ', ay: '2025-2026', generated: new Date().toISOString().slice(0,10), count: entries.length };
+// `ay` is metadata only, it is not rendered anywhere in the app. Update it when
+// the master's student-facing dates move to a new academic year. Note the EER
+// and R&R article citations in the answers refer to the regulations in force for
+// the year they describe, so those do not automatically move with this.
+const meta = { title: 'MSP Student FAQ', ay: '2026-2027', generated: new Date().toISOString().slice(0,10), count: entries.length };
 
 // content.json is PUBLIC. [NEEDS MARTIJN] notes are internal working text and can
 // name colleagues or describe unresolved process, so they must never ship. They go

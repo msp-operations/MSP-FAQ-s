@@ -23,7 +23,7 @@ let html = read('index.html').toString('utf8').replace(/\r\n/g, '\n');
 
 function swap(anchor, replacement, label) {
   const i = html.indexOf(anchor);
-  if (i < 0) throw new Error(`Anchor not found (${label}) — index.html changed, update build-offline.mjs`);
+  if (i < 0) throw new Error(`Anchor not found (${label}). index.html changed, update build-offline.mjs`);
   if (html.indexOf(anchor, i + 1) >= 0) throw new Error(`Anchor not unique (${label})`);
   html = html.slice(0, i) + replacement + html.slice(i + anchor.length);
 }
