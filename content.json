@@ -3,13 +3,13 @@
     "title": "MSP Student FAQ",
     "ay": "2025-2026",
     "generated": "2026-08-13",
-    "count": 362
+    "count": 364
   },
   "topics": [
     {
       "name": "Getting In",
       "emoji": "🎓",
-      "count": 22
+      "count": 24
     },
     {
       "name": "Getting Started",
@@ -217,7 +217,7 @@
     {
       "id": "what-are-the-entry-requirements",
       "q": "What are the entry requirements?",
-      "a": "Getting in works in two steps.\n\n**Step 1: meet UM's central admission requirements.** You need a Dutch VWO diploma, an accepted international equivalent, or a Dutch HBO propedeuse.\n\n**Step 2: come through MSP's own selection procedure.** Meeting the central requirements gets you to the starting line, not through the door. MSP has a limited intake and selects.\n\n**MSP sets no compulsory subjects.** Unlike some other science programmes at UM, MSP does not require a particular VWO profile or specific subjects. Mathematics including calculus (differentiation and integration, roughly the level of Dutch wiskunde B) is **strongly recommended**, and your previous courses should show a genuine interest in the natural sciences, but these are recommendations rather than hard entry requirements. You can check this for yourself on UM's additional subject requirements overview, where MSP carries no required profile or required subjects: https://www.maastrichtuniversity.nl/additional-subject-requirements\n\nSo to be concrete: **a Dutch VWO diploma without wiskunde B is still admitted** by the Student Services Centre, and you then go into MSP's selection procedure like everyone else. If maths is not your strongest subject, that is something to discuss rather than a reason not to apply.",
+      "a": "Getting in works in two steps.\n\n**Step 1: meet UM's central admission requirements.** You need a Dutch VWO diploma, an accepted international equivalent, or a Dutch HBO propedeuse.\n\n**Step 2: come through MSP's own selection procedure.** Meeting the central requirements gets you to the starting line, not through the door. MSP has a limited intake and selects.\n\n**On subjects, MSP works differently from most science programmes.** MSP publishes no fixed list of required subjects, and it carries no required profile or required subjects in UM's additional subject requirements overview (https://www.maastrichtuniversity.nl/additional-subject-requirements), unlike programmes such as Biomedical Sciences or Brain Science. Mathematics including calculus (differentiation and integration, roughly the level of Dutch wiskunde B) is **strongly recommended** rather than formally required, and your previous courses should show a genuine interest in the natural sciences.\n\nThat said, \"no fixed list\" does not mean anything is accepted. In practice:",
       "topic": "Getting In",
       "office": "admissions",
       "category": "Entry requirements",
@@ -227,9 +227,29 @@
       ]
     },
     {
+      "id": "if-you-have-a-dutch-vwo-diploma",
+      "q": "If you have a Dutch VWO diploma",
+      "a": "- You need a science profile, either **Natuur & Gezondheid (N&G)** or **Natuur & Techniek (N&T)**. Applicants with a different profile are not admitted.\n- Within those profiles, **wiskunde B is not a hard requirement**. Both profiles always include some mathematics, and if you have wiskunde A rather than wiskunde B the choice is left to you. Admissions may ask you to show that you have the underlying knowledge anyway, particularly calculus, through a self-study test. The responsibility to judge whether you are ready sits with you, so be honest with yourself about it: the programme assumes that level of maths from the start.",
+      "topic": "Getting In",
+      "office": "admissions",
+      "category": "Entry requirements",
+      "tags": [
+        "diploma"
+      ]
+    },
+    {
+      "id": "if-you-have-an-international-baccalaureate",
+      "q": "If you have an International Baccalaureate",
+      "a": "Here there is a hard cut on mathematics:\n\n- **Math AA HL, Math AA SL and Math AI HL** are sufficient for MSP. Nothing extra is needed.\n- **Math AI SL is not sufficient.** You must additionally pass the Online Mathematics Placement Test **OMPT-D with a score of at least 75%** (https://www.omptest.org). This counts as an extra admission requirement for meeting the VWO-equivalent standard, so plan for it early. You can prepare through Boswell-Beta, Khan Academy or the test provider's own material.",
+      "topic": "Getting In",
+      "office": "admissions",
+      "category": "Entry requirements",
+      "tags": []
+    },
+    {
       "id": "which-international-diplomas-count-as-equivalent-to-vwo",
       "q": "Which international diplomas count as equivalent to VWO?",
-      "a": "The Student Services Centre maintains the list of non-Dutch diplomas that are equivalent to the Dutch VWO diploma, and updates it every year: https://myapplication-ch.maastrichtuniversity.nl/sites/default/files/2026-07/Non-Dutch%20diplomas%20equivalent%20to%20the%20Dutch%20VWO%20diploma%202026-2027%20-%20Maastricht%20University%20EN.pdf\n\nCommonly recognised diplomas include the International Baccalaureate (IB), the European Baccalaureate (EB) and the German Abitur. Grades from foreign diplomas are converted to the Dutch system as part of the assessment. The Student Services Centre makes the call on whether your specific qualification qualifies, so check the list first and contact msp-admissions@maastrichtuniversity.nl if your situation is not clear from it.",
+      "a": "The Student Services Centre maintains the list of non-Dutch diplomas that are equivalent to the Dutch VWO diploma, and updates it every year: https://www.maastrichtuniversity.nl/non-Dutch-diplomas-equivalent-VWO\n\nCommonly recognised diplomas include the International Baccalaureate (IB), the European Baccalaureate (EB) and the German Abitur. Grades from foreign diplomas are converted to the Dutch system as part of the assessment. The Student Services Centre makes the call on whether your specific qualification qualifies, so check the list first and contact msp-admissions@maastrichtuniversity.nl if your situation is not clear from it.",
       "topic": "Getting In",
       "office": "admissions",
       "category": "Entry requirements",
