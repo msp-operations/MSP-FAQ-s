@@ -398,7 +398,9 @@
 <section class="hero">
   <div class="wrap heroInner">
     <div class="heroTop">
-      <button class="tbtn" id="transcriptBtn"><span id="tbIcon"></span>Load my transcript</button>
+      <!-- Starts hidden so it cannot flash on a slow load. TRANSCRIPT_ENABLED
+           in the script decides whether it is revealed. -->
+      <button class="tbtn" id="transcriptBtn" hidden><span id="tbIcon"></span>Load my transcript</button>
       <input type="file" id="pdff" accept="application/pdf">
     </div>
     <div class="welcome" id="welcome"></div>
@@ -860,7 +862,8 @@ const TRANSCRIPT_ENABLED = false;
    Art.13 asks for. Closing it without choosing a file processes nothing. */
 const tcOpen=()=>{const m=$('#tconsent');m.setAttribute('open','');$('#tcGo').focus()};
 const tcClose=()=>{$('#tconsent').removeAttribute('open');$('#transcriptBtn').focus()};
-if(!TRANSCRIPT_ENABLED){$('#transcriptBtn').hidden=true;$('#transcriptBtn').setAttribute('aria-hidden','true');}
+// The button is `hidden` in the markup, so it never flashes before this runs.
+if(TRANSCRIPT_ENABLED)$('#transcriptBtn').hidden=false;
 $('#transcriptBtn').onclick=tcOpen;
 $('#tcCancel').onclick=tcClose;
 $('#tcGo').onclick=()=>{$('#tconsent').removeAttribute('open');$('#pdff').click()};
