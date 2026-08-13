@@ -2089,8 +2089,7 @@
       "category": "Additional questions",
       "tags": [
         "tuition"
-      ],
-      "note": "confirm whether any of these forms are signed by the SSC rather than ESD, so the split can be stated exactly."
+      ]
     },
     {
       "id": "does-my-certificate-of-enrolment-show-my-expected-graduation",
@@ -4997,6 +4996,10 @@ async function load(){
   try{const c=localStorage.getItem('faqOfflineCache');const cached=c?JSON.parse(c):null;
     if(cached&&cached.meta&&cached.meta.generated>EMBEDDED.meta.generated)data=cached;}catch(e){}
   state.data=data;
+  // Internal [NEEDS MARTIJN] notes live in content.staff.json, which is gitignored and
+  // therefore only present on a local build. On the live site this fetch 404s and the
+  // staff panel is simply empty, which is the intended behaviour.
+  if(state.staff){try{const sr=await fetch('content.staff.json',{cache:'no-cache'});if(sr.ok){const sd=await sr.json();const byId={};(sd.notes||[]).forEach(n=>{byId[n.id]=n.note});data.faqs.forEach(f=>{if(byId[f.id])f.note=byId[f.id]})}}catch(e){}}
   state.mini=new MiniSearch({fields:['q','a','tags','topicName','officeName'],storeFields:['id'],searchOptions:{boost:{q:3,tags:2},fuzzy:0.2,prefix:true}});
   state.mini.addAll(data.faqs.map(f=>({...f,tags:(f.tags||[]).join(' '),topicName:f.topic,officeName:(data.offices[f.office]||{}).name||''})));
   renderTopics();renderChips();renderQuick();buildPopular();renderRecent();renderStaffPanel();wireExtras();

@@ -15,6 +15,7 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const SRC = 'c:/dev/MSP/_Inventory/Knowledge Base/MSP Student FAQ - MASTER.md';
 const OUT = path.join(REPO, 'content.json');
+const OUT_STAFF = path.join(REPO, 'content.staff.json');
 
 const raw = fs.readFileSync(SRC, 'utf8');
 const lines = raw.split(/\r?\n/);
@@ -122,8 +123,17 @@ const topics = TOPICS.filter(([t]) => present.has(t)).map(([name, emoji]) => ({
   name, emoji, count: entries.filter(e => e.topic === name).length,
 }));
 
-const out = { meta: { title: 'MSP Student FAQ', ay: '2025-2026', generated: new Date().toISOString().slice(0,10), count: entries.length }, topics, offices: officesOut, faqs: entries };
+const meta = { title: 'MSP Student FAQ', ay: '2025-2026', generated: new Date().toISOString().slice(0,10), count: entries.length };
+
+// content.json is PUBLIC. [NEEDS MARTIJN] notes are internal working text and can
+// name colleagues or describe unresolved process, so they must never ship. They go
+// to content.staff.json, which is gitignored and only exists on this machine.
+const publicFaqs = entries.map(({ note, ...rest }) => rest);
+const out = { meta, topics, offices: officesOut, faqs: publicFaqs };
 fs.writeFileSync(OUT, JSON.stringify(out, null, 2), 'utf8');
+
+const staffNotes = entries.filter(e => e.note).map(({ id, q, topic, office, note }) => ({ id, q, topic, office, note }));
+fs.writeFileSync(OUT_STAFF, JSON.stringify({ meta, notes: staffNotes }, null, 2), 'utf8');
 
 console.log('Entries:', entries.length);
 console.log('With internal notes (NEEDS MARTIJN):', entries.filter(e => e.note).length);
