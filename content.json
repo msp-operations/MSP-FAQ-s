@@ -217,40 +217,39 @@
     {
       "id": "what-are-the-entry-requirements",
       "q": "What are the entry requirements?",
-      "a": "You need a Dutch VWO diploma or an international equivalent, with clear evidence of science and mathematics in your prior education. Mathematics including calculus (differentiation and integration, roughly the level of Dutch wiskunde B) is highly recommended. Your previous courses should show a genuine interest in the natural sciences.",
+      "a": "Getting in works in two steps.\n\n**Step 1: meet UM's central admission requirements.** You need a Dutch VWO diploma, an accepted international equivalent, or a Dutch HBO propedeuse.\n\n**Step 2: come through MSP's own selection procedure.** Meeting the central requirements gets you to the starting line, not through the door. MSP has a limited intake and selects.\n\n**MSP sets no compulsory subjects.** Unlike some other science programmes at UM, MSP does not require a particular VWO profile or specific subjects. Mathematics including calculus (differentiation and integration, roughly the level of Dutch wiskunde B) is **strongly recommended**, and your previous courses should show a genuine interest in the natural sciences, but these are recommendations rather than hard entry requirements. You can check this for yourself on UM's additional subject requirements overview, where MSP carries no required profile or required subjects: https://www.maastrichtuniversity.nl/additional-subject-requirements\n\nSo to be concrete: **a Dutch VWO diploma without wiskunde B is still admitted** by the Student Services Centre, and you then go into MSP's selection procedure like everyone else. If maths is not your strongest subject, that is something to discuss rather than a reason not to apply.",
       "topic": "Getting In",
       "office": "admissions",
       "category": "Entry requirements",
       "tags": [
-        "diploma"
-      ]
-    },
-    {
-      "id": "which-international-diplomas-count-as-equivalent-to-vwo",
-      "q": "Which international diplomas count as equivalent to VWO?",
-      "a": "An international diploma is accepted if it is equivalent to the Dutch VWO and shows the required science and mathematics background. Diplomas MSP recognises include the International Baccalaureate (IB), the European Baccalaureate (EB) and the German Abitur. Grades from foreign diplomas are converted to the Dutch system as part of the assessment. Because the exact requirements differ per country and diploma, the Student Services Centre confirms whether your specific qualification qualifies.\n\nThe full admission requirements, including which diplomas give access and the subjects you need, are on the MSP admission page: https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements. For a decision on your own diploma and country, contact msp-admissions@maastrichtuniversity.nl.",
-      "topic": "Getting In",
-      "office": "admissions",
-      "category": "Entry requirements",
-      "tags": [
-        "grade",
         "diploma",
         "ects"
       ]
     },
     {
-      "id": "i-do-not-have-a-vwo-diploma-or-the-required-subjects-can-i-s",
-      "q": "I do not have a VWO diploma or the required subjects. Can I still apply?",
-      "a": "If you do not hold a VWO diploma or an accepted equivalent, you may be able to take a colloquium doctum, an entrance examination for applicants without the standard prior education (EER 2.4). You must be at least 21 years old on the date of the examination, although this age limit can be waived in defined cases.",
+      "id": "which-international-diplomas-count-as-equivalent-to-vwo",
+      "q": "Which international diplomas count as equivalent to VWO?",
+      "a": "The Student Services Centre maintains the list of non-Dutch diplomas that are equivalent to the Dutch VWO diploma, and updates it every year: https://myapplication-ch.maastrichtuniversity.nl/sites/default/files/2026-07/Non-Dutch%20diplomas%20equivalent%20to%20the%20Dutch%20VWO%20diploma%202026-2027%20-%20Maastricht%20University%20EN.pdf\n\nCommonly recognised diplomas include the International Baccalaureate (IB), the European Baccalaureate (EB) and the German Abitur. Grades from foreign diplomas are converted to the Dutch system as part of the assessment. The Student Services Centre makes the call on whether your specific qualification qualifies, so check the list first and contact msp-admissions@maastrichtuniversity.nl if your situation is not clear from it.",
+      "topic": "Getting In",
+      "office": "admissions",
+      "category": "Entry requirements",
+      "tags": [
+        "grade",
+        "diploma"
+      ]
+    },
+    {
+      "id": "i-do-not-have-a-vwo-diploma-can-i-still-apply",
+      "q": "I do not have a VWO diploma. Can I still apply?",
+      "a": "Possibly, through one of two routes.\n\nA **Dutch HBO propedeuse** also gets you through UM's central admission requirements, so that is a genuine way in.\n\nIf you hold neither a VWO diploma, an accepted international equivalent, nor an HBO propedeuse, you may be able to take a **colloquium doctum**, an entrance examination for applicants without the standard prior education (EER 2.4). You must be at least 21 years old on the date of the examination, although this age limit can be waived in defined cases, for example if you hold a foreign diploma that gives access to higher education in its own country, or if you have refugee status and cannot produce your diploma.\n\nBecause this route is handled centrally rather than by MSP, contact msp-admissions@maastrichtuniversity.nl early to find out what applies in your case and how to register. Do not leave it late, since the examination is scheduled and there are application deadlines attached to it.",
       "topic": "Getting In",
       "office": "admissions",
       "category": "Entry requirements",
       "tags": [
         "diploma",
         "exam",
-        "ects"
-      ],
-      "note": "which subjects the MSP colloquium doctum covers and how to register for it."
+        "deadline"
+      ]
     },
     {
       "id": "what-are-the-english-language-requirements",
