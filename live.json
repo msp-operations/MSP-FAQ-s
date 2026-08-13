@@ -361,7 +361,7 @@
     {
       "id": "what-are-the-introduction-days-and-when-do-they-take-place",
       "q": "What are the Introduction Days and when do they take place?",
-      "a": "The Introduction Days are the compulsory welcome and onboarding programme for new MSP students. For the September 2026 intake they run over three days, **Monday 24 August to Wednesday 26 August 2026**, immediately before the start of the academic year, and they get you set up with the practical and academic essentials before teaching begins.\n\nAcross the three days you can expect buddy introduction sessions, a welcome speech and the MSP Fair, a speech from the Dean, tours of the PHS and Randwyck buildings, your first taste of PBL (problem-based learning) tutorials, and sessions on safety, on how MSP is organised and on studying effectively. Attendance is compulsory, so plan your arrival in Maastricht around it.\n\nYou are asked to complete a mandatory response form confirming your attendance and arrival details.\n\nIf a question comes up during onboarding, route it to the right place: admissions and payment matters to the admissions team, course and registration questions to Academic Advising and ESD, and housing to the Student Service Centre.",
+      "a": "The Introduction Days are the compulsory welcome and onboarding programme for new MSP students. They run in late August (around week 35), immediately before the September start of the academic year, and they get you set up with the practical and academic essentials before teaching begins. You are asked to complete a mandatory response form confirming your attendance and arrival details. If a question comes up during onboarding, route it to the right place: admissions and payment matters to the admissions team, course and registration questions to Academic Advising and ESD, and housing to the Student Service Centre.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "The Introduction Days",
@@ -370,7 +370,7 @@
         "registration",
         "attendance"
       ],
-      "note": "add the current response-form link for the coming intake (Heather/ESD)."
+      "note": "confirm the exact Introduction Days dates and the current response-form link for the coming intake."
     },
     {
       "id": "what-is-the-buddy-or-peer-mentor-programme-and-how-do-i-join",
@@ -379,7 +379,8 @@
       "topic": "Getting Started",
       "office": "intro",
       "category": "The Introduction Days",
-      "tags": []
+      "tags": [],
+      "note": "confirm this year's application link and dates."
     },
     {
       "id": "can-you-recommend-websites-to-find-housing-other-than-maastr",
@@ -404,14 +405,15 @@
     {
       "id": "how-much-money-does-an-average-student-need-per-month-not-co",
       "q": "How much money does an average student need per month, not counting rent?",
-      "a": "This depends a lot on your habits. Some students spend as little as possible, cook every meal at home and rarely eat out. Others splurge, eat out a few times a week and order in. The breakdown below is indicative rather than current pricing: the figures come from students describing their own spending in an earlier intake, and food, energy and going out have all risen since. Treat them as a rough shape of where the money goes, not as a budget, and check current prices yourself before you commit to anything.\n\n- **Groceries: around 300 euros.** It depends on where you shop. Lidl and Aldi are cheap for produce; Jan Linders, Jumbo and Albert Heijn are other common options. Most stores have a loyalty or reward card worth signing up for. Albert Heijn's \"bonuskaart\" is needed to get the discounts; Jumbo has reward cards but you still get the deals without one. You can also buy cheaper fruit and veg at the weekly market in front of the town hall, or at Turkish and Asian grocery stores.\n- **Study books and supplies: around 60 euros.** Depends on whether you buy physical textbooks, borrow from the library, or use PDFs. You can often buy cheaper second-hand textbooks through the study association Aperture or via Facebook. For cheap notebooks and pens, try Hema and Action. For nicer quality, there is the StudyStore on the Tongersestraat and the study stores in UNS40 and UNS50.\n- **Transport: around 50 euros.** This varies with how you get around. Biking is cheaper and usually the fastest way across Maastricht. Renting a bike (for example Swapfiets) costs more than buying a decent second-hand one. Most students bike to save money and spend almost nothing on transport unless they leave the city.\n- **Relaxation, going out and sports: around 180 euros.** Very personal. Some cafes are pricier than others and it adds up. Watch for student offers at restaurants and keep your university ID card handy for student discounts. For sports, UM Sports is the university-affiliated gym; Basic Fit and Anytime Fitness are options too but a bit more expensive.\n- **Clothes and shoes: around 70 euros.** Some months this is zero, but when something wears out or the season changes you will want to spend a little.\n- **Health insurance: around 155 to 165 euros a month in 2026.** This is the rough monthly price if you take out Dutch basic health insurance. Add-ons for glasses, dental or physiotherapy push it higher. If you have a low income (as most students do) you may qualify for the government healthcare allowance (zorgtoeslag), worth up to 129 euros a month in 2026, which covers most of the premium. Note that you must have Dutch health insurance if you work here. See the Health Insurance section below for details, and check current prices and providers at https://mymaastricht.nl/health/health-insurance/. The allowance is explained at https://mymaastricht.nl/finances/benefits/zorgtoeslag/.",
+      "a": "This depends a lot on your habits. Some students spend as little as possible, cook every meal at home and rarely eat out. Others splurge, eat out a few times a week and order in. The breakdown below gives you a rough idea of monthly costs, but expect real numbers to vary from person to person.\n\n- **Groceries: around 300 euros.** It depends on where you shop. Lidl and Aldi are cheap for produce; Jan Linders, Jumbo and Albert Heijn are other common options. Most stores have a loyalty or reward card worth signing up for. Albert Heijn's \"bonuskaart\" is needed to get the discounts; Jumbo has reward cards but you still get the deals without one. You can also buy cheaper fruit and veg at the weekly market in front of the town hall, or at Turkish and Asian grocery stores.\n- **Study books and supplies: around 60 euros.** Depends on whether you buy physical textbooks, borrow from the library, or use PDFs. You can often buy cheaper second-hand textbooks through the study association Aperture or via Facebook. For cheap notebooks and pens, try Hema and Action. For nicer quality, there is the StudyStore on the Tongersestraat and the study stores in UNS40 and UNS50.\n- **Transport: around 50 euros.** This varies with how you get around. Biking is cheaper and usually the fastest way across Maastricht. Renting a bike (for example Swapfiets) costs more than buying a decent second-hand one. Most students bike to save money and spend almost nothing on transport unless they leave the city.\n- **Relaxation, going out and sports: around 180 euros.** Very personal. Some cafes are pricier than others and it adds up. Watch for student offers at restaurants and keep your university ID card handy for student discounts. For sports, UM Sports is the university-affiliated gym; Basic Fit and Anytime Fitness are options too but a bit more expensive.\n- **Clothes and shoes: around 70 euros.** Some months this is zero, but when something wears out or the season changes you will want to spend a little.\n- **Health insurance: around 155 to 165 euros a month in 2026.** This is the rough monthly price if you take out Dutch basic health insurance. Add-ons for glasses, dental or physiotherapy push it higher. If you have a low income (as most students do) you may qualify for the government healthcare allowance (zorgtoeslag), worth up to 129 euros a month in 2026, which covers most of the premium. Note that you must have Dutch health insurance if you work here. See the Health Insurance section below for details, and check current prices and providers at https://mymaastricht.nl/health/health-insurance/. The allowance is explained at https://mymaastricht.nl/finances/benefits/zorgtoeslag/.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Cost of Living",
       "tags": [
         "exam",
         "insurance"
-      ]
+      ],
+      "note": "verify current figures, these date from an earlier intake (around 2021-2024) and prices have risen since"
     },
     {
       "id": "how-does-public-transport-work-in-the-netherlands",
@@ -959,11 +961,12 @@
     {
       "id": "i-am-leaving-msp-and-would-like-to-return-my-arriva-and-chem",
       "q": "I am leaving MSP and would like to return my Arriva and Chemelot card.",
-      "a": "The MSP Secretariat handles this. Email them at msp-secretariat@maastrichtuniversity.nl to arrange returning your Arriva and Chemelot card, and they will sort out the deposit you paid when the cards were issued in your first year. Start with the email rather than turning up with the cards, since the return is arranged through them.",
+      "a": "Return your Arriva and Chemelot card to the MSP Secretariat at msp-secretariat@maastrichtuniversity.nl. They return the deposit you paid when the cards were issued in your first year.",
       "topic": "Wellbeing & Support",
       "office": "esd",
       "category": "Student Services & Support",
-      "tags": []
+      "tags": [],
+      "note": "confirm current office location for card return and how the deposit refund is handled."
     },
     {
       "id": "i-need-some-help-who-should-i-contact",
@@ -1063,7 +1066,7 @@
         "exam",
         "attendance"
       ],
-      "note": "route and form confirmed 13 Aug 2026. Still pending: LoA is moving from the BoE to ESD (Katja, Jul 2026; Eva reworking the process), so revisit the wording once that lands, and reconcile the separate LoA answers under Study Advising and Academic Advising. Separately, the intranet LoA form cites EER 7.9, which does not exist in the 25-26 EER body (numbering error in the EER's own table of contents); we state 7.8. Raise with Management/Eva."
+      "note": "LoA is moving from the BoE to ESD (Katja, Jul 2026; Eva is reworking the process). Confirm the final question wording and answer with Eva, then reconcile the separate LoA answers under Study Advising and Academic Advising. Also note the intranet LoA form still cites EER 7.9, which does not exist in the 25-26 EER body (numbering error in the EER's own table of contents); raise with Management/Eva."
     },
     {
       "id": "after-a-leave-of-absence-how-and-when-can-i-return-to-my-stu",
@@ -1237,14 +1240,15 @@
     {
       "id": "which-forms-do-i-need-for-an-external-module-and-what-if-the",
       "q": "Which forms do I need for an external module, and what if the motivation box is too short?",
-      "a": "An external module needs two things: the intranet \"Following modules at other UM departments (external education)\" form, and the \"Special course request\" tool in the Student Portal, which goes to the Board of Examiners. The motivation must be at least 250 words, explaining why you want the course, how it fits your curriculum and why it is necessary. You can take up to 30 ECTS of external courses in total, and you should always plan a back-up course, because MSP does not take external-schedule overlaps into account.",
+      "a": "An external module needs two things: the intranet \"Following modules at other UM departments (external education)\" form, and the \"Special course request\" tool in the Student Portal, which goes to the Board of Examiners. The motivation must be at least 250 words, explaining why you want the course, how it fits your curriculum and why it is necessary. You can take up to 30 ECTS of external courses in total, and you should always plan a back-up course, because MSP does not take external-schedule overlaps into account. Known issue: the Student Portal motivation box can cut text off below the 250-word requirement.",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Additional questions",
       "tags": [
         "exam",
         "ects"
-      ]
+      ],
+      "note": "confirm the official workaround for the truncating Special Course Request motivation field (for example, whether to email the full motivation to msp-educationsupport@ or msp-boe@ with the request reference)."
     },
     {
       "id": "what-documents-can-esd-give-me-for-a-master-s-application-an",
@@ -1413,18 +1417,18 @@
     {
       "id": "am-i-eligible-for-cum-laude-and-does-a-resit-disqualify-me",
       "q": "Am I eligible for cum laude, and does a resit disqualify me?",
-      "a": "Distinctions are awarded by the Board of Examiners on your final GPA: Honours for 7.4 to 7.9, Cum laude for 8.0 to 8.5, and Summa cum laude for 8.6 to 10.0 (R&R 22).\n\n**No, taking a resit does not disqualify you from a distinction.** What counts is your final GPA. A resit affects your eligibility only through the grade it produces, and the MSP Board of Examiners confirmed this position in writing in June 2026.\n\nThe Board can withhold a distinction if fraud was established during your studies. For any question about a specific case, contact the Board of Examiners (msp-boe@maastrichtuniversity.nl).",
+      "a": "Distinctions are awarded by the Board of Examiners on your final GPA: Honours for 7.4 to 7.9, Cum laude for 8.0 to 8.5, and Summa cum laude for 8.6 to 10.0 (R&R 22). The Board can withhold a distinction if fraud was established during your studies. For any question about how a resit or a specific case affects your eligibility, contact the Board of Examiners (msp-boe@maastrichtuniversity.nl).",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Additional questions",
       "tags": [
         "resit",
-        "grade",
         "exam",
         "cum laude",
         "fraud",
         "ects"
-      ]
+      ],
+      "note": "confirm whether a single resit disqualifies a student from cum laude."
     },
     {
       "id": "who-handles-internship-agreements-and-proof-that-i-am-allowe",
@@ -3568,7 +3572,7 @@
     {
       "id": "what-is-the-application-process-for-the-semester-abroad",
       "q": "What is the application process for the semester abroad?",
-      "a": "You apply through the Semester Abroad Application form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-application. It is used to apply to one of MSP's partner universities for the 4th or 5th semester of your studies. The form runs in five steps (start, study, university choice, upload information, completed), you rank your host preferences and provide a motivation letter and transcript, and the IRO reviews your request and tells you the outcome by email. Before you submit, read the Semester Abroad Guide and check you meet the academic requirements.\n\nIf the university you have in mind is **not** on the partner list, contact the International Relations Office to look at applying as a free mover instead.\n\nConfirmed deadlines: the Erasmus+ grant application is due at least 6 weeks before your semester abroad starts (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-erasmus-grant-application, and late or incomplete applications are not considered), the NL Scholarship for non-EEA destinations is due 1 July, and the module-approval sheet is due at least 8 weeks before you leave.",
+      "a": "You submit a Semester Abroad Application form by December 1st for the Fall semester or July 1st for the Spring semester. You rank your host preferences and provide a motivation letter and transcript.\n\nConfirmed deadlines: the Erasmus+ grant application is due at least 6 weeks before your semester abroad starts, and the NL Scholarship (for non-EEA destinations) is due 1 July; the module-approval sheet is due at least 8 weeks before you leave.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Application Process",
@@ -3578,7 +3582,7 @@
         "deadline",
         "scholarship"
       ],
-      "note": "confirm the deadline for the Semester Abroad Application form itself (our text says 1 December for Fall and 1 July for Spring, but the form does not state one) and the exact document set required at the upload step. IRO."
+      "note": "confirm the semester-abroad application-form deadline and the exact required-document set."
     },
     {
       "id": "how-many-host-universities-do-i-list-on-the-application-form",
@@ -3799,13 +3803,12 @@
     {
       "id": "how-do-i-get-my-courses-abroad-approved",
       "q": "How do I get my courses abroad approved?",
-      "a": "Your courses abroad must be approved by the Board of Examiners before they count, using the module-approval sheet, which your Academic Advisor signs before it goes to the IRO and then the Board. Hand it in at least 8 weeks before you leave (earlier if your host has tighter deadlines), and get any later course changes approved too. Choose only courses that are not offered at MSP, keep the balance the Board requires (roughly the MSP shape of courses, skills and a project, with at least two thirds courses and up to one third skills or projects), and always include back-up courses because host offerings are cancelled or unavailable more often than you would expect. Remember the maximum of 30 external ECTS toward your degree, and note this counts everything external together, so any credit transfer or external modules you already have eat into the same 30. Note that language courses, and courses such as \"Japanese Philosophy\", are not awarded credit.\n\nPractical points that save people the most time:\n\n- **Start early.** Begin choosing courses as soon as you are allocated a partner university, and aim to start roughly 3 months before your exchange. Approval takes time.\n- **Fill the sheet in properly.** Include links to the course descriptions in English and details of the level, and say whether each item is a course, a skill or a project. If it is a mix, give the percentage for each part.\n- **Write a short motivation per course**, explaining why you want it and how it fits your study plan.\n- **Meet your Academic Advisor** to discuss level, content, overlap and type. Your AA signs the sheet before it goes to the IRO, and is responsible for checking the type and level of your modules.\n- **If your host publishes its courses late**, tell the IRO and mention it in your motivation.\n- **Be sure before you commit.** Changing to courses the Board has not pre-approved means starting the whole process again.\n\nOnce your AA has signed, the IRO verifies the sheet and sends it to the Board of Examiners for final approval. Submit it through the module approval form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-module-approval (one file, doc, docx or xlsm, 5 MB limit).",
+      "a": "Your courses abroad must be approved by the Board of Examiners before they count, using the module-approval sheet, which your Academic Advisor signs before it goes to the IRO and then the Board. Hand it in at least 8 weeks before you leave (earlier if your host has tighter deadlines), and get any later course changes approved too. Choose only courses that are not offered at MSP, keep the balance the Board requires (roughly the MSP shape of courses, skills and a project, with at least two thirds courses and up to one third skills or projects), and always include back-up courses because host offerings are cancelled or unavailable more often than you would expect. Remember the maximum of 30 external ECTS toward your degree. Note that language courses, and courses such as \"Japanese Philosophy\", are not awarded credit. Module approval form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/semester-abroad-module-approval",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Financial Information",
       "tags": [
         "abroad",
-        "exchange",
         "exam",
         "deadline",
         "ects"
@@ -3917,7 +3920,8 @@
       "category": "Academic Advisor Roles",
       "tags": [
         "canvas"
-      ]
+      ],
+      "note": "confirm the current workshop dates and registration link."
     },
     {
       "id": "i-would-like-to-leave-msp-what-should-i-do",
