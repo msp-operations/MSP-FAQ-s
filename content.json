@@ -3,7 +3,7 @@
     "title": "MSP Student FAQ",
     "ay": "2025-2026",
     "generated": "2026-08-13",
-    "count": 361
+    "count": 362
   },
   "topics": [
     {
@@ -49,7 +49,7 @@
     {
       "name": "Money & Practical",
       "emoji": "💶",
-      "count": 13
+      "count": 14
     },
     {
       "name": "IT & Accounts",
@@ -1564,6 +1564,17 @@
         "graduation",
         "thesis",
         "ects"
+      ]
+    },
+    {
+      "id": "how-much-is-tuition-for-msp",
+      "q": "How much is tuition for MSP?",
+      "a": "MSP does not cost the standard Dutch rate. Because it is classed as small-scale, intensive education, it carries a supplement on top of the normal fee, the same as University College Maastricht. For the 2026/27 academic year:\n\n- **Statutory tuition fee: 4,465 euros.** That is the standard statutory fee of 2,694 euros plus 1,771 euros for small-scale and intensive education.\n- **Institutional tuition fee: 20,109 euros.** That is 18,400 euros plus a 1,709 euro increase for small-scale and intensive education.\n\nWhich one you pay depends on your eligibility, not on your programme. The statutory fee is the one most students with an EU, EEA or Swiss nationality pay, provided they have not already used up their entitlement on an earlier degree at the same level. If you do not meet those conditions, which is the case for most students from outside the EU/EEA, you pay the institutional fee. Your own situation is decided by the Student Service Centre, so check with them at study@maastrichtuniversity.nl rather than assuming.\n\nOne useful detail if you are considering a second programme: if you enrol in MSP and another UM bachelor's programme at the same time, you pay 4,465 euros for both together, not twice.\n\nThese figures are set each year in the UM Enrolment Provisions (Articles 19 and 21): https://www.maastrichtuniversity.nl/file/um-enrolment-provisions-2026-2027pdf",
+      "topic": "Money & Practical",
+      "office": "ssc",
+      "category": "Financial Matters",
+      "tags": [
+        "tuition"
       ]
     },
     {
