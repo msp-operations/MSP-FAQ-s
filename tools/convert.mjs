@@ -96,7 +96,11 @@ function flush() {
   let ans = cur.aLines.join('\n').trim();
   const notes = [];
   ans = ans.replace(/\[NEEDS MARTIJN:([^\]]*)\]/g, (_, g) => { notes.push(g.trim()); return ''; })
-           .replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+           .replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim()
+           // The `---` rule the master puts before each ## office heading falls
+           // inside the preceding answer, so the last answer of every section
+           // used to ship with a stray horizontal rule at the bottom.
+           .replace(/(\n*-{3,})+$/, '').trim();
   if (ans) {
     let id = slug(cur.q); let n = 2; while (seenIds.has(id)) id = slug(cur.q) + '-' + n++;
     seenIds.add(id);

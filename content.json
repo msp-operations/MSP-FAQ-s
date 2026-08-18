@@ -2,29 +2,29 @@
   "meta": {
     "title": "MSP Student FAQ",
     "ay": "2026-2027",
-    "generated": "2026-08-13",
-    "count": 363
+    "generated": "2026-08-18",
+    "count": 382
   },
   "topics": [
     {
       "name": "Getting In",
       "emoji": "🎓",
-      "count": 24
+      "count": 26
     },
     {
       "name": "Getting Started",
       "emoji": "🧭",
-      "count": 22
+      "count": 34
     },
     {
       "name": "Courses & Registration",
       "emoji": "📚",
-      "count": 87
+      "count": 91
     },
     {
       "name": "Exams & Grades",
       "emoji": "📝",
-      "count": 64
+      "count": 65
     },
     {
       "name": "Thesis (BTR)",
@@ -215,6 +215,33 @@
       ]
     },
     {
+      "id": "everything-on-my-to-do-list-in-the-application-portal-is-tic",
+      "q": "Everything on my to-do list in the application portal is ticked. Am I finished?",
+      "a": "Check the outstanding to-do's indicator in the portal itself rather than reading an empty list as proof that you are done, because some tasks only appear once an earlier one has been processed. Two items catch people out every year:\n\n- Your certified diploma, or an official graduation statement if only your results are ready, has to reach the university before 31 August or your place cannot be confirmed.\n- If you need a visa, your tuition has to be paid well before the university files your application with the IND on 1 July. That is far earlier than the general deadline (see the tuition and visa questions below).\n\nIf the list looks complete and you are still not sure, ask Admissions at msp-admissions@maastrichtuniversity.nl. It is a reasonable question and they would rather answer it in July than sort it out in September.",
+      "topic": "Getting In",
+      "office": "admissions",
+      "category": "Deadlines",
+      "tags": [
+        "diploma",
+        "graduation",
+        "visa",
+        "tuition",
+        "deadline"
+      ]
+    },
+    {
+      "id": "when-will-i-be-asked-to-pay-my-tuition-i-have-not-had-a-requ",
+      "q": "When will I be asked to pay my tuition? I have not had a request yet.",
+      "a": "Nobody sends you an invoice out of the blue. You arrange your payment yourself as part of your enrolment in Studielink, where you choose between a digital (direct debit) authorisation and paying by bank transfer, and confirm that choice there. If you have completed Studielink and set nothing up, that is the step to go back to. Payment questions go to the Student Service Centre (study@maastrichtuniversity.nl) or the tuition fee payment team (tuitionfeepayment@maastrichtuniversity.nl). The full breakdown of amounts, instalments and payment routes is in the Student Service Centre section of this FAQ.\n\nIf you need a visa the timing is different and much earlier, because UM will not file with the IND until it has your full annual fee as a single lump sum. See the visa question below.",
+      "topic": "Getting In",
+      "office": "admissions",
+      "category": "Deadlines",
+      "tags": [
+        "visa",
+        "tuition"
+      ]
+    },
+    {
       "id": "what-are-the-entry-requirements",
       "q": "What are the entry requirements?",
       "a": "Getting in works in two steps.\n\n**Step 1: meet UM's central admission requirements.** You need a Dutch VWO diploma, an accepted international equivalent, or a Dutch HBO propedeuse.\n\n**Step 2: come through MSP's own selection procedure.** Meeting the central requirements gets you to the starting line, not through the door. MSP has a limited intake and selects.\n\n**On subjects, MSP works differently from most science programmes.** MSP publishes no fixed list of required subjects, and it carries no required profile or required subjects in UM's additional subject requirements overview (https://www.maastrichtuniversity.nl/additional-subject-requirements), unlike programmes such as Biomedical Sciences or Brain Science. Mathematics including calculus (differentiation and integration, roughly the level of Dutch wiskunde B) is **strongly recommended** rather than formally required, and your previous courses should show a genuine interest in the natural sciences.\n\nThat said, \"no fixed list\" does not mean anything is accepted. In practice:",
@@ -370,7 +397,7 @@
     {
       "id": "who-do-i-contact-about-my-application",
       "q": "Who do I contact about my application?",
-      "a": "- Admission requirements, Studielink and document-upload problems: Student Services Centre, study@maastrichtuniversity.nl\n- MSP-specific application questions: msp-admissions@maastrichtuniversity.nl\n- Faculty-wide (FSE) admissions questions: fse-admissions@maastrichtuniversity.nl\n- Visa and residence permit: msp-visa@maastrichtuniversity.nl\n\n---",
+      "a": "- Admission requirements, Studielink and document-upload problems: Student Services Centre, study@maastrichtuniversity.nl\n- MSP-specific application questions: msp-admissions@maastrichtuniversity.nl\n- Faculty-wide (FSE) admissions questions: fse-admissions@maastrichtuniversity.nl\n- Visa and residence permit: msp-visa@maastrichtuniversity.nl",
       "topic": "Getting In",
       "office": "admissions",
       "category": "Who to contact",
@@ -395,6 +422,73 @@
       "id": "what-is-the-buddy-or-peer-mentor-programme-and-how-do-i-join",
       "q": "What is the buddy or peer-mentor programme, and how do I join?",
       "a": "New students can be paired with an existing MSP student who helps them settle in during the first weeks. You apply in advance through a form, and there is usually a short selection or matching step (which can be done online). Two practical tips reported every year: check your spam folder, because the invitation and form can land there, and read the dates carefully, since the application and event dates are easy to mix up. The scheme is the Peer Mentor Programme (with a Study Buddy programme) run by the student members of the Educational Programme Committee (EPC); contact the EPC student representatives at msp-epc4students@maastrichtuniversity.nl for how and when to apply.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "The Introduction Days",
+      "tags": []
+    },
+    {
+      "id": "do-i-need-to-bring-a-laptop-to-the-introduction-days-and-doe",
+      "q": "Do I need to bring a laptop to the Introduction Days, and does it have to meet any requirements?",
+      "a": "Bring a laptop if you have one. There are no specifications you have to meet: MSP sets no requirements on brand, operating system or hardware, so any working laptop is fine. If a tablet is all you have, that will get you through the Introduction Days, but a laptop is the better tool for the year ahead, particularly for programming, data work and writing.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "The Introduction Days",
+      "tags": []
+    },
+    {
+      "id": "where-is-the-programme-held-and-how-do-i-get-into-the-buildi",
+      "q": "Where is the programme held, and how do I get into the buildings?",
+      "a": "The Introduction Days take place at the MSP buildings on the Randwyck campus. The main building is PHS1 (Paul-Henri Spaaklaan 1) and the laboratory building is DUB30 (Duboisdomein 30), about a five-minute walk away. The pedestrian entrance to PHS1 is on Gaetano Martinolaan, and the underground bike parking is reached via the car entrance on Endepolsdomein (students may not park cars there). You need your UMcard for the bike parking and for building access, so sort that out before you arrive if you can.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "The Introduction Days",
+      "tags": []
+    },
+    {
+      "id": "i-cannot-attend-the-introduction-days-what-do-i-miss-and-whe",
+      "q": "I cannot attend the Introduction Days. What do I miss, and where do I catch up?",
+      "a": "Tell ESD (msp-educationsupport@maastrichtuniversity.nl) as soon as you know, because attendance is compulsory and some parts have to be repaired rather than skipped. The lab safety test is the main one of those, and a resit is arranged for students who miss it.\n\nFor the rest, Canvas is the place to look. The programme and the material presented during the Introduction Days are posted there, including the slides from the MSP organisation workshop, which is the session that walks you through Canvas, the Student Portal and the MSP student intranet. Those three systems between them carry your timetable, your grades, the forms and the rules, so work through them yourself in your first week if you were not there for the walkthrough.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "The Introduction Days",
+      "tags": [
+        "resit",
+        "grade",
+        "timetable",
+        "attendance",
+        "canvas"
+      ]
+    },
+    {
+      "id": "when-do-i-get-my-timetable-and-the-academic-calendar-as-a-ne",
+      "q": "When do I get my timetable and the academic calendar as a new student?",
+      "a": "Your first timetable is published in the week of the Introduction Days. From then on, each period's timetable appears roughly two weeks before that period starts, though the exact timing varies. You find it in the Student Portal under MyTimetable, and it is also visible through Canvas.\n\nThe MSP academic calendar, with the period dates, exam weeks, holidays and deadlines, is on Canvas under Communication MSP, and on the MSP student intranet.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "The Introduction Days",
+      "tags": [
+        "exam",
+        "timetable",
+        "canvas",
+        "deadline"
+      ]
+    },
+    {
+      "id": "i-cannot-see-the-msp-course-for-new-students-on-canvas-what-",
+      "q": "I cannot see the MSP course for new students on Canvas. What should I do?",
+      "a": "New students are enrolled in the MSP introduction course on Canvas, which is where the Introduction Days programme and the general MSP information are posted. If it is not showing for you, email ESD at msp-educationsupport@maastrichtuniversity.nl with your full name and student ID and they will check your enrolment. Canvas itself is at canvas.maastrichtuniversity.nl.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "The Introduction Days",
+      "tags": [
+        "canvas"
+      ]
+    },
+    {
+      "id": "i-have-not-received-my-umcard-yet-is-that-normal",
+      "q": "I have not received my UMcard yet. Is that normal?",
+      "a": "Yes, if you have only recently finished your application. The UMcard is produced centrally once your enrolment is in order, and you collect it at the Student Service Centre (Bonnefantenstraat 2). They email you when it is ready, so watch your mail and check your spam folder. If you have completed everything in the application portal and heard nothing, contact the SSC at study@maastrichtuniversity.nl.\n\nIt is worth chasing rather than leaving, because the UMcard is what gets you into the buildings and the underground bike parking, and it doubles as your library card and your payment card for printing and vending across the university.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "The Introduction Days",
@@ -515,6 +609,15 @@
       "tags": []
     },
     {
+      "id": "can-i-learn-dutch-while-i-study-here",
+      "q": "Can I learn Dutch while I study here?",
+      "a": "Yes. The Maastricht University Language Centre runs Dutch courses at several levels, alongside other languages, and they are open to UM students. You do not need Dutch for your studies, since MSP is taught entirely in English, but plenty of students pick it up for daily life, for a side job or because they plan to stay. Note that language courses do not count towards your MSP degree, so this sits alongside your programme rather than inside it.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "Student Life",
+      "tags": []
+    },
+    {
       "id": "is-it-easy-to-get-into-a-good-master-s-or-phd-after-msp",
       "q": "Is it easy to get into a good master's or PhD after MSP?",
       "a": "MSP is well recognised internationally, and graduates go on to top universities worldwide, from the UK to the US to Australia. How smooth this is depends on the courses you take, the programme you want to follow next, and your performance and activities during your bachelor's.",
@@ -535,9 +638,20 @@
       ]
     },
     {
+      "id": "are-there-figures-on-what-msp-graduates-go-on-to-do",
+      "q": "Are there figures on what MSP graduates go on to do?",
+      "a": "There is no single published MSP employment percentage, but two sources give you a real picture. The MSP alumni site, https://msp-alumni.nl, shows where MSP graduates actually went: the master's programmes they moved into, the universities, and the kinds of work they now do. More broadly, Maastricht University takes part in the national graduate surveys, which report employment and further-study outcomes per programme.\n\nOne caveat when you read any of this. MSP is a broad bachelor's and most graduates continue straight into a master's rather than into a job, so an employment rate measured at graduation says less about MSP than it would about a vocational programme.",
+      "topic": "Getting Started",
+      "office": "intro",
+      "category": "Careers and Further Study",
+      "tags": [
+        "graduation"
+      ]
+    },
+    {
       "id": "can-i-start-a-master-s-before-i-have-completely-finished-my-",
       "q": "Can I start a master's before I have completely finished my bachelor (the \"soft cut\")?",
-      "a": "Often yes. Many Dutch universities operate a \"soft cut\" (zachte knip) that lets you begin a master's while a small part of your bachelor is still outstanding, typically around 5 to 10 ECTS with the thesis already completed. The exact rule, and how many credits may remain, is set by the university and programme you are applying to, so check their admission conditions directly and confirm what proof they need from MSP. ESD can provide a statement of your remaining components and expected graduation to support such an application.\n\n---",
+      "a": "Often yes. Many Dutch universities operate a \"soft cut\" (zachte knip) that lets you begin a master's while a small part of your bachelor is still outstanding, typically around 5 to 10 ECTS with the thesis already completed. The exact rule, and how many credits may remain, is set by the university and programme you are applying to, so check their admission conditions directly and confirm what proof they need from MSP. ESD can provide a statement of your remaining components and expected graduation to support such an application.",
       "topic": "Getting Started",
       "office": "intro",
       "category": "Careers and Further Study",
@@ -1496,7 +1610,7 @@
     {
       "id": "how-and-when-do-i-evaluate-my-courses-and-is-it-anonymous",
       "q": "How and when do I evaluate my courses, and is it anonymous?",
-      "a": "At the end of each teaching period you evaluate your course and practical through the IWIO evaluation system. The survey opens around the start of week 6 of the period (week 7 in the shorter periods) and is usually filled in during your last tutorial. Reach it at iwio.msp.maastrichtuniversity.nl or via the link or QR code on Canvas; it takes about six minutes. The survey closes automatically on the Tuesday at the start of the next period, so fill it in before the period ends. It is anonymous: your answers are confidential, and your student number is asked only to prevent duplicate submissions, not to identify your responses. Results are shared with course coordinators and tutors at the earliest fifteen working days after the exam week (about a week after grades are published), and the EPC reviews them to help improve the programme.\n\n---",
+      "a": "At the end of each teaching period you evaluate your course and practical through the IWIO evaluation system. The survey opens around the start of week 6 of the period (week 7 in the shorter periods) and is usually filled in during your last tutorial. Reach it at iwio.msp.maastrichtuniversity.nl or via the link or QR code on Canvas; it takes about six minutes. The survey closes automatically on the Tuesday at the start of the next period, so fill it in before the period ends. It is anonymous: your answers are confidential, and your student number is asked only to prevent duplicate submissions, not to identify your responses. Results are shared with course coordinators and tutors at the earliest fifteen working days after the exam week (about a week after grades are published), and the EPC reviews them to help improve the programme.",
       "topic": "Courses & Registration",
       "office": "esd",
       "category": "Additional questions",
@@ -1725,7 +1839,7 @@
     {
       "id": "my-name-is-wrong-on-my-um-record-or-card-who-corrects-it",
       "q": "My name is wrong on my UM record or card. Who corrects it?",
-      "a": "Your name and personal details in the university record are held by the Student Service Centre. If your name is spelled wrong or needs updating on your UM record or UMcard, contact the SSC at study@maastrichtuniversity.nl or +31 (0)43 388 5388.\n\nWhere the change has to be made depends on where you are registered. If you are registered with a Dutch municipality, your details are drawn from the municipal records database (BRP), so a lasting change has to be made at the municipality. A change made only at the SSC is temporary and gets overwritten at the next sync. If you are not registered with a Dutch municipality, the SSC works from your passport or ID card.\n\n---",
+      "a": "Your name and personal details in the university record are held by the Student Service Centre. If your name is spelled wrong or needs updating on your UM record or UMcard, contact the SSC at study@maastrichtuniversity.nl or +31 (0)43 388 5388.\n\nWhere the change has to be made depends on where you are registered. If you are registered with a Dutch municipality, your details are drawn from the municipal records database (BRP), so a lasting change has to be made at the municipality. A change made only at the SSC is temporary and gets overwritten at the next sync. If you are not registered with a Dutch municipality, the SSC works from your passport or ID card.",
       "topic": "Money & Practical",
       "office": "ssc",
       "category": "Additional questions",
@@ -1824,6 +1938,19 @@
       "category": "Academic Performance and Support",
       "tags": [
         "ects"
+      ]
+    },
+    {
+      "id": "how-does-dutch-grading-work-and-is-it-true-that-high-grades-",
+      "q": "How does Dutch grading work, and is it true that high grades are rare?",
+      "a": "Grades run on a scale from 1 to 10, and 5.5 is the pass mark. The scale is used differently from the systems many international students arrive from, and the mismatch causes a lot of unnecessary alarm in the first period. It is not a percentage. A 6 or a 7 is a normal, solid result. An 8 is genuinely good work. Nines and tens are uncommon by design rather than by accident, and a 7 should not be read the way you would read 70%.\n\nTwo things are worth knowing alongside that. Most MSP modules are assessed on several components rather than a single final exam, so one bad exam day does not usually decide your grade for the whole course. And what your degree depends on is passing your modules and building a curriculum that meets the requirements, not chasing a high average. Averages matter in two specific places: master's programmes that set their own grade requirement, and the distinction (cum laude) rules, which are in the grading information document linked above.\n\nIf a grade looks wrong to you, that is a separate matter from the scale being strict. See the questions on grade inquiries and on disagreeing with a grade.",
+      "topic": "Exams & Grades",
+      "office": "boe",
+      "category": "Academic Performance and Support",
+      "tags": [
+        "grade",
+        "exam",
+        "cum laude"
       ]
     },
     {
@@ -2098,7 +2225,7 @@
     {
       "id": "when-and-how-can-the-boe-award-a-distinction-cum-laude",
       "q": "When and how can the BoE award a distinction (cum laude)?",
-      "a": "At graduation, the BoE may award a distinction based, among other things, on your GPA (R&R 22): Honours for a GPA of 7.4 to 7.9, Cum laude for 8.0 to 8.5, and Summa cum laude for 8.6 to 10.0. The distinction is stated on your diploma supplement. It is withheld if fraud was established during your studies.\n\n---",
+      "a": "At graduation, the BoE may award a distinction based, among other things, on your GPA (R&R 22): Honours for a GPA of 7.4 to 7.9, Cum laude for 8.0 to 8.5, and Summa cum laude for 8.6 to 10.0. The distinction is stated on your diploma supplement. It is withheld if fraud was established during your studies.",
       "topic": "Exams & Grades",
       "office": "boe",
       "category": "Additional questions",
@@ -2724,7 +2851,7 @@
     {
       "id": "who-do-i-contact-for-what-2",
       "q": "Who do I contact for what?",
-      "a": "- General BTR questions, extensions, problems, documents and deadlines: msp-btr@maastrichtuniversity.nl\n- Grants while abroad (Erasmus+ or scholarships): fse-iro@maastrichtuniversity.nl\n- Thesis or proposal content: your Research Supervisor or Internal Advisor\n- Graduation decision, diploma, additional-module approval: Board of Examiners and ESD\n\nYour written thesis and its assessment are kept for seven years (EER 5.11).\n\n---",
+      "a": "- General BTR questions, extensions, problems, documents and deadlines: msp-btr@maastrichtuniversity.nl\n- Grants while abroad (Erasmus+ or scholarships): fse-iro@maastrichtuniversity.nl\n- Thesis or proposal content: your Research Supervisor or Internal Advisor\n- Graduation decision, diploma, additional-module approval: Board of Examiners and ESD\n\nYour written thesis and its assessment are kept for seven years (EER 5.11).",
       "topic": "Thesis (BTR)",
       "office": "btr",
       "category": "Extensions, problems and contact",
@@ -3005,7 +3132,7 @@
     {
       "id": "what-is-the-difference-between-a-complaint-an-appeal-and-an--3",
       "q": "What is the difference between a complaint, an appeal, and an objection?",
-      "a": "These three routes are different and go to different places, so it helps to use the right one.\n\n- A complaint (klacht) is about how you were treated, for example poor service or behaviour. It goes to the Complaints Service Point.\n- An objection (bezwaar) is a formal request to reconsider a decision and goes to the Board of Examiners.\n- An appeal (beroep) is against a decision of the Board of Examiners and goes to the CBE (College van Beroep voor de Examens, the Examinations Appeals Board). There is a hard deadline of 6 weeks (42 days) to lodge an appeal. Before a hearing, the Board of Examiners is given a short window (about 3 weeks) to try to reach an amicable settlement with you.\n\nIf you are not sure which route fits your situation, ask the Student Counsellor (msp-counsellors@maastrichtuniversity.nl) or the Board of Examiners (msp-boe@maastrichtuniversity.nl) before you file anything.\n\n---",
+      "a": "These three routes are different and go to different places, so it helps to use the right one.\n\n- A complaint (klacht) is about how you were treated, for example poor service or behaviour. It goes to the Complaints Service Point.\n- An objection (bezwaar) is a formal request to reconsider a decision and goes to the Board of Examiners.\n- An appeal (beroep) is against a decision of the Board of Examiners and goes to the CBE (College van Beroep voor de Examens, the Examinations Appeals Board). There is a hard deadline of 6 weeks (42 days) to lodge an appeal. Before a hearing, the Board of Examiners is given a short window (about 3 weeks) to try to reach an amicable settlement with you.\n\nIf you are not sure which route fits your situation, ask the Student Counsellor (msp-counsellors@maastrichtuniversity.nl) or the Board of Examiners (msp-boe@maastrichtuniversity.nl) before you file anything.",
       "topic": "Wellbeing & Support",
       "office": "counsellor",
       "category": "Additional questions",
@@ -3446,7 +3573,7 @@
     {
       "id": "i-cannot-see-my-exam-or-resit-in-mytimetable-what-should-i-d",
       "q": "I cannot see my exam (or resit) in MyTimetable. What should I do?",
-      "a": "If an exam or resit does not appear in your timetable, email the Exams Office (msp-exams@maastrichtuniversity.nl) stating this as early as possible so we can look into it. Do this straight away rather than waiting or assuming the exam is cancelled. The earlier you flag it, the more time there is to sort it out before the exam date.\n\n---",
+      "a": "If an exam or resit does not appear in your timetable, email the Exams Office (msp-exams@maastrichtuniversity.nl) stating this as early as possible so we can look into it. Do this straight away rather than waiting or assuming the exam is cancelled. The earlier you flag it, the more time there is to sort it out before the exam date.",
       "topic": "Exams & Grades",
       "office": "exams",
       "category": "Resit Information",
@@ -3878,7 +4005,7 @@
     {
       "id": "am-i-allowed-to-take-courses-abroad-in-my-first-year",
       "q": "Am I allowed to take courses abroad in my first year?",
-      "a": "No. External study, including a semester abroad, external modules and credit transfer during your studies, is not available in year 1. The semester abroad itself is planned for your 4th or 5th semester.\n\n---",
+      "a": "No. External study, including a semester abroad, external modules and credit transfer during your studies, is not available in year 1. The semester abroad itself is planned for your 4th or 5th semester.",
       "topic": "Going Abroad",
       "office": "iro",
       "category": "Additional questions",
@@ -3903,6 +4030,17 @@
         "registration",
         "deadline",
         "ects"
+      ]
+    },
+    {
+      "id": "when-will-i-first-meet-my-academic-advisor",
+      "q": "When will I first meet my Academic Advisor?",
+      "a": "In your first semester, normally in October or November, ahead of the course registration round for semester 2. You are told who your advisor is before that first session. After that you meet at least twice a year, before the November and May registration rounds, and you are welcome to ask for extra meetings whenever something comes up. Your first semester is fixed, so there is nothing you need to decide before that first meeting.",
+      "topic": "Courses & Registration",
+      "office": "aa",
+      "category": "Academic Advisor Roles",
+      "tags": [
+        "registration"
       ]
     },
     {
@@ -4022,6 +4160,39 @@
         "btr",
         "thesis",
         "ects"
+      ]
+    },
+    {
+      "id": "is-my-first-semester-the-same-for-everyone-and-when-do-i-fir",
+      "q": "Is my first semester the same for everyone, and when do I first choose my own courses?",
+      "a": "The start is fixed. Everyone in the intake follows the same programme for the first semester: the four core courses (BIO1101 Introduction to Biology, CHE1101 Introduction to Chemistry, PHY1101 Introduction to Physics, INT1101 Introduction to Liberal Arts and Sciences), the two core skills PRA1101 and PRA1102, and the core project PRO1101. There is nothing to pick and no registration form to submit for any of it, so the open curriculum does not ask anything of you in your first months.\n\nYour own choices take effect from the start of semester 2, at the end of January. You make them in the course registration round that runs before it, in November, and you meet your Academic Advisor first to talk them through.",
+      "topic": "Courses & Registration",
+      "office": "aa",
+      "category": "Additional questions",
+      "tags": [
+        "registration"
+      ]
+    },
+    {
+      "id": "a-course-i-want-runs-in-a-period-where-my-programme-is-alrea",
+      "q": "A course I want runs in a period where my programme is already fixed. Will I miss out on it?",
+      "a": "No. MSP modules run every year and some run twice a year, so a course you cannot fit into your fixed first semester comes around again. What does need planning is the prerequisite chain, because a course you postpone may be the entry requirement for the advanced course you want in year 3. Check the course catalogue and the pre- and co-requisite overview on Canvas when you plan your first free semester, and take it to your Academic Advisor rather than working it out alone.",
+      "topic": "Courses & Registration",
+      "office": "aa",
+      "category": "Additional questions",
+      "tags": [
+        "canvas"
+      ]
+    },
+    {
+      "id": "i-have-never-studied-physics-or-chemistry-or-biology-will-i-",
+      "q": "I have never studied physics (or chemistry, or biology). Will I be behind?",
+      "a": "No, and the programme is built on the assumption that some of you have not. The four core courses in your first semester are introductions, and they exist precisely because students arrive from different school systems with different subject combinations. They bring everyone to the same starting point, so a subject you have not seen before is not something to worry about.\n\nThe reverse case has a route too. If you have already completed a course at university level that covers one of the introductions, you can request an exemption from that module. An exemption awards no credits and does not appear on your grade list, but it waives the content and still counts as satisfying the module where it is a prerequisite. Raise it with your Academic Advisor first, and see the exemption question further down this section for how the request works.\n\nNote that this is about your background, not about your school profile. The entry requirements themselves, including the mathematics expectations, are in the Admissions section.",
+      "topic": "Courses & Registration",
+      "office": "aa",
+      "category": "Additional questions",
+      "tags": [
+        "grade"
       ]
     },
     {
@@ -4222,7 +4393,7 @@
     {
       "id": "when-should-i-see-my-academic-advisor-and-when-the-student-c",
       "q": "When should I see my Academic Advisor, and when the Student Counsellor?",
-      "a": "They cover different ground, so pick the right one.\n\nGo to your Academic Advisor (or Academic Advising) for anything about your studies as an academic plan: choosing and combining courses, prerequisites and waivers, the advanced-level and 3000-level minimums, credit transfer and exemptions, additional and external modules, a semester abroad, and planning toward your BTR. Your advisor helps you decide and points you to the right procedures, but does not grant or deny approvals; those decisions sit with the Board of Examiners or the relevant coordinator.\n\nGo to the Student Counsellor (msp-counsellors@maastrichtuniversity.nl) for personal circumstances, wellbeing, and study doubts. If personal circumstances such as illness, impairment, pregnancy, family circumstances or board activities are affecting your progress, they should be reported to the Board of Examiners, because your Binding Study Advice can be postponed and your planning adapted on those grounds. A Leave of Absence is arranged through Academic Advising together with the office. When in doubt about which door to knock on, ask your Academic Advisor and they will refer you on.\n\n---",
+      "a": "They cover different ground, so pick the right one.\n\nGo to your Academic Advisor (or Academic Advising) for anything about your studies as an academic plan: choosing and combining courses, prerequisites and waivers, the advanced-level and 3000-level minimums, credit transfer and exemptions, additional and external modules, a semester abroad, and planning toward your BTR. Your advisor helps you decide and points you to the right procedures, but does not grant or deny approvals; those decisions sit with the Board of Examiners or the relevant coordinator.\n\nGo to the Student Counsellor (msp-counsellors@maastrichtuniversity.nl) for personal circumstances, wellbeing, and study doubts. If personal circumstances such as illness, impairment, pregnancy, family circumstances or board activities are affecting your progress, they should be reported to the Board of Examiners, because your Binding Study Advice can be postponed and your planning adapted on those grounds. A Leave of Absence is arranged through Academic Advising together with the office. When in doubt about which door to knock on, ask your Academic Advisor and they will refer you on.",
       "topic": "Courses & Registration",
       "office": "aa",
       "category": "Additional questions",
@@ -4322,7 +4493,7 @@
     {
       "id": "if-i-need-support-with-logging-in-to-the-student-portal-maki-2",
       "q": "If I need support with logging in to the Student Portal, making copies, printing, logging into the WiFi, or any other tech related issue, who do I check with?",
-      "a": "For all technical questions, including logging into the Student Portal, copying and printing, connecting to the WiFi, and any other IT issue, contact the ICTS Servicedesk on +31 43 388 5555 (Monday to Friday 08:00 to 17:00, closing at 16:00 every second and fourth Thursday of the month). You can also walk up to an ICTS front office in the UM Library at Grote Looiersstraat 17 or Universiteitssingel 50, Monday to Friday 10:30 to 17:00.\n\nMany of these topics are already covered by the manuals on the ICTS Self-Service Portal at https://servicedesk.icts.maastrichtuniversity.nl/tas/public/index.jsp, which is a good first place to look. You need to log in to view them.\n\n---\n\n---",
+      "a": "For all technical questions, including logging into the Student Portal, copying and printing, connecting to the WiFi, and any other IT issue, contact the ICTS Servicedesk on +31 43 388 5555 (Monday to Friday 08:00 to 17:00, closing at 16:00 every second and fourth Thursday of the month). You can also walk up to an ICTS front office in the UM Library at Grote Looiersstraat 17 or Universiteitssingel 50, Monday to Friday 10:30 to 17:00.\n\nMany of these topics are already covered by the manuals on the ICTS Self-Service Portal at https://servicedesk.icts.maastrichtuniversity.nl/tas/public/index.jsp, which is a good first place to look. You need to log in to view them.",
       "topic": "IT & Accounts",
       "office": "icts",
       "category": "Technical Services & Resources",
@@ -4333,7 +4504,7 @@
     {
       "id": "where-are-the-msp-buildings",
       "q": "Where are the MSP buildings?",
-      "a": "MSP has two buildings. The main building is PHS1 (Paul-Henri Spaaklaan 1, 6229 EN Maastricht; +31 (0)43 388 5190; msp-info@maastrichtuniversity.nl), open weekdays 8:00 to 20:00. On the ground floor you find the reception desk, the Education Support Department, a catering outlet, vending machines, lecture halls and dry labs; the first floor has the tutorial rooms and the student common room; the second floor holds the staff offices (Dean, Department Manager, Academic Advising coordinator, Board of Examiners secretary, Student Counsellor, Admissions, BTR and Exam coordinator, Alumni coordinator). There is underground bike parking accessible with your UMcard, lost and found is at the reception desk, and learning spaces are available in the building. The laboratory building is DUB30 (Duboisdomein 30, behind the MECC, about a 5-minute walk from PHS1), open weekdays 8:00 to 20:00, with labs for physics, chemistry, biochemistry and biology; enter with your UMcard and collect lab gear on your first visit. See the PHS1 page (https://intranet.maastrichtuniversity.nl/en/msp-students/other-msp-topics/msp-buildings/main-building-paul-henri-spaaklaan-1) and the DUB30 page (https://intranet.maastrichtuniversity.nl/en/msp-students/other-msp-topics/msp-buildings/laboratory-building-duboisdomein-30).",
+      "a": "MSP has two buildings. The main building is PHS1 (Paul-Henri Spaaklaan 1, 6229 EN Maastricht; +31 (0)43 388 5190; msp-info@maastrichtuniversity.nl), open weekdays 8:00 to 20:00. On the ground floor you find the reception desk, the Education Support Department, a catering outlet, vending machines, lecture halls and dry labs; the first floor has the tutorial rooms and the student common room; the second floor holds the staff offices (Dean, Department Manager, Academic Advising coordinator, Board of Examiners secretary, Student Counsellor, Admissions, BTR and Exam coordinator, Alumni coordinator). The pedestrian entrance is on Gaetano Martinolaan, and there is underground bike parking reached via the car entrance on Endepolsdomein and opened with your UMcard (students may not park cars there). Lost and found is at the reception desk, and there are learning spaces in the building. The laboratory building is DUB30 (Duboisdomein 30, behind the MECC, about a 5-minute walk from PHS1), open weekdays 8:00 to 20:00, with labs for physics, chemistry, biochemistry and biology; enter with your UMcard and collect lab gear on your first visit. See the PHS1 page (https://intranet.maastrichtuniversity.nl/en/msp-students/other-msp-topics/msp-buildings/main-building-paul-henri-spaaklaan-1) and the DUB30 page (https://intranet.maastrichtuniversity.nl/en/msp-students/other-msp-topics/msp-buildings/laboratory-building-duboisdomein-30).",
       "topic": "Getting Started",
       "office": "msp",
       "category": "",
@@ -4388,13 +4559,62 @@
     {
       "id": "what-resources-are-there-after-msp-master-s-and-careers",
       "q": "What resources are there after MSP (master's and careers)?",
-      "a": "For master's and career orientation: UM Career Services gives career advice and competence workshops; Holland-code career tests (for example via Truity) match interests to occupations; UM also offers free online career-orientation modules (self-understanding, personal branding, CV building, work ethics). The Maastricht University alumni office runs an ambassador lecture series and alumni circle meetings to keep graduates connected. See the Alumni/After MSP page: https://intranet.maastrichtuniversity.nl/en/msp-students/graduation/alumniafter-msp\n\n---",
+      "a": "For master's and career orientation: UM Career Services gives career advice and competence workshops; Holland-code career tests (for example via Truity) match interests to occupations; UM also offers free online career-orientation modules (self-understanding, personal branding, CV building, work ethics). The Maastricht University alumni office runs an ambassador lecture series and alumni circle meetings to keep graduates connected. See the Alumni/After MSP page: https://intranet.maastrichtuniversity.nl/en/msp-students/graduation/alumniafter-msp",
       "topic": "Getting Started",
       "office": "msp",
       "category": "",
       "tags": [
         "graduation",
         "exam"
+      ]
+    },
+    {
+      "id": "what-is-problem-based-learning-pbl-and-how-does-a-tutorial-a",
+      "q": "What is Problem-Based Learning (PBL) and how does a tutorial actually work?",
+      "a": "PBL is how teaching is organised across Maastricht University, and it works differently from the lecture-and-final-exam model most students arrive with. You work in a small tutorial group, usually around ten to fifteen students, with a tutor who guides the discussion rather than lectures at it. The group works through a task, which is a short case or problem, across two meetings.\n\nIn the first meeting you read the task together, establish what you already know, and pin down what you do not yet understand. Those gaps become the group's learning goals. Between the meetings you study on your own, using the literature listed in the course manual, to answer them. In the second meeting you come back and explain what you found to each other, argue it out where you disagree, and settle on an answer the group is satisfied with.\n\nThree things follow from that, and they are the ones new students underestimate. The tutor will not hand you the answer, so waiting to be told does not work. The self-study between the meetings is where the actual learning happens, and the meetings are where you find out whether it stuck. And because the whole method depends on everyone having prepared, attendance is compulsory (at least 85% of tutorials, 100% of skills and projects) and turning up unprepared is obvious within minutes.\n\nTutorials are not the only teaching. Lectures give you structure and context, and practicals and skills trainings in the labs are where the hands-on work happens. MSP then adds Research-Based Learning on top: you work on real research questions from early on, ending with your own Bachelor Thesis Research in the final semester.",
+      "topic": "Getting Started",
+      "office": "msp",
+      "category": "Teaching and learning at MSP",
+      "tags": [
+        "thesis",
+        "exam",
+        "attendance",
+        "ects"
+      ]
+    },
+    {
+      "id": "how-should-i-study-at-msp-what-actually-works-with-pbl",
+      "q": "How should I study at MSP? What actually works with PBL?",
+      "a": "Honestly, this varies by subject and by person, and working out what suits you is one of the more useful things to sort out early rather than in your final year. A few habits are worth starting with:\n\n- Read the course manual before the first meeting of every module. It lists the literature, the assessment and what the coordinator expects, and it answers most of what students end up emailing about.\n- Do the self-study between the two tutorial meetings, not the night before the exam. A period is seven weeks and PBL assumes you keep pace with it.\n- Explain things out loud in your group. It is the fastest way to find out whether you understand something or have only recognised it.\n- Most MSP modules assess several components rather than one final exam, so steady work through the period counts for more than a sprint at the end.\n- Ask your tutor and your course coordinator while the module is running. Both are far more use to you then than after the grade is published.",
+      "topic": "Getting Started",
+      "office": "msp",
+      "category": "Teaching and learning at MSP",
+      "tags": [
+        "grade",
+        "exam",
+        "ects"
+      ]
+    },
+    {
+      "id": "do-i-need-to-buy-my-own-lab-coat-and-safety-glasses",
+      "q": "Do I need to buy my own lab coat and safety glasses?",
+      "a": "No. MSP provides lab coats and safety glasses, so there is nothing to buy before you start. You collect your lab gear on your first visit to the laboratory building (DUB30, Duboisdomein 30). If something does not fit or gets damaged, tell the lab staff there.",
+      "topic": "Getting Started",
+      "office": "msp",
+      "category": "Labs and lab safety",
+      "tags": []
+    },
+    {
+      "id": "what-is-the-lab-safety-training-and-what-happens-if-i-miss-i",
+      "q": "What is the lab safety training, and what happens if I miss it or do not pass?",
+      "a": "Before you are allowed to work in the MSP labs you take a lab safety training that ends in a test. New students do this during the Introduction Days. It is not a formality: most of your skills and projects happen in the labs, so it has to be cleared before you can take part in them.\n\nIf you cannot attend, or you do not pass first time, a resit is arranged. The date is set once the office knows how many students need it and is then communicated by email and on Canvas, so watch your UM mail rather than assuming you have missed your chance. Questions about the training go to ESD (msp-educationsupport@maastrichtuniversity.nl).",
+      "topic": "Getting Started",
+      "office": "msp",
+      "category": "Labs and lab safety",
+      "tags": [
+        "resit",
+        "canvas",
+        "ects"
       ]
     },
     {
