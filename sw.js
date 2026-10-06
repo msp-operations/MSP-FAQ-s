@@ -22,10 +22,7 @@ const CORE = ['./', 'index.html', 'content.json', 'degree-data.json', 'manifest.
   // the shared MSP frame: stylesheet, sidebar script, logos and its fonts (Inter + DM Sans)
   'assets/msp-ui/msp-ui.css', 'assets/msp-ui/msp-shell.js',
   'assets/msp-ui/um-wordmark.png', 'assets/msp-ui/msp-emblem.png',
-  'assets/msp-ui/fonts/inter-400-latin.woff2', 'assets/msp-ui/fonts/inter-400-latin-ext.woff2',
-  'assets/msp-ui/fonts/inter-500-latin.woff2', 'assets/msp-ui/fonts/inter-500-latin-ext.woff2',
-  'assets/msp-ui/fonts/inter-600-latin.woff2', 'assets/msp-ui/fonts/inter-600-latin-ext.woff2',
-  'assets/msp-ui/fonts/inter-700-latin.woff2', 'assets/msp-ui/fonts/inter-700-latin-ext.woff2',
+  'assets/msp-ui/fonts/inter-latin.woff2', 'assets/msp-ui/fonts/inter-latin-ext.woff2',
   'assets/msp-ui/fonts/dmsans-700-latin.woff2', 'assets/msp-ui/fonts/dmsans-700-latin-ext.woff2',
   // vendored (no CDNs): the answer-text serif, search, and the on-demand PDF reader
   'assets/vendor/fonts.css', 'assets/vendor/minisearch.min.js',
