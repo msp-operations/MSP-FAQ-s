@@ -97,5 +97,5 @@ verified for two years is worse than no FAQ, because people act on it.
 
 - `README.md` here: the technical picture.
 - `c:\dev\Operations\Projects\FAQ\CLAUDE.md`: the pipeline and the project rules.
-- `c:\dev\Operations\Projects\FAQ\_FAQ_TODO.md`: what is still open.
+- `c:\dev\Operations\_PRODUCTS_TODO.md` (section MSP-FAQs): what is still open. The old `_FAQ_TODO.md` is in `Operations\_Archive\Lists 2026-09-23\`.
 - `c:\dev\Operations\Projects\Degree-Checker\`: the degree-check engine and its validation harness.

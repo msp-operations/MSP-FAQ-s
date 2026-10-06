@@ -12,13 +12,13 @@
     is the exact problem this app was built to end.
 
   THE FOUR THINGS IN THIS FILE YOU MIGHT WANT TO CHANGE, and where:
-    CHIPS         section 5, ~line 600.  The shortcut buttons under the search
+    CHIPS         section 5, ~line 710.  The shortcut buttons under the search
                                          box. Also feed the "popular" list.
-    SYN           section 5, ~line 605.  Everyday word -> FAQ vocabulary, so
+    SYN           section 5, ~line 715.  Everyday word -> FAQ vocabulary, so
                                          "I am sick" finds the attendance
                                          answers. Only ever widens a search.
-    QUICK         section 6, ~line 690.  The quick-link tiles on the home page.
-    DEGREE_RULES  section 10, ~line 990. The graduation arithmetic used by the
+    QUICK         section 6, ~line 800.  The quick-link tiles on the home page.
+    DEGREE_RULES  section 10, ~line 1105. The graduation arithmetic used by the
                                          degree-check card. Change with care and
                                          re-run the validation harness in
                                          Operations\Projects\Degree-Checker.
@@ -39,17 +39,25 @@
 <meta name="description" content="Search the Maastricht Science Programme student FAQ.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#0b2540">
+<meta name="theme-color" content="#011B3C">
+<!-- The shared MSP frame (sidebar, tokens, Inter + DM Sans, logos). Synced from
+     Operations\Projects\Remodel\MSP-Design-System; never edit it in this repo. -->
+<link rel="stylesheet" href="assets/msp-ui/msp-ui.css">
+<!-- Only the answer-text serif (Source Serif 4) lives here now. -->
 <link rel="stylesheet" href="assets/vendor/fonts.css">
 <script src="assets/vendor/minisearch.min.js"></script>
 <style>
 /* ===========================================================================
    MSP Student FAQ, stylesheet
+   The frame (navy sidebar, slate canvas, Inter and DM Sans, the --msp-*
+   tokens) comes from the shared kit in assets/msp-ui/, loaded before this
+   stylesheet. This stylesheet maps the FAQ's own tokens onto the kit's and
+   styles the FAQ's own components. Do not restyle the kit from here.
    Regions, in order:
      1  Design tokens (light + dark)     6  Home page (quick links, topic grid)
      2  Base, reset, focus rings         7  Topic and answer view
-     3  Masthead (logos, theme, install) 8  Chrome (skeleton, recent, to-top)
-     4  Hero (photo, welcome, degree)    9  Staff panel, footer, media queries
+     3  Sidebar tools, kit overrides     8  Chrome (skeleton, recent, to-top)
+     4  Hero card (photo, welcome, degree) 9  Staff panel, footer, media queries
      5  Search box and results dropdown
    Anything with a colour, radius or font goes through a token in region 1,
    except where a rule sits on a fixed background and must not follow the
@@ -58,34 +66,35 @@
 
 /* ===========================================================================
    1. DESIGN TOKENS
-   Change a colour, a corner radius or a font here and it changes everywhere.
-   --link is the accent used for links, arrows and outline buttons. It is UM
-   red on white and lightens in dark mode so it stays readable; --um is the
-   same red but fixed in both themes, for places that sit on a background
-   which never changes (the hero, the red magnifier icon).
+   The light values are the shared kit's tokens (--msp-*, see msp-ui.css
+   region 2), so a change to the kit flows through here. --link is the accent
+   used for links, arrows and outline buttons: navy on white, light blue in
+   dark mode. --um is UM red, fixed in both themes, for the "for you" nudges
+   that sit on the navy hero.
    =========================================================================== */
   :root{
-    --navy:#0b2540;    /* masthead bar, quick-link tiles, focus ring, to-top button */
-    --ink:#1b2733;     /* body text */
-    --muted:#5b6b7b;   /* secondary text, small labels */
-    --line:#e7ebf1;    /* hairline borders and dividers */
-    --bg:#f5f7fb;      /* page background */
-    --card:#fff;       /* answer rows, results dropdown */
-    --surface:#fff;    /* topic cards, pills, outline buttons */
-    --link:#e4001b;    /* accent: links, arrows, outline-button text (theme-aware) */
-    --um:#e4001b;      /* UM red, fixed in both themes */
-    --markbg:#fef1c2;  /* search-term highlight */
-    --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-    --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
-    --rs:10px;         /* small radius: buttons and pills */
-    --rm:16px;         /* medium radius: cards */
+    --navy:var(--msp-navy);   /* quick-link hover, focus ring, to-top button, modal primary */
+    --ink:var(--msp-g9);      /* body text */
+    --muted:var(--msp-g5);    /* secondary text, small labels */
+    --line:var(--msp-g2);     /* hairline borders and dividers */
+    --bg:var(--msp-g0);       /* page background: the kit's slate canvas */
+    --card:#fff;              /* answer rows, results dropdown */
+    --surface:#fff;           /* topic cards, pills, outline buttons */
+    --link:var(--msp-navy);   /* accent: links, arrows, outline-button text (theme-aware) */
+    --um:var(--msp-red);      /* UM red, fixed in both themes */
+    --markbg:#fef1c2;         /* search-term highlight */
+    --sans:var(--msp-font);           /* Inter, self-hosted by the kit */
+    --display:var(--msp-font-display); /* DM Sans, titles only */
+    --serif:'Source Serif 4',Georgia,'Times New Roman',serif; /* answer text only */
+    --rs:var(--msp-rs);       /* small radius: buttons and pills (6px) */
+    --rm:var(--msp-r);        /* medium radius: cards and answer rows (10px) */
   }
   /* Dark mode is a class on <html>, set by applyTheme() in the script below.
      Only the tokens that must change are re-declared; everything else is
      inherited from :root. */
   html.dark{
     --ink:#e6ebf2; --muted:#93a1b5; --line:#26303f; --bg:#0f1620;
-    --card:#182231; --surface:#182231; --link:#ff7a7a; --um:#e4001b; --markbg:#4a3d12;
+    --card:#182231; --surface:#182231; --link:#8ec7ff; --markbg:#4a3d12;
     /* On dark cards the bright topic hue is the readable one, so the darkened
        AA variant used on white is not wanted here. */
     --ct:var(--c);
@@ -95,12 +104,18 @@
    2. BASE, RESET AND FOCUS RINGS
    =========================================================================== */
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.62;font-size:15.5px;-webkit-font-smoothing:antialiased}
-  a{color:var(--link)}
+  /* The kit sets smooth scrolling on <html>; the router jumps to the top on
+     every view change and that must stay instant. Explicit smooth scrolls
+     (back to top, "related" links) ask for it themselves. */
+  html{-webkit-text-size-adjust:100%;scroll-behavior:auto}
+  /* body.msp-body is the class the shell adds. Both selectors, so the FAQ's
+     tokens beat the kit's base rule in both themes. */
+  body,body.msp-body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.62;font-size:15.5px;-webkit-font-smoothing:antialiased}
+  a,.msp-content a{color:var(--link)}
   mark{background:var(--markbg);color:inherit;border-radius:3px;padding:0 1px}
-  /* .wrap is the one page-width container. Change the site width here. */
-  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+  /* The page column is the kit's .msp-main.wide (1100px), set on <main> in
+     the markup. Change the site width there: drop "wide" for the kit's 860px
+     reading column. */
   /* Every icon on the page is an inline <svg class="i"> drawn from the P map in
      the script below. Stroke colour follows the text colour of its parent. */
   svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
@@ -120,55 +135,54 @@
      light blue on the dark theme, white on the dark blue hero. */
   a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
   html.dark a:focus-visible,html.dark button:focus-visible,html.dark input:focus-visible,html.dark [tabindex]:focus-visible{outline-color:#8ec7ff}
-  .hero a:focus-visible,.hero button:focus-visible,.hero input:focus-visible{outline-color:#fff}
+  .faqHero a:focus-visible,.faqHero button:focus-visible,.faqHero input:focus-visible{outline-color:#fff}
 
 /* ===========================================================================
-   3. MASTHEAD
-   The UM bar, the FAQ logo, and the two floating buttons that sit on top of it
-   (install app on the left, dark-mode toggle on the right).
-   To change a logo, swap the file in assets/ and keep the same filename: the
-   offline build inlines these by exact filename (tools/build-offline.mjs).
+   3. SIDEBAR TOOLS AND KIT OVERRIDES
+   The old masthead (UM bar, FAQ logo, two floating buttons) is gone: the
+   shared sidebar built by msp-shell.js carries the UM wordmark, the tool
+   name and the MSP emblem. The two buttons that floated over the masthead,
+   "Install app" and the dark-mode toggle, now sit in the sidebar's meta slot
+   as kit .msp-sb-cfg buttons. They start in #sbTools (hidden) so the script
+   can wire them at parse time, and are moved into the sidebar once the shell
+   has built it (see the MSPShell block above the main script).
+   The dark rules below adapt the kit classes this page uses to the FAQ's
+   dark theme; the kit itself has no dark mode. The sidebar stays navy in
+   both themes on purpose.
    =========================================================================== */
-  .utilbar{background:var(--navy);color:#fff;font-size:12px}
-  .ub{display:flex;align-items:center;justify-content:center;padding:7px 0;gap:12px}
-  .ub .ublogo{height:22px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.95}
-  .masthead{background:linear-gradient(180deg,#ffffff,#f3f6fb);border-bottom:1px solid var(--line)}
-  html.dark .masthead{background:linear-gradient(180deg,#17212f,#111a26)}
-  .mh{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;padding:16px 0}
-  /* The logo is a dark PNG, so in dark mode it is inverted to white rather than
-     swapped for a second file. Its height is set in one place (and again in the
-     mobile media query at the end of this stylesheet). */
-  .mh img{display:block;width:auto;transition:filter .2s}
-  .mh img.faqlogo{height:84px}
-  html.dark .mh img{filter:brightness(0) invert(1)}
-  .logolink{display:flex;flex-direction:column;align-items:center;gap:9px;transition:opacity .15s;cursor:pointer}
-  .logolink:hover{opacity:.75}
-  /* Theme toggle and install button both float over the masthead, one pinned
-     left and one right. Their colours are literals, not tokens: they sit on the
-     masthead gradient, which is also literal, and each has its own dark rule. */
-  .themeBtn{position:absolute;right:0;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:var(--rs);border:1px solid #d9dee6;background:#fff;color:#5b6b7b;cursor:pointer;display:grid;place-items:center;transition:background .15s,border-color .15s,color .15s}
-  .themeBtn:hover{background:#f1f4f8}.themeBtn svg.i{width:18px;height:18px}
-  html.dark .themeBtn{background:#1c2735;border-color:#33414f;color:#cdd6e0}
-  html.dark .themeBtn:hover{background:#243040}
+  .sbStatus{display:block;margin-bottom:2px}
+  .msp-sb-cfg svg.i{width:14px;height:14px}
+  .msp-sb-cfg.themeBtn{margin-right:6px}
   /* Hidden until the browser fires beforeinstallprompt (wireExtras() adds .on),
      so it only appears where the PWA can actually be installed. */
-  .installBtn{position:absolute;left:0;top:50%;transform:translateY(-50%);border:1px solid #cdd7e0;background:#fff;color:#12525f;font-weight:600;font-size:12.5px;border-radius:var(--rs);padding:8px 13px;cursor:pointer;font-family:inherit;display:none;align-items:center;gap:6px}
-  html.dark .installBtn{background:#1c2735;border-color:#33414f;color:#cdd6e0}
-  .installBtn.on{display:inline-flex}.installBtn svg.i{width:16px;height:16px}
+  .msp-sb-cfg.installBtn{display:none}
+  .msp-sb-cfg.installBtn.on{display:inline-flex}
+  html.dark .msp-content{background:var(--bg)}
+  html.dark .msp-content h1,html.dark .msp-content h2,html.dark .msp-content h3{color:var(--ink)}
+  html.dark .msp-footer{background:var(--card);border-color:var(--line);color:var(--muted)}
+  html.dark .msp-footer a{color:var(--link)}
 
 /* ===========================================================================
-   4. HERO
-   The dark blue panel: background photo, transcript button, welcome card,
-   degree-check card, title, search box and chips.
-   To change the hero photo, replace assets/building.jpg (keep the filename,
-   the offline build inlines it by name). The blue wash over it is the
-   linear-gradient in .hero; drop the gradient and the photo goes bright.
+   4. HERO CARD
+   The kit's .msp-hero (navy gradient card) at the top of the column, shown
+   above both views: transcript button, welcome card, degree-check card,
+   title, search box and chips. On a topic page the router adds .compact,
+   which keeps only the search box.
+   The building photo is a soft wash behind the gradient, drawn on .heroBg.
+   To change it, replace assets/building.jpg (keep the filename, the offline
+   build inlines it by name); lower the gradient alphas and it comes through
+   brighter. The card keeps overflow visible so the results dropdown can hang
+   below it; the clipping sits on .heroBg instead.
    =========================================================================== */
-  .hero{position:relative;color:#fff;width:min(1000px,calc(100% - 36px));margin:16px auto 6px;
-    border-radius:24px;border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 46px rgba(11,37,64,.28);
-    background:linear-gradient(115deg,rgba(11,37,64,.94) 0%,rgba(18,58,107,.82) 46%,rgba(14,107,138,.55) 100%),url('assets/building.jpg') center 36%/cover no-repeat}
-  .heroInner{position:relative;z-index:1;padding:22px 22px 34px}
-  .heroTop{display:flex;align-items:center;justify-content:flex-end;gap:14px;min-height:38px}
+  .faqHero{overflow:visible;padding:26px 28px 30px;margin-bottom:24px;background:var(--msp-navy)}
+  .faqHero::before{display:none}
+  .heroBg{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;
+    background:linear-gradient(115deg,rgba(1,27,60,.95) 0%,rgba(2,39,79,.88) 50%,rgba(10,48,96,.74) 100%),url('assets/building.jpg') center 36%/cover no-repeat}
+  .heroBg::after{content:'';position:absolute;top:-60px;right:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(110,210,236,.12) 0%,transparent 70%)}
+  .heroInner{position:relative;z-index:1}
+  .heroTop{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+  .faqHero.compact{padding:18px 28px 20px}
+  .faqHero.compact .heroTitle,.faqHero.compact .heroSub,.faqHero.compact .chips,.faqHero.compact .heroTop{display:none}
   /* .tbtn is the glassy "Load my transcript" button. Everything inside the hero
      is white on blue, so its colours are literals rather than tokens. */
   .tbtn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;padding:9px 15px;border-radius:var(--rs);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;display:inline-flex;align-items:center;gap:7px;backdrop-filter:blur(4px);transition:background .15s}
@@ -178,22 +192,22 @@
      happens to their data BEFORE it is processed, so this sits between the
      "Load my transcript" button and the file picker rather than in the hero,
      where it was just wall-of-text nobody read. */
-  .tmodal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,16,28,.55)}
+  .tmodal{position:fixed;inset:0;z-index:var(--msp-z-modal,500);display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,16,28,.55)}
   .tmodal[open]{display:flex}
   .tmodalCard{background:var(--card);color:var(--ink);border-radius:var(--rm);max-width:52ch;width:100%;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.32)}
-  .tmodalCard h2{font-family:var(--serif);font-size:20px;margin:0 0 10px}
+  .tmodalCard h2{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 10px}
   .tmodalCard p{font-size:14px;line-height:1.6;margin:.6em 0}
   .tmodalActions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
   .tmodalActions button{font-family:inherit;font-size:14px;font-weight:600;border-radius:var(--rs);padding:10px 16px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
   .tmodalActions .primary{background:var(--navy);border-color:var(--navy);color:#fff}
-  .heroTitle{font-family:var(--serif);font-size:38px;font-weight:600;margin:20px 0 6px;letter-spacing:.2px;line-height:1.14;text-align:center}
-  .heroTitle span{color:#ff5a5f}
-  .heroSub{opacity:.82;font-size:14.5px;margin:0 0 20px;text-align:center}
+  .faqHero h1.heroTitle{font-family:var(--display);font-size:32px;font-weight:700;margin:4px 0 6px;letter-spacing:-.02em;line-height:1.15;text-align:center;color:#fff}
+  .heroTitle span{color:var(--msp-sky)}
+  .faqHero p.heroSub{opacity:.78;font-size:14px;margin:0 auto 18px;max-width:none;text-align:center;line-height:1.6}
   /* Welcome + degree check. Both are empty and hidden until a transcript has
      been read; renderWelcome() fills #welcome and adds .on. */
   .welcome{margin:16px 0 4px;display:none}.welcome.on{display:block}
   .wcard{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:var(--rm);padding:14px 18px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;backdrop-filter:blur(6px)}
-  .wcard .hi{font-family:var(--serif);font-size:17px;font-weight:600}
+  .wcard .hi{font-family:var(--display);font-size:17px;font-weight:700}
   .wcard .stat{font-size:12.5px;opacity:.92}.wcard .stat b{font-size:16px;font-weight:700}
   .wcard .clear{margin-left:auto;font-size:11px;opacity:.75;background:none;border:none;color:#fff;cursor:pointer;text-decoration:underline;font-family:inherit}
   /* "For you" nudges under the welcome card, chosen by forYou() from the
@@ -222,12 +236,15 @@
    from the CHIPS array in the script.
    =========================================================================== */
   .search{position:relative;max-width:660px;margin:0 auto}
-  /* The field is white in both themes (it sits on the blue hero), so its
-     background and text colour are literals on purpose. Do not swap them for
-     --card / --ink or the text turns pale-on-white in dark mode. */
-  .search input{width:100%;padding:17px 44px 17px 52px;font-size:16px;font-family:inherit;border:none;border-radius:14px;background:#fff;box-shadow:0 8px 26px rgba(0,0,0,.22);outline:none;color:#1b2733}
-  .search input:focus{box-shadow:0 0 0 4px rgba(255,255,255,.3),0 8px 26px rgba(0,0,0,.22)}
-  .search .ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--um)}
+  /* The field is the kit's .msp-input, white in both themes (it sits on the
+     navy hero), so its background and text colour are literals on purpose.
+     Do not swap them for --card / --ink or the text turns pale-on-white in
+     dark mode. */
+  .search .msp-input{width:100%;padding:14px 44px 14px 46px;font-size:15.5px;font-family:inherit;border:1.5px solid transparent;border-radius:var(--msp-r);background:#fff;box-shadow:0 8px 26px rgba(0,0,0,.22);outline:none;color:#1b2733}
+  .search .msp-input:hover{border-color:transparent}
+  .search .msp-input:focus{border-color:var(--msp-sky);box-shadow:0 0 0 4px rgba(110,210,236,.35),0 8px 26px rgba(0,0,0,.22)}
+  .search .ic{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--msp-g4);display:flex}
+  .search .ic svg.i{width:20px;height:20px}
   /* The "/" hint on the right. The shortcut itself is wired at the bottom of
      the keyboard section in the script. */
   .kbd{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;color:#66717f;border:1px solid #dfe4ea;border-radius:6px;padding:1px 7px;font-family:inherit;pointer-events:none}
@@ -244,8 +261,10 @@
   .bchip{font-size:12px;font-weight:600;background:var(--surface);color:var(--link);border:1px solid var(--line);border-radius:100px;padding:5px 12px;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px}
   .bchip:hover{border-color:var(--link)}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;justify-content:center}
-  .chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);color:#fff;padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:500;cursor:pointer;font-family:inherit;backdrop-filter:blur(4px);transition:background .15s,transform .15s}
-  .chip:hover{background:rgba(255,255,255,.26);transform:translateY(-1px)}
+  /* Kit chips (.msp-chip), recoloured for the navy card: translucent white in
+     both themes. */
+  .faqHero .msp-chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff;font-weight:500;backdrop-filter:blur(4px);transition:background .15s,transform .15s,border-color .15s}
+  .faqHero .msp-chip:hover{background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.4);color:#fff;transform:translateY(-1px)}
 
 /* ===========================================================================
    6. HOME PAGE
@@ -254,27 +273,30 @@
    Topic cards are generated from content.json, one per topic; each gets its
    colour through the inline --c variable set by renderTopics().
    =========================================================================== */
-  .quicklinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:26px 0 6px}
-  .ql{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:15px 18px;border-radius:var(--rs);transition:background .15s ease,transform .15s ease}
-  .ql:hover{background:#123a5f;transform:translateY(-2px)}
+  /* Quick links are white cards with navy text (the kit's card look); the old
+     solid-navy tiles were too much navy next to the sidebar and the hero. */
+  .quicklinks{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:0 0 6px}
+  .ql{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);color:var(--msp-navy);border:1.5px solid var(--line);box-shadow:var(--msp-sh);text-decoration:none;font-weight:600;font-size:13.5px;padding:13px 16px;border-radius:var(--rm);transition:background .15s ease,color .15s ease,border-color .15s ease,transform .15s ease}
+  .ql:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-2px)}
+  html.dark .ql{color:var(--ink)}
   .ql .qla{font-size:18px;line-height:1;font-weight:700}
-  .sectlabel{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin:34px 0 16px;text-align:center}
-  .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding-bottom:52px}
+  .sectlabel{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:700;margin:32px 0 14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;padding-bottom:8px}
   /* Cards fade up as they appear; renderTopics() staggers them with an inline
      animation-delay. The reduced-motion rule at the end of this stylesheet
      switches the whole thing off for anyone who asks for that. */
   @keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .tcard{position:relative;background:var(--surface);border:1px solid rgba(11,37,64,.20);border-radius:var(--rm);padding:22px 18px;flex:0 1 212px;
+  .tcard{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--rm);padding:20px 18px;box-shadow:var(--msp-sh);
     cursor:pointer;text-align:left;font-family:inherit;overflow:hidden;color:var(--ink);animation:up .45s ease both;
     transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
-  html.dark .tcard{border-color:#4a5a6e}
-  .tcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 40%,var(--line));box-shadow:0 12px 26px rgba(16,32,48,.10)}
+  html.dark .tcard{border-color:#2f3b4b}
+  .tcard:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 45%,var(--line));box-shadow:var(--msp-sh-md)}
   .tcard::after{content:"\2192";position:absolute;right:16px;bottom:14px;font-size:17px;font-weight:700;color:var(--link);opacity:0;transform:translateX(-5px);transition:opacity .16s,transform .16s}
   .tcard:hover::after{opacity:1;transform:none}
   .ticon{width:50px;height:50px;border-radius:14px;color:var(--ink);display:grid;place-items:center;margin-bottom:16px;
     background:color-mix(in srgb,var(--ink) 7%,var(--surface))}
   .ticon svg.i{width:25px;height:25px;stroke-width:1.9}
-  .tcard .tt{font-weight:700;font-size:15.5px;letter-spacing:.1px}
+  .tcard .tt{font-weight:700;font-size:15px;letter-spacing:-.01em}
   .tcard .tc{font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
 
 /* ===========================================================================
@@ -301,15 +323,15 @@
   /* Fallback topic colour, in case a topic reaches this view before
      showTopic() has set --c and --ct on the element. */
   #v-topic{--c:#3b82f6}
-  .back{background:none;border:none;color:var(--link);font-size:13px;font-weight:600;cursor:pointer;padding:16px 0 6px;display:inline-flex;gap:7px;align-items:center;font-family:inherit}
+  .back{background:none;border:none;color:var(--link);font-size:13px;font-weight:600;cursor:pointer;padding:0 0 8px;display:inline-flex;gap:7px;align-items:center;font-family:inherit}
   .back svg.i{width:16px;height:16px}
   .vhead{display:flex;align-items:center;gap:13px;margin:4px 0 20px}
   .vicon{width:46px;height:46px;border-radius:13px;background:color-mix(in srgb,var(--ink) 7%,var(--surface));color:var(--ink);display:grid;place-items:center;flex:none}
   .vicon svg.i{width:25px;height:25px}
-  .vtitle{font-family:var(--serif);font-size:27px;font-weight:600;letter-spacing:.2px}
+  h2.vtitle{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin:0;color:var(--ink)}
   .catgroup{margin-bottom:22px}
   .catname{font-size:11.5px;text-transform:uppercase;letter-spacing:.9px;color:var(--ct,var(--c));font-weight:700;margin:16px 0 8px}
-  .qitem{background:var(--card);border:1px solid var(--line);border-radius:var(--rs);margin-bottom:8px;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+  .qitem{background:var(--card);border:1px solid var(--line);border-radius:var(--rm);margin-bottom:8px;overflow:hidden;box-shadow:var(--msp-sh);transition:border-color .15s,box-shadow .15s}
   .qitem:hover{border-color:color-mix(in srgb,var(--c) 35%,var(--line))}
   .qitem.open{border-color:color-mix(in srgb,var(--c) 45%,var(--line));box-shadow:0 8px 22px color-mix(in srgb,var(--c) 12%,transparent)}
   .qq{width:100%;text-align:left;background:none;border:none;font-family:inherit;color:inherit;padding:15px 17px;font-weight:600;font-size:14.5px;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center}
@@ -353,22 +375,24 @@
    =========================================================================== */
   /* Grey shimmering placeholders shown while content.json is loading. */
   @keyframes shimmer{0%{background-position:-420px 0}100%{background-position:420px 0}}
-  .skel{height:134px;border-radius:18px;border:1px solid var(--line);flex:0 1 212px;
+  .skel{height:134px;border-radius:var(--rm);border:1px solid var(--line);
     background:linear-gradient(90deg,color-mix(in srgb,var(--muted) 8%,var(--card)) 25%,color-mix(in srgb,var(--muted) 17%,var(--card)) 37%,color-mix(in srgb,var(--muted) 8%,var(--card)) 63%);
     background-size:800px 100%;animation:shimmer 1.3s infinite linear}
   /* recently viewed */
-  .recentRow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .recentRow{display:flex;flex-wrap:wrap;gap:8px}
   .recentRow a{text-decoration:none;font-size:12.5px;font-weight:500;color:var(--link);background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:6px 14px;max-width:290px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:border-color .15s}
   .recentRow a:hover{border-color:var(--link)}
   /* Section heading inside the results dropdown ("Popular questions"). */
   .rhead{padding:11px 18px 4px;font-size:10.5px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);font-weight:700}
-  /* Brown strip under the masthead, shown by wireExtras() when the browser
-     reports it is offline. The answers still work, they come from the cache. */
+  /* Brown strip across the top of the content column, shown by wireExtras()
+     when the browser reports it is offline. The answers still work, they come
+     from the cache. */
   .offline{display:none;background:#8a3d12;color:#fff;text-align:center;font-size:12.5px;padding:7px 10px;font-weight:500}
   .offline.on{display:block}
   .toTop{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
     background:var(--navy);color:#fff;display:none;place-items:center;box-shadow:0 8px 22px rgba(11,37,64,.35);z-index:40;transition:transform .15s}
   .toTop:hover{transform:translateY(-2px)}.toTop.on{display:grid}.toTop svg.i{width:22px;height:22px}
+  html.dark .toTop{background:#1f3a60}
 
 /* ===========================================================================
    9. STAFF PANEL, FOOTER AND MEDIA QUERIES
@@ -384,7 +408,10 @@
   .staffgrp a b{color:#9a3412}
   html.dark .staffgrp a b{color:#fca5a5}
   .staffgrp a:hover{text-decoration:underline}
-  footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.7}
+  /* The page footer is the kit's .msp-footer: a white strip pinned to the
+     bottom of the content column (the kit lays .msp-content out as a flex
+     column for exactly this), so it sits outside <main> in the markup. */
+  footer.msp-footer{font-size:11.5px;color:var(--muted);line-height:1.7}
   /* The privacy statement in the footer. The offline build inserts an extra
      paragraph here, so leave the wording of the first paragraphs alone unless
      you also update tools/build-offline.mjs. */
@@ -398,7 +425,15 @@
   html.no-transcript .tonly{display:none}
   /* The transcript file picker is opened by the hero button, never shown. */
   input[type=file]{display:none}
-  @media(max-width:560px){.heroTitle{font-size:27px}.mh img.faqlogo{height:54px}}
+  /* Below 900px the shell's drawer toggle sits top-left over the content, so
+     the offline strip steps aside for it. */
+  @media(max-width:900px){.offline{padding-left:60px;padding-right:12px;text-align:left}}
+  @media(max-width:640px){
+    .faqHero{padding:22px 16px 24px}.faqHero.compact{padding:14px 16px 16px}
+    .faqHero h1.heroTitle{font-size:26px}
+    .grid{grid-template-columns:repeat(2,1fr);gap:10px}.tcard{padding:16px 14px}
+  }
+  @media print{.toTop,.tmodal,.offline,#sbTools,.faqHero .chips,.kbd{display:none!important}.faqHero{box-shadow:none}}
   /* Accessibility: honour the operating-system "reduce motion" setting. Keep. */
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 </style>
@@ -406,37 +441,44 @@
 <body>
 <!-- ===========================================================================
      PAGE STRUCTURE
-     Nearly everything below is an empty container that the script fills at
-     runtime from content.json. The elements that carry an id are the ones the
-     script reaches for, so renaming an id means changing it in both places.
+     The shared frame comes from msp-shell.js (loaded at the bottom): it wraps
+     everything in this body into the content column next to the navy
+     sidebar. Nearly everything below is an empty container that the script
+     fills at runtime from content.json. The elements that carry an id are
+     the ones the script reaches for, so renaming an id means changing it in
+     both places.
        #live       invisible, announces changes to screen readers
+       #sbTools    install + dark-mode buttons, moved into the sidebar
+       #hero       the navy hero card (search), shown above both views
        #welcome    the transcript welcome card and degree check
        #q #results the search box and its dropdown
        #chips      the shortcut chips (from the CHIPS array)
-       #quicklinks the blue tiles (from the QUICK array)
+       #quicklinks the quick-link cards (from the QUICK array)
        #recent     recently viewed questions
        #topics     the topic-card grid
        #v-home #v-topic  the two panels the router switches between
      ======================================================================== -->
 <div class="sr-only" aria-live="polite" id="live"></div>
 
-<div class="utilbar"><div class="wrap ub"><img class="ublogo" src="assets/um-logo.png" alt="Maastricht University"></div></div>
 <div class="offline" id="offline">You are offline, showing saved answers.</div>
-<!-- Masthead: logo plus the install and dark-mode buttons floating over it. -->
-<div class="masthead">
-  <div class="wrap mh">
-    <button class="installBtn" id="installBtn" aria-label="Install this app"><span id="instIcon"></span>Install app</button>
-    <button class="themeBtn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
-    <a class="logolink" href="#/" aria-label="MSP Student FAQ, home">
-      <img class="faqlogo" src="assets/msp-faq.png" alt="Maastricht Science Programme, Frequently Asked Questions">
-    </a>
-  </div>
+
+<!-- Sidebar tools. Hidden here; moved into the sidebar's meta slot once the
+     shell has built it (see the MSPShell block below the page). Keep the ids:
+     applyTheme() and wireExtras() reach for them. -->
+<div id="sbTools" hidden>
+  <span class="sbStatus" id="sbStatus"></span>
+  <button class="msp-sb-cfg themeBtn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+  <button class="msp-sb-cfg installBtn" id="installBtn" aria-label="Install this app"><span id="instIcon"></span>Install app</button>
 </div>
 
-<!-- Hero: the blue panel with the building photo behind it. Holds the
-     transcript button, the welcome card, the title and the search box. -->
-<section class="hero">
-  <div class="wrap heroInner">
+<main class="msp-main wide" id="main">
+<!-- Hero card: the kit's navy card with the building photo softly behind it.
+     Holds the transcript button, the welcome card, the title, the search box
+     and the chips. Shown above both views; the router adds .compact on a
+     topic page so only the search box stays. -->
+<section class="msp-hero faqHero" id="hero">
+  <div class="heroBg" aria-hidden="true"></div>
+  <div class="heroInner">
     <div class="heroTop">
       <!-- Starts hidden so it cannot flash on a slow load. TRANSCRIPT_ENABLED
            in the script decides whether it is revealed. -->
@@ -448,7 +490,7 @@
     <p class="heroSub" id="heroSub">Search for an answer, or browse the topics below.</p>
     <div class="search" role="search">
       <span class="ic" id="searchIcon"></span>
-      <input id="q" type="text" aria-label="Search the FAQ" placeholder="Search any question... (e.g. resit, waiver, graduation)" autocomplete="off">
+      <input id="q" class="msp-input" type="text" aria-label="Search the FAQ" placeholder="Search any question... (e.g. resit, waiver, graduation)" autocomplete="off">
       <span class="kbd" id="kbdHint">/</span>
       <div class="results" id="results" role="listbox" aria-label="Search results"></div>
     </div>
@@ -457,37 +499,22 @@
 </section>
 
 <!-- The two views. Both stay in the page; router() moves the .on class. -->
-<div class="wrap">
-  <div class="view on" id="v-home">
-    <div class="quicklinks" id="quicklinks"></div>
-    <div id="staffPanel"></div>
-    <div id="recent"></div>
-    <div class="sectlabel">Browse by topic</div>
-    <div class="grid" id="topics"></div>
-  </div>
-  <div class="view" id="v-topic">
-    <button class="back" onclick="go('#/')"><span id="backIcon"></span> All topics</button>
-    <div class="vhead"><span class="vicon" id="topicIcon" aria-hidden="true"></span><h2 class="vtitle" id="topicHead"></h2></div>
-    <div id="topicBody"></div>
-  </div>
+<div class="view on" id="v-home">
+  <div class="quicklinks" id="quicklinks"></div>
+  <div id="staffPanel"></div>
+  <div id="recent"></div>
+  <div class="sectlabel" id="topicsLabel">Browse by topic</div>
+  <div class="grid" id="topics"></div>
+</div>
+<div class="view" id="v-topic">
+  <button class="back" onclick="go('#/')"><span id="backIcon"></span> All topics</button>
+  <div class="vhead"><span class="vicon" id="topicIcon" aria-hidden="true"></span><h2 class="vtitle" id="topicHead"></h2></div>
+  <div id="topicBody"></div>
 </div>
 
-<!-- Consent step shown before the file picker opens. See #transcriptBtn wiring. -->
-<div class="tmodal" id="tconsent" role="dialog" aria-modal="true" aria-labelledby="tcTitle">
-  <div class="tmodalCard">
-    <h2 id="tcTitle">Before you load your transcript</h2>
-    <p>Your transcript is read on your own device. The file is not uploaded, we never see it, and no copy is made anywhere else.</p>
-    <p>Your name, student number and the result of the check are saved in this browser so the card is still here next time. Use "clear" on the card to remove them. On a shared or public computer, clear them before you leave.</p>
-    <div class="tmodalActions">
-      <button type="button" id="tcCancel">Cancel</button>
-      <button type="button" class="primary" id="tcGo">Choose file</button>
-    </div>
-  </div>
-</div>
+</main>
 
-<button class="toTop" id="toTop" aria-label="Back to top"><span id="topIcon"></span></button>
-
-<footer class="wrap">
+<footer class="msp-footer">
   Answers are a guide; for official rules see the UM intranet or email the office shown on each answer.
   <details class="privacy">
     <summary>Privacy</summary>
@@ -505,6 +532,60 @@
     </div>
   </details>
 </footer>
+
+<!-- Consent step shown before the file picker opens. See #transcriptBtn wiring. -->
+<div class="tmodal" id="tconsent" role="dialog" aria-modal="true" aria-labelledby="tcTitle">
+  <div class="tmodalCard">
+    <h2 id="tcTitle">Before you load your transcript</h2>
+    <p>Your transcript is read on your own device. The file is not uploaded, we never see it, and no copy is made anywhere else.</p>
+    <p>Your name, student number and the result of the check are saved in this browser so the card is still here next time. Use "clear" on the card to remove them. On a shared or public computer, clear them before you leave.</p>
+    <div class="tmodalActions">
+      <button type="button" id="tcCancel">Cancel</button>
+      <button type="button" class="primary" id="tcGo">Choose file</button>
+    </div>
+  </div>
+</div>
+
+<button class="toTop" id="toTop" aria-label="Back to top"><span id="topIcon"></span></button>
+
+<!-- The shared MSP frame: sidebar, drawer, canvas. Config only; the look lives
+     in assets/msp-ui/ and is never edited here. The nav stays short on
+     purpose: eleven topics would not fit a sidebar, so the topic grid on the
+     home page remains the way in. "All topics" is an action (scroll to the
+     grid), not a route, which is why onNavigate handles it. The router calls
+     MSPShell.setActive() on every view change; the shell's own hash matching
+     is switched off by passing "active". -->
+<script src="assets/msp-ui/msp-shell.js"></script>
+<script>
+MSPShell.init({
+  title:'MSP Student FAQ',
+  home:'#/',
+  active:'#/',
+  nav:[
+    {label:'Home',           hint:'Search the FAQ',          href:'#/',       icon:'home'},
+    {label:'All topics',     hint:'Browse by topic',         href:'#/topics', icon:'grid'},
+    {divider:true},
+    {label:'Ask the office', hint:'Email Education Support', href:'mailto:msp-educationsupport@maastrichtuniversity.nl', icon:'mail', external:true}
+  ],
+  footer:'No analytics, no cookies. What you type stays in your browser.',
+  onNavigate:function(it){
+    if(it.href==='#/topics'){
+      if(location.hash&&location.hash!=='#/')go('#/');
+      setTimeout(function(){var el=document.getElementById('topicsLabel');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},80);
+      return false;
+    }
+  }
+});
+/* Move the theme and install buttons from #sbTools into the sidebar's meta
+   slot. init() builds the sidebar on DOMContentLoaded; this listener is
+   registered after it, so the slot exists by the time it runs. */
+(function(){
+  function place(){var slot=document.getElementById('msp-sb-meta'),tools=document.getElementById('sbTools');
+    if(!slot||!tools)return;while(tools.firstChild)slot.appendChild(tools.firstChild);tools.remove();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',place);else place();
+})();
+</script>
+
 
 <script>
 /* ===========================================================================
@@ -561,7 +642,7 @@ const announce=m=>{$('#live').textContent='';setTimeout(()=>$('#live').textConte
 function applyTheme(){const stored=localStorage.getItem('faqTheme');
   const dark=stored?stored==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
   document.documentElement.classList.toggle('dark',dark);
-  const b=$('#themeBtn');if(b)b.innerHTML=svg(dark?'_sun':'_moon');}
+  const b=$('#themeBtn');if(b)b.innerHTML=svg(dark?'_sun':'_moon')+(dark?' Light mode':' Dark mode');}
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{if(!localStorage.getItem('faqTheme'))applyTheme();});
 
 /* ---------------------------------------------------------------------------
@@ -698,6 +779,7 @@ async function load(){
   state.mini.addAll(data.faqs.map(f=>({...f,tags:(f.tags||[]).join(' '),topicName:f.topic,officeName:(data.offices[f.office]||{}).name||''})));
   renderTopics();renderChips();renderQuick();buildPopular();renderRecent();renderStaffPanel();wireExtras();
   $('#heroSub').textContent='Search '+data.meta.count+' answers, or browse the topics below.';
+  const sb=$('#sbStatus');if(sb)sb.textContent=data.meta.count+' answers, AY '+data.meta.ay;
   restoreStudent();router();
 }
 /* One card per topic, in the order content.json lists them (set by TOPICS in
@@ -708,7 +790,7 @@ function renderTopics(){
     `<button class="tcard" style="--c:${col(t.name)};animation-delay:${i*40}ms" onclick="go('#/topic/'+encodeURIComponent('${t.name.replace(/'/g,"\\'")}'))">
       <div class="ticon">${svg(t.name)}</div><div class="tt">${esc(t.name)}</div><div class="tc">${t.count} questions</div></button>`).join('');
 }
-function renderChips(){$('#chips').innerHTML=CHIPS.map(([l,query])=>`<button class="chip" onclick="quick('${query}')">${esc(l)}</button>`).join('');}
+function renderChips(){$('#chips').innerHTML=CHIPS.map(([l,query])=>`<button class="msp-chip chip" onclick="quick('${query}')">${esc(l)}</button>`).join('');}
 /* The dark blue tiles on the home page. Add, remove or reorder freely: each
    entry is {l: the label} plus a destination, which is one of
      ext:   an external URL, opens in a new tab
@@ -788,13 +870,19 @@ document.addEventListener('keydown',e=>{
    The ?q= form is what "Copy link" produces, so links shared with a student
    land on the exact answer. Both panels stay in the page; the router only
    swaps which one carries the .on class.
+   Anything else in the hash that does not start with #/ (the shell's "skip
+   to content" link, in-page anchors) is not a route and leaves the current
+   view alone. The sidebar's active item follows the view: Home on the home
+   page, "All topics" while reading a topic.
    --------------------------------------------------------------------------- */
 function go(hash){location.hash=hash;}
 window.addEventListener('hashchange',router);
 function router(){const rb=$('#results');if(rb)rb.className='results';
-  const h=decodeURIComponent(location.hash||'#/');const m=h.match(/^#\/topic\/([^?]+)(?:\?q=(.+))?$/);
+  const h=decodeURIComponent(location.hash||'#/');if(h.charAt(1)!=='/')return;
+  const m=h.match(/^#\/topic\/([^?]+)(?:\?q=(.+))?$/);
   if(m){showTopic(m[1],m[2]);return;}
-  $('#v-topic').className='view';$('#v-home').className='view on';window.scrollTo(0,0);}
+  $('#v-topic').className='view';$('#v-home').className='view on';$('#hero').classList.remove('compact');
+  if(window.MSPShell)MSPShell.setActive('#/');window.scrollTo(0,0);}
 /* Draws a whole topic: every question of that topic, grouped by the category
    heading it had in the master document, each one collapsed. Also sets the
    topic colour pair on the panel, which the CSS then uses everywhere inside. */
@@ -804,7 +892,8 @@ function showTopic(name,openId){
   const cats=[...new Set(faqs.map(f=>f.category||'Questions'))];
   $('#topicBody').innerHTML=cats.map(cat=>{const items=faqs.filter(f=>(f.category||'Questions')===cat);
     return `<div class="catgroup"><div class="catname">${esc(cat)}</div>`+items.map(qHtml).join('')+`</div>`;}).join('');
-  $('#v-home').className='view';$('#v-topic').className='view on';window.scrollTo(0,0);
+  $('#v-home').className='view';$('#v-topic').className='view on';$('#hero').classList.add('compact');
+  if(window.MSPShell)MSPShell.setActive('#/topics');window.scrollTo(0,0);
   if(openId)openQ(openId,true);
 }
 /* ---------------------------------------------------------------------------

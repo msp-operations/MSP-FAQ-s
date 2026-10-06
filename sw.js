@@ -14,15 +14,22 @@
 // file and re-downloads the lot (a few MB, mostly the PDF reader), so it is not
 // something to do on every content edit. Content edits need no bump at all.
 
-const CACHE = 'msp-faq-v28';
+const CACHE = 'msp-faq-v29';   // v29: the shared MSP frame (assets/msp-ui) replaced the masthead
 // Everything the app needs to run with no connection. Anything not listed is
 // still cached the first time it is fetched, it just is not pre-loaded.
 const CORE = ['./', 'index.html', 'content.json', 'degree-data.json', 'manifest.webmanifest', 'icon.svg',
-  'assets/msp-faq.png', 'assets/um-logo.png', 'assets/building.jpg',
-  // vendored (no CDNs): fonts, search, and the on-demand PDF reader
+  'assets/building.jpg',
+  // the shared MSP frame: stylesheet, sidebar script, logos and its fonts (Inter + DM Sans)
+  'assets/msp-ui/msp-ui.css', 'assets/msp-ui/msp-shell.js',
+  'assets/msp-ui/um-wordmark.png', 'assets/msp-ui/msp-emblem.png',
+  'assets/msp-ui/fonts/inter-400-latin.woff2', 'assets/msp-ui/fonts/inter-400-latin-ext.woff2',
+  'assets/msp-ui/fonts/inter-500-latin.woff2', 'assets/msp-ui/fonts/inter-500-latin-ext.woff2',
+  'assets/msp-ui/fonts/inter-600-latin.woff2', 'assets/msp-ui/fonts/inter-600-latin-ext.woff2',
+  'assets/msp-ui/fonts/inter-700-latin.woff2', 'assets/msp-ui/fonts/inter-700-latin-ext.woff2',
+  'assets/msp-ui/fonts/dmsans-700-latin.woff2', 'assets/msp-ui/fonts/dmsans-700-latin-ext.woff2',
+  // vendored (no CDNs): the answer-text serif, search, and the on-demand PDF reader
   'assets/vendor/fonts.css', 'assets/vendor/minisearch.min.js',
   'assets/vendor/pdf.min.js', 'assets/vendor/pdf.worker.min.js',
-  'assets/vendor/inter-400-latin.woff2', 'assets/vendor/inter-400-latin-ext.woff2',
   'assets/vendor/sourceserif4-400-latin.woff2', 'assets/vendor/sourceserif4-400-latin-ext.woff2',
   'assets/vendor/sourceserif4-600-latin.woff2', 'assets/vendor/sourceserif4-600-latin-ext.woff2'];
 
