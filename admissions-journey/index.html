@@ -39,6 +39,18 @@ a { color: inherit; }
          background-size: cover; background-position: 70% 38%; }
 @media (max-width: 720px) { .hero { background-image: linear-gradient(180deg, rgba(0,8,49,.10) 0%, rgba(0,8,49,.35) 120px, rgba(0,8,49,.96) 250px, var(--ink) 330px), url("building.jpg");
                                        background-position: 50% 0; background-size: auto 330px; background-repeat: no-repeat; } }
+
+/* photo strip */
+.strip { display: grid; grid-template-columns: 1.05fr 1fr 1fr; grid-template-rows: 210px 230px; gap: 12px; margin-top: 24px; }
+.strip figure { margin: 0; position: relative; border-radius: var(--r); overflow: hidden; background: var(--ink); box-shadow: var(--shadow); }
+.strip figure.tall { grid-row: span 2; }
+.strip figure.wide { grid-column: span 2; }
+.strip img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s; }
+.strip figure:hover img { transform: scale(1.03); }
+.strip figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 16px 12px; color: #fff; font-size: 14px; font-weight: 600;
+                    background: linear-gradient(180deg, transparent, rgba(0,8,49,.78)); }
+@media (max-width: 720px) { .strip { grid-template-columns: 1fr 1fr; grid-template-rows: 260px 150px 170px; }
+  .strip figure.tall { grid-row: auto; grid-column: span 2; } .strip figure.wide { grid-column: span 2; } }
 .kicker { font-size: 12.5px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; color: var(--sky); }
 h1 { font-size: clamp(36px, 7vw, 58px); line-height: 1.02; letter-spacing: -1.8px; font-weight: 750; margin: 14px 0 0; }
 h1 em { font-style: normal; color: var(--sky); }
@@ -311,6 +323,12 @@ footer .fine { margin-top: 28px; font-size: 13px; color: #8FA3C0; border-top: 1p
       </details>
     </div></li>
   </ol>
+</section>
+
+<section class="block" id="study">
+  <h2>Where you'll study</h2>
+  <p class="intro">Learn through active collaboration, solving real-world cases, and hands-on work in our own labs.</p>
+  <div class="strip"><figure class="tall"><img src="fse-building.jpg" alt="The Faculty of Science and Engineering" loading="lazy"><figcaption>The Faculty of Science and Engineering</figcaption></figure><figure class=""><img src="lab-students.jpg" alt="Hands-on work in our own labs" loading="lazy"><figcaption>Hands-on work in our own labs</figcaption></figure><figure class=""><img src="lab-chemists.jpg" alt="Learn through active collaboration" loading="lazy"><figcaption>Learn through active collaboration</figcaption></figure><figure class="wide"><img src="fse-aerial.jpg" alt="Science and Engineering, Maastricht University" loading="lazy"><figcaption>Science and Engineering, Maastricht University</figcaption></figure></div>
 </section>
 
 <section class="block" id="deadlines">
