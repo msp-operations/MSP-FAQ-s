@@ -33,7 +33,12 @@ a { color: inherit; }
 @media (max-width: 720px) { .bar nav { display: none; } }
 
 /* hero */
-.hero { background: var(--ink); color: #fff; padding: 56px 0 44px; }
+.hero { color: #fff; padding: 72px 0 52px; background-color: var(--ink);
+         background-image: linear-gradient(100deg, rgba(0,8,49,.97) 0%, rgba(0,8,49,.90) 42%, rgba(0,8,49,.55) 72%, rgba(0,8,49,.30) 100%),
+                           url("building.jpg");
+         background-size: cover; background-position: 70% 38%; }
+@media (max-width: 720px) { .hero { background-image: linear-gradient(180deg, rgba(0,8,49,.10) 0%, rgba(0,8,49,.35) 120px, rgba(0,8,49,.96) 250px, var(--ink) 330px), url("building.jpg");
+                                       background-position: 50% 0; background-size: auto 330px; background-repeat: no-repeat; } }
 .kicker { font-size: 12.5px; font-weight: 600; letter-spacing: 2.2px; text-transform: uppercase; color: var(--sky); }
 h1 { font-size: clamp(36px, 7vw, 58px); line-height: 1.02; letter-spacing: -1.8px; font-weight: 750; margin: 14px 0 0; }
 h1 em { font-style: normal; color: var(--sky); }
@@ -56,7 +61,7 @@ h1 em { font-style: normal; color: var(--sky); }
 .date b { display: block; font-size: 17px; font-weight: 650; margin-top: 2px; letter-spacing: -.2px; }
 .date button { margin-top: 8px; background: none; border: 0; color: var(--sky); font: inherit; font-size: 13.5px; font-weight: 600;
                padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 720px) { .dates { grid-template-columns: 1fr; } .hero { padding: 40px 0 32px; } }
+@media (max-width: 720px) { .dates { grid-template-columns: 1fr; } .hero { padding: 210px 0 32px; } }
 
 /* nationality switch */
 .who { background: #fff; border-bottom: 1px solid var(--line); }
