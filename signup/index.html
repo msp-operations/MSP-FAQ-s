@@ -1897,6 +1897,7 @@ if ("serviceWorker" in navigator && window.isSecureContext && location.protocol 
   const vid = $("vid");
   const playVid = () => { const p = vid.play(); if (p && p.catch) p.catch(() => {}); };
   playVid();
+  setInterval(() => { if (vid.paused && !document.hidden) playVid(); }, 4000);   // kiosk watchdog: a stalled video restarts itself
   document.addEventListener("touchstart", () => { if (vid.paused && !document.body.classList.contains("attract")) playVid(); }, { passive: true });
 
   const S = window.MSPScene;

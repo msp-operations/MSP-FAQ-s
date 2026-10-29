@@ -5,7 +5,7 @@
 //
 // Bump CACHE whenever index.html or the video changes, so iPads drop the old copy on their next visit.
 
-const CACHE = 'msp-signup-v1';
+const CACHE = 'msp-signup-v2';
 const CORE = ['./', 'index.html', 'manifest.webmanifest', 'icon-512.png', 'fse-video.mp4'];
 
 self.addEventListener('install', e => {
