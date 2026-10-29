@@ -94,3 +94,17 @@ mailbox. Give it a topic in `OFFICE_TOPIC` in the same file. Nothing in
 - **Staff / editor view:** add `?staff` to the URL to see the open `[NEEDS MARTIJN]` review flags inline, plus a "flags remaining" panel. It only works locally: the notes live in `content.staff.json`, which is gitignored and never reaches the live site.
 - **The offline copy** is a build of the same `index.html` with the fonts, search engine, images and answers inlined, the service worker and transcript feature removed, and a "check for new answers" button added. `tools/build-offline.mjs` does this by finding exact snippets of `index.html` and swapping them, so **it fails loudly if you edit one of those snippets**. That is on purpose. Always run it after touching `index.html`; if it says "Anchor not found", update the matching string in that script.
 - Deploy: push to `main` → GitHub Pages rebuilds.
+
+---
+
+## Open day sign-up page (`/signup/`, Nov 2026)
+
+`signup/` is a separate, unlisted page for the iPads at the MSP stand of the Bachelor's Open Day: visitors leave their
+name and email to hear about Q&As and deadlines. It is not linked from the FAQ and is marked `noindex`.
+
+- **No data reaches this site.** Sign-ups are stored only in the browser of the iPad they were typed on; staff
+  download them as an Excel file from a hidden panel on that iPad. Nothing is sent to GitHub or any server.
+- `signup/sw.js` is its own service worker (scope `/signup/` only) that keeps the page and the faculty video on the
+  iPad, so it keeps working without wifi. Bump its `CACHE` name when you replace `index.html` or the video.
+- Do not edit `signup/index.html` by hand: it is generated (fonts, 3D scene, seals all inlined) by
+  `_build_signup.py --site <this repo>/signup` in the open-day working folder (`Email sign-up form`).
