@@ -3,7 +3,7 @@
     "title": "MSP Student FAQ",
     "ay": "2026-2027",
     "generated": "2026-08-18",
-    "count": 384
+    "count": 383
   },
   "topics": [
     {
@@ -44,7 +44,7 @@
     {
       "name": "Wellbeing & Support",
       "emoji": "💬",
-      "count": 36
+      "count": 35
     },
     {
       "name": "Money & Practical",
@@ -1188,7 +1188,7 @@
     {
       "id": "can-i-request-a-leave-of-absence",
       "q": "Can I request a leave of absence?",
-      "a": "Yes. Under article 7.8 of the EER you can request a Leave of Absence (LoA) using the intranet form (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence). You must inform both the Board of Examiners and the Office of Academic Advising. When you return from a leave of absence you are reinstated to your pre-leave status. Before applying, note:\n- A LoA is meant for long-term absences.\n- A LoA of a few days or weeks can mean a fail for the modules you are taking at that time; a LoA does not remove the assessment, attendance and other conditions of MSP modules.\n- For short absences during a module, it is best to contact the course coordinator directly.",
+      "a": "Yes. Under article 7.8 of the EER you can request a Leave of Absence (LoA) using the intranet form (https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence). You must inform both the Board of Examiners and the Office of Academic Advising, which you do by filling out this form. When you return from a leave of absence you are reinstated to your pre-leave status. Before applying, note:\n- A LoA is meant for long-term absences.\n- A LoA of a few days or weeks can mean a fail for the modules you are taking at that time; a LoA does not remove the assessment, attendance and other conditions of MSP modules.\n- For short absences during a module, it is best to contact the course coordinator directly.",
       "topic": "Wellbeing & Support",
       "office": "esd",
       "category": "Student Services & Support",
@@ -3090,21 +3090,9 @@
       ]
     },
     {
-      "id": "what-is-leave-of-absence-and-can-i-request-one",
-      "q": "What is leave of absence, and can I request one?",
-      "a": "Yes, you can request a Leave of Absence (LoA) using this form: https://intranet.maastrichtuniversity.nl/en/msp-students/forms-and-downloads/forms/leave-absence\n\nAs specified in article 7.8 of the Education and Examination Regulations (EER), you must inform the Board of Examiners and the Office of Academic Advising of your LoA by filling out the form. A student coming back from a leave of absence is reinstated to pre-leave status.\n\nBefore filling out the form, please note:\n\n- A LoA is meant for long-term absences.\n- A LoA of a few days or weeks can mean a fail for the modules being taken at that time. A LoA does not mean that the assessment, attendance, and other conditions of MSP modules no longer have to be met.\n- For short-term absences during modules, it is best to contact the course coordinator to discuss this.",
-      "topic": "Wellbeing & Support",
-      "office": "counsellor",
-      "category": "Study Support and Advising",
-      "tags": [
-        "exam",
-        "attendance"
-      ]
-    },
-    {
       "id": "what-happens-to-my-binding-study-advice-if-i-take-a-leave-of",
       "q": "What happens to my Binding Study Advice if I take a leave of absence in my first year?",
-      "a": "A leave of absence puts your studies on hold, so your first-year BSA is only worked out once you have actually completed one year (two semesters) of booked education. Being registered during a leave, or registered without any modules booked, does not count towards that. When you come back, contact the Board of Examiners (msp-boe@maastrichtuniversity.nl) to find out which BSA requirements apply to you, and build a BSA plan with the Student Counsellor. Make sure the leave itself is arranged properly first (see the leave of absence question above), because a leave does not remove the assessment and attendance conditions of any modules you were taking.",
+      "a": "A leave of absence puts your studies on hold, so your first-year BSA is only worked out once you have actually completed one year (two semesters) of booked education. Being registered during a leave, or registered without any modules booked, does not count towards that. When you come back, contact the Board of Examiners (msp-boe@maastrichtuniversity.nl) to find out which BSA requirements apply to you, and build a BSA plan with the Student Counsellor. Make sure the leave itself is arranged properly first (see \"Can I request a leave of absence?\"), because a leave does not remove the assessment and attendance conditions of any modules you were taking.",
       "topic": "Wellbeing & Support",
       "office": "counsellor",
       "category": "Study Support and Advising",
@@ -4101,7 +4089,7 @@
     {
       "id": "i-would-like-to-take-a-leave-of-absence-how-can-i-go-about-o",
       "q": "I would like to take a Leave of Absence, how can I go about organizing this?",
-      "a": "You are welcome to request a Leave of Absence, whatever your reason. Fill out the Leave of Absence form on the intranet (Forms and downloads, under MSP students). The request must be submitted at least 20 working days before you wish to leave. For the full rules, see the Education and Examination Regulations, Article 7.8. A Leave of Absence is arranged through Academic Advising together with the office.",
+      "a": "You are welcome to request a Leave of Absence, whatever your reason. Fill out the Leave of Absence form on the intranet (Forms and downloads, under MSP students). Submit it before your leave starts. For the full rules, see the Education and Examination Regulations, Article 7.8. A Leave of Absence is arranged through Academic Advising together with the office.",
       "topic": "Courses & Registration",
       "office": "aa",
       "category": "Academic Advisor Roles",
