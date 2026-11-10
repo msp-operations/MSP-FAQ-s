@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to MSP: where our graduates go</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Where graduates of the Maastricht Science Programme study and work after their bachelor.">
+<link rel="icon" href="assets/logos/maastricht-science-programme-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<!-- MSP applicant journey (Martijn's own project, started 10 Nov 2026). Published 10 Nov 2026 at msp-faqs.nl/welcome/after-msp.html (unlisted: noindex). Source: msp-applicant-journey. Page 2 of 2: after MSP.
+     UM house style 2026: Staalblauw + Zachtblauw, rounded photos, headings as a serif sentence with bold grotesque key words (the brandbook's featured header). Fonts are free stand-ins for the licensed brand fonts: Hanken Grotesk for GT Standard (as in the admissions journey), Newsreader for GT Super Text.
+     Every number comes from data.js / programmes.js (aggregates from the alumni database), except FIRST_STEP, which repeats considering-msp.html.
+     Photos: Maastricht riverside (as on msp-faqs.nl/admissions-journey) and a lab still from the FSE video (as on open-day poster P4; researchers seen from behind). -->
+<style>
+:root { --navy: #000831; --soft: #BEDDF7; --paper: #FCFCFC; --ink: #000831; --ink2: #2b3152; --muted: #5d627d; --line: #d9dfea; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17.5px/1.55 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+img { max-width: 100%; }
+h1, h2 { margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -.02em; line-height: 1.06; }
+h1 b, h2 b { font-family: 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; font-weight: 800; letter-spacing: -.035em; }
+h1 { font-size: clamp(40px, 5.6vw, 76px); }
+h2 { font-size: clamp(30px, 3.5vw, 48px); max-width: 860px; }
+p { margin: 0; }
+a { color: inherit; }
+.eyebrow { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 640px; margin-top: 20px; }
+
+/* header: both logos, large */
+header { padding: 26px 0; }
+header .wrap { display: flex; align-items: center; gap: 28px; }
+header .um { height: 34px; }
+header .rule { width: 1px; height: 44px; background: var(--line); }
+header .msp { height: 84px; }
+header nav { margin-left: auto; display: flex; gap: 28px; font-weight: 600; font-size: 16px; align-items: center; }
+header nav a { text-decoration: none; } header nav a:hover { text-decoration: underline; }
+.btn { display: inline-block; background: var(--navy); color: #fff; font-weight: 700; text-decoration: none; padding: 14px 26px; border-radius: 999px; }
+.btn.ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 11fr 9fr; gap: 56px; align-items: center; padding: 18px 0 0; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.photo { border-radius: 32px; overflow: hidden; background: var(--soft); }
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero .photo { aspect-ratio: 4 / 4.3; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 64px; border-top: 2px solid var(--navy); }
+.facts > div { padding: 22px 26px 0 0; } .facts > div + div { border-left: 1px solid var(--line); padding-left: 26px; }
+.facts .n { font-weight: 800; font-size: clamp(42px, 5vw, 70px); line-height: 1; letter-spacing: -.04em; }
+.facts .l { margin-top: 10px; font-size: 16px; line-height: 1.4; color: var(--ink2); max-width: 230px; }
+
+section { padding-top: 110px; }
+.head { display: grid; grid-template-columns: 1fr; gap: 0; }
+
+/* universities: logos on the page itself, hairlines between them */
+.tier { display: grid; grid-template-columns: 250px 1fr; gap: 30px; margin-top: 44px; padding-top: 22px; border-top: 2px solid var(--navy); }
+.tier h3 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -.01em; line-height: 1.2; }
+.tier .cnt { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.logos { display: grid; grid-template-columns: repeat(4, 1fr); }
+.logo { padding: 22px 18px 20px; text-align: center; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 0 -1px -1px; }
+.logo .im { height: 76px; display: flex; align-items: center; justify-content: center; }
+.logo img { max-height: 76px; max-width: 150px; object-fit: contain; }
+.logo .big { font-weight: 800; font-size: 19px; line-height: 1.15; }
+.logo .nm { font-size: 14px; font-weight: 600; margin-top: 14px; line-height: 1.25; }
+.logo .ct { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+
+/* photo band */
+.band { position: relative; margin-top: 110px; }
+.band .photo { aspect-ratio: 21 / 9; }
+.band .card { position: absolute; left: 0; top: 0; background: var(--navy); color: #fff; border-radius: 32px 0 32px 0; padding: 30px 38px 32px; max-width: 520px; }
+.band .card h2 { font-size: clamp(26px, 2.8vw, 38px); } .band .card p { color: #dfe9f6; margin-top: 10px; font-size: 16.5px; }
+
+/* directions */
+.dir { display: grid; grid-template-columns: 290px 1fr; gap: 44px; margin-top: 44px; border-top: 2px solid var(--navy); padding-top: 12px; }
+.dir ul { list-style: none; margin: 0; padding: 0; }
+.dir li button { font: inherit; font-size: 18px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 13px 0; cursor: pointer; color: var(--ink2); display: flex; justify-content: space-between; }
+.dir li button::after { content: '→'; opacity: 0; }
+.dir li button:hover { color: var(--navy); }
+.dir li button[aria-pressed=true] { font-weight: 800; color: var(--navy); } .dir li button[aria-pressed=true]::after { opacity: 1; }
+.dir .say { font-size: 19px; padding: 14px 0 18px; }
+.dir .logos { grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+
+/* careers */
+.work { background: var(--soft); margin-top: 110px; padding: 96px 0; }
+.work .cols { display: grid; grid-template-columns: 5fr 6fr; gap: 64px; align-items: end; margin-top: 44px; }
+.work .n { font-weight: 800; font-size: clamp(84px, 12vw, 170px); line-height: .86; letter-spacing: -.05em; }
+.work .l { font-size: 23px; font-weight: 700; margin-top: 16px; max-width: 420px; line-height: 1.25; }
+.work .s { margin-top: 12px; max-width: 430px; color: var(--ink2); }
+.bars .row { display: grid; grid-template-columns: 240px 1fr 48px; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(0,8,49,.16); font-size: 16.5px; }
+.bars i { display: block; height: 12px; border-radius: 3px; background: var(--navy); }
+.bars b { text-align: right; font-weight: 800; }
+.names { margin-top: 22px; font-size: 16.5px; line-height: 1.7; } .names b { font-weight: 700; }
+
+/* next steps */
+.next { margin-top: 40px; border-top: 2px solid var(--navy); }
+.next a { display: grid; grid-template-columns: 360px 1fr 40px; gap: 20px; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.next a b { font-size: clamp(22px, 2.2vw, 30px); font-weight: 800; letter-spacing: -.02em; } .next a span { color: var(--ink2); } .next a i { font-style: normal; font-size: 26px; text-align: right; transition: transform .15s; }
+.next a:hover i { transform: translateX(6px); }
+
+footer { background: var(--navy); color: #fff; margin-top: 120px; padding: 70px 0 60px; }
+footer .logosrow { display: flex; align-items: center; gap: 44px; flex-wrap: wrap; }
+footer .msp { height: 150px; } footer .um { height: 52px; }
+footer p { color: #c7d3e6; font-size: 14px; margin-top: 36px; max-width: 760px; line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .wrap { padding: 0 20px; } header .msp { height: 60px; } header .um { height: 24px; } header nav a:not(.btn) { display: none; }
+  .hero { grid-template-columns: 1fr; gap: 30px; } .hero .photo { aspect-ratio: 16 / 10; order: -1; }
+  .facts { grid-template-columns: 1fr 1fr; row-gap: 26px; } .facts > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  section { padding-top: 72px; } .tier, .dir { grid-template-columns: 1fr; gap: 14px; }
+  .logos, .dir .logos { grid-template-columns: repeat(2, 1fr); }
+  .dir ul { display: flex; overflow-x: auto; gap: 22px; border-bottom: 1px solid var(--line); } .dir li button { white-space: nowrap; border: 0; } .dir li button::after { display: none; }
+  .band { margin-top: 72px; } .band .photo { aspect-ratio: 4 / 3; } .band .card { position: static; border-radius: 0 0 32px 32px; max-width: none; margin-top: -32px; padding-top: 56px; }
+  .work { margin-top: 72px; padding: 64px 0; } .work .cols { grid-template-columns: 1fr; gap: 36px; } .bars .row { grid-template-columns: 150px 1fr 40px; font-size: 15px; }
+  .next a { grid-template-columns: 1fr 30px; } .next a span { grid-column: 1; }
+  footer .msp { height: 104px; } footer .um { height: 36px; }
+}
+header a.home { display: flex; align-items: center; gap: inherit; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="home" href="index.html" title="Back to the start"><img class="um" src="assets/logos/um-2026-dark.svg" alt="Maastricht University"><span class="rule"></span><img class="msp" src="assets/logos/msp-seal-navy.png" alt="Maastricht Science Programme: back to the start"></a>
+  <nav><a href="#universities">Universities</a><a href="#directions">Directions</a><a href="#careers">Careers</a><a class="btn" href="index.html">How to apply</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">After the Maastricht Science Programme</p>
+      <h1>A science bachelor that <b>opens doors everywhere</b></h1>
+      <p class="lede" id="lede"></p>
+      <div class="cta"><a class="btn" href="#directions">See where your interest leads</a><a class="btn ghost" href="#universities">The universities</a></div>
+    </div>
+    <div class="photo"><img src="assets/images/maastricht-riverside.jpg" alt="Houses along the river Maas in Maastricht at sunset"></div>
+  </div>
+  <div class="facts" id="facts"></div>
+</div>
+
+<section id="universities"><div class="wrap">
+  <p class="eyebrow">Where they study next</p>
+  <h2>Our graduates are admitted to <b>the best universities in the world</b></h2>
+  <p class="lede">Under each name: how many MSP graduates went on to study there.</p>
+  <div id="tiers"></div>
+</div></section>
+
+<div class="wrap"><div class="band">
+  <div class="photo"><img src="assets/images/fse-lab.jpg" alt="Two researchers at work in a chemistry lab at the Faculty of Science and Engineering" loading="lazy"></div>
+  <div class="card"><h2>Three years in Maastricht. <b>Then anywhere.</b></h2><p id="bandtext"></p></div>
+</div></div>
+
+<section id="directions"><div class="wrap">
+  <p class="eyebrow">Pick what you love</p>
+  <h2>One bachelor, <b>every direction in science</b></h2>
+  <p class="lede">At MSP you build your own programme. Choose a direction and see where graduates took it for their master’s.</p>
+  <div class="dir"><ul id="fieldbtns"></ul><div id="fieldout"></div></div>
+</div></section>
+
+<div class="work" id="careers"><div class="wrap">
+  <p class="eyebrow">And after that</p>
+  <h2>From the lab to industry, <b>and everything between</b></h2>
+  <div class="cols"><div id="phd"></div><div><div class="bars" id="sectors"></div><p class="names" id="names"></p></div></div>
+</div></div>
+
+<section><div class="wrap">
+  <p class="eyebrow">Your next step</p>
+  <h2>Ready to <b>find out more?</b></h2>
+  <div class="next">
+    <a href="index.html"><b>How applying works</b><span>Every step, from Studielink to your first day.</span><i>→</i></a>
+    <a href="https://www.mymaastricht.nl/"><b>Living in Maastricht</b><span>Housing, transport and life in the city.</span><i>→</i></a>
+    <a href="https://msp-alumni.nl/stories.html"><b>Graduates’ stories</b><span>What they did next, in their own words.</span><i>→</i></a>
+    <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme"><b>The programme</b><span>Courses, costs and requirements at Maastricht University.</span><i>→</i></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="logosrow"><img class="msp" src="assets/logos/msp-seal-light.png" alt="Maastricht Science Programme"><img class="um" src="assets/logos/um-2026-white.svg" alt="Maastricht University"></div>
+  <p id="foot"></p>
+</div></footer>
+
+<script src="data.js"></script>
+<script src="programmes.js"></script>
+<script>
+const D = MSP_DATA, C = D.consideringMSP, T = C.universityTiers, f0 = n => Number(n).toLocaleString('en-GB');
+const FIRST_STEP = { masters: 1019, mastersPct: 73 };          // as on considering-msp.html ("the year after graduation")
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const logoFile = n => (typeof UNI_LOGO_FILES !== 'undefined' && UNI_LOGO_FILES[n]) || null;
+const tile = (name, sub, file) => { const f = file || logoFile(name);
+  const im = f ? `<img src="assets/logos/${f}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;big&quot;>${esc(name)}</div>'">` : `<div class="big">${esc(name)}</div>`;
+  return `<div class="logo"><div class="im">${im}</div><div class="nm">${esc(name)}</div>${sub ? `<div class="ct">${sub}</div>` : ''}</div>`; };
+
+const tiers = Object.values(T).filter(t => t && t.universities), topTier = tiers[0];
+const orList = a => a.join(', ').replace(/, ([^,]*)$/, ' or $1');
+document.getElementById('lede').textContent = `${f0(C.heroStats.alumni)} graduates since 2014. This is where they went next: the universities, the fields and the careers.`;
+document.getElementById('facts').innerHTML = [
+  [FIRST_STEP.mastersPct + '%', 'go straight on to a master’s degree'],
+  [f0(C.heroStats.universities), `universities in ${C.heroStats.countries} countries admitted our graduates`],
+  [f0(topTier.count), 'studied at ' + orList(topTier.universities.slice(0, 4).map(u => u.name))],
+  ['1 in 10', `is doing a PhD: ${f0(C.phdPipeline.phdCandidates)} graduates so far`],
+].map(s => `<div><div class="n">${s[0]}</div><div class="l">${s[1]}</div></div>`).join('');
+const TIER_NAMES = ['World-leading universities', 'Leading international universities', 'Top Dutch universities'];   // no ranking claim: the tier labels in data.js name no source
+document.getElementById('tiers').innerHTML = tiers.map((t, i) => `<div class="tier"><div><h3>${esc(TIER_NAMES[i] || t.label)}</h3><div class="cnt">${f0(t.count)} graduates</div></div>
+  <div class="logos">${t.universities.map(u => tile(u.name, `${u.count} ${u.count === 1 ? 'graduate' : 'graduates'}`, u.logo)).join('')}</div></div>`).join('');
+document.getElementById('bandtext').textContent = `Our graduates now live in ${C.heroStats.countries} countries and come from ${C.heroStats.nationalities} nationalities.`;
+
+/* directions: universities where MSP graduates studied this direction (programmes.js gives the share per university) */
+const count = Object.fromEntries(D.topUniversities.map(u => [u.name, u.count]));
+const FIELDS = {};
+Object.entries(UNIVERSITY_PROGRAMMES).forEach(([uni, v]) => v.fields.forEach(([f, pct]) => { if (f !== 'Other' && pct >= 5) (FIELDS[f] = FIELDS[f] || []).push({ uni, pct, est: pct * (count[uni] || 10) / 100 }); }));
+const order = Object.keys(FIELDS).sort((a, b) => FIELDS[b].reduce((x, u) => x + u.est, 0) - FIELDS[a].reduce((x, u) => x + u.est, 0));
+const btns = document.getElementById('fieldbtns'), out = document.getElementById('fieldout');
+btns.innerHTML = order.map((f, i) => `<li><button type="button" data-f="${esc(f)}" aria-pressed="${i === 0}">${esc(f)}</button></li>`).join('');
+function show(f) {
+  const us = FIELDS[f].sort((a, b) => b.est - a.est).slice(0, 8);
+  out.innerHTML = `<p class="say">Graduates who chose <b>${esc(f.toLowerCase())}</b> went on to:</p><div class="logos">${us.map(u => tile(u.uni, `${u.pct}% of our graduates there`)).join('')}</div>`;
+  btns.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === f));
+}
+btns.addEventListener('click', e => { const b = e.target.closest('button'); if (b) show(b.dataset.f); });
+show(order[0]);
+
+/* careers */
+const P = C.phdPipeline;
+document.getElementById('phd').innerHTML = `<div class="n">${P.phdPercent}%</div><div class="l">of our graduates are doing a PhD</div>
+  <div class="s">${f0(P.phdCandidates)} PhD candidates, at places such as ${P.institutions.slice(0, 4).map(i => i.name).join(', ')}.</div>`;
+const sec = C.careerSectors.slice(0, 8), mx = Math.max(...sec.map(s => s.count));
+document.getElementById('sectors').innerHTML = sec.map(s => `<div class="row"><span>${esc(s.name)}</span><i style="width:${Math.max(3, 100 * s.count / mx)}%"></i><b>${f0(s.count)}</b></div>`).join('');
+const emp = Object.values(C.notableEmployers || {}).flat().map(e => e.name);
+document.getElementById('names').innerHTML = emp.length ? `Graduates work at <b>${emp.slice(0, 9).map(esc).join('</b>, <b>')}</b> and many more.` : '';
+document.getElementById('foot').textContent = `Figures from the MSP alumni database (${f0(C.heroStats.alumni)} graduates, last updated ${D.lastUpdated}). Counts are people who studied or work there, not offers received. University logos belong to their owners.`;
+</script>
+</body>
+</html>

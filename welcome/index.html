@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Welcome to MSP: applying, step by step</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<!-- MSP applicant journey (Martijn's own project, started 10 Nov 2026). Published 10 Nov 2026 at msp-faqs.nl/welcome/ (unlisted: noindex, not linked from the FAQ). Source: msp-applicant-journey. Page 1 of 2: how to apply. Same facts, dates, letters and links as the live journey at msp-faqs.nl/admissions-journey (v3, 5 Nov 2026), which stays as it is;
+     what changed is the order and the wording: one path of five steps in the applicant's words, one deadline per applicant, details behind "More about this step". -->
+<style>
+:root { --navy: #000831; --soft: #BEDDF7; --paper: #FCFCFC; --ink: #000831; --ink2: #2b3152; --muted: #5d627d; --line: #d9dfea; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17.5px/1.55 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+h1, h2 { margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -.02em; line-height: 1.06; }
+h1 b, h2 b { font-family: 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; font-weight: 800; letter-spacing: -.035em; }
+h1 { font-size: clamp(40px, 5.4vw, 70px); } h2 { font-size: clamp(28px, 3.2vw, 42px); }
+h3 { margin: 0; font-size: clamp(23px, 2.4vw, 30px); font-weight: 800; letter-spacing: -.025em; line-height: 1.15; }
+p { margin: 0; } a { color: inherit; }
+.eyebrow { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 600px; margin-top: 18px; }
+.btn { display: inline-block; background: var(--navy); color: #fff; font-weight: 700; text-decoration: none; padding: 13px 24px; border-radius: 999px; border: 0; font: inherit; font-weight: 700; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
+header { padding: 24px 0; } header .wrap { display: flex; align-items: center; gap: 26px; }
+header .um { height: 32px; } header .rule { width: 1px; height: 42px; background: var(--line); } header .msp { height: 80px; }
+header nav { margin-left: auto; display: flex; gap: 28px; font-weight: 600; font-size: 16px; } header nav a { text-decoration: none; } header nav a:hover { text-decoration: underline; }
+
+.hero { display: grid; grid-template-columns: 11fr 8fr; gap: 52px; align-items: center; padding-top: 14px; }
+.hero .photo { border-radius: 32px; overflow: hidden; aspect-ratio: 4 / 4.2; } .hero .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* one question, one deadline */
+.you { margin-top: 30px; border-top: 2px solid var(--navy); padding-top: 18px; }
+.you .ask { font-weight: 700; }
+.seg { display: inline-flex; margin-top: 10px; border-radius: 999px; box-shadow: inset 0 0 0 2px var(--navy); padding: 4px; gap: 4px; flex-wrap: wrap; }
+.seg button { font: inherit; font-weight: 700; border: 0; background: transparent; color: var(--navy); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed=true] { background: var(--navy); color: #fff; }
+.deadline { margin-top: 18px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.deadline .d { font-weight: 800; font-size: clamp(30px, 3.4vw, 44px); letter-spacing: -.03em; line-height: 1; }
+.deadline .t { color: var(--ink2); }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+
+/* the path */
+.path { margin-top: 84px; }
+.path > .intro { max-width: 640px; }
+.steps { margin-top: 34px; border-top: 2px solid var(--navy); }
+.step { display: grid; grid-template-columns: 96px 1fr; gap: 8px 28px; padding: 34px 0 30px; border-bottom: 1px solid var(--line); }
+.step .no { font-weight: 800; font-size: 64px; line-height: .9; letter-spacing: -.05em; color: var(--navy); }
+.step .lead { font-size: 19px; color: var(--ink2); margin-top: 8px; max-width: 640px; }
+.who { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px; margin-top: 22px; }
+.who div b { display: block; font-size: 14px; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
+.who div { font-size: 16.5px; line-height: 1.45; }
+.step .act { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+details { margin-top: 18px; }
+details summary { cursor: pointer; font-weight: 700; list-style: none; display: inline-flex; gap: 8px; align-items: center; text-decoration: underline; text-underline-offset: 4px; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: '+'; font-weight: 800; text-decoration: none; display: inline-block; }
+details[open] summary::after { content: '−'; }
+details .more { margin-top: 14px; padding: 22px 26px; background: #eef4fb; border-radius: 24px; font-size: 16.5px; max-width: 760px; }
+details .more p + p, details .more ul + p, details .more p + ul { margin-top: 10px; }
+details .more ul, details .more ol { margin: 8px 0 0; padding-left: 20px; } details .more li { margin-bottom: 6px; }
+details .more .letter { border-left: 3px solid var(--navy); padding-left: 16px; margin-top: 12px; color: var(--ink2); }
+details .more h4 { margin: 16px 0 4px; font-size: 16.5px; font-weight: 800; }
+.only-non { display: none; } body.non .only-non { display: revert; } body.non .only-eu { display: none; }
+.done { margin-top: 0; background: var(--soft); border-radius: 32px; padding: 44px 44px 46px; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: end; margin-top: 44px; }
+.done p { margin-top: 12px; font-size: 19px; max-width: 520px; }
+.done .links { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+
+section { padding-top: 90px; }
+table.dates { width: 100%; border-collapse: collapse; margin-top: 28px; border-top: 2px solid var(--navy); font-size: 17.5px; }
+table.dates td { padding: 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; } table.dates td:last-child { text-align: right; font-weight: 800; white-space: nowrap; padding-left: 20px; }
+table.dates small { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+.cal { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+.faq { margin-top: 26px; border-top: 2px solid var(--navy); }
+.faq details { margin: 0; border-bottom: 1px solid var(--line); padding: 18px 0; }
+.faq summary { text-decoration: none; display: flex; justify-content: space-between; width: 100%; font-size: 19px; }
+.faq .more { background: none; padding: 10px 0 0; border-radius: 0; }
+footer { background: var(--navy); color: #fff; margin-top: 100px; padding: 60px 0 54px; }
+footer .row { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; } footer .msp { height: 130px; } footer .um { height: 46px; }
+footer p { color: #c7d3e6; font-size: 15px; margin-top: 28px; line-height: 1.7; max-width: 800px; } footer p b { color: #fff; }
+@media (max-width: 820px) {
+  .wrap { padding: 0 20px; } header .msp { height: 58px; } header .um { height: 23px; } header nav a:not(:last-child) { display: none; }
+  .hero { grid-template-columns: 1fr; gap: 26px; } .hero .photo { aspect-ratio: 16 / 9; order: -1; }
+  .step { grid-template-columns: 1fr; padding: 26px 0; } .step .no { font-size: 46px; } .who { grid-template-columns: 1fr; gap: 14px; }
+  .done { grid-template-columns: 1fr; padding: 30px 26px; border-radius: 24px; } .path { margin-top: 60px; } section { padding-top: 64px; }
+  table.dates td:last-child { white-space: normal; } footer .msp { height: 96px; } footer .um { height: 34px; }
+}
+header a.home { display: flex; align-items: center; gap: inherit; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="home" href="index.html" title="Back to the start"><img class="um" src="assets/logos/um-2026-dark.svg" alt="Maastricht University"><span class="rule"></span><img class="msp" src="assets/logos/msp-seal-navy.png" alt="Maastricht Science Programme: back to the start"></a>
+  <nav><a href="#steps">The five steps</a><a href="#questions">Questions</a><a href="after-msp.html">After MSP</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Welcome to the Maastricht Science Programme</p>
+      <h1>Five steps <b>to your first day</b></h1>
+      <p class="lede">You only need to start with the first one. We guide you through the rest, and you can ask us anything on the way.</p>
+      <div class="you">
+        <p class="ask">Which passport do you have?</p>
+        <div class="seg" role="group" aria-label="Your nationality">
+          <button type="button" data-n="eu" aria-pressed="true">EU, EEA or Swiss</button>
+          <button type="button" data-n="non" aria-pressed="false">Another nationality</button>
+        </div>
+        <div class="deadline"><span class="t">Apply and upload your documents by</span><span class="d"><span class="only-eu">1 May 2027</span><span class="only-non">1 April 2027</span></span></div>
+        <div class="cta"><a class="btn" href="https://www.studielink.nl">Start in Studielink</a><a class="btn ghost" href="#steps">See the five steps</a></div>
+      </div>
+    </div>
+    <div class="photo"><img src="assets/images/maastricht-riverside.jpg" alt="Houses along the river Maas in Maastricht at sunset"></div>
+  </div>
+</div>
+
+<div class="wrap path" id="steps">
+  <div class="intro"><p class="eyebrow">How it works</p><h2>One step at a time, <b>and we tell you what comes next</b></h2></div>
+  <div class="steps">
+
+    <div class="step"><div class="no">1</div><div>
+      <h3>Apply in Studielink</h3>
+      <p class="lead">Studielink is the Dutch website where every student applies. Create an account and choose MSP.</p>
+      <div class="who">
+        <div><b>You</b>Choose “B Liberal Arts and Sciences (Maastricht Science Programme)”, then activate your account in the MyApplication portal.</div>
+        <div><b>We</b>Review applications as they come in, so you don’t have to wait for the deadline.</div>
+        <div><b>When</b>Open since 1 October 2026. Early is better: places are limited.</div>
+      </div>
+      <div class="act"><a class="btn" href="https://www.studielink.nl">Open Studielink</a></div>
+    </div></div>
+
+    <div class="step"><div class="no">2</div><div>
+      <h3>Upload your documents</h3>
+      <p class="lead">In the MyApplication portal you upload a few documents and your motivation letter.</p>
+      <div class="who">
+        <div><b>You</b>Grades or diploma, passport or ID, a photo, and your motivation letter in English.</div>
+        <div><b>We</b>Only look at complete applications, so finish every task in the portal.</div>
+        <div><b>When</b>By <span class="only-eu">1 May 2027</span><span class="only-non">1 April 2027</span>, 23:59 CET.</div>
+      </div>
+      <div class="act"><a class="btn" href="https://myapplication.maastrichtuniversity.nl/login">Log in to the portal</a></div>
+      <details><summary>What to have ready</summary><div class="more">
+        <ul>
+          <li>A copy of your most recent grades transcript, or your diploma if you already have it.</li>
+          <li>A recent passport picture (the requirements are in the MyApplication task).</li>
+          <li>A copy of your valid passport or EU/EEA identity card: the page with your personal details.</li>
+          <li>Your motivation letter, in English, written in the MSP format.</li>
+          <li>Proof of English proficiency, if it applies to you. The admission requirements page tells you.</li>
+          <li>Permission for document verification, only if DUO has not verified your diploma.</li>
+        </ul>
+      </div></details>
+      <details><summary>The questions in the motivation letter</summary><div class="more">
+        <p>The letter matters: together with your grades it is where the interview starts. You write it in the MSP format in the portal; letters in other formats are not taken into account.</p>
+        <ol>
+          <li>Where did you learn about MSP? (tick boxes)</li>
+          <li>Your academic interests: Biology, Chemistry, Geoscience, Physics, Neuroscience, Mathematics, Programming. You can tick more than one.</li>
+          <li>Why do these fields motivate you to apply to MSP? (max 150 words)</li>
+          <li>Pick 3 to 5 elective courses from the course catalogue that interest you most, and explain why. (max 100 words, excluding course titles)</li>
+          <li>Why do you want to study at MSP specifically? (max 150 words)</li>
+          <li>Which other university programmes have you considered or applied for?</li>
+          <li>If you could research any scientific topic without limits, what would it be and why? (max 150 words)</li>
+          <li>Your life after graduation: your plans, and what you hope to have achieved five years later. (max 75 words)</li>
+        </ol>
+      </div></details>
+    </div></div>
+
+    <div class="step"><div class="no">3</div><div>
+      <h3>We check your diploma</h3>
+      <p class="lead">The university’s Student Services Centre looks at your earlier education. You don’t have to do anything for this step.</p>
+      <div class="who">
+        <div><b>You</b>Finish any tasks still open in the portal.</div>
+        <div><b>We</b>Send you a conditional admission letter when your diploma fits.</div>
+        <div><b>Then</b>You go on to the selection at MSP: step 4.</div>
+      </div>
+      <details><summary>Read the letter you will receive</summary><div class="more">
+        <p><b>Subject: Conditional admission letter - Complete your application to participate in the selection process</b></p>
+        <div class="letter"><p>Dear Applicant,</p><p>We have assessed the diploma/grades transcript you have submitted. Based on this, we are happy to let you know that you meet the prior education requirements for the study programme B Liberal Arts and Sciences (MSP), on the condition that you have obtained (or will obtain on time) the required diploma/additional requirements.</p>
+        <p><b>Important!</b> If you do not meet the admission requirements, you cannot start your study programme at Maastricht University.</p>
+        <p><b>Selective study programme.</b> The study programme B Liberal Arts and Sciences (MSP) is a selective programme. This means you need to complete the selection process to assess whether you can be admitted.</p>
+        <p><b>Complete your open admissions tasks.</b> Please make sure you complete all of your open admission tasks so that we can assess your application.</p></div>
+      </div></details>
+    </div></div>
+
+    <div class="step"><div class="no">4</div><div>
+      <h3>We read your letter and talk with you</h3>
+      <p class="lead">The MSP Admissions Board reads your motivation letter and looks at your background in maths and science. If you are invited, you have a short online conversation with one of our staff.</p>
+      <div class="who">
+        <div><b>You</b>A 10 to 15 minute talk, online, in English, about your plans.</div>
+        <div><b>We</b>Look at three things: your letter, your maths and science, and the conversation.</div>
+        <div><b>When</b>The selection closes on 28 May 2027, 17:00 CET.</div>
+      </div>
+      <details><summary>How to prepare for the conversation</summary><div class="more">
+        <ul><li>Know the programme and Problem-Based Learning.</li><li>Review your own application.</li><li>Be able to say what excites you in science.</li><li>Show why MSP fits you.</li></ul>
+      </div></details>
+      <details><summary>The maths background we look for</summary><div class="more">
+        <p>MSP is a broad science programme, so a profound interest in the sciences is required. A mathematics background that includes calculus, specifically the fundamentals of differentiation and integration, is highly recommended (equivalent to Dutch VWO Wiskunde B). The MSP Admissions Office may ask for additional tests proving a high level in mathematics, specifically calculus, integration and differentiation.</p>
+      </div></details>
+    </div></div>
+
+    <div class="step"><div class="no">5</div><div>
+      <h3>You hear from us, and finish enrolling</h3>
+      <p class="lead">Within three weeks after the conversation you hear the Board’s decision by email. If you are offered a place, a few practical tasks remain.</p>
+      <div class="who">
+        <div><b>You</b>Send a certified copy of your diploma and enter your tuition payment details.<span class="only-non"> Complete your visa file by 30 June 2027.</span></div>
+        <div><b>We</b>Open the enrolment tasks in the portal and write to your new UM email address.</div>
+        <div><b>When</b>Everything done by 31 August 2027. Paying by 1 August is recommended.</div>
+      </div>
+      <div class="act"><a class="btn ghost" href="https://www.mymaastricht.nl/">Housing and life in Maastricht</a></div>
+      <details><summary>The enrolment tasks and their dates</summary><div class="more">
+        <ul>
+          <li>Send a certified copy of your diploma.</li>
+          <li>Enter your tuition payment details (paying by 1 August 2027 is strongly recommended).</li>
+          <li>Update your passport or ID, if applicable.</li>
+          <li>Complete your visa file by 30 June 2027, 23:59 CET, if you need a visa or residence permit.</li>
+        </ul>
+        <p>Complete all enrolment tasks by 31 August 2027, 23:59 CET. Once accepted, start looking for housing early, in spring or early summer.</p>
+      </div></details>
+      <details><summary>Read the letter you will receive</summary><div class="more">
+        <p><b>Subject: Enrolment &amp; your UM email account, congratulations you’re almost there!</b></p>
+        <div class="letter"><p>Dear Applicant,</p><p>Congratulations! Based on your participation in the selection process we are happy to offer you a place in the study programme B Liberal Arts and Sciences (MSP) at Maastricht University (UM).</p>
+        <p><b>Enrolment tasks.</b> Before you can start your studies, you still need to arrange some practical matters to enrol. These enrolment tasks are now available in your task list.</p>
+        <p><b>Your UM email account.</b> Please check your UM email inbox regularly for information about the introduction programme and faculty updates.</p></div>
+      </div></details>
+    </div></div>
+
+  </div>
+
+  <div class="done">
+    <div><h2>September 2027: <b>welcome to MSP</b></h2><p>You start with the Introduction Days. See what last year’s looked like, and where our graduates went afterwards.</p></div>
+    <div class="links"><a class="btn" href="https://drive.google.com/file/d/1g9c-1hLbXex8cSO0uul8R05K4aj0c6jF/view">Watch the Introduction Days</a><a class="btn ghost" href="after-msp.html">What can you do after MSP?</a></div>
+  </div>
+</div>
+
+<section><div class="wrap">
+  <p class="eyebrow">Your dates</p>
+  <h2>Everything <b>on one line each</b></h2>
+  <table class="dates">
+    <tr><td>Applications open in Studielink</td><td>1 October 2026</td></tr>
+    <tr><td>Apply and upload your documents<small><span class="only-eu">EU, EEA or Swiss nationality</span><span class="only-non">Other nationalities</span></small></td><td><span class="only-eu">1 May 2027</span><span class="only-non">1 April 2027</span></td></tr>
+    <tr><td>Online Q&amp;A with Admissions<small>19:00 CET</small></td><td>4 March 2027</td></tr>
+    <tr><td>Selection, including the conversation, closes<small>17:00 CET</small></td><td>28 May 2027</td></tr>
+    <tr class="only-non"><td>Visa file complete<small>if you need a visa or residence permit</small></td><td>30 June 2027</td></tr>
+    <tr><td>Tuition fee paid<small>strongly recommended</small></td><td>1 August 2027</td></tr>
+    <tr><td>All enrolment tasks complete<small>certified diploma, payment details, passport or ID</small></td><td>31 August 2027</td></tr>
+  </table>
+  <div class="cal"><button type="button" class="btn ghost only-eu" data-ics="eu">Add my dates to my calendar</button><button type="button" class="btn ghost only-non" data-ics="non">Add my dates to my calendar</button><button type="button" class="btn ghost" data-ics="qa">Add the Q&amp;A to my calendar</button></div>
+</div></section>
+
+<section id="questions"><div class="wrap">
+  <p class="eyebrow">Good to know</p>
+  <h2>Questions <b>people often ask</b></h2>
+  <div class="faq">
+    <details><summary>Can I apply without my certified diploma?</summary><div class="more"><p>Yes. The central Student Services Centre and the MSP Admissions Office guide you together. You start in Studielink, which opened on 1 October 2026, and upload the certified copy once you have it, before 31 August.</p></div></details>
+    <details><summary>Is mathematics required?</summary><div class="more"><p>MSP is a broad science programme, so a profound interest in the sciences is required. A mathematics background that includes calculus, specifically the fundamentals of differentiation and integration, is highly recommended (equivalent to Dutch VWO Wiskunde B). The MSP Admissions Office may ask for additional tests proving a high level in mathematics, specifically calculus, integration and differentiation.</p></div></details>
+    <details><summary>Can I apply for more bachelor’s programmes at the same time?</summary><div class="more"><p>Yes. You can apply for several programmes at Maastricht University at once. Through Studielink you may have at most four active programme choices across all Dutch universities at the same time.</p></div></details>
+    <details><summary>Do I have to pay an administrative fee?</summary><div class="more"><p>That depends on your curriculum. Applicants whose diploma is based on a non-EU/EEA curriculum pay a handling fee. This follows the school’s curriculum, not where the school is located.</p></div></details>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="row"><img class="msp" src="assets/logos/msp-seal-light.png" alt="Maastricht Science Programme"><img class="um" src="assets/logos/um-2026-white.svg" alt="Maastricht University"></div>
+  <p><b>Questions about your application?</b> <a href="mailto:msp-admissions@maastrichtuniversity.nl">msp-admissions@maastrichtuniversity.nl</a> · +31 (0)43 38 81179 · <a href="https://www.instagram.com/msp_admissions/">@msp_admissions</a> · Paul-Henri Spaaklaan 1, 6229 EN Maastricht<br>
+  <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements">Admission requirements and deadlines</a> · <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum">The programme and curriculum</a><br>
+  Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University. In case of differences, the official admission requirements page applies.</p>
+</div></footer>
+
+<script>
+document.querySelectorAll('.seg button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.body.classList.toggle('non', b.dataset.n === 'non');
+    document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+  });
+});
+(function () {
+  // calendar files
+  function ics(events) {
+    var L = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Maastricht Science Programme//Admissions journey//EN', 'CALSCALE:GREGORIAN'];
+    events.forEach(function (e) {
+      L.push('BEGIN:VEVENT', 'UID:msp-aj-' + e.id + '@msp-faqs.nl', 'DTSTAMP:20261105T120000Z');
+      if (e.utc) { L.push('DTSTART:' + e.utc, 'DURATION:PT1H'); } else { L.push('DTSTART;VALUE=DATE:' + e.d, 'DTEND;VALUE=DATE:' + e.end); }
+      L.push('SUMMARY:' + e.t, 'DESCRIPTION:' + e.x + ' https://msp-faqs.nl/admissions-journey/', 'END:VEVENT');
+    });
+    L.push('END:VCALENDAR');
+    return L.join('\r\n');
+  }
+  function download(name, text) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], { type: 'text/calendar' }));
+    a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  }
+  var QA = { id: 'qa-2027-03-04', utc: '20270304T180000Z', t: 'MSP online Q&A with Admissions (19:00 CET)', x: 'Online Q&A for applicants to the Maastricht Science Programme.' };
+  function deadlines(w) {
+    var E = [];
+    if (w === 'non') E.push({ id: 'apply-non', d: '20270401', end: '20270402', t: 'MSP: apply + all admission tasks (23:59 CET)', x: 'Deadline for applicants with a non-EU/EEA nationality.' });
+    else E.push({ id: 'apply-eu', d: '20270501', end: '20270502', t: 'MSP: apply + all admission tasks (23:59 CET)', x: 'Deadline for applicants with an EU/EEA or Swiss nationality.' });
+    E.push({ id: 'selection', d: '20270528', end: '20270529', t: 'MSP: selection procedure incl. interview closes (17:00 CET)', x: 'Last day of the selection procedure.' });
+    if (w === 'non') E.push({ id: 'visa', d: '20270630', end: '20270701', t: 'MSP: visa file complete (23:59 CET)', x: 'If you need a visa or residence permit.' });
+    E.push({ id: 'tuition', d: '20270801', end: '20270802', t: 'MSP: tuition fee paid (strongly recommended)', x: 'Strongly recommended deadline for paying the tuition fee.' });
+    E.push({ id: 'enrol', d: '20270831', end: '20270901', t: 'MSP: all enrolment tasks complete (23:59 CET)', x: 'Certified diploma, tuition payment details, passport/ID.' });
+    return E;
+  }
+  document.querySelectorAll('[data-ics]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.dataset.ics === 'qa') download('MSP online Q&A 4 March 2027.ics', ics([QA]));
+      else download('MSP deadlines 2027.ics', ics(deadlines(b.dataset.ics)));
+    });
+  });
+})();
+</script>
+</body>
+</html>
