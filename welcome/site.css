@@ -146,3 +146,28 @@
 body.locked .to-top { display: none; }
 @media (max-width: 600px) { .to-top { right: 22px; bottom: 92px; width: 44px; height: 44px; } }
 @media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
+
+/* ---------- round-3 blocks (16 Nov 2026): fit, costs, parents, "real science degree" ---------- */
+.fit { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 0 40px; margin-top: 72px; padding: 40px 44px 42px; background: #F7F1E4; border-radius: 32px; }
+.fit .eyebrow { font-size: 15px; font-weight: 700; margin: 0 0 12px; }
+.fit-h p:last-child { margin-top: 14px; color: var(--ink2); }
+.fit-c { border-top: 2px solid var(--navy); padding-top: 14px; align-self: start; }
+.fit-c h3 { font-size: 18px; letter-spacing: -.01em; }
+.fit-c ul { margin: 10px 0 0; padding-left: 19px; color: var(--ink2); font-size: 16.5px; } .fit-c li { margin-bottom: 7px; }
+.fit-c p { margin-top: 12px; font-size: 16px; } .fit-c a { font-weight: 700; text-underline-offset: 4px; }
+.fit-c.alt { border-top-color: #b9c0d6; } .fit-c.alt h3 { color: var(--ink2); }
+.sel { margin-top: 16px; font-size: 16px; color: var(--ink2); max-width: 520px; }
+.cost { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 36px; margin-top: 30px; border-top: 2px solid var(--navy); }
+.cost > div { padding-top: 18px; }
+.cost h3 { font-size: 18px; letter-spacing: -.01em; }
+.cost .big { font-size: clamp(30px, 3.2vw, 42px); font-weight: 800; letter-spacing: -.035em; line-height: 1.1; margin-top: 8px; } .cost .big small { font-size: 17px; font-weight: 600; letter-spacing: 0; color: var(--ink2); }
+.cost p, .cost li { font-size: 16.5px; color: var(--ink2); } .cost p { margin-top: 10px; } .cost ul { margin: 10px 0 0; padding-left: 19px; } .cost li { margin-bottom: 8px; } .cost li b { color: var(--ink); }
+.cost a { font-weight: 700; color: var(--ink); text-underline-offset: 3px; }
+.pq { margin: 28px 0 0; border-top: 2px solid var(--navy); }
+.pq > div { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.pq dt { font-weight: 800; font-size: 18.5px; letter-spacing: -.01em; } .pq dd { margin: 0; color: var(--ink2); max-width: 640px; } .pq dd a { font-weight: 700; color: var(--ink); text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .fit { grid-template-columns: 1fr; gap: 26px; padding: 30px 24px; border-radius: 24px; margin-top: 52px; }
+  .cost { grid-template-columns: 1fr; } .cost > div + div { margin-top: 22px; border-top: 1px solid var(--line); }
+  .pq > div { grid-template-columns: 1fr; gap: 4px; }
+}

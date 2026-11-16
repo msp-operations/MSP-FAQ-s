@@ -192,16 +192,20 @@
     [/\b(nervous|anxious|worried|worry|scared|afraid|stressed|stress|panic|panicking|unsure|insecure|overwhelmed|zenuwachtig|bang|nervös|angst|inquiet)\b/i,
       'It’s completely normal to feel a bit nervous about this. Let me help.', 'self'],
     [/\b(rejected|not selected|disappointed|sad|upset|didn'?t get in)\b/i, 'I’m sorry to hear that. Let me see how I can help.', 'self'],
-    // 16 Nov 2026 (red team): no bare "in" ("I'm in hospital", "I'm in danger" got congratulations)
-    [/\b(i (got|have been|was|'?ve been|am) (accepted|admitted)|i'?m (accepted|admitted)|i got in\b|i'?m in(?= (msp|maastricht|the programme|the program)\b)|got (my|an) offer|can'?t wait|so excited|i'?m (so )?(excited|happy))\b/i,
+    // 16 Nov 2026 (red team): no bare "in" ("I'm in hospital", "I'm in danger" got congratulations); round 9 (false alarms):
+    // "happy to provide", "can't wait for the results" are not news
+    [/\b(i (got|have been|was|'?ve been|am) (accepted|admitted)|i'?m (accepted|admitted)|i got in\b|i'?m in(?= (msp|maastricht|the programme|the program)\b)|got (my|an) offer|can'?t wait(?! for (?:the |my )?(?:result|decision|answer|news|interview))|so excited|i'?m (so )?(excited|happy(?! to)))\b/i,
       'That’s wonderful, congratulations!', 'statement'],
-    [/\b(confused|don'?t understand|unclear|lost)\b/i, 'No worries, it can be confusing. Let me explain.', 'self']
+    [/\b(confused|don'?t understand|unclear|lost(?! my))\b/i, 'No worries, it can be confusing. Let me explain.', 'self']
   ];
-  // bad news (a death, illness, an accident, danger, debt): never congratulations or a cheerful lead (16 Nov 2026, red team)
-  var SAD = /\b(died|passed away|death|funeral|accident|hospital|danger|in trouble|debt|sick|illness|cancer|diagnos\w*|in pain|emergency|abuse\w*|hits me|overleden|gestorven|ziek|ongeluk|gestorben|krank|unfall)\b/i;
-  var LOSS = /\b(died|passed away|death|funeral|overleden|gestorven|gestorben)\b/i;
+  // bad news about the visitor's life: never congratulations or a cheerful lead (16 Nov 2026). Round 9 (false alarms):
+  // a death only of a person or pet ("my laptop died" is not a loss), an accident only "had/was in an accident", and not
+  // "sick of waiting", "cancer research", "emergency medicine", "danger that"
+  var KIN = '(?:my|our|his|her) (?:\\w+ )?(?:mother|father|mum|mom|dad|parent|grand\\w+|brother|sister|friend|uncle|aunt|cousin|partner|son|daughter|dog|cat|moeder|vader|oma|opa|mutter|vater)(?![\'’]s)\\b[^.?!]{0,20}';
+  var LOSS = new RegExp(KIN + '(?:died|passed away|overleden|gestorven|gestorben)|\\b(funeral|begrafenis|beerdigung)\\b', 'i');
+  var SAD = new RegExp(LOSS.source + '|\\b((?:had|was in|been in|have been in) an? (?:\\w+ )?accident|(?:i\'?m|i am) (?:in (?:the )?hospital|seriously ill|in trouble|in debt|in pain)|in debt|(?:been |was |got )?diagnosed|(?<!sick of |sick and )(?<!research |study |medicine |essay |academy )(?:cancer|illness)|ziek|ongeluk|krank|unfall)\\b', 'i');
   var feeling = function (t) {
-    if (SAD.test(t) && FIRST.test(t)) return LOSS.test(t) ? 'I’m so sorry for your loss.' : 'I’m sorry to hear that.';
+    if (SAD.test(t) && FIRST.test(t) && !/\b(sick (of|and tired)|danger that|research|academy|nursing|emergency medicine)\b/i.test(t)) return LOSS.test(t) ? 'I’m so sorry for your loss.' : 'I’m sorry to hear that.';
     for (var k = 0; k < FEEL.length; k++) {
       if (!FEEL[k][0].test(t)) continue;
       if (FEEL[k][2] === 'self' && (!FIRST.test(t) || THIRD.test(t))) continue;        // a parent about "she", a counsellor about "my students"
@@ -211,20 +215,40 @@
     return '';
   };
   /* someone in distress gets the support answer at once, with a warm sentence (and 113 / 112 when life may be at risk) */
-  // widened 16 Nov 2026 after the red team ("I want to die", "I took too many pills", Dutch/German wording all missed it)
-  var DANGER = /\b(suicid\w*|kill (myself|me)|end (my life|it all)|self[- ]?harm\w*|(don'?t|do not|no longer) want to (live|be alive|exist|be here)|want(s|ed)? to die|wanna die|wish i (was|were) dead|hurt(ing)? myself|harm(ing)? myself|cut(ting)? myself|overdos\w*|took (too many|all (my|the)) (pills|tablets)|better off without me|niet meer (willen )?leven|wil (dood|sterven)|zelfmoord\w*|mezelf (iets )?aan ?(te )?doen|mezelf (pijn doen|snijden)|nicht mehr leben|will sterben|selbstmord\w*|suizid\w*|mich (selbst )?verletzen|mich umbringen|me suicider|me tuer)\b/i;
-  var CRISIS = new RegExp('\\b(trauma|traumati[sz]ed|ptsd|nightmares?|can\'?t sleep|cannot sleep|depress(ed|ion)|depressief|depressiv|panic attacks?|paniekaanval\\w*|panikattacke\\w*|burn[- ]?out|overspannen|eating disorder|anorexi\\w*|bulimi\\w*|can\'?t (go on|take (it|this) anymore))\\b|' + DANGER.source, 'i');
-  // someone who says they were hurt, abused or are unsafe (a statement about themselves, not a question such as
-  // "is Maastricht safe?"): support and 112 first, never a search match (16 Nov 2026, red team: "I was raped" got rankings)
-  var SAFETY = /\b(rap(e|ed|ist)|sexual(ly)? (assault\w*|abuse\w*|harass\w*)|assault(ed)?|abus(e|ed|ing|ive)|(hits?|beats?|hurts?|hit|beat) me|not safe|unsafe|in danger|domestic violence|violence|harass\w*|racis\w*|discriminat\w*|bull(y|ied|ying)|stalk\w*|threaten\w*|gepest|mishandel\w*|verkracht\w*|aangerand|geslagen|bedreigd|schlägt mich|missbrauch\w*|belästig\w*|vergewaltig\w*|bedroht|gemobbt)\b/i;
+  // widened 16 Nov 2026 after the red team ("I want to die", "I took too many pills", Dutch/German wording all missed it);
+  // round 9 narrowed the false alarms: "my parents will kill me", "hurt myself playing football", "overdosed on coffee"
+  var DANGER = /\b(suicid\w*|kill myself|(?<!(?:will|'ll|would|gonna|going to) )kill me|end (my life|it all)|self[- ]?harm\w*|(don'?t|do not|no longer) want to (live|be alive|exist|be here)|want(s|ed)? to die|wanna die|wish i (was|were) dead|(?:hurt|harm|cut)(?:ing)? myself(?! (?:playing|during|while|at (?:the )?(?:gym|training)|in (?:the )?(?:lab|gym|match|game)))|overdos\w*(?! on (?:coffee|caffeine|tea|energy drinks?|sugar))|took (too many|all (my|the)) (pills|tablets)|better off without me|niet meer (willen )?leven|wil (dood|sterven)|zelfmoord\w*|mezelf (iets )?aan ?(te )?doen|mezelf (pijn doen|snijden)|nicht mehr leben|will sterben|selbstmord\w*|suizid\w*|(?:will|möchte|werde|wollte) mich (?:selbst )?verletzen|mich selbst verletzen|mich umbringen|me suicider|(?:veux|vais|voudrais|envie de) me tuer)\b/i;
+  var CRISIS = new RegExp('\\b(trauma|traumati[sz]ed|ptsd|(?:have|having|get|getting|keep having) nightmares|can\'?t sleep|cannot sleep|depress(ed|ion)|depressief|depressiv|panic attacks?|paniekaanval\\w*|panikattacke\\w*|burn[- ]?out|overspannen|eating disorders?|anorexi\\w*|bulimi\\w*|can\'?t go on(?:[.!]*$| (?:anymore|any longer|like this))|can\'?t take (?:it|this) anymore)\\b|' + DANGER.source, 'i');
+  // the soft crisis words are not about the visitor when a relative or teacher has them, when they are a study topic
+  // ("trauma surgeon", "the neuroscience of depression"), hyperbole ("depressief van al dat papierwerk") or excitement
+  var NOT_ME = /\b(?:my|his|her) (?:\w+ )?(?:mother|father|mum|mom|dad|parents?|brother|sister|grand\w+|teacher|friend|uncle|aunt|cousin)\b[^.?!]{0,30}\b(?:had|has|suffer\w*|got)\b|\b(course|courses|research|neuroscience|essay|surgeon|surgery|medicine|psychology|lecture)\b|\b(?:word|get|getting|become) (?:depressed|depressief|depressiv) (?:from|of|van|von)|traumati[sz]ed by (?:my|the)|\blol\b|\bhaha\b|excit\w*|can'?t wait|so happy/i;
+  var PORTALW = /\b(portal|studielink|website|log(?:ging)? (?:me )?(?:in|out)|login|page|form|link|app)\b/i;
+  // someone who says they were hurt, abused or are unsafe: support and 112 first, never a search match (16 Nov 2026, red team:
+  // "I was raped" got rankings). Round 9: only a victim frame ("I was harassed", "my father hits me", "I am not safe"),
+  // not "I'm in danger of missing the deadline", "my letter is about violence prevention", "Entschuldigen Sie die Belästigung"
+  var SAFETY = new RegExp([
+    "\\b(rap(e|ed)|sexual(ly)? (assaulted|abused|harassed)|assaulted|verkracht|aangerand|vergewaltigt)\\b",
+    "(?:\\bi(?:'m| am| was|'ve been| have been| got| feel| felt)|\\bbeing|\\bbeen) (?:being )?(?:harass\\w*|bullied|stalked|threatened|discriminated against|abused|attacked|assaulted|followed)\\b(?! by (?:the|this|my|all) (?:maths?|requirements?|deadlines?|exams?|tests?|workload|courses?|amount|paperwork|portal))",
+    "\\bi (?:experienced|faced|received|got|get) (?:\\w+ )?(?:racis\\w*|discriminat\\w*|harass\\w*|abuse|threats)",
+    "\\b(?:i'?m|i am|i feel) (?:not safe|unsafe)(?! (?:enough|to|about|sending|leaving))|\\b(?:don'?t|do not) feel safe(?! (?:enough|to|about|sending|leaving))",
+    "\\bi(?:'m| am) in danger(?! of)",
+    "\\b(?:he|she|they|someone|my (?:father|mother|dad|mum|mom|parents?|partner|boyfriend|girlfriend|husband|wife|brother|sister|landlord|roommate|flatmate|uncle|stepfather|stepmother)) (?:hits?|beats?|hurts?|hit|beat|is (?:stalking|threatening|harassing|following|abusing)) me\\b",
+    "\\b(?:werde|wurde|bin) (?:\\w+ )?(?:belästigt|bedroht|gemobbt|geschlagen|missbraucht)\\b",
+    "\\b(?:mein (?:vater|bruder|freund|partner)|meine (?:mutter|schwester|freundin)) schlägt mich\\b",
+    "\\b(?:word|werd|ben) (?:\\w+ )?(?:gepest|bedreigd|geslagen|mishandeld|lastiggevallen)\\b",
+    "\\b(?:victim of|experienc\\w* |live with |living with )(?:domestic violence|abuse)\\b"
+  ].join('|'), 'i');
   var crisisAt = -9;                                    // turn of the last crisis or safety reply: no admissions e-mail with that text after it
   // off-topic subjects that would make a strange screenshot when matched to an admissions answer ("is god real?" got
-  // "Yes, research is built in"): one polite reply, unless the message also says something about MSP or studying
-  var OFFTOPIC = /\b(trump|biden|putin|israel|palestin\w*|gaza|genocide|hamas|election|politic\w*|god|allah|jesus|bible|quran|bomb|guns?|weapons?|kill (him|her|them|someone|people)|weed|cannabis|drugs?|cocaine|coffeeshops?|drunk|sex|joke|weather|football|soccer|champions league|date me|love you|marry me)\b/i;
-  var ADMWORD = /\b(apply|applying|application|admissions?|msp|stud(y|ying|ies|ent|ents)|tuition|fees?|visa|deadline|interview|offer|courses?|class(es)?|lectures?|exams?|housing|room|programme|program|university|maastricht|campus|lab|refugee|holidays?|pray(er)?|halal|scholarship|aanmelden|opleiding|studie|bewerbung|studium)\b/i;
+  // "Yes, research is built in"): one polite reply, unless the message also says something about MSP or studying.
+  // Round 9: no nationalities or places ("I'm from Israel / Gaza" are admissions questions), no "God, the portal...",
+  // "drug discovery", "sex differences", "football at UM"
+  var OFFTOPIC = /\b(trump|biden|putin|genocide|hamas|election|politics|(?:is|does) god\b|believe in god|jesus|bible|quran|bomb(?! calorimeter)|guns?|weapons?|kill (him|her|them|someone|people)|weed|cannabis|(?:recreational|illegal|hard|soft|do|take|buy|sell) drugs?|cocaine|coffeeshops?|drunk|tell me a joke|weather|champions league|date me|marry me)\b/i;
+  var ADMWORD = /\b(apply|applying|application|admissions?|msp|stud(y|ying|ies|ent|ents)|tuition|fees?|visa|deadline|interview|offer|courses?|class(es)?|lectures?|exams?|housing|room|programme|program|university|campus|labs?|refugee|holidays?|pray(er)?|halal|scholarship|aanmelden|aanmelding|opleiding|studie|bewerbung|studium|portal|studielink|diploma|maths?|chemistry|biology|physics|track|minor|major|research|bachelor|degree|science|permit|recogni[sz]\w*|timetable|introduction|intro|inkom|dorms?|got in|ompt|pharmacology|neuroscience)\b/i;
   // personal details typed into the chat (16 Nov 2026, red team): e-mail addresses, phone numbers, UM student numbers,
-  // and passport / BSN / application numbers
-  var PII = /[\w.+-]+@[\w-]+\.[a-z]{2,}|\+?\d[\d\s-]{8,}\d|\bi\d{6,7}\b|\b(passport|bsn|student number|studentnummer|application number)\b[^.?!\d]{0,12}[a-z]{0,2}\d{5,}/i;
+  // and passport / BSN / application numbers. Round 9: dates, year ranges, grade lists and UM's own addresses are fine
+  var PII = /[\w.+-]+@(?!(?:student\.)?maastrichtuniversity\.nl)[\w-]+\.[a-z]{2,}|(?:\+|\b00)\d{2,3}[\s-]?\d(?:[\s-]?\d){7,10}\b|\b0\d{1,3}[\s-]?\d{6,8}\b|\bi\d{6,7}\b|\b(passport|bsn|student number|studentnummer|application number)\b[^.?!\d]{0,12}[a-z]{0,2}\d{5,}/i;
+  var piiClean = function (t) { return t.replace(/\b\d{1,2}[-/.]\d{1,2}[-/.](?:20)?\d\d\b/g, ' ').replace(/\b20\d\d\s*[-/–]\s*20\d\d\b/g, ' ').replace(/\b\d{1,2}(?:[\s,]+\d{1,2}){3,}\b/g, ' '); };
   var turn = 0, worriedAt = -9;
   var PROBLEM = /(no-room|scam|refund|missed|passed|late|fail|reject|problem|blocked|hold|lost|stolen|ill|wrong|unsafe|harass)/;
   var CALM = ['Here is how that works.', 'Let me explain.', 'Here is what you can do.'];
@@ -237,21 +261,31 @@
   }
   /* the passport from the visitor's own words ("for non-EU", "I'm Dutch", "two of them are non-EU"): '' when unclear */
   var EU_NAT = 'dutch|belgian|german|french|italian|spanish|portuguese|polish|greek|austrian|swedish|danish|finnish|irish|czech|slovak|hungarian|romanian|bulgarian|croatian|slovenian|estonian|latvian|lithuanian|luxembourgish|maltese|cypriot|norwegian|icelandic|swiss';
+  // round 9: the same in Dutch and German ("ik ben Belg", "für Österreicher")
+  var EU_NAT_XL = 'belg|belgisch\\w*|nederlander|duitser|duitse|deutsche?r?|österreicher\\w*|oesterreicher\\w*|österreichisch\\w*|schweizer\\w*|zwitser\\w*|französisch\\w*|fransman|franse|italienisch\\w*|italiaan\\w*|spanisch\\w*|spanjaard|polnisch\\w*|griechisch\\w*|portugiesisch\\w*';
   var EU_LAND = 'the netherlands|netherlands|holland|belgium|germany|france|italy|spain|portugal|poland|greece|austria|sweden|denmark|finland|ireland|czechia|slovakia|hungary|romania|bulgaria|croatia|slovenia|estonia|latvia|lithuania|luxembourg|malta|cyprus|norway|iceland|switzerland';
-  var NON_NAT = 'indian|chinese|american|british|canadian|turkish|nigerian|pakistani|indonesian|vietnamese|korean|japanese|brazilian|mexican|russian|ukrainian|syrian|iranian|egyptian|moroccan|south african|australian|kenyan|ghanaian|bangladeshi|nepali|sri lankan|filipino|thai|malaysian|singaporean|saudi|emirati|israeli|lebanese|jordanian|ethiopian|colombian|argentinian|chilean|peruvian|serbian|albanian|bosnian|georgian|armenian|kazakh|belarusian|moldovan|tunisian|algerian';
-  var NON_LAND = 'india|china|the us|the usa|the united states|the uk|the united kingdom|england|scotland|canada|turkey|nigeria|pakistan|indonesia|vietnam|korea|japan|brazil|mexico|russia|ukraine|syria|iran|egypt|morocco|south africa|australia|kenya|ghana|bangladesh|nepal|sri lanka|the philippines|thailand|malaysia|singapore|saudi arabia|israel|lebanon|jordan|ethiopia|colombia|argentina|serbia|albania|bosnia|georgia|armenia|kazakhstan|belarus';
-  var WHO = "(i'?m|i am|im|we are|we're|she is|she'?s|he is|he'?s|they are|they're|my (son|daughter|child) is|as an?)( an?)?";
+  var NON_NAT = 'indian|chinese|american|british|canadian|turkish|nigerian|pakistani|indonesian|vietnamese|korean|japanese|brazilian|mexican|russian|ukrainian|syrian|iranian|egyptian|moroccan|south african|australian|kenyan|ghanaian|bangladeshi|nepali|sri lankan|filipino|thai|malaysian|singaporean|saudi|emirati|israeli|palestinian|lebanese|jordanian|ethiopian|colombian|argentinian|chilean|peruvian|serbian|albanian|bosnian|georgian|armenian|kazakh|belarusian|moldovan|tunisian|algerian';
+  var NON_LAND = 'india|china|the us|the usa|the united states|the uk|the united kingdom|england|scotland|canada|turkey|nigeria|pakistan|indonesia|vietnam|korea|japan|brazil|mexico|russia|ukraine|syria|iran|egypt|morocco|south africa|australia|kenya|ghana|bangladesh|nepal|sri lanka|the philippines|thailand|malaysia|singapore|saudi arabia|israel|palestine|gaza|lebanon|jordan|ethiopia|colombia|argentina|serbia|albania|bosnia|georgia|armenia|kazakhstan|belarus';
+  var WHO = "(i'?m|i am|im|we are|we're|she is|she'?s|he is|he'?s|they are|they're|my (son|daughter|child) is|as an?|ik ben|ich bin|wir sind|we zijn|hij is|zij is|er ist|sie ist)( an?| een| ein| eine)?";
   // 16 Nov 2026: Dutch/German/French "not EU" ("niet-EU", "Nicht-EU", "buiten de EU" were read as EU), and "from" said of
-  // a friend, a child or "if I were" ("my friend is from Turkey", "if I were from Germany")
+  // a friend, a child or "if I were" ("my friend is from Turkey", "if I were from Germany"). Round 9: "I don't have an EU
+  // passport" / "without an EU passport" are non-EU, and the bare word "EU" only counts in a passport sense
   var FROM = "(i'?m|i am|we are|(s)?he is|they are|if i (were|was|am)|(student|applicant|daughter|son|child|friend|kid)s?( is| are)?|someone|a student) from";
   var NON_RX = new RegExp("\\b(non[- ]?eu|non[- ]?eea|non[- ]?european|not (an? )?european|not (from )?(the )?eu|outside (the )?(eu|eea|europe)|other nationalit(y|ies)|third[- ]country|" +
+    "(?:don'?t|do not|doesn'?t|does not) (?:have|hold) (?:an? |any )?(?:eu|eea)|no (?:eu|eea)\\b|without (?:an? )?(?:eu|eea)|not an? (?:eu|eea) (?:citizen|national|passport)|but i'?m not a citizen|" +
     "nicht[- ]?eu|niet[- ]?eu|buiten (de )?(eu|europa)|geen eu|au(ß|ss)erhalb (der )?(eu|europas?)|kein(e|en)? eu|hors (de l'?)?(ue|europe)|non[- ]?ue|" +
-    WHO + " (" + NON_NAT + ")|(" + NON_NAT + ") (passport|citizen|nationality|national|student|applicant)s?|" + FROM + " (" + NON_LAND + "))\\b", 'i');
-  var EU_RX = new RegExp("\\b(eu|eea|european union|swiss|" + WHO + " (" + EU_NAT + ")|(" + EU_NAT + ") (passport|citizen|nationality|national|student|applicant)s?|" + FROM + " (" + EU_LAND + "))\\b", 'i');
+    WHO + " (" + NON_NAT + ")|(" + NON_NAT + ") (passport|citizen(?:ship)?|nationality|national|student|applicant)s?|" + FROM + " (" + NON_LAND + "))\\b", 'i');
+  var EU_RX = new RegExp("\\b(e(?:u|ea)(?:/eea)?[- ](?:passport|citizen\\w*|national\\w*|student|applicant|country|member)s?|(?:i'?m|i am|as an?|we are|from) (?:an? |the )?eu\\b|for (?:the )?eu\\b|^\\s*(?:eu|eea)\\b|european union|swiss|" +
+    WHO + " (" + EU_NAT + "|" + EU_NAT_XL + ")|(" + EU_NAT + ") (passport|citizen(?:ship)?|nationality|national|student|applicant)s?|(?:für|voor) (?:" + EU_NAT_XL + ")|" + FROM + " (" + EU_LAND + "))\\b", 'i');
+  var ANY_EU_NAT = new RegExp("\\b(" + EU_NAT + "|" + EU_NAT_XL + ")\\b", 'i');
+  // a bare nationality typed as the answer to "Which passport do you have?" ("Indian", "Dutch", "ik ben Belg")
+  var BARE_NAT = new RegExp("^\\s*(?:i'?m |i am |ik ben |ich bin )?(?:an? |een |ein |eine )?(?:(" + EU_NAT + "|" + EU_NAT_XL + ")|(" + NON_NAT + "))[.!\\s]*$", 'i');
   function passportFrom(t) {
     var n = NON_RX.test(t), e = EU_RX.test(t.replace(new RegExp(NON_RX.source, 'gi'), ' '));   // every "not EU" phrase removed, not only the first
+    if (n && !e && ANY_EU_NAT.test(t.replace(new RegExp(NON_RX.source, 'gi'), ' '))) return '';  // "I'm American and Dutch": two passports, ask
     return n && e ? '' : n ? 'non' : e ? 'eu' : '';
   }
+
   function related(item, shown) {          // curated follow-ups first (tools/related.json), then most asked in the same topic
     var out = (item.next || []).map(function (id) { return byId[id]; }).filter(function (i) { return i && !shown[i.id]; });
     top.forEach(function (i) { if (out.length < 2 && i.topic === item.topic && i.id !== item.id && !shown[i.id] && i.kind === 'general' && out.indexOf(i) < 0) out.push(i); });
@@ -262,7 +296,7 @@
   var last = { q: '', hits: [], shown: {} }, lastItem = null, lastCtx = [];
   // 16 Nov 2026 (conversation tests): follow-ups are read together with the question that produced the last ANSWER
   // (anchor), not with whatever was typed last (an unanswered "Which of these", an ignored passport question)
-  var anchor = '', lastPassItem = null, passSkipped = false;
+  var anchor = '', lastPassItem = null, passSkipped = false, lastAsk = '', shownLast = null;   // lastAsk: what Mosa's last message asked ('else' | 'mailq')
   // does an answer contain one of the visitor's content words? ("miss" in the lab-safety answer)
   var STOPW = /^(the|and|for|that|this|those|these|with|what|when|where|which|how|does|did|can|could|would|should|will|have|has|had|are|was|were|there|then|than|about|from|your|you|they|them|not|but|also|any|our|its|get|got|need|much|many|more|work|working|study|studying|studies|time|week|weeks|year|years|day|days|msp|programme|program|student|students|course|courses|people|thing|things)$/;   // common words never count as "the same topic" ("can I work next to it?")
   function mentions(id, t) {
@@ -286,7 +320,13 @@
     }
     o.switched = o.switched && item.byPassport;
     var again = lastItem === item.id && !o.switched;                          // the very same answer as just before ("and for non-EU?")
-    last.shown[item.id] = 1; lastItem = item.id; anchor = o.anchor || q || item.q;
+    // round 9 (fresh conversation test): the very answer shown just above is not repeated in full; point back to it
+    if (again && shownLast === item.id && !o.chip && !o.care && !o.unsure && !o.fromPass && !/^\d ·/.test(o.lead || '')) {   // a passport click always shows the answer
+      anchor = o.anchor || anchor;
+      return bot('<p>' + (o.lead && o.lead !== 'Hello!' ? esc(o.lead) + ' ' : '') + 'The answer just above (“' + esc(item.q) + '”) covers that. Is something specific missing?</p>',
+        [{ label: 'Not quite', act: 'notquite' }, { label: 'Write to the admissions office', act: 'mail', q: q || item.q }].concat(related(item, last.shown).slice(0, 2).map(function (r) { return { label: r.q, act: 'ask', id: r.id }; })));
+    }
+    last.shown[item.id] = 1; lastItem = item.id; shownLast = item.id; anchor = o.anchor || q || item.q;
     if (item.byPassport) lastPassItem = { id: item.id, q: anchor };
     lastCtx = [item.id].concat((alts || []).map(function (x) { return x.id; }), item.next || []);
     var h, pre = o.lead ? '<p class="lead">' + esc(o.lead) + '</p>' : '';
@@ -301,7 +341,7 @@
     // gets the answer itself, with the e-mail as an extra button
     if (item.kind === 'personal' && (o.chip || OWN.test(q || ''))) {
       h = pre + '<p class="lead">I’d love to help with that. Because it depends on your own application, someone from the admissions office will look at it for you.</p>' + A +
-        '<p>Shall I open an e-mail to the admissions office for you, with your question already in it?</p>';
+        '<p>Shall I open an e-mail to the admissions office for you, with your question already in it?</p>'; lastAsk = 'mailq';
       return bot(h, [{ label: 'Yes, write the e-mail', act: 'mail', q: q || item.q, main: true }, { label: 'No, thanks', act: 'nothanks' }]);
     }
     var warmLead = o.lead && o.lead !== 'Hello!';
@@ -420,17 +460,17 @@
     [/^(help|menu|options|what can you (do|help with)|what do you know|what can i ask( you)?|how does this work)\b[\s?!.]*$/i, function () {
       bot('<p>I can answer questions about applying to MSP for September 2027: deadlines and requirements, maths and English, the documents and the interview, your offer and enrolment, money, visas and housing, and what MSP is like and where graduates go.</p><p>Just type your question in your own words, or pick a topic. For anything about your own application, I’ll help you reach the admissions office.</p>',
         [{ label: 'Show me all topics', act: 'topics', main: true }].concat(suggestions().slice(0, 3))); }],
-    [/\b(are you (a )?(robot|bot|human|person|real|an? ai|chat ?gpt)|who are you|what are you)\b/i, function () {
+    [/\b(are you (a )?(robot|bot|human|person|real|an? ai|chat ?gpt))\b|^\s*(?:so )?(?:who|what) are you[?!.\s]*$/i, function () {   // round 9: not "who are you supposed to send it to?"
       bot('<p>I’m Mosa, an automated assistant for people applying to the Maastricht Science Programme. My name is the Latin name of the Maas, the river Maastricht was built on. I answer from the answers the admissions office has checked, so I don’t make things up, but I can’t see your own application.</p><p>For anything about your own file, a real person from the admissions office is happy to help.</p>',
         [{ label: 'Write to the admissions office', act: 'mail', q: '' }, { label: 'Ask something else', act: 'more' }]); }],
-    [/\b((talk|speak|chat) (to|with) (a |an )?(real )?(human|person|someone|staff|officer|advisor|adviser)|real person|phone number|call (you|someone)|contact (you|the office|admissions))\b/i, function () {
+    [/\b((talk|speak|chat) (to|with) (a |an )?(real )?(human|person|staff|officer|advisor|adviser)|(talk|speak) (to|with) someone(?! who)|real person|(?:your|the office'?s?|admissions'?) phone number|call (?:you|someone (?:at|from) (?:msp|admissions|the office))|contact (you|the office|admissions)|(?:speak|talk) to (?:the|a) (?:manager|supervisor))\b/i, function () {   // round 9: not "my phone number changed", "talk to someone who studies at MSP"
       bot('<p>Of course. The admissions office answers every question personally, usually within a few working days. Write to <a href="mailto:' + MAIL + '">' + MAIL + '</a> with your name and, if you have one, your application number.</p><p>You can also meet the team at the online Q&amp;A with Admissions on 4 March 2027 at 19:00 CET.</p>',
         [{ label: 'Write the e-mail', act: 'mail', q: '', main: true }, { label: 'Ask something else', act: 'more' }]); }]
   ];
   var GREET = new RegExp('^\\s*((' + HELLO + '|dear [^,!.]{0,40})( there| all| everyone| team)?\\b[\\s,!.:-]*)+', 'i');
   var TPRE = new RegExp('^\\s*(ok(ay)?[\\s,!.]+)?' + THANKS.source + '[\\s,!.:-]*((so|very) much|a lot)?[\\s,!.:-]*', 'i');   // "thanks! and what about housing?"
-  var FOLLOW = /^\s*(and|what about|how about|and what about|also|en|und|et|same for|what if)\b/i;
-  var REF = /\b(it|that|this|they|them|those|these|dat|dit|es|ça|cela)\b/i;   // 16 Nov 2026: not the articles het/die/das/dies ("hoeveel is het collegegeld?")
+  var FOLLOW = /^\s*(and|what about(?! it (?:makes|is|does))|how about|and what about|also|en|und|et|same for|what if)\b/i;
+  var REF = /\b(it|that|this|they|them|those|these|dat|dit|(?<!gibt )es|ça|cela)\b/i;   // 16 Nov 2026: not the articles het/die/das/dies ("hoeveel is het collegegeld?")
   var OWN = /\b(my (application|file|portal|documents?|status|offer|interview|result|task|tasks|upload|student number|application number|place|letter)|i (have |'ve )?(applied|uploaded|submitted|sent|received|booked)|i haven'?t (heard|received|got)|haven'?t heard|application number|student number|mijn (aanmelding|aanvraag)|meine bewerbung)\b/i;
   var QFORM = /^\s*(and |also |but |en |und |et )?(what|which|who|whose|when|where|why|how|is|are|am|was|were|do|does|did|can|could|will|would|should|shall|may|might|must|have|has|had|any|wat|welke|wie|wanneer|waar|waarom|hoe|kan|kun|mag|moet|ben|heb|zijn|wo|wann|warum|welche|kann|darf|muss|gibt|ist|hat|quand|comment|pourquoi|est-ce)\b/i;
   var isQ = function (s) { return /\?\s*$/.test(s) || QFORM.test(s); };
@@ -439,7 +479,7 @@
      mark: "How do I accept?", "If I decline, do I get my money back?" go to the search as before. */
   // 16 Nov 2026: widened after mining 738 real mails (acceptances are 44% of them; this caught 230 of 327): "I wish to
   // accept", "I gladly accept", "I will accept", "I am accepting", "writing to formally accept", "this e-mail to accept the offer"
-  var ACCEPT_RX = /\b(?:i|we)(?:'d| would| am|'m| have|'ve| will| shall)?(?: truly| really| very| so| gladly| happily| hereby| formally)?(?: like to| like| want to| wish to| hereby| happy to| delighted to| pleased to| glad to| excited to| thrilled to| honou?red to| writing to| writing to formally| decided to| chosen to)? (?:formally |gladly |happily )?(?:accept(?! that)\b|confirm (?:my|our) (?:acceptance|place|participation|attendance)\b|confirm that (?:i|we) (?:accept|will (?:attend|join))\b)|\bconfirm(?:ing)? (?:my|our) acceptance\b|\bwould like to accept (?:my|the|your|this) (?:offer|invitation|place|spot)\b|\b(?:i|we)(?: am|'m| are|'re) (?:happily |gladly )?accepting\b|\bto (?:formally |hereby |happily |gladly )?accept (?:the|your|this|my|our) (?:offer|invitation|place|spot|admission)\b/i;
+  var ACCEPT_RX = /\b(?:i|we)(?:'d| would| am|'m| have|'ve| will| shall)?(?: truly| really| very| so| gladly| happily| hereby| formally)?(?: like to| like| want to| wish to| hereby| happy to| delighted to| pleased to| glad to| excited to| thrilled to| honou?red to| writing to| writing to formally| decided to| chosen to)? (?:formally |gladly |happily )?(?:accept(?! that)\b|confirm (?:my|our) (?:acceptance|place|participation|attendance)\b|confirm that (?:i|we) (?:accept|will (?:attend|join))\b)|\bconfirm(?:ing)? (?:my|our) acceptance\b|\bwould like to accept (?:my|the|your|this) (?:offer|invitation|place|spot)\b|\b(?:i|we)(?: am|'m| are|'re) (?:happily |gladly )?accepting\b(?! that)|\bto (?:formally |hereby |happily |gladly )?accept (?:the|your|this|my|our) (?:offer|invitation|place|spot|admission)\b/i;
   var HESITANT = /\b(whether|not sure|unsure|undecided|doubts?|doubting|thinking (?:about|of)|considering|wondering|if i should|twijfel\w*|weet niet of|überlege|ob ich)\b/i;
   var DECLINE_RX = /\b(?:i|we)(?:'d| would| am|'m| have|'ve)?(?: like to| want to| hereby| writing to| decided to| to)? (?:formally )?(?:decline|withdraw|turn down)\b|\bwithdraw(?:ing)? (?:my|our) (?:acceptance|application|place)\b|\b(?:will|can|shall) (?:not|no longer) (?:be )?(?:attend|attending|join|joining|come|coming|start|starting)(?: to)? (?:msp|the (?:maastricht )?science|the program|in september|this (?:fall|autumn|september|year))|\bwon't be (?:attending|joining|coming to|starting) (?:msp|the (?:maastricht )?science|the program)|\b(?:decided|chosen) (?:not to|against) (?:attend|join|com|continu|accept|start)|\bnot (?:to )?continue with (?:my|the) application\b|\bdecline (?:the|your|my|this) (?:offer|invitation|place|spot)\b/i;
   var decision = function (t) {
@@ -448,13 +488,17 @@
     if (OTHER_INST.test(t)) return '';                                  // "I accept the offer from Leiden instead", "decline UCU and come to MSP"
     var d = DECLINE_RX.test(t) ? 'withdraw' : ACCEPT_RX.test(t) ? 'how-to-accept' : '';
     if (d === 'how-to-accept' && ACC_BLOCK.test(t)) return '';          // "I can't afford to accept", "accept the invitation to the interview"
-    if (d === 'withdraw' && DEC_BLOCK.test(t)) return '';               // "I hereby withdraw my complaint"
+    if (d === 'withdraw' && (DEC_BLOCK.test(t) || !MSPOBJ.test(t))) return '';   // "I hereby withdraw my complaint", "withdraw from my current bachelor"
     return d;
   };
   // guards for decision() (16 Nov 2026, red team)
   var OTHER_INST = /\b(leiden|utrecht|amsterdam|delft|groningen|rotterdam|eindhoven|tilburg|nijmegen|wageningen|twente|ucu|auc|luc|euc|ucg|ucm|ucv|ucr|university college|tu ?e|tu ?delft|another (university|programme|program|offer|school)|other (university|universities|programme|program|offers?)|elsewhere|instead)\b/i;
-  var ACC_BLOCK = /\b(but|however|although|afford|won'?t let|can'?t|cannot|unable|interview|complaint|appeal|objection)\b/i;
-  var DEC_BLOCK = /\b(complaint|appeal|objection|interview)\b/i;
+  var EVENTW = '|open ?day|q ?& ?a|q and a|webinar|session|event|student for a day|introduction days?|intro days?|room|housing|ssh|guesthouse|contract|waiting list|challenge|if|unless|once|too early|not yet|money|savings|request|extension|physics|chemistry|biology|maths?|subject|current (?:bachelor|study|studies|programme|university)|biomedical|february|next year|defer\\w*|postpone\\w*';   // round 9: events, housing, conditions are not the offer
+  var ACC_BLOCK = new RegExp('\\b(but|however|although|afford|won\'?t let|can\'?t|cannot|unable|interview|complaint|appeal|objection' + EVENTW + ')\\b', 'i');
+  var DEC_BLOCK = new RegExp('\\b(complaint|appeal|objection|interview' + EVENTW + ')\\b', 'i');
+  // a decline must be about MSP: an MSP object, a reason, or the message ends with the verb (round 9: "I withdraw from my
+  // current bachelor to start at MSP", "I decided not to continue with physics" are not declines)
+  var MSPOBJ = /\b(msp|the offer|my offer|your offer|the place|my place|my application|the programme|the program|maastricht science|this september|in september|the invitation|because|due to|for personal reasons|for family reasons)\b|\b(decline|withdraw|turn down)[.!\s]*$/i;
   var declined = false;                                                 // the visitor declined: no "we hope to welcome you" at goodbye
   /* other message types that are not questions (16 Nov 2026, mined from 738 real applicant mails, each in at least ~1%):
      problem reports, follow-ups, interview changes and bookings, extension requests, documents sent, promises to send
@@ -469,10 +513,11 @@
     {"name": "ivbooked", "re": "\\b(?:i|we)(?:'ve| have)? (?:just |already |now |successfully )?(?:booked|scheduled|reserved|registered for|signed up for|picked|chosen|selected|planned) (?:a |an |my |the |our )?(?:new |online )?(?:interview|slot|appointment|time ?slot|interview slot)\\b|\\bmy interview is (?:booked|scheduled|planned|on)\\b|\\b(?:ik )?heb (?:een |mijn |het )?(?:interview|gesprek|afspraak|tijdslot) (?:ingepland|geboekt|gereserveerd)\\b|\\bich habe (?:einen |mein |das |den )?(?:interview|gespräch|termin) (?:gebucht|vereinbart|reserviert)\\b", "lead": "Good luck with your interview! You usually don’t get a separate confirmation by e-mail, so here is how you join on the day:", "route": [], "other": "join-interview"},
     {"name": "extension", "re": "\\b(?:request|ask for|asking for|need|apply for|would like|hope for|beg for)(?: an?| some| a little| a bit of)? (?:extension|more time|extra time|additional time|exception|deferral|postponement)\\b|\\b(?:extend|postpone|defer|delay)(?:ing)? (?:the |my )(?:\\w+ )?(?:deadline|start|place|offer|admission|decision|enrolment|enrollment|studies)\\b|\\b(?:start|begin|join) (?:msp |the programme |my studies )?(?:a year later|one year later|the following year instead)\\b|\\b(?:won'?t|will not|cannot|can'?t|am not able to|will not be able to|won'?t be able to) (?:\\w+ ){0,3}(?:make|meet) the deadline\\b|\\b(?:i )?(?:have )?missed the (?:\\w+ )?deadline\\b|\\b(?:more|extra) time to (?:decide|submit|send|upload|finish|complete)\\b|\\bgrant me (?:an? )?(?:short |small |little |brief )?(?:exceptional )?(?:extension|exception|more time|extra time)\\b|\\b(?:appreciate|be grateful for|ask for) (?:having )?(?:a (?:little|bit) |some )?(?:more|extra|additional) time\\b|\\bconsider my late (?:application|acceptance|submission)\\b|\\buitstel\\b|\\bfristverlängerung\\b|\\bum (?:eine )?verlängerung\\b", "lead": "I can’t grant extensions or exceptions in the chat: the admissions office decides that for your own case. Here is what applies:", "route": [["\\b(decide|decision|offer|accept\\w*)", "more-time-to-decide"], ["\\b(defer\\w*|postpone (?:my )?(?:start|place|studies|admission)|year later|following year|gap year)", "defer-place"], ["\\b(diploma|certified|certificate|final results|transcript|grades)", "diploma-late"], ["\\b(math\\w*|ompt|khan|calculus|proof)", "maths-proof-deadline"], ["\\binterview", "no-interview-slots"], ["\\b(requirement|exception|qualif\\w*)", "exceptions"]], "other": "deadline-passed", "mail": true},
     {"name": "docs", "re": "\\b(?:please )?find (?:attached|enclosed)\\b|\\battached (?:is|are|you(?:'ll| will) find|herewith|please find)\\b|\\b(?:i|we)(?:'ve| have)? (?:just |already |now |also |today |finally )?(?:attached|enclosed|uploaded|submitted|sent|posted|mailed|couriered|e-?mailed|handed in)\\b(?! (?:you )?(?:an? |my )?(?:e-?mail|mail|message|question|acceptance)\\b)|\\b(?:here is|here are|i am sending|i'm sending|sending you) (?:my|the)\\b(?! (?:\\S+ )?(?:student|application|contact|maastricht|e-?mail|mail|message|phone)\\b)|\\b(?:has|have) (?:now )?been (?:uploaded|submitted|sent|posted|delivered)\\b|\\bproof of payment\\b|\\b(?:i|we)(?:'ve| have)? (?:just |already )?paid\\b|\\bconfirm (?:the )?receipt\\b|\\bbijgevoegd\\b|\\bin de bijlage\\b|\\bheb (?:\\w+ ){0,3}(?:geüpload|geupload|opgestuurd|verstuurd|ingeleverd|betaald)\\b|\\bim anhang\\b|\\banbei\\b|\\bhabe (?:\\w+ ){0,3}(?:hochgeladen|geschickt|gesendet|bezahlt)\\b", "lead": "Thank you! I can’t receive files or see your application here, so here is where it should go and how to check it arrived:", "route": [["\\b(paid|payment|transferred|tuition|bank)", "payment-received"], ["\\b(math\\w*|ompt|khan|calculus|screenshot)", "maths-proof-deadline"], ["\\b(diploma|certified|certificate|courier|post(?:ed)?|dhl|tracking|waybill)", "send-certified-diploma"]], "other": "documents-received"},
-    {"name": "later", "re": "\\b(?:i|we)(?:'ll| will| shall| am going to|'m going to) (?:\\w+ )?(?:send|upload|submit|forward|provide|share|post|hand in|deliver)\\b(?! (?:you )?(?:an? )?(?:e-?mail|mail|message|question)\\b)|\\bas soon as (?:i|we) (?:receive|get|have) (?:it|them|my|the)\\b|\\b(?:ik )?(?:stuur|lever) .{0,40}\\b(?:na|later)\\b|\\bzal .{0,40}(?:opsturen|sturen|uploaden|nasturen)\\b|\\b(?:ich )?(?:werde|reiche) .{0,40}(?:nachreichen|schicken|hochladen|senden|nach)\\b", "lead": "Thanks for letting me know. I can’t note this for the office, so here is how and by when to send it:", "route": [["\\b(math\\w*|ompt|khan|calculus|screenshot)", "maths-proof-deadline"], ["\\b(english|ielts|toefl|cambridge)", "english-deadline"], ["\\b(diploma|certified|certificate|final results|results|transcript|grades)", "send-certified-diploma"]], "other": "which-deadline"},
+    {"name": "later", "re": "\\b(?:i|we)(?:'ll| will| shall| am going to|'m going to) (?:\\w+ )?(?:send|upload|submit|forward|provide|share|post|hand in|deliver)\\b(?! (?:you )?(?:an? )?(?:e-?mail|mail|message|question)\\b)|\\bas soon as (?:i|we) (?:receive|get|have) (?:it|them|my|the)\\b|\\b(?:ik )?(?:stuur|lever) .{0,40}\\b(?:na|later)\\b|\\bzal .{0,40}(?:opsturen|sturen|uploaden|nasturen)\\b|\\b(?:ich )?(?:werde|reiche) .{0,40}(?:nachreichen|schicken|hochladen|senden)\\b", "lead": "Thanks for letting me know. I can’t note this for the office, so here is how and by when to send it:", "route": [["\\b(math\\w*|ompt|khan|calculus|screenshot)", "maths-proof-deadline"], ["\\b(english|ielts|toefl|cambridge)", "english-deadline"], ["\\b(diploma|certified|certificate|final results|results|transcript|grades)", "send-certified-diploma"]], "other": "which-deadline"},
     {"name": "parent", "re": "\\b(?:my|our) (?:son|daughter|child|kid|ward|stepson|stepdaughter|nephew|niece) (?:has|had|is|was|will|got|received|applied|wants|needs|did|would|just)\\b|\\bon behalf of (?:my|our|a|the) (?:son|daughter|child|student|client|applicant|candidate)\\b|\\bwriting (?:for|about) (?:my|our) (?:son|daughter|child)\\b|\\b(?:i am|i'm|we are|as) (?:an? |the )?(?:(?:education(?:al)?|study|admissions?|university|overseas|student) (?:agent|agency|consultant|consultancy)|(?:agent|agency|consultant|consultancy) (?:for|working with|representing|helping|that helps|who helps))\\b|\\bwe are an? (?:\\w+ )?agency\\b|\\bour (?:student|client|candidate)s? (?:has|have|is|are|would|wants?|needs?)\\b|\\bmijn (?:zoon|dochter) (?:heeft|is|wil|gaat)\\b|\\bmein(?:e)? (?:sohn|tochter) (?:hat|ist|möchte|will)\\b", "lead": "Thank you for writing on their behalf. I can’t discuss a specific application (only with the applicant), but I can explain how everything works:", "route": [], "other": "parents-counsellors"},
     {"name": "interested", "re": "\\b(?:i am|i'm|im|we are) (?:very |highly |really |particularly |quite |so )?interested in (?:applying|studying at|studying in|joining|msp|the (?:maastricht )?science programme|the science programme|your (?:programme|program|bachelor)|maastricht science)\\b|\\b(?:i|we) (?:would like|want|wish|plan|intend|hope) to (?:apply|join|study) (?:to |for |at |in )?(?:msp|the (?:maastricht )?science programme|your (?:programme|program|bachelor)|maastricht science|maastricht university)\\b|\\b(?:please )?send me (?:some |more )?(?:information|info|details|a brochure|the brochure)\\b|\\b(?:ik )?heb interesse in (?:msp|de opleiding|het maastricht science)|\\b(?:ich )?interessiere mich für (?:msp|das (?:maastricht )?science|ihr studium|den studiengang)", "lead": "Great to hear you’re interested in MSP! Here is how applying works:", "route": [["\\b(brochure|information pack|leaflet|folder)", "who-to-contact"]], "other": "how-do-i-apply"}
   ].map(function (k) { k.rx = new RegExp(k.re, 'i'); k.route = k.route.map(function (r) { return [new RegExp(r[0], 'i'), r[1]]; }); return k; });
+  var DOCW = /\b(documents?|diploma|transcripts?|certificates?|cv|letter|proof|form|file|scan|copy|results|grades|passport|tuition|fees?|deposit|payment|ielts|toefl|ompt|khan|screenshot|scores?|test|attach\w*|upload\w*|bijlage|bijgevoegd|cijferlijst|cijfers|anhang|angehängt|diplom|zeugnis|noten)\b/i;
   var kindOf = function (t) {
     t = t.replace(/[’‘]/g, "'");
     if (/\?/.test(t) || isQ(t)) return null;
@@ -482,9 +527,20 @@
       for (var j = 0; j < k.route.length; j++) if (k.route[j][0].test(t)) { id = k.route[j][1]; break; }
       if (!id && byId[k.other]) id = k.other;
       // problems with things MSP has nothing to do with: "I can't book a flight", "I can't access my bank account" (red team)
-      if (id === 'booking-link-problems' && /\b(flights?|trains?|tickets?|hotels?|bus|plane)\b/i.test(t)) continue;
-      if (id === 'login-problems' && /\b(bank|wise|revolut|paypal|rabobank|abn|ing)\b/i.test(t)) continue;
-      return { name: k.name, id: id, mail: !!k.mail, lead: k.leadMissed && id === 'missed-interview' ? k.leadMissed : k.lead };
+      if (id === 'booking-link-problems' && /\b(flights?|trains?|tickets?|hotels?|bus|plane|room|housing|ssh|accommodation|flat|studio)\b/i.test(t)) continue;
+      if (id === 'login-problems' && /\b(bank|wise|revolut|paypal|rabobank|abn|ing|card|payment)\b/i.test(t)) continue;
+      // round 9 (false alarms): each type needs its real object
+      if (k.name === 'docs' && (!DOCW.test(t) || /\b(nothing|nog niet|noch nicht|not yet)\b|here(?: is|'s) the thing/i.test(t))) continue;          // "I sent my brother to the open day"
+      if (k.name === 'docs' && id === 'payment-received' && !/\bpaid (?:the |my )?(?:tuition|fees?|deposit|invoice|instalment)|proof of payment|\bpayment\b/i.test(t)) continue;   // "we paid for the flight tickets"
+      if (k.name === 'problem' && /\b(bank|card|wise|revolut|paypal)\b/i.test(t)) continue;                             // "my bank card is blocked"
+      if (k.name === 'problem' && /\b(?:father|mother|dad|mum|mom|parents?|he|she|i(?:'m| am)?) (?:doesn'?t |does not |not )?work(?:ing)?\b|\blukt niet\b(?![^.]*\b(?:inloggen|uploaden|betalen|openen|boeken|link|portal|studielink))/i.test(t)) continue;
+      if (k.name === 'extension' && /\b(dyslexi\w*|adhd|autis\w*|disabilit\w*|chronic)\b/i.test(t) && byId['disability-support']) id = 'disability-support';   // extra exam time: disability support
+      if ((k.name === 'ivchange' || k.name === 'ivbooked') && /\b(ielts|toefl|cambridge|duolingo|sat|act|ssh|town hall|municipality|gemeente|ind|bank|gp|doctor|open day|q ?&|webinar)\b/i.test(t)) continue;
+      if (k.name === 'later' && !DOCW.test(t) && !/\b(it|them)\b/i.test(t)) continue;                                    // "I will share a room with my sister"
+      if (k.name === 'followup' && (/\b(duo|ind|ssh|bank|studielink)\b/i.test(t) || (/follow(?:ing)?[- ]?up/i.test(t) && !/follow(?:ing)?[- ]?up on (?:my|our|the) (?:\w+ )?(?:e-?mail|mail|message|question|application|request)|haven'?t heard|have not heard|no (?:reply|answer|response)|still waiting/i.test(t)))) continue;
+      if (k.name === 'parent' && /\bi (?:want|would like|plan|hope) to (?:apply|study)\b|while i study|childcare/i.test(t)) continue;
+      return { name: k.name, id: id, mail: !!k.mail && id !== 'disability-support', lead: k.leadMissed && id === 'missed-interview' ? k.leadMissed
+        : id === 'disability-support' ? 'Extra time and other adjustments are arranged through UM’s Disability Support. Here is how:' : k.lead };
     }
     return null;
   };
@@ -499,9 +555,15 @@
     me(text); input.value = ''; turn++;
     // distress and safety come before everything else, also before small talk and the passport question (16 Nov 2026)
     var hurt = SAFETY.test(text) && FIRST.test(text) && !QFORM.test(text);   // "I was assaulted", not "is Maastricht unsafe?"
-    if ((CRISIS.test(text) || hurt) && byId['wellbeing-support']) {
+    var prelead = '';
+    // round 9: something that happened in the past, asked as a question ("I was bullied at school, will MSP be different?"):
+    // a kind sentence, then the normal answer
+    if (hurt && !DANGER.test(text) && /\?/.test(text) && /\b(was|were|used to|in the past|at my old|last year|before|oude school|vroeger|ben gepest|früher|alten schule|wurde)\b/i.test(text)) { hurt = false; prelead = 'I’m sorry you went through that.'; }
+    var crisis = CRISIS.test(text) && (DANGER.test(text) || !NOT_ME.test(text)) &&               // not a relative's burnout, a "trauma surgeon", "can't sleep, so excited"
+      !(/can'?t take (?:it|this) anymore/i.test(text) && PORTALW.test(text) && !DANGER.test(text));  // "I can't take this anymore, the portal keeps logging me out"
+    if ((crisis || hurt) && byId['wellbeing-support']) {
       worriedAt = turn; crisisAt = turn; pendingPass = null; last = { q: '', hits: [], alt: [], shown: last.shown };
-      if (hurt && !CRISIS.test(text) && byId['harassment-unsafe'])
+      if (hurt && !crisis && byId['harassment-unsafe'])
         return answer(byId['harassment-unsafe'], '', { care: true, lead: 'I’m really sorry this happened to you. If you are in danger now, call 112. You can talk to someone confidentially, and you don’t have to handle this alone.' });
       return answer(byId['wellbeing-support'], '', { care: true, lead: (DANGER.test(text)
         ? 'I’m really sorry you’re feeling this way. If you are in danger or thinking about ending your life, please call 113 or 0800-0113 (free, day and night), or 112 in an emergency. You don’t have to deal with this alone.'
@@ -510,26 +572,36 @@
     var PP = window.MSP_PASSPORT, pv = passportFrom(text);
     if (pendingPass && PP) {                                     // a typed answer to "Which passport do you have?" ("I'm Dutch", "non-EU")
       var pp = pendingPass; pendingPass = null;
+      if (!pv) { var bn = BARE_NAT.exec(text); if (bn) pv = bn[1] ? 'eu' : 'non'; }   // "Indian", "Dutch" typed as the answer
       if (pv) { PP.set(pv); return answer(byId[pp.id], pp.q, Object.assign({}, pp.o, { lead: '' })); }
       // the visitor typed something else instead: keep the thread (follow-ups refer to that question), and don't ask again
       lastItem = pp.id; anchor = pp.q || byId[pp.id].q; lastCtx = [pp.id].concat(byId[pp.id].next || []); passSkipped = true;
     }
     var small = chatter(text);
     if (small === 'hello') return bot('<p>Hello! Nice to meet you. What would you like to know about applying to MSP?</p>', suggestions());
+    if (small === 'thanks') lastAsk = 'else';
     if (small === 'thanks') return bot('<p>You’re welcome! Is there anything else I can help you with?</p>', [{ label: 'No, that’s all', act: 'bye' }].concat(suggestions().slice(0, 3)));
     if (small === 'bye') return act({ act: 'bye', typed: true });
     for (var k = 0; k < SMALL.length; k++) if (SMALL[k][0].test(text)) return SMALL[k][1]();
     // a bare reply to the previous answer, and "ok" / a thumbs-up (16 Nov 2026, red team: "no" got the interview-slots answer)
-    if (lastItem && /^(yes|yeah|yep|yes please|ja|jawohl|oui|sure)[.!\s]*$/i.test(text)) return act({ act: 'yes', typed: true });
-    if (lastItem && /^(no|nope|nee|nein|not really|not quite|niet echt|nicht wirklich)[.!\s]*$/i.test(text)) return act({ act: 'notquite', typed: true });
-    if (/^(ok(ay)?|k|alright|got it|cool|great|perfect|oké|prima|👍|🙂|😊|👌)[.!\s]*$/iu.test(text)) return bot('<p>Great! Is there anything else I can help you with?</p>', [{ label: 'No, that’s all', act: 'bye' }].concat(suggestions().slice(0, 3)));
-    if (lastItem && /\b(didn'?t|did not|doesn'?t|does not|not) help(ed|ful)?\b/i.test(text)) return act({ act: 'notquite', typed: true, unhelped: true });
-    if (OFFTOPIC.test(text) && !ADMWORD.test(text)) return bot('<p>I can only help with questions about applying to and studying at MSP, so I’ll leave that one. Is there anything about MSP I can help with?</p>', suggestions());
+    // round 9: a typed yes/no answers what Mosa just asked ("Anything else?" → no = goodbye; "Shall I open an e-mail?" → yes = mail)
+    var asked = lastAsk; lastAsk = '';
+    var YES = /^(yes|yeah|yep|yes please|ja|jawohl|oui|sure)[.!\s]*$/i, NO = /^(no|nope|nee|nein|not really|not quite|niet echt|nicht wirklich)[.!\s]*$/i;
+    if (asked === 'else' && NO.test(text)) return act({ act: 'bye', typed: true });
+    if (asked === 'else' && YES.test(text)) return act({ act: 'more', typed: true });
+    if (asked === 'mailq' && YES.test(text)) return act({ act: 'mail', typed: true, q: last.q });
+    if (asked === 'mailq' && NO.test(text)) return act({ act: 'nothanks', typed: true });
+    if (lastItem && YES.test(text)) return act({ act: 'yes', typed: true });
+    if (lastItem && NO.test(text)) return act({ act: 'notquite', typed: true });
+    if (/^(ok(ay)?|k|alright|got it|cool|great|perfect|oké|prima|👍|🙂|😊|👌)[.!\s]*$/iu.test(text) || /^(?:that|this|it) (?:was|is) (?:really |very |so |super )?(?:helpful|useful|great|perfect)\b/i.test(text)) { lastAsk = 'else'; return bot('<p>Great! Is there anything else I can help you with?</p>', [{ label: 'No, that’s all', act: 'bye' }].concat(suggestions().slice(0, 3))); }
+    if (lastItem && (/\b(?:that|this|it|you|the answer) (?:did not|didn'?t|doesn'?t|does not|isn'?t|wasn'?t) help/i.test(text) || (/\b(didn'?t|did not|not) help(ed|ful)?\b/i.test(text) && text.split(/\s+/).length <= 5))) return act({ act: 'notquite', typed: true, unhelped: true });
+    if (OFFTOPIC.test(text) && !ADMWORD.test(text) && !THANKS.test(text)) return bot('<p>I can only help with questions about applying to and studying at MSP, so I’ll leave that one. Is there anything about MSP I can help with?</p>', suggestions());
     var hello = '', m = GREET.exec(text);
     if (m && text.length - m[0].length > 5) { hello = 'Hello!'; text = text.slice(m[0].length); }    // "hi, when is the deadline?"
     m = TPRE.exec(text);
     if (m && text.length - m[0].length > 5) text = text.slice(m[0].length);                          // "thanks! and what about housing?"
-    if (PII.test(text)) {                                         // an e-mail address, phone or ID number typed in: say so, then answer without it
+    if (prelead) hello = hello ? hello + ' ' + prelead : prelead;
+    if (PII.test(piiClean(text))) {                               // an e-mail address, phone or ID number typed in: say so, then answer without it
       text = text.replace(new RegExp(PII.source, 'gi'), ' ').replace(/\s+/g, ' ').trim();
       var piiNote = 'Please don’t type personal details here: I can’t see your file, and nothing you type is stored.';
       if (text.replace(/[^a-zà-ɏ]/gi, '').length < 8) return bot('<p>' + piiNote + ' For your own application, write to the admissions office from the e-mail address you applied with.</p>', [{ label: 'Write to the admissions office', act: 'mail', q: '', main: true }, { label: 'Ask something else', act: 'more' }]);
@@ -554,7 +626,7 @@
       return answer(byId[kd.id], text, { lead: [hello, kl].filter(Boolean).join(' '), mail: kd.mail, mild: true });   // mild: no passport question first; both versions labelled
     }
     if (kd) kindLead = kd.lead;                                  // a problem report without a recognisable object: search, with this lead
-    var rm = ROLE.exec(text);
+    var rm = /\b(?:want|would like|plan|hope|am going|wish) to (?:apply|study|switch)\b|while i study|childcare/i.test(text) ? null : ROLE.exec(text);   // "I am a mother of two and want to study at MSP": an applicant
     if (rm) {                                                    // "I'm the mother of a prospective student" / "I'm a school counsellor"
       role = /counsel|teacher|decaan|mentor/i.test(rm[0]) ? 'counsellor' : 'parent';
       var restQ = text.replace(new RegExp(ROLE.source, 'gi'), ' ')
@@ -658,7 +730,9 @@
           // "the answer I gave you a moment ago covers that too" only when the visitor's own words also point at that answer
           // (fourth pass: a short pronoun question keeps the previous answer when that answer contains the visitor's own words:
           // "what if I miss it?" after lab safety, "how long does that take?" after the commute or disability answer)
-          var keep = back && nw <= 3 && mentions(lastItem, text);
+          // ... or when its only content is a generic word ("how long should it be?", "how much is it?", "is it hard?")
+          var generic = !text.toLowerCase().split(/[^a-zà-ɏ]+/).some(function (w) { return w.length >= 3 && !STOPW.test(w) && !/^(long|much|many|often|soon|late|early|hard|easy|difficult|big|old|expensive|cheap|cost|costs|take|takes|should|be|is|it|need|needed|necessary|required|enough|ok|okay|fine|possible|allowed|exactly|usually|normally|also|too)$/.test(w); });
+          var keep = back && nw <= 3 && (mentions(lastItem, text) || generic);
           if (use && same && !switched && !keep && !(back && nw <= 2) && !alone.slice(0, 3).some(function (h) { return h.item.id === lastItem; })) use = false;
           if (use && same && !switched && !keep && first && first.sure && !first.close && first.item.id !== lastItem) use = false;   // "and is there a scholarship for that?"
         }
@@ -683,11 +757,19 @@
         'and Education Support helps with the rest (<a href="mailto:msp-educationsupport@maastrichtuniversity.nl">msp-educationsupport@maastrichtuniversity.nl</a>).</p>',
         [{ label: 'Write to the admissions office', act: 'mail', q: text, main: true }, { label: 'Show me all topics', act: 'topics' }]);
     }
-    if (first.close && !first.sure) {                           // two or three answers almost equally likely and none strong: ask
+    // two or three answers almost equally likely and none strong: ask. Not when all are weak guesses (round 9: a weak top answer
+    // with "Or did you mean" buttons puts the right answer first more often, and on screen as often: reserve 77% both ways)
+    if (first.close && !first.sure && !first.weak) {
       var opts = hits.filter(function (h) { return h.score >= first.score * 0.85 && fits(h, text); }).slice(0, 3);   // 16 Nov: no current-student routes in the options for an applicant
       if (opts.length < 2) opts = hits.filter(function (h) { return h.score >= first.score * 0.85; }).slice(0, 3);
       if (opts.length >= 2) return bot('<p>' + (hello ? esc(hello) + ' ' : '') + (warm ? esc(warm) + ' ' : '') + 'I want to give you the right answer. Which of these do you mean?</p>',
         opts.map(function (h) { return { label: h.item.q, act: 'ask', id: h.item.id }; }).concat([{ label: 'Something else', act: 'else', q: text, skip: opts.map(function (h) { return h.item.id; }) }]));
+    }
+    // a weak top hit that matches only half the words, with a full match close behind: take the full match (round 9,
+    // "what about a research master in neuroscience?" got the thesis answer while masters-at-um matched every word)
+    if (first.weak && !glued) {
+      var full = hits.slice(1, 4).filter(function (h) { return h.cover >= 0.99 && h.score >= first.score * 0.8 && fits(h, text); })[0];
+      if (full) { full.weak = false; full.sure = false; hits = [full].concat(hits.filter(function (h) { return h !== full; })); first = full; }
     }
     var alts = hits.slice(1).filter(function (h) { return h.score >= first.score * 0.6 && fits(h, text) && (!last.shown[h.item.id] || (h.item.id === lastItem && !glued)); }).slice(0, 2).map(function (h) { return h.item; });   // not answers already shown, except the one just before when this turn was read on its own
     if (first.close && !alts.length && hits[1] && fits(hits[1], text)) alts = [hits[1].item];               // two answers almost equally likely: offer the other
@@ -699,7 +781,8 @@
       [{ label: 'Write to the student counsellors', act: 'counsellors', main: true }, { label: 'Ask something else', act: 'more' }]);
   }
   function act(ch) {
-    if (ch.act === 'passport') { me(ch.label); pendingPass = null; passSkipped = false; MSP_PASSPORT.set(ch.v); var it0 = byId[ch.pend.id]; return answer(it0, ch.pend.q, Object.assign({}, ch.pend.o, { lead: '' })); }
+    lastAsk = '';                                            // a click answers whatever was asked; the actions below set it again
+    if (ch.act === 'passport') { me(ch.label); pendingPass = null; passSkipped = false; MSP_PASSPORT.set(ch.v); var it0 = byId[ch.pend.id]; return answer(it0, ch.pend.q, Object.assign({}, ch.pend.o, { lead: '', fromPass: true })); }
     if (ch.act === 'passport-switch') { me(ch.label); MSP_PASSPORT.set(MSP_PASSPORT.get() === 'non' ? 'eu' : 'non'); return answer(byId[ch.id], ch.q, { chip: true, switched: true }); }
     if (ch.act === 'else') {                                   // "Something else": the next answers the search found, not a dead end
       me('Something else');
@@ -711,13 +794,13 @@
     }
     if (ch.act === 'ask') { var it = byId[ch.id]; me(it.q); last.q = it.q; return answer(it, it.q, { chip: true }); }
     if (ch.act === 'counsellors') { me(ch.label || 'Write to the student counsellors'); location.href = 'mailto:msp-counsellors@maastrichtuniversity.nl'; return bot('<p>I’ve opened an e-mail to MSP’s student counsellors in your own mail program. Write as much or as little as you like; they will get back to you.</p><p>If you are in danger, please call 112. If you have thoughts of ending your life, call 113 or 0800-0113 (free, day and night).</p>', [{ label: 'Ask something else', act: 'more' }]); }
-    if (ch.act === 'yes') { if (!ch.typed) me('Yes, thanks!'); return bot('<p>You’re welcome! Is there anything else I can help you with?</p>', [{ label: 'No, that’s all', act: 'bye' }].concat(suggestions().slice(0, 3))); }
-    if (ch.act === 'more') { me('Something else'); return bot('<p>Sure. Type your question, or pick one of these:</p>', suggestions()); }
-    if (ch.act === 'nothanks') { me('No, thanks'); return bot('<p>No problem. Is there anything else I can help you with?</p>', suggestions().slice(0, 3)); }
+    if (ch.act === 'yes') { if (!ch.typed) me('Yes, thanks!'); lastAsk = 'else'; return bot('<p>You’re welcome! Is there anything else I can help you with?</p>', [{ label: 'No, that’s all', act: 'bye' }].concat(suggestions().slice(0, 3))); }
+    if (ch.act === 'more') { if (!ch.typed) me('Something else'); return bot('<p>Sure. Type your question, or pick one of these:</p>', suggestions()); }
+    if (ch.act === 'nothanks') { if (!ch.typed) me('No, thanks'); lastAsk = 'else'; return bot('<p>No problem. Is there anything else I can help you with?</p>', suggestions().slice(0, 3)); }
     if (ch.act === 'bye') { if (!ch.typed) me('That’s all'); return bot(declined
       ? '<p>Thank you, and good luck with your next step. If anything comes up, the admissions office is at <a href="mailto:' + MAIL + '">' + MAIL + '</a>.</p>'
       : '<p>Good luck with your application! If anything comes up, I’m here, and so is the admissions office at <a href="mailto:' + MAIL + '">' + MAIL + '</a>. We hope to welcome you in Maastricht.</p>'); }
-    if (ch.act === 'mail') { me(ch.label); location.href = mailto(ch.q || last.q); return bot('<p>I’ve opened an e-mail for you in your own mail program. Add your name and, if you have one, your application number, and the admissions office will get back to you.</p><p>Anything else I can help with in the meantime?</p>', suggestions().slice(0, 3)); }
+    if (ch.act === 'mail') { if (!ch.typed) me(ch.label); lastAsk = 'else'; location.href = mailto(ch.q || last.q); return bot('<p>I’ve opened an e-mail for you in your own mail program. Add your name and, if you have one, your application number, and the admissions office will get back to you.</p><p>Anything else I can help with in the meantime?</p>', suggestions().slice(0, 3)); }
     if (ch.act === 'notquite') {
       if (!ch.typed) me('Not quite');
       if (turn - crisisAt <= 3) return careAgain();
@@ -725,7 +808,7 @@
       var pool = (last.alt && last.alt.length ? last.alt : last.hits);           // the visitor's own words, not glued to the previous question
       var others = pool.filter(function (h) { return !last.shown[h.item.id] && fits(h, last.q); }).slice(0, 3).map(function (h) { return { label: h.item.q, act: 'ask', id: h.item.id }; });
       if (others.length) return bot('<p>Sorry about that. Maybe one of these is closer to what you mean?</p>', others.concat([{ label: 'Write to the admissions office', act: 'mail', q: last.q }]));
-      return bot('<p>Sorry about that. The admissions office can answer this for you personally. Shall I open an e-mail with your question in it?</p>', [{ label: 'Yes, write the e-mail', act: 'mail', q: last.q, main: true }, { label: 'Ask something else', act: 'more' }]);
+      lastAsk = 'mailq'; return bot('<p>Sorry about that. The admissions office can answer this for you personally. Shall I open an e-mail with your question in it?</p>', [{ label: 'Yes, write the e-mail', act: 'mail', q: last.q, main: true }, { label: 'Ask something else', act: 'more' }]);
     }
     if (ch.act === 'topics') {
       me('Show me all topics');
@@ -739,7 +822,7 @@
   }
   function greet() {
     log.innerHTML = ''; last = { q: '', hits: [], alt: [], shown: {} }; lastItem = null; pendingPass = null; role = ''; turn = 0; worriedAt = -9;
-    anchor = ''; lastPassItem = null; passSkipped = false; crisisAt = -9; declined = false;
+    anchor = ''; lastPassItem = null; passSkipped = false; crisisAt = -9; declined = false; lastAsk = ''; shownLast = null;
     bot('<p>Hi! I’m Mosa, MSP’s admissions assistant. I can help you with questions about applying to the Maastricht Science Programme for September 2027: deadlines, requirements, the interview, enrolment, money, housing and more.</p><p>What would you like to know? You can type your question in your own words.</p>', suggestions());
   }
 
