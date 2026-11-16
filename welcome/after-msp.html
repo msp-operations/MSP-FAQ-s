@@ -3,22 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Welcome to MSP: where our graduates go</title>
 <meta name="robots" content="noindex">
+<title>After MSP: where our graduates go</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Welcome to MSP">
+<meta property="og:title" content="After MSP: where our graduates go">
+<meta property="og:description" content="Where graduates of the Maastricht Science Programme study and work after their bachelor: universities, fields and careers.">
+<meta property="og:url" content="https://msp-faqs.nl/welcome/after-msp.html">
+<meta property="og:image" content="https://msp-faqs.nl/welcome/assets/og/welcome.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Where graduates of the Maastricht Science Programme study and work after their bachelor.">
-<link rel="icon" href="assets/logos/maastricht-science-programme-logo.png">
+<link rel="icon" href="assets/logos/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-<!-- MSP applicant journey (Martijn's own project, started 10 Nov 2026). Published 10 Nov 2026 at msp-faqs.nl/welcome/after-msp.html (unlisted: noindex). Source: msp-applicant-journey. Page 2 of 2: after MSP.
-     UM house style 2026: Staalblauw + Zachtblauw, rounded photos, headings as a serif sentence with bold grotesque key words (the brandbook's featured header). Fonts are free stand-ins for the licensed brand fonts: Hanken Grotesk for GT Standard (as in the admissions journey), Newsreader for GT Super Text.
-     Every number comes from data.js / programmes.js (aggregates from the alumni database), except FIRST_STEP, which repeats considering-msp.html.
-     Photos: Maastricht riverside (as on msp-faqs.nl/admissions-journey) and a lab still from the FSE video (as on open-day poster P4; researchers seen from behind). -->
+<link rel="stylesheet" href="site.css">
 <style>
-:root { --navy: #000831; --soft: #BEDDF7; --paper: #FCFCFC; --ink: #000831; --ink2: #2b3152; --muted: #5d627d; --line: #d9dfea; }
+:root { --navy: #000831; --soft: #BEDDF7; --paper: #FCFAF6; --ink: #000831; --ink2: #2b3152; --muted: #5d627d; --line: #d9dfea; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--ink); font: 17.5px/1.55 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }   /* same width as every other page (13 Nov 2026; was 1180) */
 img { max-width: 100%; }
 h1, h2 { margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -.02em; line-height: 1.06; }
 h1 b, h2 b { font-family: 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; font-weight: 800; letter-spacing: -.035em; }
@@ -29,16 +35,6 @@ a { color: inherit; }
 .eyebrow { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
 .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 640px; margin-top: 20px; }
 
-/* header: both logos, large */
-header { padding: 26px 0; }
-header .wrap { display: flex; align-items: center; gap: 28px; }
-header .um { height: 34px; }
-header .rule { width: 1px; height: 44px; background: var(--line); }
-header .msp { height: 84px; }
-header nav { margin-left: auto; display: flex; gap: 28px; font-weight: 600; font-size: 16px; align-items: center; }
-header nav a { text-decoration: none; } header nav a:hover { text-decoration: underline; }
-.btn { display: inline-block; background: var(--navy); color: #fff; font-weight: 700; text-decoration: none; padding: 14px 26px; border-radius: 999px; }
-.btn.ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
 
 /* hero */
 .hero { display: grid; grid-template-columns: 11fr 9fr; gap: 56px; align-items: center; padding: 18px 0 0; }
@@ -99,13 +95,9 @@ section { padding-top: 110px; }
 .next a b { font-size: clamp(22px, 2.2vw, 30px); font-weight: 800; letter-spacing: -.02em; } .next a span { color: var(--ink2); } .next a i { font-style: normal; font-size: 26px; text-align: right; transition: transform .15s; }
 .next a:hover i { transform: translateX(6px); }
 
-footer { background: var(--navy); color: #fff; margin-top: 120px; padding: 70px 0 60px; }
-footer .logosrow { display: flex; align-items: center; gap: 44px; flex-wrap: wrap; }
-footer .msp { height: 150px; } footer .um { height: 52px; }
-footer p { color: #c7d3e6; font-size: 14px; margin-top: 36px; max-width: 760px; line-height: 1.6; }
 
 @media (max-width: 900px) {
-  .wrap { padding: 0 20px; } header .msp { height: 60px; } header .um { height: 24px; } header nav a:not(.btn) { display: none; }
+  .wrap { padding: 0 20px; }
   .hero { grid-template-columns: 1fr; gap: 30px; } .hero .photo { aspect-ratio: 16 / 10; order: -1; }
   .facts { grid-template-columns: 1fr 1fr; row-gap: 26px; } .facts > div:nth-child(3) { border-left: 0; padding-left: 0; }
   section { padding-top: 72px; } .tier, .dir { grid-template-columns: 1fr; gap: 14px; }
@@ -114,16 +106,15 @@ footer p { color: #c7d3e6; font-size: 14px; margin-top: 36px; max-width: 760px; 
   .band { margin-top: 72px; } .band .photo { aspect-ratio: 4 / 3; } .band .card { position: static; border-radius: 0 0 32px 32px; max-width: none; margin-top: -32px; padding-top: 56px; }
   .work { margin-top: 72px; padding: 64px 0; } .work .cols { grid-template-columns: 1fr; gap: 36px; } .bars .row { grid-template-columns: 150px 1fr 40px; font-size: 15px; }
   .next a { grid-template-columns: 1fr 30px; } .next a span { grid-column: 1; }
-  footer .msp { height: 104px; } footer .um { height: 36px; }
 }
-header a.home { display: flex; align-items: center; gap: inherit; text-decoration: none; }
 </style>
 </head>
 <body>
 
-<header><div class="wrap">
-  <a class="home" href="index.html" title="Back to the start"><img class="um" src="assets/logos/um-2026-dark.svg" alt="Maastricht University"><span class="rule"></span><img class="msp" src="assets/logos/msp-seal-navy.png" alt="Maastricht Science Programme: back to the start"></a>
-  <nav><a href="#universities">Universities</a><a href="#directions">Directions</a><a href="#careers">Careers</a><a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener">Living in Maastricht</a><a class="btn" href="index.html">How to apply</a></nav>
+<header class="site-head"><div class="wrap">
+  <a class="home" href="index.html" title="Welcome to MSP: back to the start"><img class="um" src="assets/logos/um-2026-dark.svg" alt="Maastricht University"><span class="rule"></span><img class="msp" src="assets/logos/msp-seal-navy-sm.webp" width="190" height="192" alt="Maastricht Science Programme: back to the start"></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><i aria-hidden="true"></i><span>Menu</span></button>
+  <nav id="site-nav" aria-label="Welcome to MSP"><a href="courses.html">The courses</a><a href="after-msp.html" aria-current="page">After MSP</a><a href="youre-in.html">After your offer</a><a href="index.html#questions">Questions</a><a class="nav-cta" href="index.html">How to apply</a></nav>
 </div></header>
 
 <div class="wrap">
@@ -134,7 +125,7 @@ header a.home { display: flex; align-items: center; gap: inherit; text-decoratio
       <p class="lede" id="lede"></p>
       <div class="cta"><a class="btn" href="#directions">See where your interest leads</a><a class="btn ghost" href="#universities">The universities</a></div>
     </div>
-    <div class="photo"><img src="assets/images/maastricht-riverside.jpg" alt="Houses along the river Maas in Maastricht at sunset"></div>
+    <div class="photo"><img src="assets/images/place/hero-graduation.webp" alt="Graduates throwing their caps in the air at a graduation ceremony" width="960" height="1032"></div>
   </div>
   <div class="facts" id="facts"></div>
 </div>
@@ -147,7 +138,7 @@ header a.home { display: flex; align-items: center; gap: inherit; text-decoratio
 </div></section>
 
 <div class="wrap"><div class="band">
-  <div class="photo"><img src="assets/images/fse-lab.jpg" alt="Two researchers at work in a chemistry lab at the Faculty of Science and Engineering" loading="lazy"></div>
+  <div class="photo"><img src="assets/images/maastricht-riverside.jpg" alt="Houses along the river Maas in Maastricht at sunset" loading="lazy"></div>
   <div class="card"><h2>Three years in Maastricht. <b>Then anywhere.</b></h2><p id="bandtext"></p></div>
 </div></div>
 
@@ -164,27 +155,40 @@ header a.home { display: flex; align-items: center; gap: inherit; text-decoratio
   <div class="cols"><div id="phd"></div><div><div class="bars" id="sectors"></div><p class="names" id="names"></p></div></div>
 </div></div>
 
-<section><div class="wrap">
+<section class="go-next" aria-labelledby="go-next-h"><div class="wrap">
   <p class="eyebrow">Your next step</p>
-  <h2>Ready to <b>find out more?</b></h2>
-  <div class="next">
-    <a href="index.html"><b>How applying works</b><span>Every step, from Studielink to your first day.</span><i>→</i></a>
-    <a href="https://www.mymaastricht.nl/"><b>Living in Maastricht</b><span>Housing, transport and life in the city.</span><i>→</i></a>
-    <a href="https://msp-alumni.nl/stories.html"><b>Graduates’ stories</b><span>What they did next, in their own words.</span><i>→</i></a>
-    <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme"><b>The programme</b><span>Courses, costs and requirements at Maastricht University.</span><i>→</i></a>
-  </div>
+  <h2 id="go-next-h">Ready to <b>find out more?</b></h2>
+  <ul class="go-list">
+    <li><a href="courses.html"><b>The courses</b><span>Every course you can take, in eight worlds of science.</span><i aria-hidden="true">→</i></a></li>
+    <li><a href="index.html"><b>How to apply</b><span>Every step, from Studielink to your first day.</span><i aria-hidden="true">→</i></a></li>
+    <li><a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener"><b>Living in Maastricht</b><span>Housing, transport and life in the city.</span><i aria-hidden="true">↗</i></a></li>
+    <li><a href="https://msp-alumni.nl/stories.html" target="_blank" rel="noopener"><b>Graduates’ stories</b><span>What they did next, in their own words.</span><i aria-hidden="true">↗</i></a></li>
+    <li><a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme" target="_blank" rel="noopener"><b>The programme at UM</b><span>Costs and requirements on the official Maastricht University page.</span><i aria-hidden="true">↗</i></a></li>
+  </ul>
 </div></section>
 
-<footer><div class="wrap">
-  <div class="logosrow"><img class="msp" src="assets/logos/msp-seal-light.png" alt="Maastricht Science Programme"><img class="um" src="assets/logos/um-2026-white.svg" alt="Maastricht University"></div>
-  <p id="foot"></p>
+<footer class="site-foot"><div class="wrap">
+  <div class="logos"><img class="msp" src="assets/logos/msp-seal-light-sm.webp" width="254" height="256" loading="lazy" alt="Maastricht Science Programme"><img class="um" src="assets/logos/um-2026-white.svg" alt="Maastricht University"></div>
+  <div class="cols">
+    <div><b>Explore MSP</b><nav aria-label="Explore MSP"><a href="courses.html">The courses</a><a href="after-msp.html">After MSP</a><a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener">Living in Maastricht</a></nav></div>
+    <div><b>Applying</b><nav aria-label="Applying"><a href="index.html">How to apply</a><a href="youre-in.html">After your offer</a><a href="index.html#questions">Questions</a></nav></div>
+    <div class="contact"><b>Questions about your application?</b><p><a href="mailto:msp-admissions@maastrichtuniversity.nl">msp-admissions@maastrichtuniversity.nl</a> · <a href="https://www.instagram.com/msp_admissions/">@msp_admissions</a><br>Paul-Henri Spaaklaan 1, 6229 EN Maastricht<br><a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements">Admission requirements and deadlines</a> · <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum">The programme and curriculum</a></p></div>
+  </div>
+  <p class="note" id="foot"></p>
+  <p class="note">Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University. In case of differences, the official admission requirements page applies.</p>
 </div></footer>
+<script src="site.js"></script>
 
 <script src="data.js"></script>
 <script src="programmes.js"></script>
 <script>
 const D = MSP_DATA, C = D.consideringMSP, T = C.universityTiers, f0 = n => Number(n).toLocaleString('en-GB');
-const FIRST_STEP = { masters: 1019, mastersPct: 73 };          // as on considering-msp.html ("the year after graduation")
+// MSP's settled figures (Martijn, 28 Oct 2026; the same on every MSP poster and open-day piece): master's rate 85% =
+// 615 of the 718 graduates of 2014-2022, the classes that have had time to start one (85.7%); graduates live in 60
+// countries. Was 73% here (1,019 of 1,397 "the year after graduation", copied from considering-msp.html): that counts the
+// classes of 2023-2026 too, many without a recorded next step yet, so it understates. data.js (July 2026) still says 59
+// countries: drop SETTLED.countries once data.js is refreshed (January 2027).
+const SETTLED = { mastersPct: 85, masters: 615, of: 718, classes: '2014 to 2022', countries: 60 };
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const logoFile = n => (typeof UNI_LOGO_FILES !== 'undefined' && UNI_LOGO_FILES[n]) || null;
 const tile = (name, sub, file) => { const f = file || logoFile(name);
@@ -195,15 +199,15 @@ const tiers = Object.values(T).filter(t => t && t.universities), topTier = tiers
 const orList = a => a.join(', ').replace(/, ([^,]*)$/, ' or $1');
 document.getElementById('lede').textContent = `${f0(C.heroStats.alumni)} graduates since 2014. This is where they went next: the universities, the fields and the careers.`;
 document.getElementById('facts').innerHTML = [
-  [FIRST_STEP.mastersPct + '%', 'go straight on to a master’s degree'],
-  [f0(C.heroStats.universities), `universities in ${C.heroStats.countries} countries admitted our graduates`],
+  [SETTLED.mastersPct + '%', `went on to a master’s degree (graduates of ${SETTLED.classes})`],
+  [f0(C.heroStats.universities), 'universities around the world admitted our graduates'],   // heroStats.countries = where graduates live, not where these universities are
   [f0(topTier.count), 'studied at ' + orList(topTier.universities.slice(0, 4).map(u => u.name))],
   ['1 in 10', `is doing a PhD: ${f0(C.phdPipeline.phdCandidates)} graduates so far`],
 ].map(s => `<div><div class="n">${s[0]}</div><div class="l">${s[1]}</div></div>`).join('');
 const TIER_NAMES = ['World-leading universities', 'Leading international universities', 'Top Dutch universities'];   // no ranking claim: the tier labels in data.js name no source
 document.getElementById('tiers').innerHTML = tiers.map((t, i) => `<div class="tier"><div><h3>${esc(TIER_NAMES[i] || t.label)}</h3><div class="cnt">${f0(t.count)} graduates</div></div>
   <div class="logos">${t.universities.map(u => tile(u.name, `${u.count} ${u.count === 1 ? 'graduate' : 'graduates'}`, u.logo)).join('')}</div></div>`).join('');
-document.getElementById('bandtext').textContent = `Our graduates now live in ${C.heroStats.countries} countries and come from ${C.heroStats.nationalities} nationalities.`;
+document.getElementById('bandtext').textContent = `Our graduates now live in ${SETTLED.countries} countries and come from ${C.heroStats.nationalities} nationalities.`;
 
 /* directions: universities where MSP graduates studied this direction (programmes.js gives the share per university) */
 const count = Object.fromEntries(D.topUniversities.map(u => [u.name, u.count]));
@@ -228,7 +232,12 @@ const sec = C.careerSectors.slice(0, 8), mx = Math.max(...sec.map(s => s.count))
 document.getElementById('sectors').innerHTML = sec.map(s => `<div class="row"><span>${esc(s.name)}</span><i style="width:${Math.max(3, 100 * s.count / mx)}%"></i><b>${f0(s.count)}</b></div>`).join('');
 const emp = Object.values(C.notableEmployers || {}).flat().map(e => e.name);
 document.getElementById('names').innerHTML = emp.length ? `Graduates work at <b>${emp.slice(0, 9).map(esc).join('</b>, <b>')}</b> and many more.` : '';
-document.getElementById('foot').textContent = `Figures from the MSP alumni database (${f0(C.heroStats.alumni)} graduates, last updated ${D.lastUpdated}). Counts are people who studied or work there, not offers received. University logos belong to their owners.`;
+document.getElementById('foot').textContent = `Figures from the MSP alumni database (${f0(C.heroStats.alumni)} graduates, last updated ${D.lastUpdated}). The master’s rate counts the graduates of ${SETTLED.classes} (${SETTLED.masters} of ${SETTLED.of}), who have all had time to start one. Counts are people who studied or work there, not offers received. University logos belong to their owners.`;
 </script>
+<script src="assets/vendor/minisearch.min.js"></script>
+<script src="questions.js"></script>
+<script src="ask.js"></script>
+<script src="mosa.js"></script>
+<script src="chat.js"></script>
 </body>
 </html>

@@ -1,0 +1,148 @@
+/* Welcome to MSP: the shared look of every page (13 Nov 2026).
+   One header (menu in the order of the applicant's journey, "How to apply" as the button, a Menu button on phones),
+   one footer, the buttons, and the "Where to next" block that ends every page. Pages keep only their own sections in
+   their <style>. Load this before the page's own <style>. Selectors use the .site-* classes so they win over any
+   older header/footer rules. */
+:root { --navy: #000831; --soft: #BEDDF7; --paper: #FCFAF6; --ink: #000831; --ink2: #2b3152; --muted: #5d627d; --line: #d9dfea;
+        --tint: #eef4fb; --cream: #F5EDDD; }
+
+/* moving between pages: the header stays where it is, the page fades over (Chrome, Edge, Safari; others just load) */
+@view-transition { navigation: auto; }
+.site-head { view-transition-name: site-head; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .26s; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+
+/* buttons */
+.btn { display: inline-block; background: var(--navy); color: #fff; text-decoration: none; padding: 13px 24px; border-radius: 999px; border: 0;
+       font: inherit; font-weight: 700; line-height: 1.3; cursor: pointer; transition: background .2s, box-shadow .2s; }
+.btn:hover { background: #17205a; }
+.btn.ghost { background: transparent; color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy); }
+.btn.ghost:hover { background: var(--tint); }
+.btn:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--soft); outline-offset: 2px; }
+
+/* the passport switch (index.html, youre-in.html) stays one pill on phones */
+@media (max-width: 820px) {
+  body .seg { display: flex; flex-wrap: nowrap; max-width: 420px; }
+  body .seg button { flex: 1; padding: 9px 10px; font-size: 16px; white-space: nowrap; }
+}
+
+/* "Your picks so far" (site.js fills [data-mypicks] from the course page's stars) */
+.mypicks { margin-top: 14px; padding: 16px 20px; background: #fff; border-radius: 18px; box-shadow: inset 0 0 0 1px var(--line); }
+.mypicks .mp-h { font-weight: 800; margin: 0; } .mypicks .mp-h span { font-weight: 500; color: var(--muted); }
+.mypicks ul { margin: 8px 0 0; padding-left: 20px; } .mypicks li { margin-bottom: 4px; } .mypicks li span { color: var(--muted); font-size: 14px; }
+.mypicks .mp-f { margin: 8px 0 0; font-size: 15.5px; } .mypicks a { font-weight: 700; }
+
+/* a quiet line of links under a hero's buttons ("Still deciding? ...") */
+.still { margin-top: 18px; font-size: 16px; color: var(--ink2); }
+.still a { font-weight: 700; color: var(--ink); text-underline-offset: 4px; }
+.still span { margin: 0 6px; color: var(--muted); }
+
+/* ---------- header ---------- */
+.site-head { position: relative; z-index: 30; padding: 22px 0; background: var(--paper); }
+.site-head .wrap { display: flex; align-items: center; gap: 22px; }
+.site-head a.home { display: flex; align-items: center; gap: 22px; text-decoration: none; flex: none; }
+.site-head .um { height: 30px; display: block; }
+.site-head .rule { width: 1px; height: 42px; background: var(--line); }
+.site-head .msp { height: 72px; display: block; }
+.site-head nav { margin-left: auto; display: flex; align-items: center; gap: 24px; font-weight: 600; font-size: 16px; }
+.site-head nav a { color: var(--ink); text-decoration: none; white-space: nowrap; }
+.site-head nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+.site-head nav a[aria-current=page] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.site-head nav a.nav-cta { background: var(--navy); color: #fff; padding: 11px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+.site-head nav a.nav-cta:hover { background: #17205a; }
+.site-head nav a.nav-cta[aria-current=page] { box-shadow: 0 0 0 3px var(--soft); }
+.site-head .menu-btn { display: none; margin-left: auto; align-items: center; gap: 10px; background: transparent; color: var(--navy); border: 0;
+                       box-shadow: inset 0 0 0 2px var(--navy); border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 700; cursor: pointer; }
+.site-head .menu-btn i { display: block; width: 16px; height: 2px; background: currentColor; position: relative; transition: background .2s; }
+.site-head .menu-btn i::before, .site-head .menu-btn i::after { content: ''; position: absolute; left: 0; width: 16px; height: 2px; background: currentColor; transition: transform .25s; }
+.site-head .menu-btn i::before { top: -5px; } .site-head .menu-btn i::after { top: 5px; }
+.site-head.open .menu-btn i { background: transparent; }
+.site-head.open .menu-btn i::before { transform: translateY(5px) rotate(45deg); } .site-head.open .menu-btn i::after { transform: translateY(-5px) rotate(-45deg); }
+@media (max-width: 1100px) {
+  .site-head .wrap, .site-head a.home { gap: 16px; }
+  .site-head nav { gap: 18px; font-size: 15px; }
+  .site-head .msp { height: 62px; } .site-head .um { height: 26px; }
+}
+/* phones and small tablets: a Menu button opens the same links as a panel under the header */
+@media (max-width: 900px) {
+  .site-head { padding: 14px 0; }
+  .site-head .msp { height: 54px; } .site-head .um { height: 22px; } .site-head .rule { height: 34px; }
+  .site-head .menu-btn { display: inline-flex; }
+  .site-head nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0;
+                   padding: 4px 20px 24px; background: var(--paper); box-shadow: 0 24px 40px rgba(0,8,49,.14); font-size: 19px; }
+  .site-head.open nav { display: flex; }
+  .site-head nav a { padding: 15px 2px; border-bottom: 1px solid var(--line); }
+  .site-head nav a.nav-cta { margin-top: 18px; text-align: center; padding: 15px 20px; border: 0; }
+}
+
+/* ---------- "Where to next": the end of every page ---------- */
+.go-next { padding-top: 96px; }
+.go-next .eyebrow { font-size: 15px; font-weight: 700; margin: 0 0 14px; }
+.go-list { list-style: none; margin: 28px 0 0; padding: 0; border-top: 2px solid var(--navy); }
+.go-list a, .go-list button { display: grid; grid-template-columns: minmax(220px, 340px) 1fr 36px; gap: 22px; align-items: baseline; width: 100%;
+                              padding: 22px 0; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left;
+                              color: inherit; text-decoration: none; font: inherit; cursor: pointer; }
+.go-list b { font-size: clamp(21px, 2.1vw, 27px); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+.go-list span { color: var(--ink2); }
+.go-list i { font-style: normal; font-size: 24px; text-align: right; transition: transform .25s; }
+.go-list a:hover b, .go-list button:hover b { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.go-list a:hover i, .go-list button:hover i { transform: translateX(6px); }
+@media (max-width: 820px) {
+  .go-next { padding-top: 70px; }
+  .go-list a, .go-list button { grid-template-columns: 1fr 28px; gap: 4px 14px; padding: 18px 0; }
+  .go-list span { grid-column: 1; grid-row: 2; font-size: 16px; }
+  .go-list i { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+}
+@media (prefers-reduced-motion: reduce) { .go-list i { transition: none; } }
+
+/* ---------- photo rows: real places, so the site feels like somewhere (16 Nov 2026; photos: tools/make_photos.py) ---------- */
+.place { padding-top: 90px; }
+.place .eyebrow { font-size: 15px; font-weight: 700; margin: 0 0 14px; }
+.place-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+.place figure { margin: 0; }
+.place img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 22px; background: var(--tint); }
+.place figcaption { margin-top: 10px; font-size: 15.5px; line-height: 1.4; color: var(--ink2); }
+@media (max-width: 820px) {
+  .place { padding-top: 64px; }
+  .place-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .place figure:first-child { grid-column: 1 / 3; }
+  .place figcaption { font-size: 14.5px; }
+}
+
+/* a photo row on a soft cream band, edge to edge (index.html) */
+.place.band { background: #F7F1E4; padding: 84px 0 88px; margin-top: 0; }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.linkbtn[hidden] { display: none; }
+
+/* ---------- footer ---------- */
+.site-foot { background: var(--navy); color: #fff; margin-top: 100px; padding: 60px 0 54px; }
+.site-foot .logos { display: flex; gap: 38px; align-items: center; flex-wrap: wrap; }
+.site-foot .logos .msp { height: 112px; } .site-foot .logos .um { height: 40px; }
+.site-foot .cols { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 28px 40px; margin-top: 40px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.16); }
+.site-foot .cols b { display: block; font-size: 15px; color: var(--soft); margin-bottom: 8px; }
+.site-foot .cols a { color: #fff; }
+.site-foot .cols nav a { display: block; padding: 4px 0; font-weight: 600; text-decoration: none; }
+.site-foot .cols nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.site-foot .cols p { color: #c7d3e6; font-size: 15.5px; line-height: 1.65; margin: 0; }
+.site-foot .cols p a { font-weight: 600; }
+.site-foot .note { color: #aeb9cf; font-size: 14px; line-height: 1.65; margin-top: 30px; max-width: 840px; }
+.site-foot .note:empty { display: none; }
+.site-foot .note + .note { margin-top: 8px; }
+@media (max-width: 820px) {
+  .site-foot { padding: 46px 0 96px; }
+  .site-foot .logos .msp { height: 84px; } .site-foot .logos .um { height: 30px; }
+  .site-foot .cols { grid-template-columns: 1fr 1fr; } .site-foot .cols .contact { grid-column: 1 / 3; }
+}
+
+/* the logos keep their proportions (their width/height attributes only reserve space) */
+.site-head .msp, .site-head .um, .site-foot .logos .msp, .site-foot .logos .um { width: auto; }
+
+/* back to top (site.js adds the button; it sits above Mosa's chat button and hides while a course world or panel is open) */
+.to-top { position: fixed; right: 22px; bottom: 104px; z-index: 49; width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+          background: var(--paper); color: var(--navy); box-shadow: inset 0 0 0 2px var(--navy), 0 6px 20px rgba(0,8,49,.16);
+          font: 800 20px/1 'Hanken Grotesk', Arial, sans-serif; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .25s, transform .25s, visibility .25s; }
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--navy); color: #fff; }
+body.locked .to-top { display: none; }
+@media (max-width: 600px) { .to-top { right: 22px; bottom: 92px; width: 44px; height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }

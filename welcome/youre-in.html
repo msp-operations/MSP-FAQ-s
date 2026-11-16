@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>After your offer: what's left before you start</title>
+<meta name="description" content="Got an offer from the Maastricht Science Programme? Every task between your offer and your first day, with its date.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Welcome to MSP">
+<meta property="og:title" content="You&#x27;re in: what&#x27;s left before you start at MSP">
+<meta property="og:description" content="Got an offer from the Maastricht Science Programme? Every task between your offer and your first day, with its date.">
+<meta property="og:url" content="https://msp-faqs.nl/welcome/youre-in.html">
+<meta property="og:image" content="https://msp-faqs.nl/welcome/assets/og/welcome.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logos/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+:root { --navy: #000831; --soft: #BEDDF7; --paper: #FCFAF6; --ink: #000831; --ink2: #2b3152; --muted: #5d627d; --line: #d9dfea; --tint: #eef4fb; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17.5px/1.55 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+h1, h2 { margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -.02em; line-height: 1.06; }
+h1 b, h2 b { font-family: 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; font-weight: 800; letter-spacing: -.035em; }
+h1 { font-size: clamp(40px, 5.4vw, 70px); } h2 { font-size: clamp(28px, 3.2vw, 42px); }
+h3 { margin: 0; font-size: clamp(21px, 2.1vw, 26px); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+p { margin: 0; } a { color: inherit; }
+.eyebrow { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 640px; margin-top: 18px; }
+
+/* hero: text left, a warm photo right (16 Nov 2026; same frame as index/after-msp); on phones the photo goes on top */
+.hero { padding-top: 18px; display: grid; grid-template-columns: 11fr 8fr; gap: 52px; align-items: start; }
+.hero .photo { border-radius: 32px; overflow: hidden; aspect-ratio: 4 / 4.3; margin-top: 36px; }
+.hero .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 820px) { .hero { grid-template-columns: 1fr; gap: 24px; } .hero .photo { aspect-ratio: 16 / 10; order: -1; margin-top: 0; border-radius: 24px; } }
+.you { margin-top: 30px; border-top: 2px solid var(--navy); padding-top: 18px; }
+.you .ask { font-weight: 700; }
+.seg { display: inline-flex; margin-top: 10px; border-radius: 999px; box-shadow: inset 0 0 0 2px var(--navy); padding: 4px; gap: 4px; flex-wrap: wrap; }
+.seg button { font: inherit; font-weight: 700; border: 0; background: transparent; color: var(--navy); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+.seg button[aria-pressed=true] { background: var(--navy); color: #fff; }
+.next { margin-top: 22px; }
+.next .k { font-size: 15px; font-weight: 700; color: var(--muted); }
+.next .d { font-weight: 800; font-size: clamp(30px, 3.4vw, 44px); letter-spacing: -.03em; line-height: 1.05; margin-top: 4px; }
+.next .t { color: var(--ink2); margin-top: 6px; max-width: 640px; }
+.progress { margin-top: 18px; font-size: 16px; color: var(--ink2); }
+.progress .bar { height: 6px; background: var(--line); border-radius: 3px; margin-top: 8px; max-width: 420px; overflow: hidden; }
+.progress .bar i { display: block; height: 100%; width: 0; background: var(--navy); transition: width .3s; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+
+section { padding-top: 84px; }
+.intro { max-width: 660px; } .intro p { margin-top: 12px; color: var(--ink2); }
+.when { margin-top: 44px; }
+.when > .m { display: flex; align-items: baseline; gap: 16px; border-top: 2px solid var(--navy); padding-top: 12px; }
+.when > .m b { font-size: 15px; font-weight: 800; } .when > .m span { font-size: 15px; color: var(--muted); }
+.task { display: grid; grid-template-columns: 44px 1fr auto; gap: 6px 18px; padding: 22px 0 20px; border-bottom: 1px solid var(--line); align-items: start; }
+.task .tick { margin-top: 3px; }
+.task .tick input { appearance: none; -webkit-appearance: none; width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--navy); cursor: pointer; display: grid; place-items: center; margin: 0; background: #fff; }
+.task .tick input:checked { background: var(--navy); }
+.task .tick input:checked::after { content: ''; width: 9px; height: 15px; border: solid #fff; border-width: 0 3px 3px 0; transform: translateY(-2px) rotate(45deg); }
+.task.is-done h3 { text-decoration: line-through; text-decoration-thickness: 2px; color: var(--muted); }
+.task .by { font-weight: 800; white-space: nowrap; text-align: right; font-size: 17px; }
+.task .by small { display: block; font-weight: 500; color: var(--muted); font-size: 14px; }
+.task .body { grid-column: 2 / 4; }
+.task .lead { color: var(--ink2); margin-top: 6px; max-width: 680px; }
+details { margin-top: 12px; }
+details summary { cursor: pointer; font-weight: 700; list-style: none; display: inline-flex; gap: 8px; align-items: center; text-decoration: underline; text-underline-offset: 4px; font-size: 16.5px; }
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: '+'; font-weight: 800; }
+details[open] summary::after { content: '−'; }
+details .more { margin-top: 12px; padding: 20px 24px; background: var(--tint); border-radius: 22px; font-size: 16.5px; max-width: 760px; }
+details .more p + p, details .more p + ul, details .more ul + p { margin-top: 10px; }
+details .more ul { margin: 8px 0 0; padding-left: 20px; } details .more li { margin-bottom: 6px; }
+.only-non { display: none; } body.non .only-non { display: revert; } body.non .only-eu { display: none; }
+.task.only-non { display: none; } body.non .task.only-non { display: grid; }
+
+.talk { margin-top: 44px; background: var(--soft); border-radius: 32px; padding: 40px 44px 42px; display: grid; grid-template-columns: 1fr auto; gap: 26px; align-items: end; }
+.talk p { margin-top: 12px; font-size: 19px; max-width: 560px; }
+.talk .links { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+table.who { width: 100%; border-collapse: collapse; margin-top: 26px; border-top: 2px solid var(--navy); font-size: 17px; }
+table.who td { padding: 14px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.who td:first-child { width: 42%; padding-right: 20px; }
+table.who td:last-child { font-weight: 700; }
+table.who small { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+.note { font-size: 15px; color: var(--muted); margin-top: 18px; max-width: 760px; }
+@media (max-width: 820px) {
+  .wrap { padding: 0 20px; }
+  .seg { display: flex; flex-wrap: nowrap; max-width: 420px; } .seg button { flex: 1; padding: 9px 10px; font-size: 16px; white-space: nowrap; }
+  .task { grid-template-columns: 40px 1fr; } .task .by { grid-column: 2; text-align: left; } .task .body { grid-column: 1 / 3; }
+  .talk { grid-template-columns: 1fr; padding: 30px 26px; border-radius: 24px; }
+  table.who td { display: block; width: auto !important; padding: 4px 0; border: 0; }
+  table.who tr:not(.only-non), body.non table.who tr.only-non { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  section { padding-top: 60px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .progress .bar i { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="site-head"><div class="wrap">
+  <a class="home" href="index.html" title="Welcome to MSP: back to the start"><img class="um" src="assets/logos/um-2026-dark.svg" alt="Maastricht University"><span class="rule"></span><img class="msp" src="assets/logos/msp-seal-navy-sm.webp" width="190" height="192" alt="Maastricht Science Programme: back to the start"></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><i aria-hidden="true"></i><span>Menu</span></button>
+  <nav id="site-nav" aria-label="Welcome to MSP"><a href="courses.html">The courses</a><a href="after-msp.html">After MSP</a><a href="youre-in.html" aria-current="page">After your offer</a><a href="index.html#questions">Questions</a><a class="nav-cta" href="index.html">How to apply</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+    <div class="eyebrow">For everyone with an offer for September 2027</div>
+    <h1>You're in. <b>Here's what's left before you start.</b></h1>
+    <p class="lede">Congratulations on your place at MSP. Between now and the start there are a few things to arrange, and most of them have a date. They're all on this page, in the order they come. We'll also remind you of each one by e-mail, and you can reply to any of our mails if something is unclear or not working.</p>
+
+    <div class="you">
+      <div class="ask">Which passport do you have?</div>
+      <div class="seg" role="group" aria-label="Passport">
+        <button type="button" data-n="eu" aria-pressed="true">EU, EEA or Swiss</button>
+        <button type="button" data-n="non" aria-pressed="false">Another passport</button>
+      </div>
+      <div class="next" aria-live="polite">
+        <div class="k">Your next date</div>
+        <div class="d" id="next-d"></div>
+        <p class="t" id="next-t"></p>
+      </div>
+      <div class="progress"><span id="prog-t">0 of 0 done</span><div class="bar"><i id="prog-b"></i></div></div>
+      <div class="cta">
+        <a class="btn" href="#tasks">See all your tasks</a>
+        <button class="btn ghost" type="button" id="ics">Add the dates to your calendar</button>
+      </div>
+    </div>
+    </div>
+    <div class="photo"><img src="assets/images/place/hero-common-room.webp" alt="Students relaxing and talking on colourful sofas in a common room" width="960" height="1032"></div>
+  </div>
+
+  <section id="tasks">
+    <div class="intro">
+      <h2>Your tasks, <b>in the order they come</b></h2>
+      <p>Tick what you have done; the ticks stay in this browser only, nobody else sees them. The official status of every task is in your MyApplication portal.</p>
+    </div>
+
+    <div class="when">
+      <div class="m"><b>Now, in spring</b><span>as soon as you have your offer</span></div>
+
+      <div class="task" data-id="accept">
+        <div class="tick"><input type="checkbox" aria-label="Done: accept your offer"></div>
+        <h3>Accept your offer</h3>
+        <div class="by">Within the time<small>given in your offer mail</small></div>
+        <div class="body">
+          <p class="lead">Reply to the e-mail with your offer and say that you accept your place, with your name and student number. You then receive MSP's conditional approval letter, and your enrolment tasks open in the portal.</p>
+          <details><summary>Is accepting binding?</summary><div class="more">
+            <p>No. Accepting reserves your place, and you can hold offers from other programmes too. Your enrolment only becomes final when you have completed the enrolment tasks and UM has enrolled you. If you would rather wait before accepting, write to us with the date by which you can decide.</p>
+          </div></details>
+        </div>
+      </div>
+
+      <div class="task" data-id="umaccount">
+        <div class="tick"><input type="checkbox" aria-label="Done: set up your UM e-mail"></div>
+        <h3>Set up your UM e-mail and authenticator app</h3>
+        <div class="by">Before summer<small>information comes here</small></div>
+        <div class="body">
+          <p class="lead">The dates and the sign-up form for the Introduction Days arrive on your UM e-mail address in early summer, so set it up now and check it now and then. You'll need the authenticator app on your phone for Canvas and the other systems in your first days.</p>
+        </div>
+      </div>
+
+      <div class="task" data-id="housing">
+        <div class="tick"><input type="checkbox" aria-label="Done: housing"></div>
+        <h3>Start looking for a room</h3>
+        <div class="by">Now<small>rooms go fast in summer</small></div>
+        <div class="body">
+          <p class="lead">UM does not offer housing itself but works with partners: Maastricht Housing (one-off €35 registration) and Hospi Housing (a room with a local host). Please don't come to Maastricht without a place to stay.</p>
+          <details><summary>Avoiding scams, and where to stay in the meantime</summary><div class="more">
+            <p>Never pay a deposit or rent, and never sign anything, before the room has been viewed; if you can't go yourself, a live online viewing service can do it for you. Huurteam Zuid-Limburg checks your rental contract for free before you sign.</p>
+            <p>For a safe start you can book a short-stay room at the UM Guesthouse through Maastricht Housing. Many students also live in nearby towns with direct train or bus connections. <a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener">mymaastricht.nl</a> has more tips.</p>
+          </div></details>
+        </div>
+      </div>
+    </div>
+
+    <div class="when only-non">
+      <div class="m"><b>April to June</b><span>if you need a visa</span></div>
+
+      <div class="task only-non" data-id="visa">
+        <div class="tick"><input type="checkbox" aria-label="Done: visa file"></div>
+        <h3>Complete your visa file with the UM Visa Office</h3>
+        <div class="by">30 June 2027<small>23:59 CET</small></div>
+        <div class="body">
+          <p class="lead">You can't apply yourself: the UM Visa Office applies to the immigration service (IND) for you and e-mails your private address after your offer, from early April. Add visa@maastrichtuniversity.nl to your safe senders, and don't act on the visa task in the portal until they have written to you.</p>
+          <details><summary>What you need</summary><div class="more">
+            <p>A passport valid until at least six months after the programme starts, proof of at least €1,250 a month for living costs (only a deposit with UM or an institutional or educational scholarship counts, not a bank statement), and the legal fee of €254. UM must submit your application before 1 July, so your file must be complete by 30 June. Don't travel to the Netherlands before your permit is approved.</p>
+          </div></details>
+        </div>
+      </div>
+
+      <div class="task only-non" data-id="paynon">
+        <div class="tick"><input type="checkbox" aria-label="Done: full tuition paid"></div>
+        <h3>Pay the full year's tuition in one bank transfer</h3>
+        <div class="by">Well before 30 June<small>needed for your visa</small></div>
+        <div class="body">
+          <p class="lead">UM can only apply for your residence permit once you are fully admitted, with any maths proof or English certificate in and the full year's tuition paid in one bank transfer. Instalments and direct debit are not possible if you need a visa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="when">
+      <div class="m"><b>June to August</b><span>when your exam results come in</span></div>
+
+      <div class="task" data-id="diploma">
+        <div class="tick"><input type="checkbox" aria-label="Done: certified diploma"></div>
+        <h3>Send a certified copy of your diploma</h3>
+        <div class="by">31 August 2027<small>23:59 CET</small></div>
+        <div class="body">
+          <p class="lead">As soon as you have your diploma or final results, follow the portal task "Send certified copy of diploma". Dutch diplomas are checked through DUO. Diplomas go to the Student Services Centre, not to the MSP admissions office.</p>
+          <details><summary>What if my diploma comes late?</summary><div class="more">
+            <p>If your diploma itself is only issued after the programme starts, you send a UM graduation statement instead; the portal task explains how. If anything is delayed, contact the Student Services Centre as early as possible (study@maastrichtuniversity.nl) with your student number, and let us know at the same time.</p>
+          </div></details>
+        </div>
+      </div>
+
+      <div class="task only-eu" data-id="payeu">
+        <div class="tick"><input type="checkbox" aria-label="Done: tuition payment details"></div>
+        <h3>Enter your tuition payment details in Studielink</h3>
+        <div class="by">1 August 2027<small>strongly recommended</small></div>
+        <div class="body">
+          <p class="lead">Choose a direct-debit authorisation (eight instalments or one go) or one bank transfer of the full amount. Arranging it by 1 August makes sure your timetable and UMcard are ready on time; the firm deadline is 31 August. With a direct debit the first instalment is usually taken in late September, which is fine.</p>
+        </div>
+      </div>
+
+      <div class="task" data-id="intro">
+        <div class="tick"><input type="checkbox" aria-label="Done: Introduction Days sign-up"></div>
+        <h3>Sign up for the Introduction Days</h3>
+        <div class="by">Early summer<small>dates to follow</small></div>
+        <div class="body">
+          <p class="lead">You get the dates, the programme and a sign-up form on your UM e-mail in early summer. The Introduction Days are in the second half of August; for 2027 they are being planned together with UM's introduction week (INKOM), so wait for the dates before you book travel.</p>
+          <details><summary>Are they compulsory?</summary><div class="more">
+            <p>Plan to be in Maastricht for the whole week. The lab safety training is compulsory in any case, because lab work is part of your first courses. If you can't be there on time, tell MSP's Education Support (msp-educationsupport@maastrichtuniversity.nl) as early as possible with your arrival date. You can take part even if your certified diploma is still on its way.</p>
+          </div></details>
+        </div>
+      </div>
+
+      <div class="task" data-id="arrival">
+        <div class="tick"><input type="checkbox" aria-label="Done: documents for the municipality"></div>
+        <h3>Moving to the Netherlands? Get your birth certificate ready</h3>
+        <div class="by">Before you travel<small>from your country of birth</small></div>
+        <div class="body">
+          <p class="lead">Within five working days of arriving you register with the municipality (gemeente, the local city office), by appointment, and get your citizen service number (BSN), which you need for health insurance and a bank account. For that you need a legalised or apostilled birth certificate, not older than six months, which you arrange in the country where you were born.</p>
+          <details><summary>What else to bring and arrange</summary><div class="more">
+            <p>Bring your passport or EU ID card, your signed rental contract, the birth certificate, and your Certificate of Enrolment or the conditional approval e-mail, with copies of all of them.<span class="only-non"> The Visa Office sends you instructions for the registration, and you also bring your residence permit or its "confirmation receipt of decision" e-mail.</span> Health insurance is compulsory; UM's International Student Helpdesk can tell you which one you need.</p>
+          </div></details>
+        </div>
+      </div>
+    </div>
+
+    <div class="when">
+      <div class="m"><b>End of August</b><span>the last steps</span></div>
+
+      <div class="task" data-id="canvas">
+        <div class="tick"><input type="checkbox" aria-label="Done: introduction course on Canvas"></div>
+        <h3>Work through the MSP introduction course on Canvas</h3>
+        <div class="by">Before the start<small>once you have access</small></div>
+        <div class="body">
+          <p class="lead">The full programme of your first days, and what to bring, are in the MSP introduction course on Canvas. The most useful preparation besides that: brush up your maths, especially calculus, and read about Problem-Based Learning.</p>
+        </div>
+      </div>
+
+      <div class="task" data-id="enrol">
+        <div class="tick"><input type="checkbox" aria-label="Done: all enrolment tasks"></div>
+        <h3>All enrolment tasks done</h3>
+        <div class="by">Before your first day<small>formal deadline 31 August 2027, 23:59 CET</small></div>
+        <div class="body">
+          <p class="lead">UM can only enrol you when every task in your MyApplication portal is complete: the certified diploma, the payment<span class="only-eu"> details</span>, an updated passport or ID if asked<span class="only-non">, and your visa</span>. Finish them before your first day, so your UMcard and timetable are ready; the formal deadline is 31 August 2027, 23:59 CET.</p>
+        </div>
+      </div>
+
+      <div class="task" data-id="start">
+        <div class="tick"><input type="checkbox" aria-label="Done: here"></div>
+        <h3>Your first day at MSP</h3>
+        <div class="by">30 August 2027<small>preliminary date</small></div>
+        <div class="body">
+          <p class="lead">The academic year starts on Monday 30 August 2027, right after the Introduction Days. We look forward to meeting you. <a href="courses.html#week">See what your first week looks like</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="talk" id="talk">
+    <div>
+      <h2>Stuck, or <b>not sure</b>?</h2>
+      <p>Ask Mosa, our assistant, any time. Or reply to any of our mails, or write to us directly: a person from the admissions office answers. Tell us what you're stuck on, and we'll help you finish it.</p>
+    </div>
+    <div class="links">
+      <button class="btn" type="button" data-open-chat>Ask Mosa</button>
+      <a class="btn ghost" href="mailto:msp-admissions@maastrichtuniversity.nl?subject=I%20have%20an%20offer%20and%20a%20question">Write to the admissions office</a>
+    </div>
+  </div>
+
+  <section class="place" aria-labelledby="place-h">
+    <p class="eyebrow">From September</p>
+    <h2 id="place-h">Your new <b>home</b></h2>
+    <div class="place-row">
+      <figure><img src="assets/images/place/entrance.webp" alt="The entrance of the building at Paul-Henri Spaaklaan, with flags and trees" width="900" height="600" loading="lazy"><figcaption>The building at Paul-Henri Spaaklaan</figcaption></figure>
+      <figure><img src="assets/images/place/by-the-maas.webp" alt="Students chatting in the sun on a quay along the river Maas" width="900" height="600" loading="lazy"><figcaption>Maastricht, your new home town</figcaption></figure>
+      <figure><img src="assets/images/place/igem-park.webp" alt="A group of smiling MSP students sitting together on the grass in a park" width="900" height="600" loading="lazy"><figcaption>MSP students: the iGEM team of 2024</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="who">
+    <div class="intro">
+      <h2>Who does <b>what</b></h2>
+      <p>Several UM offices are involved. Write to the right one and you'll get an answer faster.</p>
+    </div>
+    <table class="who">
+      <tr><td>Your offer, accepting, deferring, anything about MSP's selection<small>and anything you're not sure about</small></td><td>MSP admissions office<small>msp-admissions@maastrichtuniversity.nl</small></td></tr>
+      <tr><td>Your diploma, documents, Studielink and paying tuition</td><td>Student Services Centre<small>study@maastrichtuniversity.nl · +31 43 388 5388</small></td></tr>
+      <tr class="only-non"><td>Your visa and residence permit</td><td>UM Visa Office<small>visa@maastrichtuniversity.nl</small></td></tr>
+      <tr><td>The Introduction Days, arriving late, your timetable</td><td>MSP Education Support<small>msp-educationsupport@maastrichtuniversity.nl</small></td></tr>
+    </table>
+  </section>
+
+  <section id="changed">
+    <div class="intro">
+      <h2>Changed <b>your mind</b>?</h2>
+      <p>That's fine, and it happens. Withdraw in Studielink <b>before 1 September 2027</b> (My Studielink, My courses, Course details, Cancel); then you don't pay tuition, and tuition you already paid is refunded (if you needed a visa, your living-costs deposit too, on request). Not refunded: the €100 handling fee, if you paid one (it only comes back when you start at UM), and, if you needed a visa, the €254 legal fee once the Visa Office has sent your application to the IND. Then let us know, so we can close your file and stop sending you mail.</p>
+      <p>If you're willing, tell us where you're going instead and what made the difference. It's optional, it takes a minute, and it's the best way for us to learn what to do better.</p>
+    </div>
+    <div class="cta">
+      <a class="btn ghost" href="mailto:msp-admissions@maastrichtuniversity.nl?subject=Declining%20my%20MSP%20place&amp;body=Name%3A%0AStudent%20number%3A%0A%0AI%20have%20decided%20not%20to%20come%20to%20MSP.%0A%0A(Optional)%20Where%20I%20am%20going%20instead%2C%20and%20what%20made%20the%20difference%3A%0A">Tell us you're not coming</a>
+    </div>
+    <p class="note">Dates for September 2027 as published by UM and MSP. The Introduction Days dates and the start of the academic year (30 August 2027, preliminary) will be confirmed; this page is updated when they are.</p>
+  </section>
+</div>
+
+<section class="go-next" aria-labelledby="go-next-h"><div class="wrap">
+  <p class="eyebrow">While you wait</p>
+  <h2 id="go-next-h">Look ahead <b>to September</b></h2>
+  <ul class="go-list">
+    <li><a href="courses.html"><b>The courses</b><span>The core you start with, and the eight worlds you can choose from after that.</span><i aria-hidden="true">→</i></a></li>
+    <li><a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener"><b>Living in Maastricht</b><span>Housing, transport and life in the city.</span><i aria-hidden="true">↗</i></a></li>
+    <li><a href="after-msp.html"><b>After MSP</b><span>Where our graduates went next.</span><i aria-hidden="true">→</i></a></li>
+    <li><button type="button" data-open-chat><b>Ask Mosa</b><span>Our assistant answers more than 250 questions about applying and studying at MSP, any time.</span><i aria-hidden="true">→</i></button></li>
+  </ul>
+</div></section>
+
+<footer class="site-foot"><div class="wrap">
+  <div class="logos"><img class="msp" src="assets/logos/msp-seal-light-sm.webp" width="254" height="256" loading="lazy" alt="Maastricht Science Programme"><img class="um" src="assets/logos/um-2026-white.svg" alt="Maastricht University"></div>
+  <div class="cols">
+    <div><b>Explore MSP</b><nav aria-label="Explore MSP"><a href="courses.html">The courses</a><a href="after-msp.html">After MSP</a><a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener">Living in Maastricht</a></nav></div>
+    <div><b>Applying</b><nav aria-label="Applying"><a href="index.html">How to apply</a><a href="youre-in.html">After your offer</a><a href="index.html#questions">Questions</a></nav></div>
+    <div class="contact"><b>Questions about your application?</b><p><a href="mailto:msp-admissions@maastrichtuniversity.nl">msp-admissions@maastrichtuniversity.nl</a> · <a href="https://www.instagram.com/msp_admissions/">@msp_admissions</a><br>Paul-Henri Spaaklaan 1, 6229 EN Maastricht<br><a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements">Admission requirements and deadlines</a> · <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum">The programme and curriculum</a></p></div>
+  </div>
+  <p class="note">Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University. In case of differences, the official admission requirements page applies.</p>
+</div></footer>
+<script src="site.js"></script>
+
+<script src="assets/vendor/minisearch.min.js"></script>
+<script src="questions.js"></script>
+<script src="ask.js"></script>
+<script src="mosa.js"></script>
+<script src="chat.js"></script>
+<script>
+(() => {
+  // the dated steps, per passport group (used for "your next date" and the calendar file)
+  const DATES = {
+    eu: [
+      ['2027-08-01', 'Tuition payment details in Studielink (strongly recommended)', 'Arrange your direct debit or bank transfer in Studielink, so your timetable and UMcard are ready on time.'],
+      ['2027-08-30', 'First day at MSP (preliminary date)', 'The academic year starts, right after the Introduction Days.'],
+      ['2027-08-31', 'Deadline: all enrolment tasks', 'Certified diploma and payment details complete in the MyApplication portal, 23:59 CET.'],
+    ],
+    non: [
+      ['2027-06-30', 'Deadline: visa file complete, full tuition paid', 'The UM Visa Office must have everything by 23:59 CET, including the full year’s tuition in one bank transfer.'],
+      ['2027-08-30', 'First day at MSP (preliminary date)', 'The academic year starts, right after the Introduction Days.'],
+      ['2027-08-31', 'Deadline: certified diploma and all enrolment tasks', 'Everything complete in the MyApplication portal, 23:59 CET.'],
+    ],
+  };
+  const P = window.MSP_PASSPORT;                                   // shared with the five steps and the chat (ask.js)
+  const fmt = iso => new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+                  set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  const group = () => document.body.classList.contains('non') ? 'non' : 'eu';
+
+  function visibleTasks() {
+    const g = group();
+    return [...document.querySelectorAll('.task')].filter(t => !(g === 'eu' ? t.classList.contains('only-non') : t.classList.contains('only-eu')));
+  }
+  function refresh() {
+    const today = new Date().toISOString().slice(0, 10);
+    const up = DATES[group()].filter(d => d[0] >= today).sort((a, b) => a[0] < b[0] ? -1 : 1)[0];
+    document.getElementById('next-d').textContent = up ? fmt(up[0]) : 'Welcome to MSP';
+    document.getElementById('next-t').textContent = up ? up[1] + '. ' + up[2] : 'All dates for the September 2027 intake have passed.';
+    const T = visibleTasks(), done = T.filter(t => t.querySelector('input').checked).length;
+    document.getElementById('prog-t').textContent = done + ' of ' + T.length + ' done';
+    document.getElementById('prog-b').style.width = (T.length ? 100 * done / T.length : 0) + '%';
+  }
+  function setGroup(g, remember) {                                 // remember = also tell the chat (and the other pages)
+    if (P && remember) P.set(g);
+    else {
+      document.body.classList.toggle('non', g === 'non');
+      document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String((b.dataset.n === 'non') === (g === 'non'))));
+    }
+    refresh();
+  }
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => setGroup(b.dataset.n === 'non' ? 'non' : 'eu', true)));
+  document.querySelectorAll('.task').forEach(t => {
+    const box = t.querySelector('input'), key = 'youre-in-' + t.dataset.id;
+    box.checked = store.get(key) === '1'; t.classList.toggle('is-done', box.checked);
+    box.addEventListener('change', () => { store.set(key, box.checked ? '1' : '0'); t.classList.toggle('is-done', box.checked); refresh(); });
+  });
+
+  // calendar file with this group's dates (all-day events), made in the browser
+  document.getElementById('ics').addEventListener('click', () => {
+    const esc = s => s.replace(/[\\;,]/g, m => '\\' + m);
+    const stamp = new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z';
+    const g = group();
+    const ev = DATES[g].map((d, i) => {
+      const a = d[0].replace(/-/g, ''), nx = new Date(d[0] + 'T12:00:00'); nx.setDate(nx.getDate() + 1);
+      return ['BEGIN:VEVENT', 'UID:msp-youre-in-2027-' + g + '-' + i + '@msp-faqs.nl', 'DTSTAMP:' + stamp,
+              'DTSTART;VALUE=DATE:' + a, 'DTEND;VALUE=DATE:' + nx.toISOString().slice(0, 10).replace(/-/g, ''),
+              'SUMMARY:MSP: ' + esc(d[1]), 'DESCRIPTION:' + esc(d[2]), 'END:VEVENT'].join('\r\n');
+    });
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//MSP//After your offer 2027//EN', ...ev, 'END:VCALENDAR'].join('\r\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+    a.download = 'MSP September 2027 - your dates.ics'; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  // a link with ?g=non or ?g=eu (the follow-up mails) sets the passport; otherwise what the visitor chose before on this site
+  const qg = new URLSearchParams(location.search).get('g');
+  if (qg === 'non' || qg === 'eu') setGroup(qg, true);
+  else setGroup(P && P.known() ? P.get() : 'eu', false);
+})();
+</script>
+</body>
+</html>

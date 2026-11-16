@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The courses at MSP: everyone starts here, then you choose</title>
+<meta name="description" content="Start with the core, then choose from 140 courses and lab skills in eight worlds of science. Explore them and star the ones you like.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Welcome to MSP">
+<meta property="og:title" content="The courses at MSP: everyone starts here, then you choose">
+<meta property="og:description" content="Start with the core, then choose from 140 courses and lab skills in eight worlds of science. Explore them and star the ones you like.">
+<meta property="og:url" content="https://msp-faqs.nl/welcome/courses.html">
+<meta property="og:image" content="https://msp-faqs.nl/welcome/assets/og/courses.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logos/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+:root { --navy: #000831; --soft: #BEDDF7; --paper: #FCFAF6; --ink: #000831; --ink2: #2b3152; --muted: #5d627d; --line: #d9dfea; --tint: #eef4fb;
+        --cream: #F5EDDD; --cream2: #e9dcc3; --deep: #0b1240; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17.5px/1.55 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body.locked { overflow: hidden; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+h1, h2 { margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; letter-spacing: -.02em; line-height: 1.06; }
+h1 b, h2 b { font-family: 'Hanken Grotesk', 'Aptos', 'Segoe UI', Arial, sans-serif; font-weight: 800; letter-spacing: -.035em; }
+h1 { font-size: clamp(40px, 5.4vw, 70px); } h2 { font-size: clamp(28px, 3.2vw, 42px); }
+h3 { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+p { margin: 0; } a { color: inherit; }
+button { font: inherit; color: inherit; }
+.eyebrow { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 660px; margin-top: 18px; }
+
+.hero { padding-top: 18px; max-width: 860px; }
+
+/* ---------- the map: a navy universe, core in the middle, eight crests around it ---------- */
+.mapband { position: relative; overflow: hidden; color: var(--cream); padding: 46px 0 40px;
+           background: radial-gradient(ellipse 70% 60% at 50% 62%, #101a5c 0%, #050d3d 45%, var(--navy) 80%); }
+.mapband svg.stars { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.mapband .wrap { position: relative; }
+.mapband .hero { padding-top: 0; }
+.mapband .eyebrow { color: var(--soft); }
+.mapband h1 { color: var(--cream); }
+.mapband .lede { color: #ddd3c0; }
+.stage { position: relative; height: 820px; max-width: 984px; margin: 26px auto 0; }
+.stage svg.orbits { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.orbits g.spin { transform-origin: 492px 400px; animation: orbit 300s linear infinite; }
+@keyframes orbit { to { transform: rotate(360deg); } }
+.hub { position: absolute; left: 50%; top: 48.8%; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%; border: 0; cursor: pointer;
+       background: var(--cream); color: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 34px;
+       box-shadow: 0 0 0 16px rgba(245,237,221,.07), 0 0 0 36px rgba(245,237,221,.035);
+       transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.hub:hover { transform: scale(1.03); box-shadow: 0 0 0 18px rgba(245,237,221,.1), 0 0 0 42px rgba(245,237,221,.05); }
+.hub .k { font-size: 14px; font-weight: 700; color: var(--muted); }
+.hub .t { font-family: 'Newsreader', Georgia, serif; font-size: 40px; line-height: 1; margin: 6px 0 12px; }
+.hub ul { list-style: none; margin: 0; padding: 0; font-size: 15.5px; line-height: 1.45; font-weight: 600; }
+.hub .go { margin-top: 12px; font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.crest { position: absolute; width: 176px; margin-left: -88px; margin-top: -78px; background: none; border: 0; padding: 0; cursor: pointer; text-align: center; color: var(--cream); }
+.crest img { width: 156px; height: 156px; display: block; margin: 0 auto; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.crest:hover img, .crest:focus-visible img { transform: scale(1.07) rotate(-14deg); }
+.crest .n { display: block; font-weight: 800; font-size: 16.5px; line-height: 1.2; margin-top: 8px; letter-spacing: -.01em; }
+.crest .c { display: block; font-size: 14px; color: var(--soft); }
+.mapnote { position: relative; text-align: center; color: var(--soft); font-size: 16px; margin-top: 6px; }
+/* the thin cream edge that runs along the circle when a world opens */
+.ringedge { position: fixed; inset: 0; z-index: 39; background: var(--cream); pointer-events: none; transition: clip-path .8s cubic-bezier(.7,0,.25,1); }
+.ringedge[hidden] { display: none; }
+
+/* bands under the map */
+.bands { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 70px; }
+.band { border-top: 2px solid var(--navy); padding-top: 18px; }
+.band p { color: var(--ink2); margin-top: 10px; }
+.band .list { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; border-top: 1px solid var(--line); }
+.band .list > * { padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.35; }
+.band .list button { background: none; border: 0; border-bottom: 1px solid var(--line); text-align: left; cursor: pointer; font-weight: 700; }
+.band .list button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.band .list span { color: var(--ink2); font-weight: 600; }
+.band .more { margin-top: 18px; }
+.levels { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.levels div { padding: 18px 24px 0 0; } .levels b { font-size: 26px; font-weight: 800; letter-spacing: -.03em; display: block; } .levels span { color: var(--ink2); font-size: 16px; }
+.yearnote { margin-top: 50px; font-size: 15px; color: var(--muted); max-width: 820px; }
+
+/* ---------- a world (full screen, opens from its crest) ---------- */
+.world { position: fixed; inset: 0; z-index: 40; background: var(--navy); color: var(--cream); overflow-y: auto; overscroll-behavior: contain;
+         clip-path: circle(150vmax at 50% 50%); transition: clip-path .8s cubic-bezier(.7,0,.25,1); }
+.world[hidden] { display: none; }
+.world.fade { clip-path: none !important; transition: opacity .3s; }
+.world .bgcrest { position: fixed; right: -14vmin; top: 6vh; width: 88vmin; height: 88vmin; pointer-events: none; opacity: .14; }
+.world .bgcrest .spin { width: 100%; height: 100%; animation: orbit 300s linear infinite; }
+.world .bgcrest img { width: 100%; height: 100%; display: block; transform: scale(.35) rotate(-70deg); opacity: 0; transition: transform 1.2s cubic-bezier(.2,.8,.2,1), opacity .8s; }
+.world.in .bgcrest img { transform: none; opacity: 1; }
+.wbar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 14px; padding: 16px 28px; background: linear-gradient(var(--navy) 60%, rgba(0,8,49,0)); }
+.wbar .back { background: transparent; color: var(--cream); border: 0; box-shadow: inset 0 0 0 2px var(--cream); border-radius: 999px; padding: 10px 20px; font-weight: 700; cursor: pointer; }
+.wbar .back:hover { background: var(--cream); color: var(--navy); }
+.wbar .crumbs { display: flex; gap: 6px; margin-left: auto; }
+.wbar .crumbs button { width: 38px; height: 38px; padding: 3px; border-radius: 50%; border: 0; background: transparent; cursor: pointer; opacity: .55; transition: opacity .2s, transform .2s; }
+.wbar .crumbs button:hover, .wbar .crumbs button[aria-current=true] { opacity: 1; transform: scale(1.08); }
+.wbar .crumbs img { width: 100%; height: 100%; display: block; }
+.win { position: relative; max-width: 1040px; margin: 0 auto; padding: 18px 28px 140px; }
+.whead { max-width: 720px; padding-top: 20px; }
+.whead .eyebrow { color: var(--soft); }
+.whead h1 { color: var(--cream); font-size: clamp(44px, 6.4vw, 84px); }
+.whead .intro { font-size: clamp(18px, 1.7vw, 22px); margin-top: 18px; color: #efe6d4; }
+.whead .count { margin-top: 16px; font-size: 15.5px; color: var(--soft); font-weight: 600; }
+.lvl { margin-top: 64px; }
+.lvl > .lh { display: flex; align-items: baseline; gap: 14px; border-top: 2px solid var(--cream); padding-top: 12px; }
+.lvl > .lh h2 { font-size: clamp(26px, 2.6vw, 34px); color: var(--cream); }
+.lvl > .lh span { font-size: 15px; color: var(--soft); font-weight: 600; }
+.lvl > p.hint { margin-top: 12px; color: #d9cfbd; max-width: 640px; font-size: 16.5px; }
+.rows { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; }
+.row { display: grid; grid-template-columns: 1fr auto; align-items: start; border-bottom: 1px solid rgba(245,237,221,.18);
+       opacity: 0; transform: translateY(14px); transition: opacity .5s, transform .6s cubic-bezier(.2,.8,.2,1); }
+.world.in .row { opacity: 1; transform: none; }
+.row .open { text-align: left; background: none; border: 0; color: inherit; cursor: pointer; padding: 18px 0 18px 22px; position: relative; }
+.row .open::before { content: ''; position: absolute; left: 0; top: 27px; width: 9px; height: 9px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--cream); }
+.row .open:hover::before { background: var(--cream); }
+.row .meta { display: block; font-size: 14px; color: var(--soft); font-weight: 600; }
+.row .ti { display: block; font-weight: 800; font-size: 20.5px; line-height: 1.22; letter-spacing: -.015em; margin-top: 3px; }
+.row .open:hover .ti { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.row .hk { display: block; color: #e3d9c6; font-size: 16px; margin-top: 5px; }
+.row .also { display: block; margin-top: 8px; font-size: 14px; color: var(--soft); font-weight: 600; }
+.star { background: none; border: 0; cursor: pointer; width: 44px; height: 44px; margin-top: 12px; border-radius: 50%; display: grid; place-items: center; color: inherit; }
+.star svg { width: 24px; height: 24px; }
+.star svg path { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; transition: fill .2s; }
+.star[aria-pressed=true] svg path { fill: currentColor; }
+.star:hover { background: rgba(245,237,221,.12); }
+.star.pop svg { animation: pop .4s; } @keyframes pop { 40% { transform: scale(1.35); } }
+.wnext { margin-top: 80px; border-top: 2px solid var(--cream); padding-top: 18px; }
+.wnext h2 { color: var(--cream); font-size: 30px; }
+.wnext .others { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 18px; }
+.wnext .others button { display: flex; align-items: center; gap: 10px; background: none; border: 0; cursor: pointer; color: var(--cream); font-weight: 700; padding: 4px 0; }
+.wnext .others img { width: 44px; height: 44px; transition: transform .4s; } .wnext .others button:hover img { transform: rotate(-14deg) scale(1.08); }
+.wnext .others button:hover span { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------- the sheet (one course, or my picks) ---------- */
+.scrim { position: fixed; inset: 0; z-index: 44; background: rgba(0,8,49,.45); opacity: 0; transition: opacity .3s; }
+.scrim.on { opacity: 1; } .scrim[hidden] { display: none; }
+.sheet { position: fixed; top: 0; right: 0; bottom: 0; z-index: 45; width: min(540px, 100%); background: var(--paper); color: var(--ink); overflow-y: auto; overscroll-behavior: contain;
+         transform: translateX(104%); transition: transform .45s cubic-bezier(.2,.8,.2,1); box-shadow: -18px 0 60px rgba(0,8,49,.25); }
+.sheet.on { transform: none; } .sheet[hidden] { display: none; }
+.sheet .sx { position: sticky; top: 0; display: flex; justify-content: space-between; align-items: center; padding: 16px 22px 10px 28px; background: linear-gradient(var(--paper) 70%, rgba(252,252,252,0)); z-index: 1; }
+.sheet .sx .w { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; background: none; border: 0; cursor: pointer; padding: 0; }
+.sheet .sx .w img { width: 34px; height: 34px; }
+.sheet .sx .x { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--tint); font-size: 24px; line-height: 1; cursor: pointer; }
+.sheet .sc { padding: 6px 28px 120px; }
+.sheet .meta { font-size: 15px; font-weight: 700; color: var(--muted); }
+.sheet h2 { font-size: clamp(32px, 3.4vw, 42px); margin-top: 6px; }
+.sheet .hook { font-size: 19.5px; margin-top: 14px; color: var(--ink2); }
+.sheet .facts { margin-top: 22px; border-top: 2px solid var(--navy); }
+.sheet .facts div { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.sheet .facts dt, .sheet .facts .k { font-weight: 700; }
+.sheet .chip { display: inline; background: none; border: 0; padding: 0; cursor: pointer; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.sheet h3 { margin-top: 30px; font-size: 19px; }
+.sheet ul.obj { margin: 10px 0 0; padding-left: 20px; color: var(--ink2); font-size: 16.5px; } .sheet ul.obj li { margin-bottom: 7px; }
+.sheet details { margin-top: 26px; }
+.sheet details summary { cursor: pointer; font-weight: 700; list-style: none; display: inline-flex; gap: 8px; text-decoration: underline; text-underline-offset: 4px; }
+.sheet details summary::-webkit-details-marker { display: none; } .sheet details summary::after { content: '+'; font-weight: 800; } .sheet details[open] summary::after { content: '−'; }
+.sheet details p { margin-top: 12px; color: var(--ink2); font-size: 16.5px; }
+.sheet .worlds { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; }
+.sheet .worlds button { display: flex; align-items: center; gap: 8px; background: none; border: 0; padding: 0; cursor: pointer; font-weight: 700; }
+.sheet .worlds img { width: 36px; height: 36px; }
+.sheet .act { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; align-items: center; }
+.sheet .act .btn.on { background: var(--soft); color: var(--navy); }
+.sheet .src { font-size: 14px; color: var(--muted); margin-top: 26px; }
+.sheet .note { font-size: 15px; color: var(--muted); margin-top: 10px; }
+.picklist { list-style: none; margin: 18px 0 0; padding: 0; border-top: 2px solid var(--navy); }
+.picklist li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.picklist .t { background: none; border: 0; padding: 0; text-align: left; cursor: pointer; } .picklist .t b { display: block; } .picklist .t span { font-size: 14px; color: var(--muted); }
+.picklist .rm { background: var(--tint); border: 0; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 20px; }
+.pickstate { margin-top: 16px; font-weight: 700; }
+.copied { font-size: 15px; color: var(--muted); }
+
+/* the pill that opens my picks */
+.pickpill { position: fixed; left: 22px; bottom: 22px; z-index: 48; display: flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; border: 0; border-radius: 999px;
+            padding: 13px 22px 13px 18px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 30px rgba(0,8,49,.25); transition: transform .3s; }
+.pickpill[hidden] { display: none; }
+.pickpill svg { width: 20px; height: 20px; } .pickpill svg path { fill: currentColor; }
+body.inworld .pickpill { background: var(--cream); color: var(--navy); }
+body.sheet-open .pickpill { display: none; }
+.pickpill.bump { animation: pop .45s; }
+
+
+/* ---------- "What would your week look like?" (week.js, 16 Nov 2026) ---------- */
+.week { padding-top: 84px; }
+.wk-lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 680px; margin-top: 16px; }
+.wk-year { display: grid; grid-template-columns: 7fr 7fr 3fr 7fr 7fr 3fr; gap: 4px; margin-top: 30px; }
+.wk-year button, .wk-year .proj { text-align: left; padding: 12px 14px; border-radius: 14px; border: 0; font: inherit; min-width: 0; }
+.wk-year button { background: var(--tint); color: var(--navy); cursor: pointer; transition: background .2s; }
+.wk-year button:hover { background: #dde9f7; }
+.wk-year button[aria-pressed=true] { background: var(--navy); color: #fff; }
+.wk-year .proj { background: repeating-linear-gradient(135deg, var(--cream) 0 8px, #efe4cf 8px 16px); color: var(--ink2); }
+.wk-year b { display: block; font-size: 15.5px; white-space: nowrap; } .wk-year span { display: block; font-size: 13.5px; opacity: .85; white-space: nowrap; }
+.wk-pre { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; font-size: 16px; color: var(--ink2); }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.linkbtn[hidden] { display: none; }
+.wk-msg { color: var(--muted); font-size: 15px; }
+.wk-pick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
+.wk-pick label span { display: block; font-size: 14.5px; font-weight: 700; margin-bottom: 6px; }
+.wk-pick select { width: 100%; font: inherit; font-size: 16px; padding: 11px 14px; border-radius: 14px; border: 2px solid var(--navy); background: #fff; color: var(--ink); }
+.wk-notes p { margin-top: 14px; padding: 12px 16px; background: var(--tint); border-radius: 14px; font-size: 16px; }
+.wk-grid { display: grid; grid-template-columns: 96px repeat(5, minmax(0, 1fr)); grid-template-rows: auto minmax(108px, auto) minmax(108px, auto); gap: 6px; margin-top: 22px; }
+.wk-grid.narrow { grid-template-columns: 46px minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto repeat(5, minmax(74px, auto)); }
+.wk-grid .h { font-weight: 800; font-size: 15px; padding: 4px 2px; }
+.wk-grid .rl { font-weight: 700; font-size: 14px; color: var(--muted); align-self: center; }
+.wk-grid .free { border: 1.5px dashed var(--line); border-radius: 14px; display: grid; place-items: center; color: var(--muted); font-size: 14px; }
+.wk-grid .blk { border-radius: 14px; padding: 12px; display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+.wk-grid .blk b { font-size: 15px; line-height: 1.25; overflow-wrap: anywhere; } .wk-grid .blk span { font-size: 13px; opacity: .85; }
+.wk-grid .blk.c1 { background: var(--navy); color: #fff; }
+.wk-grid .blk.c2 { background: var(--soft); color: var(--navy); }
+.wk-grid .blk.s { background: var(--cream); color: var(--navy); box-shadow: inset 0 0 0 2px #e2d3b6; }
+.wk-grid .blk.clash { background: repeating-linear-gradient(135deg, #fbe3e3 0 10px, #f6d0d0 10px 20px); color: #7a1020; }
+.wk-sum { margin-top: 18px; color: var(--ink2); max-width: 820px; }
+.wk-extra { margin-top: 8px; font-size: 15px; color: var(--muted); max-width: 820px; }
+.wk-extra:empty { display: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 820px) { .week { padding-top: 64px; } .wk-year { grid-template-columns: repeat(3, 1fr); } .wk-pick { grid-template-columns: 1fr; } }
+@media (max-width: 1000px) { .rows { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .stage { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 26px 10px; padding: 0 20px; }
+  .stage svg.orbits { display: none; }
+  .hub { position: static; grid-column: 1 / 3; width: 100%; height: auto; margin: 0 0 8px; border-radius: 28px; padding: 30px 24px; box-shadow: none; }
+  .hub:hover { box-shadow: none; }
+  .mapband { padding-top: 34px; }
+  .hub .t { font-size: 36px; }
+  .crest { position: static; width: auto; margin: 0; }
+  .crest img { width: 128px; height: 128px; }
+  .bands { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 820px) {
+  .wrap { padding: 0 20px; }
+  .wbar { padding: 12px 16px; } .wbar .crumbs { display: none; }
+  .win { padding: 8px 20px 140px; }
+  .world .bgcrest { right: -30vmin; top: 4vh; width: 110vmin; height: 110vmin; }
+  .levels { grid-template-columns: 1fr; } .levels div { padding: 14px 0 0; }
+  .band .list { grid-template-columns: 1fr; }
+  .sheet { top: auto; height: 92vh; width: 100%; border-radius: 22px 22px 0 0; transform: translateY(104%); }
+  .sheet .facts div { grid-template-columns: 1fr; gap: 2px; }
+  .pickpill { left: 14px; bottom: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbits g.spin, .world .bgcrest .spin { animation: none; }
+  .ringedge { display: none; }
+  .world { transition: none; } .world .bgcrest img, .row { transition: none; }
+  .sheet, .scrim { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-head"><div class="wrap">
+  <a class="home" href="index.html" title="Welcome to MSP: back to the start"><img class="um" src="assets/logos/um-2026-dark.svg" alt="Maastricht University"><span class="rule"></span><img class="msp" src="assets/logos/msp-seal-navy-sm.webp" width="190" height="192" alt="Maastricht Science Programme: back to the start"></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><i aria-hidden="true"></i><span>Menu</span></button>
+  <nav id="site-nav" aria-label="Welcome to MSP"><a href="courses.html" aria-current="page">The courses</a><a href="after-msp.html">After MSP</a><a href="youre-in.html">After your offer</a><a href="index.html#questions">Questions</a><a class="nav-cta" href="index.html">How to apply</a></nav>
+</div></header>
+
+<main>
+<section class="mapband" aria-label="The eight worlds of MSP around the core">
+  <svg class="stars" id="stars" viewBox="0 0 1440 1300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+  <div class="wrap">
+    <div class="hero">
+      <div class="eyebrow">The courses at MSP</div>
+      <h1>Everyone starts here. <b>Then you choose where to go.</b></h1>
+      <p class="lede">At MSP you build your own degree. You start with the core, then pick from <span id="n-all">over 140</span> courses and lab skills across eight worlds of science. Tap a crest to look inside, and star the courses you like.</p>
+    </div>
+  </div>
+  <div class="stage" id="stage">
+        <svg class="orbits" viewBox="0 0 984 820" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <ellipse cx="492" cy="400" rx="384" ry="290" fill="none" stroke="#F5EDDD" stroke-opacity=".28" stroke-width="1.2" stroke-dasharray="1.5 7"/>
+      <g class="spin" fill="none" stroke="#F5EDDD">
+        <g transform="rotate(0 492 400)">
+          <path id="orb1" d="M52 400a440 150 0 1 0 880 0a440 150 0 1 0-880 0" stroke-opacity=".05" stroke-width="16"/>
+          <path d="M52 400a440 150 0 1 0 880 0a440 150 0 1 0-880 0" stroke-opacity=".22" stroke-width="1"/>
+          <circle r="3.5" fill="#F5EDDD" stroke="none"><animateMotion dur="80s" repeatCount="indefinite"><mpath href="#orb1"/></animateMotion></circle>
+        </g>
+        <g transform="rotate(60 492 400)">
+          <path id="orb2" d="M52 400a440 150 0 1 0 880 0a440 150 0 1 0-880 0" stroke-opacity=".05" stroke-width="16"/>
+          <path d="M52 400a440 150 0 1 0 880 0a440 150 0 1 0-880 0" stroke-opacity=".22" stroke-width="1"/>
+          <circle r="2.6" fill="#BEDDF7" stroke="none"><animateMotion dur="110s" begin="-40s" repeatCount="indefinite"><mpath href="#orb2"/></animateMotion></circle>
+        </g>
+        <g transform="rotate(-60 492 400)">
+          <path id="orb3" d="M52 400a440 150 0 1 0 880 0a440 150 0 1 0-880 0" stroke-opacity=".05" stroke-width="16"/>
+          <path d="M52 400a440 150 0 1 0 880 0a440 150 0 1 0-880 0" stroke-opacity=".22" stroke-width="1"/>
+          <circle r="3" fill="#F5EDDD" stroke="none"><animateMotion dur="140s" begin="-95s" repeatCount="indefinite"><mpath href="#orb3"/></animateMotion></circle>
+        </g>
+      </g>
+    </svg>
+    <button class="hub" id="hub" type="button" aria-label="The core: the courses everyone takes. Look inside.">
+      <span class="k">Everyone takes these</span>
+      <span class="t">The core</span>
+      <ul id="hub-list"></ul>
+      <span class="go">+ two lab skills · look inside</span>
+    </button>
+  </div>
+  <p class="mapnote">Tap a crest to open its world.</p>
+</section>
+
+<div class="wrap">
+  <div class="levels" aria-label="Course levels">
+    <div><b>1000</b><span>Introductory. Where you start a new field.</span></div>
+    <div><b>2000</b><span>Intermediate. May build on an introductory course.</span></div>
+    <div><b>3000</b><span>Advanced. Builds on one or more earlier courses.</span></div>
+  </div>
+</div>
+
+<section class="week" id="week" aria-labelledby="week-h"><div class="wrap">
+  <p class="eyebrow">Try it out</p>
+  <h2 id="week-h">What would <b>your week</b> look like?</h2>
+  <p class="wk-lede">Pick a period, two courses and a lab skill, and see your week. This uses the real 2026–27 timetable: your year will look much the same, though the details change each year.</p>
+  <div class="wk-year" id="wk-year" role="group" aria-label="The academic year: choose a period"></div>
+  <div class="wk-pre"><span>Start with</span><button type="button" class="linkbtn" data-preset="core">your first period (the core)</button><button type="button" class="linkbtn" data-preset="picks">your picks</button><button type="button" class="linkbtn" data-clear>an empty week</button><span class="wk-msg" id="wk-msg" aria-live="polite"></span></div>
+  <div class="wk-pick">
+    <label><span>First course</span><select id="wk-c1"></select></label>
+    <label><span>Second course</span><select id="wk-c2"></select></label>
+    <label><span>Lab skill</span><select id="wk-s"></select></label>
+  </div>
+  <div class="wk-notes" id="wk-notes" aria-live="polite"></div>
+  <div class="wk-grid" id="wk-grid" aria-hidden="true"></div>
+  <p class="sr" id="wk-sr"></p>
+  <p class="wk-sum" id="wk-sum"></p>
+  <p class="wk-extra" id="wk-extra"></p>
+</div></section>
+
+<section class="place" aria-labelledby="place-h"><div class="wrap">
+  <p class="eyebrow">Problem-Based Learning</p>
+  <h2 id="place-h">How you'll <b>learn</b></h2>
+  <div class="place-row">
+    <figure><img src="assets/images/place/pbl-whiteboard.webp" alt="Students in a tutorial group working out a problem together at a whiteboard" width="900" height="600" loading="lazy"><figcaption>Tutorials in small groups, the heart of Problem-Based Learning</figcaption></figure>
+    <figure><img src="assets/images/place/msp-microscopes.webp" alt="Students in lab coats working at microscopes in a bright teaching lab" width="900" height="600" loading="lazy"><figcaption>Lab work from your very first period</figcaption></figure>
+    <figure><img src="assets/images/place/advisor.webp" alt="An academic advisor talking with a student at a desk" width="900" height="600" loading="lazy"><figcaption>Your academic advisor helps you plan your courses</figcaption></figure>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="bands">
+    <div class="band" id="society">
+      <h2>Science &amp; <b>society</b></h2>
+      <p id="society-intro"></p>
+      <div class="list" id="society-list"></div>
+    </div>
+    <div class="band" id="together">
+      <h2>Where it all <b>comes together</b></h2>
+      <p id="together-intro"></p>
+      <div class="list" id="together-list"></div>
+    </div>
+  </div>
+
+  <p class="yearnote" id="yearnote"></p>
+</div>
+</main>
+
+<div class="ringedge" id="ringedge" hidden></div>
+<div class="world" id="world" role="dialog" aria-modal="true" aria-labelledby="w-title" hidden>
+  <div class="bgcrest" aria-hidden="true"><div class="spin"><img id="w-bg" alt=""></div></div>
+  <div class="wbar">
+    <button class="back" id="w-back" type="button">← All worlds</button>
+    <div class="crumbs" id="w-crumbs" aria-label="Other worlds"></div>
+  </div>
+  <div class="win">
+    <div class="whead">
+      <div class="eyebrow" id="w-eyebrow"></div>
+      <h1 id="w-title" tabindex="-1"></h1>
+      <p class="intro" id="w-intro"></p>
+      <p class="count" id="w-count"></p>
+    </div>
+    <div id="w-body"></div>
+    <div class="wnext">
+      <h2>Explore another world</h2>
+      <div class="others" id="w-others"></div>
+    </div>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sheet" id="sheet" aria-modal="true" role="dialog" aria-labelledby="s-title" hidden>
+  <div class="sx"><button class="w" id="s-world" type="button"></button><button class="x" id="s-close" type="button" aria-label="Close">×</button></div>
+  <div class="sc" id="s-body"></div>
+</aside>
+
+<button class="pickpill" id="pickpill" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 17l-5.8 3.3 1.4-6.4-4.9-4.4 6.5-.7z"/></svg><span id="pickpill-t">My picks</span></button>
+
+<section class="go-next" aria-labelledby="go-next-h"><div class="wrap">
+  <p class="eyebrow">Where to next</p>
+  <h2 id="go-next-h">Found courses <b>you like?</b></h2>
+  <ul class="go-list">
+    <li><a href="index.html"><b>How to apply</b><span>Five steps, from Studielink to your first day. Your picks help with the motivation letter.</span><i aria-hidden="true">→</i></a></li>
+    <li><a href="after-msp.html"><b>After MSP</b><span>Where these courses lead: master's programmes, PhDs and careers.</span><i aria-hidden="true">→</i></a></li>
+    <li><button type="button" data-open-chat><b>Ask Mosa</b><span>Our assistant answers more than 250 questions about applying and studying at MSP, any time.</span><i aria-hidden="true">→</i></button></li>
+    <li><a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener"><b>Living in Maastricht</b><span>Housing, transport and life in the city.</span><i aria-hidden="true">↗</i></a></li>
+  </ul>
+</div></section>
+
+<footer class="site-foot"><div class="wrap">
+  <div class="logos"><img class="msp" src="assets/logos/msp-seal-light-sm.webp" width="254" height="256" loading="lazy" alt="Maastricht Science Programme"><img class="um" src="assets/logos/um-2026-white.svg" alt="Maastricht University"></div>
+  <div class="cols">
+    <div><b>Explore MSP</b><nav aria-label="Explore MSP"><a href="courses.html">The courses</a><a href="after-msp.html">After MSP</a><a href="https://www.mymaastricht.nl/" target="_blank" rel="noopener">Living in Maastricht</a></nav></div>
+    <div><b>Applying</b><nav aria-label="Applying"><a href="index.html">How to apply</a><a href="youre-in.html">After your offer</a><a href="index.html#questions">Questions</a></nav></div>
+    <div class="contact"><b>Questions about your application?</b><p><a href="mailto:msp-admissions@maastrichtuniversity.nl">msp-admissions@maastrichtuniversity.nl</a> · <a href="https://www.instagram.com/msp_admissions/">@msp_admissions</a><br>Paul-Henri Spaaklaan 1, 6229 EN Maastricht<br><a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/admission-requirements">Admission requirements and deadlines</a> · <a href="https://www.maastrichtuniversity.nl/education/bachelor/programmes/maastricht-science-programme/courses-and-curriculum">The programme and curriculum</a></p></div>
+  </div>
+  <p class="note">Course information from the public UM course catalogue, 2026–27.</p>
+  <p class="note">Maastricht Science Programme · Faculty of Science and Engineering · Maastricht University. In case of differences, the official admission requirements page applies.</p>
+</div></footer>
+<script src="site.js"></script>
+
+<script src="courses-data.js"></script>
+<script src="courses.js"></script>
+<script src="week.js"></script>
+<script src="assets/vendor/minisearch.min.js"></script>
+<script src="questions.js"></script>
+<script src="ask.js"></script>
+<script src="mosa.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>
